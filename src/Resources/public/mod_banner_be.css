@@ -1,0 +1,78 @@
+.mod_banner_be {
+	font-size: 12px;
+	min-height: 20px;
+}
+.mod_banner_be .name {
+	float: left;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+}
+.mod_banner_be .right {
+	float: right;
+}
+.mod_banner_be .left {
+	float       : left;
+	margin-left : 5px;
+	margin-right: 5px;
+	margin-top  : 5px;
+	white-space : nowrap;
+    min-width   : 102px;
+}
+
+.mod_banner_be .date_head {
+	font-size: 10px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+    min-width   : 100px;
+    border-bottom: 1px solid #ddd;
+}
+.mod_banner_be .date_data {
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.mod_banner_be .date_data_right {
+	font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	text-align: right;
+}
+
+.mod_banner_be .url {
+	clear:both;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.mod_banner_be .published_head {
+	font-size: 10px;
+	font-weight: bold;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+    min-width   : 100px;
+    border-bottom: 1px solid #ddd;
+}
+.mod_banner_be .published_data {
+    font-size: 10px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+.mod_banner_be .filter {
+	clear:both;
+	margin-left : 5px;
+	margin-right: 5px;
+	margin-top  : 5px;
+	white-space : nowrap;
+  min-width   : 102px;
+}
+.tl_file_list .banner_stat_yes {
+    color: green;
+    font-weight: bold;
+}
+.tl_file_list .banner_stat_no {
+    color: #700000; 
+    font-weight: bold;
+}
+
+#tl_banner_category div p.tl_tip {
+    overflow: visible;
+}
+#ctrl_banner_stat_admins {
+	margin-top: 1px;
+}
