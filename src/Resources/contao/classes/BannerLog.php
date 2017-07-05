@@ -14,6 +14,9 @@
 
 namespace BugBuster\Banner;
 
+use Psr\Log\LogLevel;
+use Contao\CoreBundle\Monolog\ContaoContext;
+
 /**
  * Class BannerLog
  *
@@ -128,4 +131,21 @@ class BannerLog
     
         error_log(sprintf("[%s] %s\n", date('d-M-Y H:i:s'), $strMessage), 3, $strLogsDir . '/' . $strLog);
     }
+    
+    /**
+     * Add a log entry to the database
+     *
+     * @param string $strText     The log message
+     * @param string $strFunction The function name
+     * @param string $strCategory The category name
+     *
+     */
+    public static function log($strText, $strFunction, $strCategory)
+    {
+        $level = TL_ERROR === $strCategory ? LogLevel::ERROR : LogLevel::INFO;
+        $logger = static::getContainer()->get('monolog.logger.contao');
+    
+        $logger->log($level, $strText, array('contao' => new ContaoContext($strFunction, $strCategory)));
+    }
+    
 }

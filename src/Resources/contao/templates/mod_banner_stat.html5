@@ -1,0 +1,267 @@
+
+<div class="clear"></div>
+<?php defined('REQUEST_TOKEN') or define('REQUEST_TOKEN', 'c0n740'); ?>
+<div class="tl_panel">
+    <!-- Categorie Row //-->
+	<form	method="post" 
+			class="info" 
+			id="banner_statistik" 
+			action="<?php echo $this->banner_base_be; ?>/main.php?do=bannerstat">
+		<input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+		<div class="tl_submit_panel tl_subpanel">
+			<input class="tl_img_submit" 
+					type="image" 
+					value="<?php echo specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
+					title="<?php echo specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
+					src="system/themes/<?php echo $this->theme; ?>/images/reload.gif" 
+					name="filter">
+		</div>
+		<div class="tl_search tl_subpanel">
+			<strong><?php echo $this->bannerstatcat; ?>:</strong>
+			<select class="tl_select" name="id">
+				<?php foreach ($this->bannercats as $bannercat): ?>
+				    <?php if ($bannercat['id']==$this->bannercatid) : ?>
+				<option selected="selected" value="<?php echo $bannercat['id']; ?>"><?php echo $bannercat['title']; ?></option>
+				    <?php else: ?>
+				<option value="<?php echo $bannercat['id']; ?>"><?php echo $bannercat['title']; ?></option>
+				    <?php endif; ?>
+				<?php endforeach; ?>
+			</select>
+		</div>
+	</form>
+	<!-- Categorie Row End //-->
+	
+    <!-- Categorie Reset //-->
+<?php if ($this->bannercatid>0) : ?>
+    <form	method="post" 
+    		class="info" 
+    		id="banner_cat_reset" 
+			action="<?php echo $this->banner_base_be; ?>/main.php?do=bannerstat">
+		<div class="tl_search tl_subpanel">
+			<strong><?php echo $this->bannercatzero; ?>:</strong>	
+			<input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+			<input type="hidden" name="act" value="zero">
+			<input type="hidden" name="id" value="<?php echo $this->bannercatid; ?>">
+			<input type="hidden" name="catzid" value="<?php echo $this->bannercatid; ?>">
+			<input type="submit" value="<?php echo $this->bannercatzerobutton; ?>" 
+			        alt="<?php echo $this->bannercatzerotext; ?>" 
+			        title="<?php echo $this->bannercatzerotext; ?>" 
+			        class="tl_submit" 
+			        onclick="if (!confirm('<?php echo $this->bannercatzeroconfirm; ?>')) return false; Backend.getScrollOffset();">
+		</div>
+	</form>
+<?php endif; ?>
+    <!-- Categorie Reset End //-->
+    <div class="clear"></div>
+</div>
+<?php if ($this->banner_hook_panels): ?>
+	<?php foreach ($this->banner_hook_panels as $panel): ?>
+		<?php echo $panel; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
+<br> <br>
+<div class="tl_formbody_edit">
+	<div class="tl_header">
+		<table class="tl_header_table">
+		  <tbody>
+		  <tr>
+		    <td><span class="tl_label"><?php echo $this->bannernumberactiveinactive; ?>:</span></td>
+		    <td><?php echo $this->number_active . " / ". $this->number_inactive; ?></td>
+		    <td> </td>
+		    <td> </td>
+		    <td> </td>
+		  </tr>
+		  <tr>
+		    <td><span class="tl_label"><?php echo $GLOBALS['TL_LANG']['tl_banner_stat']['number_views_clicks']; ?>:</span></td>
+		    <td><?php echo $this->number_views ." / ". $this->number_clicks; ?></td>
+		    <td style="width:10px; padding-left: 2px; text-align: center;"></td>
+		  <?php if (0 < $this->number_clicks) : ?>
+		    <td><span class="tl_label"><?php echo $this->bannerclickthroughrate; ?>:</span></td>
+		    <td><?php
+				if (0 == $this->number_views) { echo "0%"; }
+				else { echo round($this->number_clicks * 100 / $this->number_views,2)."%"; } 
+				?>
+		    </td>
+		  <?php else: ?>
+		  	<td> </td>
+		    <td> </td>
+		  <?php endif; ?>
+		  </tr>
+		  </tbody>
+		</table>
+	</div>
+	<br> 
+	<table summary="Table lists records" class="tl_listing">
+	<tbody>
+	<tr>
+	    <td style="padding-left: 2px;" class="tl_folder_tlist">
+	        <?php echo $this->header_picture." / ".$this->header_name." / ".$this->header_url; ?>
+	    </td>
+	    <td style="width:10px; padding-left: 2px; text-align: center;" class="tl_folder_tlist"></td>
+	    <td style="width:260px; padding-left: 2px; text-align: center;" class="tl_folder_tlist">Statistik</td>
+	    <td style="width:60px; padding-left: 2px; text-align: center;" class="tl_folder_tlist">Reset</td>
+	</tr>
+	<?php if ($this->bannercatid>0 || $this->bannercatid==-1) : ?>
+	    <?php foreach ($this->bannersstat as $bannerstat): ?>
+	        <?php if ($bannerstat['banner_pic']) : ?>
+	<!-- Bild Start -->
+	<tr style="height:20px;">
+	    <td colspan="3" style="font-size:11px;margin-bottom:10px;" class="cte_type <?php echo $bannerstat['banner_pub_class']; ?>">
+	        <strong style="padding-left: 14px;"><?php echo $bannerstat['banner_name']; ?></strong>
+	    </td>
+	    <td style="padding-left: 2px; text-align: center;">
+	        <form method="post" class="info" id="banner_reset" action="<?php echo $this->banner_base_be; ?>/main.php?do=bannerstat">
+	            <input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+	            <input type="hidden" name="act" value="zero">
+	            <input type="hidden" name="zid" value="<?php echo $bannerstat['banner_id']; ?>">
+	            <input type="hidden" name="id" value="<?php echo $this->bannercatid; ?>">
+	            <input class="tl_img_submit" type="image" value="<?php echo $bannerstat['banner_zero']; ?>" 
+	                    title="<?php echo $bannerstat['banner_zero']; ?>" 
+	                    src="system/modules/banner/themes/<?php echo $this->theme0; ?>/down0.gif" 
+	                    name="filter" 
+	                    onclick="if (!confirm('<?php echo $bannerstat['banner_confirm']; ?>')) return false; Backend.getScrollOffset();"
+	                >
+	        </form>
+	    </td>
+	</tr>
+	<tr>
+	    <td style="padding-left: 2px; padding-bottom:6px;  padding-top:6px;" class="tl_file_list">
+	        <img style ="<?php echo $bannerstat['banner_style']; ?>" 
+	             alt   ="<?php echo $bannerstat['banner_alt'];   ?>" 
+	             src   ="<?php echo $bannerstat['banner_image']; ?>" 
+	             height="<?php echo $bannerstat['banner_height'];?>" 
+	             width ="<?php echo $bannerstat['banner_width']; ?>" 
+	             title ="<?php echo $bannerstat['banner_title']; ?>"
+	            >
+	        <br><?php echo $this->header_url .': '. $bannerstat['banner_url']; ?>
+	    </td>
+	    <td style="padding-left: 2px; text-align: center;" class="tl_file_list">&nbsp;</td>
+	    <td style="padding-left: 2px; text-align: left;" class="tl_file_list">
+	        <div class="mod_banner_be">
+	            <div class="right">
+	                <div class="left">
+	                    <div class="published_head"><?php echo $this->header_active; ?></div>
+	                    <div class="published_data"><?php echo $bannerstat['banner_active']; ?></div>
+	                </div>
+	                <div class="left">
+	                    <div class="date_head"><?php echo $this->header_views; ?></div>
+	                    <div class="date_data_right"><?php echo $bannerstat['banner_views']; ?></div>
+	                </div>
+	                <div style="clear:both;"></div>
+	                <div class="left">
+	                    <div class="date_head"><?php echo $this->header_prio; ?></div>
+	                    <div class="date_data"><?php echo $bannerstat['banner_prio']; ?></div>
+	                </div>
+	                <div class="left">
+	                    <div class="date_head"><?php echo $this->header_clicks; ?></div>
+	                    <div class="date_data_right"><?php echo $bannerstat['banner_clicks']; ?></div>
+	                </div>
+	                <div style="clear:both;"></div>
+	            <?php if (0 < $bannerstat['banner_clicks']) : ?>
+	                <div class="left">
+	                    <div class="">&nbsp;</div>
+	                    <div class="">&nbsp;</div>
+	                </div>
+	                <div class="left">
+	                    <div class="date_head"><?php echo $this->bannerclickthroughrate; ?></div>
+	                    <div class="date_data_right"><?php
+	            			if (0 == $bannerstat['banner_views']) { echo "0%"; }
+							else { echo round($bannerstat['banner_clicks'] * 100 / $bannerstat['banner_views'],2)."%"; }
+							?>
+						</div>
+	                </div>
+	                <div style="clear:both;"></div>
+	            <?php else: ?>
+	                <div class="left">
+	                    <div class="">&nbsp;</div>
+	                    <div class="">&nbsp;</div>
+	                </div>
+	                <div class="left">
+	                    <div class="">&nbsp;</div>
+	                    <div class="">&nbsp;</div>
+	                </div>
+	            	<div style="clear:both;"></div>
+	            <?php endif; ?>
+	            </div>
+	        </div>
+	    </td>
+	    <td style="padding-left: 2px; text-align: center;" class="tl_file_list"></td>
+	</tr>
+	<!-- Bild Ende -->
+	        <?php endif; ?>
+	        <?php if ($bannerstat['banner_text']) : ?>
+	<!-- Text Start -->
+	<tr style="height:20px;">
+	    <td colspan="3" style="font-size:11px;margin-bottom:10px;" class="cte_type <?php echo $bannerstat['banner_pub_class']; ?>">
+	        <strong style="padding-left: 14px;"><?php echo $bannerstat['banner_name']; ?></strong>
+	    </td>
+	    <td style="padding-left: 2px; text-align: center;">
+	        <form method="post" class="info" id="banner_reset" action="<?php echo $this->banner_base_be; ?>/main.php?do=bannerstat">
+	            <input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
+	            <input type="hidden" name="act" value="zero">
+	            <input type="hidden" name="zid" value="<?php echo $bannerstat['banner_id']; ?>">
+	            <input type="hidden" name="id" value="<?php echo $this->bannercatid; ?>">
+	            <input class="tl_img_submit" type="image" value="<?php echo $bannerstat['banner_zero']; ?>" 
+	                    title="<?php echo $bannerstat['banner_zero']; ?>" 
+	                    src="system/modules/banner/themes/<?php echo $this->theme0; ?>/down0.gif" 
+	                    name="filter" 
+	                    onclick="if (!confirm('<?php echo $bannerstat['banner_confirm']; ?>')) return false; Backend.getScrollOffset();"
+	                >
+	        </form>
+	    </td>
+	</tr>
+	<tr>
+	    <td style="padding-left: 2px; padding-bottom:6px;  padding-top:6px;" class="tl_file_list">
+	        <br><?php echo $bannerstat['banner_comment']; ?>
+	        <br><br><?php echo $this->header_url .': '. $bannerstat['banner_url']; ?><?php //echo $bannerstat['banner_url_kurz']; ?>
+	    </td>
+	    <td style="padding-left: 2px; text-align: center;" class="tl_file_list">&nbsp;</td>
+	    <td style="padding-left: 2px; text-align: left;" class="tl_file_list">
+	        <div class="mod_banner_be">
+	            <div class="right">
+	                <div class="left">
+	                    <div class="published_head"><?php echo $this->header_active; ?></div>
+	                    <div class="published_data"><?php echo $bannerstat['banner_active']; ?></div>
+	                </div>
+	                <div class="left">
+	                    <div class="date_head"><?php echo $this->header_views; ?></div>
+	                    <div class="date_data_right"><?php echo $bannerstat['banner_views']; ?></div>
+	                </div>
+	                <div style="clear:both;"></div>
+	                <div class="left">
+	                    <div class="date_head"><?php echo $this->header_prio; ?></div>
+	                    <div class="date_data"><?php echo $bannerstat['banner_prio']; ?></div>
+	                </div>
+	                <div class="left">
+	                    <div class="date_head"><?php echo $this->header_clicks; ?></div>
+	                    <div class="date_data_right"><?php echo $bannerstat['banner_clicks']; ?></div>
+	                </div>
+	                <div style="clear:both;"></div>
+	                <div class="left">
+	                    <div class="">&nbsp;</div>
+	                    <div class="">&nbsp;</div>
+	                </div>
+	                <div class="left">
+	                    <div class="">&nbsp;</div>
+	                    <div class="">&nbsp;</div>
+	                </div>
+	                <div style="clear:both;"></div>
+	            </div>
+	        </div>
+	    </td>
+	    <td style="padding-left: 2px; text-align: center;" class="tl_file_list"></td>
+	</tr>
+	<!-- Text Ende -->
+	        <?php endif; ?>
+	    <?php endforeach; ?>
+	<?php endif; ?>
+	<tr>
+	    <td colspan="4">&nbsp;</td>
+	</tr>
+	<tr>
+	    <td colspan="4" style="padding-left: 2px; text-align:right;" class="tl_folder_tlist"><?php echo $this->banner_version; ?></td>
+	</tr>
+	</tbody>
+	</table>
+</div>
+<span style="padding-left: 18px;"><?php echo $this->banner_footer; ?></span>

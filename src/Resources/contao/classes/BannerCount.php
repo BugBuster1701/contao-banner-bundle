@@ -18,10 +18,9 @@
  */
 namespace BugBuster\Banner;
 
-use BugBuster\Banner\BannerLog;
+// debug später use BugBuster\Banner\BannerLog;
 use BugBuster\BotDetection\ModuleBotDetection;
-use Psr\Log\LogLevel;
-use Contao\CoreBundle\Monolog\ContaoContext;
+
 
 /** 
  * Class BannerCount
@@ -106,7 +105,7 @@ class BannerCount extends \System
                             	                , `banner_views` = `banner_views`+1
                             	                WHERE
                             	                `id`=?")
-                            	                ->execute(time(), $BannerID);
+                	                ->execute(time(), $BannerID);
 	    }
 	
 	}//BannerStatViewUpdate()
@@ -137,10 +136,10 @@ class BannerCount extends \System
 	    if ( count($this->_session) )
 	    {
 	        reset($this->_session);
-	        while ( list($key, $val) = each($this->_session) )
+	        while ( list($key, $val) = each($this->_session) ) // TODO each deprecated PHP 7.2
 	        {
 	            if ( $key == $banner_id &&
-	                    $this->removeStatViewUpdateBlockerId($key, $val) === true )
+	                 true === $this->removeStatViewUpdateBlockerId($key, $val) )
 	            {
 	                // Key ist noch gültig und es muss daher geblockt werden
 	                //DEBUG log_message('getStatViewUpdateBlockerId Banner ID:'.$key,'Banner.log');
@@ -207,13 +206,8 @@ class BannerCount extends \System
 	    $bundles = array_keys(\System::getContainer()->getParameter('kernel.bundles')); // old \ModuleLoader::getActive()
 	    if ( !in_array( 'BugBusterBotdetectionBundle', $bundles ) )
 	    {
-	        //botdetection Modul fehlt, Abbruch
-	        \System::getContainer()
-	            ->get('monolog.logger.contao')
-	            ->log(LogLevel::ERROR,
-	                'contao-botdetection-bundle extension required for extension: contao-banner-bundle!',
-	                array('contao' => new ContaoContext('BannerCount::bannerCheckBot ', TL_ERROR)));
-
+            //botdetection Modul fehlt, Abbruch
+	        BannerLog::log('contao-botdetection-bundle extension required for extension: contao-banner-bundle!', 'BannerCount::bannerCheckBot', TL_ERROR);
 	        return false;
 	    }
 	    
