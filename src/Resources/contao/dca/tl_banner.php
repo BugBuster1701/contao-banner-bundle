@@ -217,7 +217,7 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner']['banner_comment'],
 			'inputType'               => 'textarea',
 			'explanation'             => 'banner_help',
-			'sql'                     => "text NOT NULL default ''",
+			'sql'                     => "text NULL",
 			'eval'                    => array('mandatory'=>false, 'preserveTags'=>true, 'helpwizard'=>true)
         ),
 		'banner_published' => array
