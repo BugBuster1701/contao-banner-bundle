@@ -117,7 +117,7 @@
 	            <input type="hidden" name="id" value="<?php echo $this->bannercatid; ?>">
 	            <input class="tl_img_submit" type="image" value="<?php echo $bannerstat['banner_zero']; ?>" 
 	                    title="<?php echo $bannerstat['banner_zero']; ?>" 
-	                    src="system/modules/banner/themes/<?php echo $this->theme0; ?>/down0.gif" 
+	                    src="bundles/bugbusterbanner/<?php echo $this->theme0; ?>/down0.gif" 
 	                    name="filter" 
 	                    onclick="if (!confirm('<?php echo $bannerstat['banner_confirm']; ?>')) return false; Backend.getScrollOffset();"
 	                >
@@ -203,7 +203,7 @@
 	            <input type="hidden" name="id" value="<?php echo $this->bannercatid; ?>">
 	            <input class="tl_img_submit" type="image" value="<?php echo $bannerstat['banner_zero']; ?>" 
 	                    title="<?php echo $bannerstat['banner_zero']; ?>" 
-	                    src="system/modules/banner/themes/<?php echo $this->theme0; ?>/down0.gif" 
+	                    src="bundles/bugbusterbanner/<?php echo $this->theme0; ?>/down0.gif" 
 	                    name="filter" 
 	                    onclick="if (!confirm('<?php echo $bannerstat['banner_confirm']; ?>')) return false; Backend.getScrollOffset();"
 	                >
