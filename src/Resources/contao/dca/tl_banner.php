@@ -159,7 +159,7 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'options'                 => array('1', '2', '3'),
 			'reference'               => &$GLOBALS['TL_LANG']['tl_banner'],
 			'explanation'	          => 'banner_help',
-			'sql'                     => "tinyint(3) unsigned NOT NULL default '2'",
+			'sql'                     => "tinyint(1) NOT NULL default '2'",
 			'eval'                    => array('mandatory'=>false, 'maxlength'=>1, 'rgxp'=>'prcnt', 'helpwizard'=>true, 'tl_class'=>'w50')
 		),
 		'banner_url' => array
