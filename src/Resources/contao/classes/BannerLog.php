@@ -2,7 +2,7 @@
 /**
  * Extension for Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
  *
- * Modul Banner Log - Frontend
+ * Class BannerLog - Frontend
  *
  * @copyright  Glen Langer 2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
