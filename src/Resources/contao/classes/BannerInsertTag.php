@@ -50,12 +50,11 @@ class BannerInsertTag extends BannerHelper
 	protected $banner_useragent  = '';
 	protected $Template          = '';
 	protected $cssID             = ''; //serialisiertes Array
-	protected $space             = ''; //serialisiertes Array
 	protected $headline          = ''; //serialisiertes Array, unit und value
 	protected $article_class     = ''; // mod_banner artikelcssclass
 	protected $article_cssID     = ''; // id="artikelcssid"
 	protected $article_style     = ''; // margin-top:55px; margin-bottom:66px;
-	protected $outputFormat      = 'xhtml'; //Fallback
+	protected $outputFormat      = 'html5';
 	protected $templatepfad      = 'templates';
 	protected $module_id          = 0;
 	
@@ -130,7 +129,6 @@ class BannerInsertTag extends BannerHelper
                                                         	        banner_redirect,
                                                         	        banner_useragent,
                                                                     cssID,
-                                                                    space,
                                                                     headline 
                                                                 FROM  
                                                                     tl_module 
@@ -150,7 +148,6 @@ class BannerInsertTag extends BannerHelper
         $this->banner_redirect   = $objBannerModule->banner_redirect;
         $this->banner_useragent  = $objBannerModule->banner_useragent;
         $this->cssID             = $objBannerModule->cssID;
-        $this->space             = $objBannerModule->space;
         $this->headline          = $objBannerModule->headline;
         return true;         
 	}
