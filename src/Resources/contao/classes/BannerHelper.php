@@ -103,7 +103,7 @@ class BannerHelper extends \Frontend
 	 * Page Output Format
 	 * @var string
 	 */
-	protected $strFormat = 'xhtml';
+	protected $strFormat = 'html5';
 	
 	/**
 	 * Session

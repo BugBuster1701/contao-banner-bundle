@@ -20,6 +20,7 @@ namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerHelper;
 use BugBuster\Banner\BannerLog;
+use BugBuster\Banner\BannerSingle;
 
 /**
  * Class BannerInsertTag
@@ -181,7 +182,9 @@ class BannerInsertTag extends BannerHelper
 			//keine Banner vorhanden in der Kategorie
 			//default Banner holen
 			//kein default Banner, ausblenden wenn leer?
-			$this->getDefaultBanner();
+			//alt $this->getDefaultBanner();
+			$objBannerSingle = new BannerSingle($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template);
+		    $this->Template = $objBannerSingle->getDefaultBanner(); 
 			//Css generieren
 			$this->setCssClassIdStyle();
 			//Template parsen und Ergebnis zurückgeben

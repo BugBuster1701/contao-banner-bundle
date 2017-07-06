@@ -47,10 +47,16 @@ class BannerSingle extends \Frontend
 
     protected $arrCategoryValues = array();
     protected $BannerImage;
+    protected $banner_template;
+    protected $strTemplate;
+    protected $Template;
 
-    function __construct ($arrCategoryValues)
+    function __construct ($arrCategoryValues, $banner_template, $strTemplate, $objTemplate)
     {
         $this->arrCategoryValues = $arrCategoryValues;
+        $this->banner_template   = $banner_template;
+        $this->strTemplate       = $strTemplate;
+        $this->Template          = $objTemplate;
     }
     
     /**
@@ -59,7 +65,7 @@ class BannerSingle extends \Frontend
      * @param alles von BannerTag $this was gebraucht wird TODO
      * @return  $this->strTemplate, mehr wird doch nicht gebraucht, oder? TODO
      */
-    protected function getDefaultBanner()
+    public function getDefaultBanner()
     {
         $arrImageSize = array();
         //CSS-ID/Klasse(n) je Banner, für den wrapper
@@ -132,7 +138,7 @@ class BannerSingle extends \Frontend
             }
             $arrResults[] = $arrBanners[0];
             $this->Template->banners = $arrResults;
-            return true;
+            return $this->Template;
         }
         //Kein BannerDefault
         $NoBannerFound = ($GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner']) ? $GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner'] : 'no banner, no default banner';
