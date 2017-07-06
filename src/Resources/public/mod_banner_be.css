@@ -72,6 +72,7 @@
 
 #tl_banner_category div p.tl_tip {
     overflow: visible;
+	height: auto;
 }
 #ctrl_banner_stat_admins {
 	margin-top: 1px;
