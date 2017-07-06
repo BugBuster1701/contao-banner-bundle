@@ -20,7 +20,7 @@
 /**
  * Add a palette to tl_module
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['banner'] = 'name,type,headline;banner_hideempty,banner_firstview;banner_categories,banner_template;banner_redirect;guests,protected,banner_useragent;align,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['banner'] = 'name,type,headline;banner_hideempty,banner_firstview;banner_categories,banner_template;banner_redirect;{expert_legend:hide},protected,guests,banner_useragent,cssID';
 
 
 /**
@@ -57,7 +57,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['banner_template'] = array
     'inputType'               => 'select',
     'options_callback'        => array('BugBuster\Banner\DcaModuleBanner', 'getBannerTemplates'),
     'sql'                     => "varchar(32) NOT NULL default ''",
-    'eval'                    => array('tl_class'=>'w50')
+    'eval'                    => array('tl_class'=>'w50 w50h')
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['banner_redirect'] = array
 (

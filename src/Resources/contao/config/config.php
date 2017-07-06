@@ -50,3 +50,9 @@ $GLOBALS['FE_MOD']['miscellaneous']['banner'] = 'BugBuster\Banner\ModuleBanner';
 //$GLOBALS['TL_HOOKS']['parseBackendTemplate'][] = array('BugBuster\Banner\BannerCheckHelper', 'checkExtensions');
 $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('BugBuster\Banner\BannerInsertTag', 'replaceInsertTagsBanner');
 
+
+/**
+ * CSS
+ */
+if( TL_MODE == 'BE' )
+    $GLOBALS['TL_CSS'][] = 'bundles/bugbusterbanner/backend.css';
