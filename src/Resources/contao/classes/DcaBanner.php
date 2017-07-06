@@ -19,6 +19,10 @@
 namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerImage;
+use Psr\Log\LogLevel;
+use Contao\CoreBundle\Monolog\ContaoContext;
+use Contao\StringUtil;
+use Contao\Image;
 
 class DcaBanner extends \Backend
 {
@@ -522,10 +526,10 @@ class DcaBanner extends \Backend
     
         if (!$row['banner_published'])
         {
-            $icon = 'invisible.gif';
+            $icon = 'invisible.svg';
         }
-    
-        return '<a href="'.$this->addToUrl($href.'&amp;id='.\Input::get('id')).'" title="'.specialchars($title).'"'.$attributes.'>'.$this->generateImage($icon, $label).'</a> ';
+
+        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['banner_published'] ? 1 : 0) . '"').'</a> ';
     }
     
     /**
@@ -538,32 +542,22 @@ class DcaBanner extends \Backend
         // Check permissions to publish
         if (!$this->User->isAdmin && !$this->User->hasAccess('tl_banner::banner_published', 'alexf'))
         {
-            $this->log('Not enough permissions to publish/unpublish Banner ID "'.$intId.'"', 'tl_banner toggleVisibility', TL_ERROR);
+            \System::getContainer()
+                ->get('monolog.logger.contao')
+                ->log(LogLevel::ERROR,
+                        'Not enough permissions to publish/unpublish Banner ID "'.$intId.'"',
+                        array('contao' => new ContaoContext('tl_banner toggleVisibility', TL_ERROR)));
+            
             $this->redirect('contao/main.php?act=error');
         }
     
         // Update database
-        \Database::getInstance()->prepare("UPDATE tl_banner SET banner_published='" . ($blnVisible ? 1 : '') . "' WHERE id=?")
+        \Database::getInstance()->prepare("UPDATE 
+                                                tl_banner 
+                                           SET 
+                                                banner_published='" . ($blnVisible ? 1 : '') . "' 
+                                           WHERE 
+                                                id=?")
                                 ->execute($intId);
     }
-
-    /**
-     * Return all image sizes as array
-     * @return array
-     * @deprecated
-     */
-    public function getBannerImageSizes()
-    {
-        $sizes = array();
-        $imageSize = $this->Database
-                            ->prepare("SELECT id, name, width, height FROM tl_image_size ORDER BY pid, name")
-                            ->execute(\Input::get('id'));
-        while ($imageSize->next())
-        {
-            $sizes[$imageSize->id] = $imageSize->name;
-            $sizes[$imageSize->id] .= ' (' . $imageSize->width . 'x' . $imageSize->height . ')';
-        }
-        return array_merge(array('image_sizes'=>$sizes), $GLOBALS['TL_CROP']);
-    }
-
 }
