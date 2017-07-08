@@ -183,7 +183,7 @@ class BannerInsertTag extends BannerHelper
 			//default Banner holen
 			//kein default Banner, ausblenden wenn leer?
 			//alt $this->getDefaultBanner();
-			$objBannerSingle = new BannerSingle($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template);
+			$objBannerSingle = new BannerSingle($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template, $this->arrAllBannersBasic);
 		    $this->Template = $objBannerSingle->getDefaultBanner(); 
 			//Css generieren
 			$this->setCssClassIdStyle();
@@ -193,10 +193,10 @@ class BannerInsertTag extends BannerHelper
 		
 		//OK, Banner vorhanden, dann weiter
 		//BannerSeen vorhanden? Dann beachten.
-		if ( count(self::$arrBannerSeen) ) 
+		if ( count(BannerHelper::$arrBannerSeen) )  //TODO
 		{
 		    //$arrAllBannersBasic dezimieren um die bereits angezeigten
-		    foreach (self::$arrBannerSeen as $BannerSeenID) 
+		    foreach (BannerHelper::$arrBannerSeen as $BannerSeenID) 
 		    {
 		        if (array_key_exists($BannerSeenID,$this->arrAllBannersBasic)) 
 		        {
@@ -208,7 +208,9 @@ class BannerInsertTag extends BannerHelper
 		    {
 		        //default Banner holen
 		        //kein default Banner, ausblenden wenn leer?
-		        $this->getDefaultBanner();
+		        //alt $this->getDefaultBanner();
+		        $objBannerSingle = new BannerSingle($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template, $this->arrAllBannersBasic);
+		        $this->Template = $objBannerSingle->getDefaultBanner();
 		        //Css generieren
 		        $this->setCssClassIdStyle();
 		        return $this->Template->parse();
@@ -222,7 +224,9 @@ class BannerInsertTag extends BannerHelper
 		    //FirstViewBanner?
 		    if ($this->getSetFirstView() === true) 
 		    {
-		        $this->getSingleBannerFirst();
+		        //alt $this->getSingleBannerFirst();
+		        $objBannerSingle = new BannerSingle($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template, $this->arrAllBannersBasic);
+		        $this->Template = $objBannerSingle->getSingleBannerFirst($this->module_id);
 		        //Css generieren
 		        $this->setCssClassIdStyle();
 		        return $this->Template->parse();
@@ -230,7 +234,8 @@ class BannerInsertTag extends BannerHelper
 		    else 
 		    {
     		    //single banner
-		        $this->getSingleBanner();
+		        $objBannerSingle = new BannerSingle($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template, $this->arrAllBannersBasic);
+		        $this->Template = $objBannerSingle->getSingleBanner($this->module_id);
 		        //Css generieren
 		        $this->setCssClassIdStyle();
 		        return $this->Template->parse();
@@ -239,7 +244,7 @@ class BannerInsertTag extends BannerHelper
 		else
 		{
 		    //multi banner
-		    $this->getMultiBanner();
+		    $this->getMultiBanner($this->module_id);
 		    //Css generieren
 		    $this->setCssClassIdStyle();
 		    return $this->Template->parse();

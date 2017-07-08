@@ -20,7 +20,7 @@ namespace BugBuster\Banner;
 
 // debug später use BugBuster\Banner\BannerLog;
 use BugBuster\BotDetection\ModuleBotDetection;
-
+use BugBuster\Banner\BannerLogic;
 
 /** 
  * Class BannerCount
@@ -39,15 +39,17 @@ class BannerCount extends \System
     
     protected $banner_useragent = '';
     
-    private $_session = array();
-	
+    protected $module_id = 0;
+    
+
 	/**
 	 * public constructor for phpunit
 	 */
-	public function __construct($arrBannerData, $banner_useragent) 
+	public function __construct($arrBannerData, $banner_useragent, $module_id) 
 	{
 	    $this->arrBannerData    = $arrBannerData;
 	    $this->banner_useragent = $banner_useragent;
+	    $this->module_id        = $module_id;
 	    
 	    parent::__construct();
 	}
@@ -55,7 +57,7 @@ class BannerCount extends \System
 	/**
 	 * Insert/Update Banner View Stat
 	 */
-	protected function setStatViewUpdate()
+	public function setStatViewUpdate()
 	{
 	    if ($this->bannerCheckBot() === true)
 	    {
@@ -74,7 +76,7 @@ class BannerCount extends \System
 	        return;
 	    }
 	
-	    if ( $this->getStatViewUpdateBlockerId($BannerID) === true )
+	    if ( $this->getStatViewUpdateBlockerId($BannerID, $this->module_id) === true )
 	    {
 	        // Eintrag innerhalb der Blockzeit
 	        return; // blocken, nicht zählen, raus hier
@@ -82,7 +84,7 @@ class BannerCount extends \System
 	    else
 	    {
 	        // nichts geblockt, also blocken fürs den nächsten Aufrufs
-	        $this->setStatViewUpdateBlockerId($BannerID);
+	        $this->setStatViewUpdateBlockerId($BannerID, $this->module_id);
 	    }
 	
 	    //Zählung, Insert
@@ -121,7 +123,8 @@ class BannerCount extends \System
 	        return;
 	    }// keine Banner ID, nichts zu tun
 	    //das können mehrere sein!, mergen!
-	    $this->setSession('StatViewUpdateBlocker'.$this->module_id, array( $banner_id => time() ), true );
+	    $objBannerLogic = new BannerLogic();
+	    $objBannerLogic->setSession('StatViewUpdateBlocker'.$this->module_id, array( $banner_id => time() ), true );
 	    return ;
 	}
 	
@@ -132,14 +135,16 @@ class BannerCount extends \System
 	 */
 	protected function getStatViewUpdateBlockerId($banner_id=0)
 	{
-	    $this->getSession('StatViewUpdateBlocker'.$this->module_id);
-	    if ( count($this->_session) )
+	    $objBannerLogic = new BannerLogic();
+	    $session = $objBannerLogic->getSession('StatViewUpdateBlocker'.$this->module_id);
+	    if ( count($session) )
 	    {
-	        reset($this->_session);
-	        while ( list($key, $val) = each($this->_session) ) // TODO each deprecated PHP 7.2
+	        reset($session);
+	        while ( list($key, $val) = each($session) ) // TODO each deprecated PHP 7.2
 	        {
 	            if ( $key == $banner_id &&
-	                 true === $this->removeStatViewUpdateBlockerId($key, $val) )
+	                 true === $this->removeStatViewUpdateBlockerId($key, $val, $session) 
+	               )
 	            {
 	                // Key ist noch gültig und es muss daher geblockt werden
 	                //DEBUG log_message('getStatViewUpdateBlockerId Banner ID:'.$key,'Banner.log');
@@ -156,7 +161,7 @@ class BannerCount extends \System
 	 * @param  integer    $banner_id
 	 * @return boolean    true = Key is valid, it must be blocked | false = key is invalid
 	 */
-	protected function removeStatViewUpdateBlockerId($banner_id, $tstmap)
+	protected function removeStatViewUpdateBlockerId($banner_id, $tstmap, $session)
 	{
 	    $BannerBlockTime = time() - 60*5;  // 5 Minuten, 0-5 min wird geblockt
 	    if ( isset($GLOBALS['TL_CONFIG']['mod_banner_block_time'] )
@@ -173,9 +178,9 @@ class BannerCount extends \System
 	    else
 	    {
 	        //wenn mehrere dann nur den Teil, nicht die ganze Session
-	        unset($this->_session[$banner_id]);
+	        unset($session[$banner_id]);
 	        //wenn Anzahl Banner in Session nun 0 dann Session loeschen
-	        if ( count($this->_session) == 0 )
+	        if ( count($session) == 0 )
 	        {
 	            //komplett löschen
 	            \Session::getInstance()->remove('StatViewUpdateBlocker'.$this->module_id);
@@ -183,7 +188,7 @@ class BannerCount extends \System
 	        else //sonst neu setzen
 	        {
 	            //gekuerzte Session neu setzen
-	            $this->setSession('StatViewUpdateBlocker'.$this->module_id, $this->_session , false );
+	            $this->setSession('StatViewUpdateBlocker'.$this->module_id, $session , false );
 	        }
 	    }
 	    return false;
@@ -256,42 +261,6 @@ class BannerCount extends \System
 	    return ;
 	}
 	
-	/**
-	 * Get session
-	 *
-	 * @param string   $session_name   e.g.: 'RandomBlocker'
-	 * @return void
-	 * @access protected
-	 */
-	protected function getSession( $session_name )
-	{
-	    $this->_session = (array)\Session::getInstance()->get( $session_name );
-	}
-	
-	/**
-	 * Set session
-	 *
-	 * @param string   $session_name   e.g.: 'RandomBlocker'
-	 * @param array    $arrData        array('key' => array(Value1,Value2,...))
-	 * @return void
-	 * @access protected
-	 */
-	protected function setSession( $session_name, $arrData, $merge = false )
-	{
-	    if ($merge)
-	    {
-	        $this->_session = \Session::getInstance()->get( $session_name );
-	
-	        // numerische Schlüssel werden neu numeriert, daher
-	        // geht nicht: array_merge($this->_session, $arrData)
-	        $merge_array = (array)$this->_session + $arrData;
-	        \Session::getInstance()->set( $session_name, $merge_array );
-	    }
-	    else
-	    {
-	        \Session::getInstance()->set( $session_name, $arrData );
-	    }
-	
-	}
+
 	
 }
