@@ -167,8 +167,9 @@ use BugBuster\Banner\BannerReferrer;
         $this->getSession('RandomBlocker'.$module_id);
         if ( count($this->_session) )
         {
-            list($key, $val) = each($this->_session);  // each deprecated in PHP 7.2 TODO
-            unset($val);
+            $key   = key($this->_session);
+            $value = current($this->_session);
+            unset($value);
             reset($this->_session);
             //DEBUG log_message('getRandomBlockerId BannerID:'.$key,'Banner.log');
             return $key;
@@ -205,7 +206,9 @@ use BugBuster\Banner\BannerReferrer;
         $this->getSession('FirstViewBlocker'.$module_id);
         if ( count($this->_session) )
         {
-            list($key, $tstmap) = each($this->_session);   // each deprecated in PHP 7.2 TODO
+            // each deprecated in PHP 7.2, daher
+            $key    = key($this->_session);
+            $tstmap = current($this->_session);
             reset($this->_session);
             if ( $this->removeOldFirstViewBlockerId($key, $tstmap) === true )
             {

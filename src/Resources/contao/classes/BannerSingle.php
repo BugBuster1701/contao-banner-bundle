@@ -493,7 +493,7 @@ class BannerSingle extends \Frontend
         $SingleBannerWeighting = $objBannerLogic->getSingleWeighting();
     
         //alle Basic Daten durchgehen und die löschen die nicht der Wichtung entsprechen
-        while ( list($key, $val) = each($this->arrAllBannersBasic) )    // each deprecated PHP 7.2
+        foreach ($this->arrAllBannersBasic as $key => $val) 
         {
             if ($val != $SingleBannerWeighting)
             {

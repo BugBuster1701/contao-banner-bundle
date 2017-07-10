@@ -140,11 +140,11 @@ class BannerCount extends \System
 	    if ( count($session) )
 	    {
 	        reset($session);
-	        while ( list($key, $val) = each($session) ) // TODO each deprecated PHP 7.2
+	        foreach ($session as $key => $val)
 	        {
 	            if ( $key == $banner_id &&
-	                 true === $this->removeStatViewUpdateBlockerId($key, $val, $session) 
-	               )
+	                true === $this->removeStatViewUpdateBlockerId($key, $val, $session)
+	                )
 	            {
 	                // Key ist noch gültig und es muss daher geblockt werden
 	                //DEBUG log_message('getStatViewUpdateBlockerId Banner ID:'.$key,'Banner.log');

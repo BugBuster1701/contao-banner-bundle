@@ -99,7 +99,7 @@ class BannerMultiple extends \Frontend
     
         //Rest soll nun angezeigt werden.
         //Schleife
-        while ( list($banner_id, $banner_weigth) = each($this->arrAllBannersBasic) ) // each deprecated PHP 7.2
+        foreach($this->arrAllBannersBasic as $banner_id => $banner_weigth)
         {
             unset($banner_weigth);
             $objBanners  = \Database::getInstance()
@@ -386,7 +386,7 @@ class BannerMultiple extends \Frontend
                     }//text banner
                      
                 }//Banner vorhanden
-        } // while each($this->arrAllBannersBasic)
+        } // foreach($this->arrAllBannersBasic)
          
         //anderes Template?
         if (($this->banner_template != $this->strTemplate)
