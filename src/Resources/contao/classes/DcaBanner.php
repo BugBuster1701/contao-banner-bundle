@@ -206,7 +206,7 @@ class DcaBanner extends \Backend
             case 2: // JPG
             case 3: // PNG
                 $output = '<div class="mod_banner_be">' .
-                        '<div class="name"><img alt="'.specialchars(ampersand($row['banner_name'])).'" src="'. $banner_image .'" height="'.$intHeight.'" width="'.$intWidth.'" /></div>' .
+                        '<div class="name"><img alt="'.\StringUtil::specialchars(ampersand($row['banner_name'])).'" src="'. $banner_image .'" height="'.$intHeight.'" width="'.$intWidth.'" /></div>' .
                         '<div class="right">' .
                         '<div class="left">'.
                         '<div class="published_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_published'][0].'</div>'.
@@ -283,7 +283,7 @@ class DcaBanner extends \Backend
     
         $key = $row['banner_published'] ? 'published' : 'unpublished';
         $style = 'style="font-size:11px;margin-bottom:10px;"';
-        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><strong>' . specialchars(ampersand($row['banner_name'])) . '</strong></div>';
+        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><strong>' . \StringUtil::specialchars(ampersand($row['banner_name'])) . '</strong></div>';
         return $output_h . $output;
     }
     
@@ -347,7 +347,7 @@ class DcaBanner extends \Backend
             case 2: // JPG
             case 3: // PNG
                 $output = '<div class="mod_banner_be">' .
-                        '<div class="name"><img alt="'.specialchars(ampersand($row['banner_name'])).'" src="'. $banner_image .'" height="'.$intHeight.'" width="'.$intWidth.'" /></div>' .
+                        '<div class="name"><img alt="'.\StringUtil::specialchars(ampersand($row['banner_name'])).'" src="'. $banner_image .'" height="'.$intHeight.'" width="'.$intWidth.'" /></div>' .
                         '<div class="right">' .
                         '<div class="left">'.
                         '<div class="published_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_published'][0].'</div>'.
@@ -424,7 +424,7 @@ class DcaBanner extends \Backend
     
         $key = $row['banner_published'] ? 'published' : 'unpublished';
         $style = 'style="font-size:11px;margin-bottom:10px;"';
-        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><strong>' . specialchars(ampersand($row['banner_name'])) . '</strong></div>';
+        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><strong>' . \StringUtil::specialchars(ampersand($row['banner_name'])) . '</strong></div>';
         return $output_h . $output;
     }
     
@@ -494,7 +494,7 @@ class DcaBanner extends \Backend
     
         $key = $row['banner_published'] ? 'published' : 'unpublished';
         $style = 'style="font-size:11px;margin-bottom:10px;"';
-        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><strong>' . specialchars(ampersand($row['banner_name'])) . '</strong></div>';
+        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><strong>' . \StringUtil::specialchars(ampersand($row['banner_name'])) . '</strong></div>';
         return $output_h . $output;
     }
     

@@ -182,13 +182,13 @@ class BannerMultiple extends \Frontend
                                 //fake the Picture::create
                                 $picture['img']   = array
                                 (
-                                    'src'    => specialchars(ampersand($FileSrc)),
+                                    'src'    => \StringUtil::specialchars(ampersand($FileSrc)),
                                     'width'  => $arrImageSizenNew[0],
                                     'height' => $arrImageSizenNew[1],
-                                    'srcset' => specialchars(ampersand($FileSrc))
+                                    'srcset' => \StringUtil::specialchars(ampersand($FileSrc))
                                 );
-                                $picture['alt']   = specialchars(ampersand($objBanners->banner_name));
-                                $picture['title'] = specialchars(ampersand($objBanners->banner_comment));
+                                $picture['alt']   = \StringUtil::specialchars(ampersand($objBanners->banner_name));
+                                $picture['title'] = \StringUtil::specialchars(ampersand($objBanners->banner_comment));
                                  
                                 BannerLog::writeLog(__METHOD__ , __LINE__ , 'Orisize Picture: '. print_r($picture,true));
                             }
@@ -197,8 +197,8 @@ class BannerMultiple extends \Frontend
                                 $FileSrc = \Image::get($this->urlEncode($objFile->path), $arrImageSizenNew[0], $arrImageSizenNew[1],'proportional');
     
                                 $picture = \Picture::create($this->urlEncode($objFile->path), array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))->getTemplateData();
-                                $picture['alt']   = specialchars(ampersand($objBanners->banner_name));
-                                $picture['title'] = specialchars(ampersand($objBanners->banner_comment));
+                                $picture['alt']   = \StringUtil::specialchars(ampersand($objBanners->banner_name));
+                                $picture['title'] = \StringUtil::specialchars(ampersand($objBanners->banner_comment));
                                  
                                 BannerLog::writeLog(__METHOD__ , __LINE__ , 'Resize Picture: '. print_r($picture,true));
     
@@ -229,13 +229,13 @@ class BannerMultiple extends \Frontend
                             //fake the Picture::create
                             $picture['img']   = array
                             (
-                                'src'    => specialchars(ampersand($FileSrc)),
+                                'src'    => \StringUtil::specialchars(ampersand($FileSrc)),
                                 'width'  => $arrImageSizenNew[0],
                                 'height' => $arrImageSizenNew[1],
-                                'srcset' => specialchars(ampersand($FileSrc))
+                                'srcset' => \StringUtil::specialchars(ampersand($FileSrc))
                             );
-                            $picture['alt']   = specialchars(ampersand($objBanners->banner_name));
-                            $picture['title'] = specialchars(ampersand($objBanners->banner_comment));
+                            $picture['alt']   = \StringUtil::specialchars(ampersand($objBanners->banner_name));
+                            $picture['title'] = \StringUtil::specialchars(ampersand($objBanners->banner_comment));
                              
                             $arrImageSize[0] = $arrImageSizenNew[0];
                             $arrImageSize[1] = $arrImageSizenNew[1];
@@ -294,12 +294,12 @@ class BannerMultiple extends \Frontend
                                 'banner_wrap_id'    => $banner_cssID,
                                 'banner_wrap_class' => $banner_class,
                                 'banner_id'      => $objBanners->id,
-                                'banner_name'    => specialchars(ampersand($objBanners->banner_name)),
+                                'banner_name'    => \StringUtil::specialchars(ampersand($objBanners->banner_name)),
                                 'banner_url'     => $objBanners->banner_url,
                                 'banner_target'  => $banner_target,
-                                'banner_comment' => specialchars(ampersand($objBanners->banner_comment)),
-                                'src'            => specialchars(ampersand($FileSrc)),//specialchars(ampersand($this->urlEncode($FileSrc))),
-                                'alt'            => specialchars(ampersand($objBanners->banner_name)),
+                                'banner_comment' => \StringUtil::specialchars(ampersand($objBanners->banner_comment)),
+                                'src'            => \StringUtil::specialchars(ampersand($FileSrc)),//specialchars(ampersand($this->urlEncode($FileSrc))),
+                                'alt'            => \StringUtil::specialchars(ampersand($objBanners->banner_name)),
                                 'size'           => $arrImageSize[3],
                                 'banner_pic'     => true,
                                 'banner_flash'   => false,
@@ -367,7 +367,7 @@ class BannerMultiple extends \Frontend
                             'banner_wrap_id'    => $banner_cssID,
                             'banner_wrap_class' => $banner_class,
                             'banner_id'      => $objBanners->id,
-                            'banner_name'    => specialchars(ampersand($objBanners->banner_name)),
+                            'banner_name'    => \StringUtil::specialchars(ampersand($objBanners->banner_name)),
                             'banner_url'     => $objBanners->banner_url,
                             'banner_url_kurz'=> $banner_url_kurz,
                             'banner_target'  => $banner_target,
