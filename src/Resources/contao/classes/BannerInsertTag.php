@@ -244,7 +244,8 @@ class BannerInsertTag extends BannerHelper
 		else
 		{
 		    //multi banner
-		    $this->getMultiBanner($this->module_id);
+		    $objBannerMultiple = new BannerMultiple($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template, $this->arrAllBannersBasic);
+		    $this->Template = $objBannerMultiple->getMultiBanner($this->module_id);
 		    //Css generieren
 		    $this->setCssClassIdStyle();
 		    return $this->Template->parse();

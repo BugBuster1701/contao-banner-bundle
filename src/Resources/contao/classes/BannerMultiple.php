@@ -15,6 +15,7 @@ namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerImage;
 use BugBuster\Banner\BannerLog;
+use BugBuster\Banner\BannerCount;
 
 /**
  * Class BannerMultiple
@@ -45,19 +46,27 @@ class BannerMultiple extends \Frontend
     const BANNER_TYPE_TEXT   = 'banner_text';
     
     protected $arrCategoryValues  = array(); 
+    protected $banner_template;
+    protected $strTemplate;
+    protected $Template;
     protected $arrAllBannersBasic = array();
     protected $BannerImage;
     
     
 
-    function __construct ($arrCategoryValues, $arrAllBannersBasic)
+    function __construct ($arrCategoryValues, $banner_template, $strTemplate, $objTemplate, $arrAllBannersBasic)
     {
-        $this->arrCategoryValues = $arrCategoryValues;
+        $this->arrCategoryValues  = $arrCategoryValues;
+        $this->banner_template    = $banner_template;
+        $this->strTemplate        = $strTemplate;
+        $this->Template           = $objTemplate;
         $this->arrAllBannersBasic = $arrAllBannersBasic;
     }
     
-    protected function getMultiBanner()
+    protected function getMultiBanner($module_id)
     {
+        $arrResults = array();
+        
         /* $this->arrCategoryValues[...]
          * banner_random
          * banner_limit         - 0 all, other:max
@@ -330,7 +339,7 @@ class BannerMultiple extends \Frontend
                         $arrResults[] = $arrBanners[0];
                          
                         $this->arrBannerData = $arrBanners; //wird von setStatViewUpdate genutzt
-                        $this->setStatViewUpdate();
+                        $this->setStatViewUpdate($arrResults, $module_id, $objBanners->banner_useragent);
                     }//$arrImageSize !== false
     
                     // Text Banner
@@ -381,7 +390,7 @@ class BannerMultiple extends \Frontend
                         $arrResults[] = $arrBanners[0];
                          
                         $this->arrBannerData = $arrBanners; //wird von setStatViewUpdate genutzt
-                        $this->setStatViewUpdate();
+                        $this->setStatViewUpdate($arrResults, $module_id, $objBanners->banner_useragent);
                          
                     }//text banner
                      
@@ -399,6 +408,7 @@ class BannerMultiple extends \Frontend
          
         //falls $arrImageSize = false  und kein Text Banner ist es ein leeres array
         $this->Template->banners = $arrResults;
+        return $this->Template;
     }
     
     /**
@@ -419,6 +429,13 @@ class BannerMultiple extends \Frontend
         $array = $new;
     
         return true;
+    }
+    
+    protected function setStatViewUpdate($arrBannerData, $module_id, $banner_useragent)
+    {
+        $objBannerCount = new BannerCount($arrBannerData, $banner_useragent, $module_id);
+        $objBannerCount->setStatViewUpdate();
+        unset($objBannerCount);
     }
 }
 
