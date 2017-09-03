@@ -61,6 +61,9 @@ class BannerMultiple extends \Frontend
         $this->strTemplate        = $strTemplate;
         $this->Template           = $objTemplate;
         $this->arrAllBannersBasic = $arrAllBannersBasic;
+        
+        // Static URLs Controller::setStaticUrls
+        $this->setStaticUrls();
     }
     
     protected function getMultiBanner($module_id)
