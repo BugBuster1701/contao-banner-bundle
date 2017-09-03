@@ -16,6 +16,7 @@ namespace BugBuster\Banner;
 use BugBuster\Banner\BannerImage;
 use BugBuster\Banner\BannerLog;
 use BugBuster\Banner\BannerCount;
+use BugBuster\Banner\BannerLogic;
 
 /**
  * Class BannerSingle
@@ -490,7 +491,7 @@ class BannerSingle extends \Frontend
         }
          
         //Gewichtung nach vorhandenen Wichtungen
-        $SingleBannerWeighting = $objBannerLogic->getSingleWeighting();
+        $SingleBannerWeighting = $objBannerLogic->getSingleWeighting($this->arrAllBannersBasic);
     
         //alle Basic Daten durchgehen und die löschen die nicht der Wichtung entsprechen
         foreach ($this->arrAllBannersBasic as $key => $val) 

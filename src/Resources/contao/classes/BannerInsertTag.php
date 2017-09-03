@@ -21,6 +21,7 @@ namespace BugBuster\Banner;
 use BugBuster\Banner\BannerHelper;
 use BugBuster\Banner\BannerLog;
 use BugBuster\Banner\BannerSingle;
+use BugBuster\Banner\BannerLogic;
 
 /**
  * Class BannerInsertTag
@@ -222,7 +223,9 @@ class BannerInsertTag extends BannerHelper
 		if ($this->arrCategoryValues['banner_numbers'] != 1) 
 		{
 		    //FirstViewBanner?
-		    if ($this->getSetFirstView() === true) 
+		    $objBannerLogic = new BannerLogic();
+		    
+		    if ($objBannerLogic->getSetFirstView($this->banner_firstview,$this->banner_categories,$this->module_id) === true) 
 		    {
 		        //alt $this->getSingleBannerFirst();
 		        $objBannerSingle = new BannerSingle($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template, $this->arrAllBannersBasic);
