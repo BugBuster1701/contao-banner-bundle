@@ -15,6 +15,7 @@
 namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerReferrer;
+use BugBuster\Banner\BannerLog;
 
 /**
  * Class BannerLogic

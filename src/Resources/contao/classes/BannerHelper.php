@@ -18,6 +18,7 @@
  */
 namespace BugBuster\Banner;
 
+use BugBuster\Banner\BannerLog;
 
 
 /**
