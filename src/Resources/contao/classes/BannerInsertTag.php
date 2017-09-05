@@ -320,13 +320,15 @@ class BannerInsertTag extends BannerHelper
 	    $GLOBALS['banner']['debug']['helper']       = false;
 	    $GLOBALS['banner']['debug']['image']        = false;
 	    $GLOBALS['banner']['debug']['referrer']     = false;
+	    $GLOBALS['banner']['debug']['logic']        = false;
 	     
 	    $objBanner = \Database::getInstance()
     	                   ->prepare("SELECT
                                     banner_expert_debug_tag,
                                     banner_expert_debug_helper,
                                     banner_expert_debug_image,
-                                    banner_expert_debug_referrer
+                                    banner_expert_debug_referrer,
+                                    banner_expert_debug_logic
                                 FROM
                                     tl_banner_category
                                 WHERE
@@ -340,6 +342,7 @@ class BannerInsertTag extends BannerHelper
 	        $GLOBALS['banner']['debug']['helper']       = (boolean)$objBanner->banner_expert_debug_helper;
 	        $GLOBALS['banner']['debug']['image']        = (boolean)$objBanner->banner_expert_debug_image;
 	        $GLOBALS['banner']['debug']['referrer']     = (boolean)$objBanner->banner_expert_debug_referrer;
+	        $GLOBALS['banner']['debug']['logic']        = (boolean)$objBanner->banner_expert_debug_logic;
 	        BannerLog::writeLog('## START ##', '## DEBUG ##', 'T'.(int)$GLOBALS['banner']['debug']['tag'] .'#H'. (int)$GLOBALS['banner']['debug']['helper'] .'#I'. (int)$GLOBALS['banner']['debug']['image'] .'#R'.(int) $GLOBALS['banner']['debug']['referrer']);
 	    }
 	}
