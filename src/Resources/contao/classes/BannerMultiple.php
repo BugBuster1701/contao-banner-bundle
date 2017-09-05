@@ -69,6 +69,7 @@ class BannerMultiple extends \Frontend
     public function getMultiBanner($module_id)
     {
         $arrResults = array();
+        $boolFirstBanner = false;
         
         /* $this->arrCategoryValues[...]
          * banner_random
@@ -157,15 +158,16 @@ class BannerMultiple extends \Frontend
                         }
                     }
     
-                    $objBannerLogic = new BannerLogic();
-                    $intRandomBlockerID = $objBannerLogic->getRandomBlockerId($module_id);
-                    if (!$intRandomBlockerID)
+                    //den ersten Banner für den nächsten Aufruf blockieren
+                    if (false === $boolFirstBanner) 
                     {
-                        //Random Blocker setzen für den ersten Banner
+                        $objBannerLogic = new BannerLogic();
                         $objBannerLogic->setRandomBlockerId($banner_id,$module_id);
+                        $objBannerLogic = null;
+                        unset($objBannerLogic);
+                        $boolFirstBanner = true;
                     }
-                    $objBannerLogic = null; 
-                    unset($objBannerLogic);
+                    
                     
                     switch ($objBanners->banner_type)
                     {
