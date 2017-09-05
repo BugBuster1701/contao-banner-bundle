@@ -14,7 +14,7 @@ namespace BugBuster\BannerBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Configures the Contao Visitors bundle.
+ * Configures the Contao Banner bundle.
  *
  * @author Glen Langer
  */
