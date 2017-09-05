@@ -283,6 +283,13 @@ $GLOBALS['TL_DCA']['tl_banner_category'] = array
 		    'inputType'               => 'checkbox',
 		    'sql'                     => "char(1) NOT NULL default ''",
 		    'eval'                    => array('mandatory'=>false, 'helpwizard'=>false)
+		),
+		'banner_expert_debug_logic'=> array
+		(
+		    'label'					  => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_logic'],
+		    'inputType'               => 'checkbox',
+		    'sql'                     => "char(1) NOT NULL default ''",
+		    'eval'                    => array('mandatory'=>false, 'helpwizard'=>false)
 		)
 	)
 );

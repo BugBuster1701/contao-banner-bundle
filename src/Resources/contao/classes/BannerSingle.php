@@ -312,7 +312,18 @@ class BannerSingle extends \Frontend
                         $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1],$arrNewSizeValues[0],$arrNewSizeValues[1]);
                         //Umwandlung bei Parametern
                         $FileSrc = html_entity_decode($objBanners->banner_image_extern, ENT_NOQUOTES, 'UTF-8');
-    
+
+                        //fake the Picture::create
+                        $picture['img']   = array
+                        (
+                            'src'    => \StringUtil::specialchars(ampersand($FileSrc)),
+                            'width'  => $arrImageSizenNew[0],
+                            'height' => $arrImageSizenNew[1],
+                            'srcset' => \StringUtil::specialchars(ampersand($FileSrc))
+                        );
+                        $picture['alt']   = \StringUtil::specialchars(ampersand($objBanners->banner_name));
+                        $picture['title'] = \StringUtil::specialchars(ampersand($objBanners->banner_comment));
+                        
                         $arrImageSize[0] = $arrImageSizenNew[0];
                         $arrImageSize[1] = $arrImageSizenNew[1];
                         $arrImageSize[3] = ' height="'.$arrImageSizenNew[1].'" width="'.$arrImageSizenNew[0].'"';
@@ -641,6 +652,9 @@ class BannerSingle extends \Frontend
                         'height' => $arrImageSizenNew[1],
                         'srcset' => \StringUtil::specialchars(ampersand($FileSrc))
                     );
+                    $picture['alt']   = \StringUtil::specialchars(ampersand($objBanners->banner_name));
+                    $picture['title'] = \StringUtil::specialchars(ampersand($objBanners->banner_comment));
+                    
                     BannerLog::writeLog(__METHOD__ , __LINE__ , 'Resize Picture: '. print_r($picture,true));
                     $arrImageSize[0] = $arrImageSizenNew[0];
                     $arrImageSize[1] = $arrImageSizenNew[1];

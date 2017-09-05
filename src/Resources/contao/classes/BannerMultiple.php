@@ -66,7 +66,7 @@ class BannerMultiple extends \Frontend
         $this->setStaticUrls();
     }
     
-    protected function getMultiBanner($module_id)
+    public function getMultiBanner($module_id)
     {
         $arrResults = array();
         
@@ -77,6 +77,7 @@ class BannerMultiple extends \Frontend
          
         reset($this->arrAllBannersBasic); //sicher ist sicher
     
+        BannerLog::writeLog(__METHOD__ , __LINE__ , 'arrAllBannersBasic: '. print_r($this->arrAllBannersBasic,true));
         //RandomBlocker entfernen falls möglich und nötig
          
         // einer muss mindestens übrig bleiben
@@ -87,16 +88,20 @@ class BannerMultiple extends \Frontend
             && ( count($this->arrAllBannersBasic) > $this->arrCategoryValues['banner_limit'] )
             )
         {
-            $intRandomBlockerID = $this->getRandomBlockerId();
+            $objBannerLogic = new BannerLogic();
+            $intRandomBlockerID = $objBannerLogic->getRandomBlockerId($module_id);
             if (isset($this->arrAllBannersBasic[$intRandomBlockerID]))
             {
                 unset($this->arrAllBannersBasic[$intRandomBlockerID]);
             }
+            $objBannerLogic = null;
+            unset($objBannerLogic);
         }
          
         if ( $this->arrCategoryValues['banner_random'] == 1 )
         {
             $this->shuffleAssoc($this->arrAllBannersBasic);
+            BannerLog::writeLog(__METHOD__ , __LINE__ , 'arrAllBannersBasic shuffled: '. print_r($this->arrAllBannersBasic,true));
         }
          
         //wenn limit gesetzt, array arrAllBannersBasic dezimieren
@@ -130,7 +135,7 @@ class BannerMultiple extends \Frontend
                 {
                     $arrBanners = array();
                     $objBanners->next();
-                    self::$arrBannerSeen[] = $objBanners->id;
+                    BannerHelper::$arrBannerSeen[] = $objBanners->id;
                     //CSS-ID/Klasse(n) je Banner, für den wrapper
                     $banner_cssID   = '';
                     $banner_class   = '';
@@ -152,12 +157,16 @@ class BannerMultiple extends \Frontend
                         }
                     }
     
-                    if (!$this->statusRandomBlocker)
+                    $objBannerLogic = new BannerLogic();
+                    $intRandomBlockerID = $objBannerLogic->getRandomBlockerId($module_id);
+                    if (!$intRandomBlockerID)
                     {
                         //Random Blocker setzen für den ersten Banner
-                        $this->setRandomBlockerId($banner_id);
+                        $objBannerLogic->setRandomBlockerId($banner_id,$module_id);
                     }
-                     
+                    $objBannerLogic = null; 
+                    unset($objBannerLogic);
+                    
                     switch ($objBanners->banner_type)
                     {
                         case self::BANNER_TYPE_INTERN :

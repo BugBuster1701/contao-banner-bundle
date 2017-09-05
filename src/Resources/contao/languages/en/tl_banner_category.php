@@ -72,6 +72,8 @@ $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_helper']['0']   =
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_helper']['1']   = 'With activation, write debug information to the log file (<em>system/logs/banner_debug.log</em>)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_tag']['0']      = 'Debug mode for the class "Banner Tag"';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_tag']['1']      = 'With activation, write debug information to the log file (<em>system/logs/banner_debug.log</em>)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_logic']['0']    = 'Debug mode for the class "Banner Logic"';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_logic']['1']    = 'With activation, write debug information to the log file (<em>system/logs/banner_debug.log</em>)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_legend']              = 'Expert settings';
 
 

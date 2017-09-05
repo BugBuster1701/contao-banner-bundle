@@ -188,7 +188,10 @@ class BannerCount extends \System
 	        else //sonst neu setzen
 	        {
 	            //gekuerzte Session neu setzen
-	            $this->setSession('StatViewUpdateBlocker'.$this->module_id, $session , false );
+	            $objBannerLogic = new BannerLogic();
+                $objBannerLogic->setSession('StatViewUpdateBlocker'.$this->module_id, $session , false );
+                $objBannerLogic = null;
+                unset($objBannerLogic);
 	        }
 	    }
 	    return false;

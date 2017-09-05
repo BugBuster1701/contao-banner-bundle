@@ -93,6 +93,12 @@ class BannerLog
                     self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
                 }
                 break;
+            case "BannerLogic":
+                if ($GLOBALS['banner']['debug']['logic'])
+                {
+                    self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
+                }
+                break;
             default:
                 self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$method,$line,'('.$vclass.')'.$value),'banner_debug');
                 break;

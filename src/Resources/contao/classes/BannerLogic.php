@@ -171,6 +171,7 @@ use BugBuster\Banner\BannerReferrer;
             $value = current($this->_session);
             unset($value);
             reset($this->_session);
+            BannerLog::writeLog(__METHOD__ , __LINE__ , 'getRandomBlockerId BannerID:'.$key);
             //DEBUG log_message('getRandomBlockerId BannerID:'.$key,'Banner.log');
             return $key;
         }
