@@ -116,7 +116,7 @@ $GLOBALS['TL_DCA']['tl_banner_category'] = array
 	'palettes' => array
 	(
 	    '__selector__'                => array('banner_default', 'banner_protected', 'banner_numbers', 'banner_stat_protected'), 
-		'default'                     => '{title_legend},title;{default_legend:hide},banner_default;{number_legend:hide},banner_numbers;{protected_legend:hide},banner_protected;{protected_stat_legend:hide},banner_stat_protected;{banner_expert_legend:hide},banner_expert_debug_tag,banner_expert_debug_helper,banner_expert_debug_image,banner_expert_debug_referrer'
+		'default'                     => '{title_legend},title;{default_legend:hide},banner_default;{number_legend:hide},banner_numbers;{protected_legend:hide},banner_protected;{protected_stat_legend:hide},banner_stat_protected;{banner_expert_legend:hide},banner_expert_debug_tag,banner_expert_debug_helper,banner_expert_debug_image,banner_expert_debug_referrer,banner_expert_debug_logic'
 	),
 	// Subpalettes
 	'subpalettes' => array
