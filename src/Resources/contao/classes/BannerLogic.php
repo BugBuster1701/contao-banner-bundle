@@ -151,6 +151,7 @@ use BugBuster\Banner\BannerReferrer;
          
         $this->statusRandomBlocker = true;
         $this->setSession('RandomBlocker'.$module_id , array( $BannerID => time() ));
+        BannerLog::writeLog(__METHOD__ , __LINE__ , 'setRandomBlockerId BannerID:'.$BannerID);
         return ;
     }
     
