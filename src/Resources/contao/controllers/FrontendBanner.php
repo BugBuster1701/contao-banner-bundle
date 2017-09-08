@@ -80,7 +80,7 @@ class FrontendBanner extends \Frontend
 	    $banner_category_id = $this->getBannerCategory($this->intBID);
 	    $objBannerHelper    = new BannerHelper();
 	    $objBannerHelper->setDebugSettings($banner_category_id);
-	    
+	    BannerLog::writeLog( __METHOD__ , __LINE__ , ': Banner Cat '.$banner_category_id.' ' );
 	    //Banner oder Kategorie Banner (Default Banner)
 	    if ( 0 < $this->intBID )
 	    {
@@ -296,7 +296,6 @@ class FrontendBanner extends \Frontend
      */
     protected function getSetReClickBlocker()
     {
-        return false;
 	        //$ClientIP = bin2hex(sha1(\Environment::get('remoteAddr'),true)); // sha1 20 Zeichen, bin2hex 40 zeichen
 	        $BannerID = $this->intBID;
 	        if ( $this->getReClickBlockerId($BannerID) === false )
@@ -305,11 +304,13 @@ class FrontendBanner extends \Frontend
 	            $this->setReClickBlockerId($BannerID);
 	    
 	            // kein ReClickBlocker block gefunden, Zaehlung erlaubt, nicht blocken
+	            BannerLog::writeLog( __METHOD__ , __LINE__ , ': False: Banner ID '.$BannerID.' Klick nicht geblockt' );
 	            return false;
 	        }
 	        else
 	        {
 	            // Eintrag innerhalb der Blockzeit, blocken
+	            BannerLog::writeLog( __METHOD__ , __LINE__ , ': True: Banner ID '.$BannerID.' Klick geblockt' );
 	            return true;
 	        }
     }
@@ -351,8 +352,8 @@ class FrontendBanner extends \Frontend
         $this->setSession('ReClickBlocker', array( $banner_id => time() ), true );
         return ;
     }
-	    
-	    
+
+
     /**
      * Get ReClick Blocker, Get Banner ID if the timestamp ....
      *

@@ -157,7 +157,7 @@ class BannerLog
     public static function log($strText, $strFunction, $strCategory)
     {
         $level = TL_ERROR === $strCategory ? LogLevel::ERROR : LogLevel::INFO;
-        $logger = static::getContainer()->get('monolog.logger.contao');
+        $logger = \System::getContainer()->get('monolog.logger.contao');
     
         $logger->log($level, $strText, array('contao' => new ContaoContext($strFunction, $strCategory)));
     }
