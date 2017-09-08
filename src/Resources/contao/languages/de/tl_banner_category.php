@@ -4,11 +4,11 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/de/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/de/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2015-02-07T21:13:33+01:00
+ * last-updated: 2016-04-23T22:59:35+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']               = 'Banner Standarddatei';
@@ -21,14 +21,18 @@ $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0']        =
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['1']        = 'Wenn Sie diese Option wählen, wird das Bannerziel im selben Browserfenster geöffnet.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_url']['0']           = 'Bannerziel-URL';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_url']['1']           = 'Bannerziel URL: http://...';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_checks']['0']   = 'Debugmodus für die Klasse "Banner Checks"';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_checks']['1']   = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/prod-Y-M-D-banner_debug.log</em>) geschrieben.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_helper']['0']   = 'Debugmodus für die Klasse "Banner Helper"';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_helper']['1']   = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/banner_debug.log</em>) geschrieben.';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_helper']['1']   = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/prod-Y-M-D-banner_debug.log</em>) geschrieben.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_image']['0']    = 'Debugmodus für die Klasse "Banner Image"';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_image']['1']    = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/banner_debug.log</em>) geschrieben.';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_image']['1']    = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/prod-Y-M-D-banner_debug.log</em>) geschrieben.';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_logic']['0']    = 'Debugmodus für die Klasse "Banner Logic"';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_logic']['1']    = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/prod-Y-M-D-banner_debug.log</em>) geschrieben.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_referrer']['0'] = 'Debugmodus für die Klasse "Banner Referrer"';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_referrer']['1'] = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/banner_debug.log</em>) geschrieben.';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_referrer']['1'] = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/prod-Y-M-D-banner_debug.log</em>) geschrieben.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_tag']['0']      = 'Debugmodus für die Klasse "Banner Tag"';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_tag']['1']      = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/banner_debug.log</em>) geschrieben.';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_tag']['1']      = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/prod-Y-M-D-banner_debug.log</em>) geschrieben.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_legend']              = 'Experteneinstellungen';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_groups']['0']                = 'Erlaubte Mitgliedergruppen';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_groups']['1']                = 'Hier können Sie festlegen, welche Mitgliedergruppen die Banner der Kategorie im Frontend sehen dürfen.';

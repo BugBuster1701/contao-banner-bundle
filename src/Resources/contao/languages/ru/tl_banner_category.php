@@ -4,11 +4,11 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/ru/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/ru/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2015-02-07T21:13:33+01:00
+ * last-updated: 2016-04-23T22:59:35+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']               = 'Изображение баннера по умолчанию';
@@ -21,14 +21,16 @@ $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0']        =
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['1']        = 'Если выбрать эту опцию, ссылка баннера откроется в том же окне браузера.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_url']['0']           = 'Целевой URL баннера';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_url']['1']           = 'Введите целевой URL баннера: http://...';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_checks']['1']   = 'Записывать отладочную информацию в файл журнала (<em>system/logs/prod-Y-M-D-banner_debug.log</em>)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_helper']['0']   = 'Режим отладки для класса "Помощник баннера" ';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_helper']['1']   = 'Записывать отладочную информацию в файл журнала (<em>system/logs/banner_debug.log</em>)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_helper']['1']   = 'Записывать отладочную информацию в файл журнала (<em>system/logs/prod-Y-M-D-banner_debug.log</em>)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_image']['0']    = 'Режим отладки для класса "Изображение баннера"';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_image']['1']    = 'Записывать отладочную информацию в файл журнала (<em>system/logs/banner_debug.log</em>)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_image']['1']    = 'Записывать отладочную информацию в файл журнала (<em>system/logs/prod-Y-M-D-banner_debug.log</em>)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_logic']['1']    = 'Записывать отладочную информацию в файл журнала (<em>system/logs/prod-Y-M-D-banner_debug.log</em>)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_referrer']['0'] = 'Режим отладки для класса "Реферер баннера"';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_referrer']['1'] = 'Записывать отладочную информацию в файл журнала (<em>system/logs/banner_debug.log</em>)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_referrer']['1'] = 'Записывать отладочную информацию в файл журнала (<em>system/logs/prod-Y-M-D-banner_debug.log</em>)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_tag']['0']      = 'Режим отладки для класса "Тег баннера"';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_tag']['1']      = 'Записывать отладочную информацию в файл журнала (<em>system/logs/banner_debug.log</em>)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_tag']['1']      = 'Записывать отладочную информацию в файл журнала (<em>system/logs/prod-Y-M-D-banner_debug.log</em>)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_legend']              = 'Экспертные настройки';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_groups']['0']                = 'Разрешено участникам групп';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_groups']['1']                = 'Вы сможете выбрать какие группы будут иметь возможность видеть баннеры этой категории.';

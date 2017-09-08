@@ -340,13 +340,14 @@ class BannerHelper extends \Frontend
             $GLOBALS['banner']['debug']['referrer']     = (boolean)$objBanner->banner_expert_debug_referrer;
             $GLOBALS['banner']['debug']['logic']        = (boolean)$objBanner->banner_expert_debug_logic;
             $GLOBALS['banner']['debug']['checks']       = (boolean)$objBanner->banner_expert_debug_checks;
-            BannerLog::writeLog('## START ##', '## DEBUG ##', 'T'.(int)$GLOBALS['banner']['debug']['tag'] .'#H'. (int)$GLOBALS['banner']['debug']['helper'] .'#I'. (int)$GLOBALS['banner']['debug']['image'] .'#R'.(int) $GLOBALS['banner']['debug']['referrer']);
+            BannerLog::writeLog('## START ##', '## DEBUG ##', 'T'. (int)$GLOBALS['banner']['debug']['tag'] 
+                                                            .'#H'. (int)$GLOBALS['banner']['debug']['helper'] 
+                                                            .'#I'. (int)$GLOBALS['banner']['debug']['image'] 
+                                                            .'#R'. (int)$GLOBALS['banner']['debug']['referrer']
+                                                            .'#L'. (int)$GLOBALS['banner']['debug']['logic']
+                                                            .'#C'. (int)$GLOBALS['banner']['debug']['checks']
+                               );
         }
 	}
 	
-	
-	
-	
-	
 } // class
-
