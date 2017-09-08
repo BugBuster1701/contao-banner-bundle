@@ -42,7 +42,9 @@ class BannerLog
                 if ((bool)$GLOBALS['banner']['debug']['tag']         ||
                     (bool)$GLOBALS['banner']['debug']['helper']      ||
                     (bool)$GLOBALS['banner']['debug']['image']       ||
-                    (bool)$GLOBALS['banner']['debug']['referrer']     
+                    (bool)$GLOBALS['banner']['debug']['referrer']    ||
+                    (bool)$GLOBALS['banner']['debug']['logic']       ||
+                    (bool)$GLOBALS['banner']['debug']['checks']
                    )
                 {
                     $arrUniqid = trimsplit('.', uniqid('c0n7a0',true) );
@@ -95,6 +97,12 @@ class BannerLog
                 break;
             case "BannerLogic":
                 if ($GLOBALS['banner']['debug']['logic'])
+                {
+                    self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
+                }
+                break;
+            case "BannerChecks":
+                if ($GLOBALS['banner']['debug']['checks'])
                 {
                     self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
                 }

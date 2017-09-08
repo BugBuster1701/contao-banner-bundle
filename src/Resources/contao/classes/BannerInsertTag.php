@@ -309,42 +309,6 @@ class BannerInsertTag extends BannerHelper
 	    }
 	}
 	
-	/**
-	 * setDebugSettings
-	 * 
-	 * @param unknown $banner_category_id
-	 */
-	protected function setDebugSettings($banner_category_id)
-	{
-	    $GLOBALS['banner']['debug']['tag']          = false;
-	    $GLOBALS['banner']['debug']['helper']       = false;
-	    $GLOBALS['banner']['debug']['image']        = false;
-	    $GLOBALS['banner']['debug']['referrer']     = false;
-	    $GLOBALS['banner']['debug']['logic']        = false;
-	     
-	    $objBanner = \Database::getInstance()
-    	                   ->prepare("SELECT
-                                    banner_expert_debug_tag,
-                                    banner_expert_debug_helper,
-                                    banner_expert_debug_image,
-                                    banner_expert_debug_referrer,
-                                    banner_expert_debug_logic
-                                FROM
-                                    tl_banner_category
-                                WHERE
-                                    id=?
-                                ")
-                            ->limit(1)
-                            ->execute($banner_category_id);
-	    while ($objBanner->next())
-	    {
-	        $GLOBALS['banner']['debug']['tag']          = (boolean)$objBanner->banner_expert_debug_tag;
-	        $GLOBALS['banner']['debug']['helper']       = (boolean)$objBanner->banner_expert_debug_helper;
-	        $GLOBALS['banner']['debug']['image']        = (boolean)$objBanner->banner_expert_debug_image;
-	        $GLOBALS['banner']['debug']['referrer']     = (boolean)$objBanner->banner_expert_debug_referrer;
-	        $GLOBALS['banner']['debug']['logic']        = (boolean)$objBanner->banner_expert_debug_logic;
-	        BannerLog::writeLog('## START ##', '## DEBUG ##', 'T'.(int)$GLOBALS['banner']['debug']['tag'] .'#H'. (int)$GLOBALS['banner']['debug']['helper'] .'#I'. (int)$GLOBALS['banner']['debug']['image'] .'#R'.(int) $GLOBALS['banner']['debug']['referrer']);
-	    }
-	}
+	
 
 }

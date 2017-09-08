@@ -11,9 +11,12 @@
 namespace BugBuster\Banner;
 
 use Symfony\Component\HttpFoundation\Response;
+use BugBuster\Banner\BannerChecks;
+use BugBuster\Banner\BannerHelper;
 
 /**
  * Front end banner controller
+ * for route: bugbuster_banner_frontend_clicks
  *
  * @author     Glen Langer (BugBuster)
  */
@@ -54,8 +57,6 @@ class FrontendBanner extends \Frontend
 	
 		$this->intBID    = (int)\Input::get('bid');
 		$this->intDEFBID = (int)\Input::get('defbid');
-		
-		//\System::loadLanguageFile('tl_visitors');
 	}
 
 
@@ -71,12 +72,14 @@ class FrontendBanner extends \Frontend
 	    {
 	        if ( 0 == $this->intDEFBID )
 	        {
-	            //header('HTTP/1.1 501 Not Implemented');
-	            //throw new \ErrorException('Invalid Banner ID (' . \Input::get('bid') . ')',2,1,basename(__FILE__),__LINE__);
 	            $objResponse = new Response( 'Invalid Banner ID (' . \Input::get('bid') . ')' , 501);
 	            return $objResponse;
 	        }
 	    }
+	    
+	    $banner_category_id = $this->getBannerCategory($this->intBID);
+	    $objBannerHelper    = new BannerHelper();
+	    $objBannerHelper->setDebugSettings($banner_category_id);
 	    
 	    //Banner oder Kategorie Banner (Default Banner)
 	    if ( 0 < $this->intBID )
@@ -114,8 +117,6 @@ class FrontendBanner extends \Frontend
 	                                                         
                 if (!$objBanners->next())
                 {
-                    //header('HTTP/1.1 501 Not Implemented');
-                    //throw new \ErrorException('Banner ID not found',2,1,basename(__FILE__),__LINE__);
                     $objResponse = new Response( 'Banner ID not found' , 501);
                     return $objResponse;
                 }
@@ -124,18 +125,17 @@ class FrontendBanner extends \Frontend
                     $banner_not_viewed = true;
                 }
             }
-	    
+            $BannerChecks = new BannerChecks();
             $banner_stat_update = false;
-            if (   $this->checkUserAgent()       === false
-                && $this->checkBot()             === false
-                && $this->getSetReClickBlocker() === false
+            if (   $BannerChecks->checkUserAgent() === false
+                && $BannerChecks->checkBot()       === false
+                && $this->getSetReClickBlocker()   === false
                 )
             {
-                // keine User Agent Filterung
-                // kein Bot
-                // kein ReClick
+                // keine User Agent Filterung, kein Bot, kein ReClick
                 $banner_stat_update = true;
             }
+            $BannerChecks = null; unset($BannerChecks);
 	    
             if ($banner_stat_update === true)
             {
@@ -209,8 +209,6 @@ class FrontendBanner extends \Frontend
 	    
             if (!$objBanners->next())
             {
-                //header('HTTP/1.1 501 Not Implemented');
-                //throw new \ErrorException('Default Banner ID not found',2,1,basename(__FILE__),__LINE__);
                 $objResponse = new Response( 'Default Banner ID not found' , 501);
                 return $objResponse;
             }
@@ -230,24 +228,17 @@ class FrontendBanner extends \Frontend
      * @return int	301,302
      *
      */
-    protected function getRedirectType($BID)
+    protected function getRedirectType($banner_id)
     {
-        // aus BID die CatID
+        // aus $banner_id die CatID
         // über CatID in tl_module.banner_categories die tl_module.banner_redirect
         // Schleife über alle zeilen, falls mehrere
-        $objCat = \Database::getInstance()->prepare("SELECT
-                                                        pid as CatID
-                                                     FROM
-                                                        `tl_banner`
-                                                     WHERE
-                                                        id=?")
-                                        ->execute($BID);
-	    
-        if (0 == $objCat->numRows)
+        $CatID = $this->getBannerCategory($banner_id);
+        if (0 == $CatID)
         {
             return '301'; // error, but the show must go on
         }
-        $objCat->next();
+        
         $objBRT = \Database::getInstance()->prepare("SELECT
                                                         `banner_categories`
                                                        ,`banner_redirect`
@@ -257,7 +248,7 @@ class FrontendBanner extends \Frontend
                                                         type=?
                                                      AND
                                                         banner_categories=?")
-                                        ->execute('banner', $objCat->CatID);
+                                        ->execute('banner', $CatID);
         if (0 == $objBRT->numRows)
         {
             return '301'; // error, but the show must go on
@@ -305,7 +296,7 @@ class FrontendBanner extends \Frontend
      */
     protected function getSetReClickBlocker()
     {
-        return false; //TODO temporär
+        return false;
 	        //$ClientIP = bin2hex(sha1(\Environment::get('remoteAddr'),true)); // sha1 20 Zeichen, bin2hex 40 zeichen
 	        $BannerID = $this->intBID;
 	        if ( $this->getReClickBlockerId($BannerID) === false )
@@ -322,79 +313,24 @@ class FrontendBanner extends \Frontend
 	            return true;
 	        }
     }
-	    
-    /**
-     * Spider Bot Check
-     * @return true = found, false = not found
-     */
-    protected function checkBot()
+    
+    protected function getBannerCategory($banner_id)
     {
-        return false; //TODO temporär
-	        if (isset($GLOBALS['TL_CONFIG']['mod_banner_bot_check'])
-	            && (int)$GLOBALS['TL_CONFIG']['mod_banner_bot_check'] == 0
-	            )
-	        {
-	            //fuer debug log_message('bannerCheckBot abgeschaltet','Banner.log');
-	            return false; //Bot Suche abgeschaltet ueber localconfig.php
-	        }
-	        if ($this->BD_CheckBotAgent() || $this->BD_CheckBotIP())
-	        {
-	            //fuer debug log_message('bannerCheckBot True','Banner.log');
-	            return true;
-	        }
-	        //fuer debug log_message('bannerCheckBot False','Banner.log');
-	        return false;
-    } //checkBot
-	    
-    /**
-     * HTTP_USER_AGENT Special Check
-     */
-    protected function checkUserAgent()
-    {
-        return false; //TODO temporär
-	        if ( \Environment::get('httpUserAgent') )
-	        {
-	            $UserAgent = trim( \Environment::get('httpUserAgent') );
-	        }
-	        else
-	        {
-	            return false; // Ohne Absender keine Suche
-	        }
-	         
-	        $objUserAgent = \Database::getInstance()->prepare("SELECT
-                                                                `banner_useragent`
-                                                           FROM
-                                                                `tl_module`
-                                                           WHERE
-                                                                `banner_useragent` !=?")
-	                                                                    ->limit(1)
-	                                                                    ->execute('');
-	                                                                    if (!$objUserAgent->next())
-	                                                                    {
-	                                                                        return false; // keine Angaben im Modul
-	                                                                    }
-	                                                                    $arrUserAgents = explode(",", $objUserAgent->banner_useragent);
-	                                                                    if (strlen(trim($arrUserAgents[0])) == 0)
-	                                                                    {
-	                                                                        return false; // keine Angaben im Modul
-	                                                                    }
-	                                                                    array_walk($arrUserAgents, array('self','bannerclickTrimArrayValue'));  // trim der array values
-	                                                                    // grobe Suche
-	                                                                    $CheckUserAgent=str_replace($arrUserAgents, '#', $UserAgent);
-	                                                                    if ($UserAgent != $CheckUserAgent)
-	                                                                    {   // es wurde ersetzt also was gefunden
-	                                                                        //fuer debug log_message('CheckUserAgent Click Filterung: Treffer!','Banner.log');
-	                                                                        return true;
-	                                                                    }
-	                                                                    return false;
-    } //checkUserAgent
-	
-    public static function bannerclickTrimArrayValue(&$data)
-    {
-        $data = trim($data);
-        return ;
+        $objCat = \Database::getInstance()->prepare("SELECT
+                                                        pid as CatID
+                                                     FROM
+                                                        `tl_banner`
+                                                     WHERE
+                                                        id=?")
+                                        ->execute($banner_id);
+        if (0 == $objCat->numRows)
+        {
+            return 0; // error, but the show must go on
+        }
+        $objCat->next();
+        return $objCat->CatID;
     }
-	    
+ 	    
     /*  _____               _
        / ____|             (_)
       | (___   ___  ___ ___ _  ___  _ __
@@ -480,8 +416,6 @@ class FrontendBanner extends \Frontend
         }
         return false;
     }
-	    
-	    
 	    
     /**
      * Get session

@@ -13,9 +13,6 @@
  * @see        https://github.com/BugBuster1701/banner
  */
 
-/**
- * Run in a custom namespace, so the class can be replaced
- */
 namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerLog;
@@ -304,7 +301,48 @@ class BannerHelper extends \Frontend
 		return (bool)$this->arrAllBannersBasic; //false bei leerem array, sonst true
 	}
 	
+	/**
+	 * setDebugSettings
+	 *
+	 * @param unknown $banner_category_id
+	 */
+	public function setDebugSettings($banner_category_id)
+	{
+	    if (0 == $banner_category_id) { return; }// keine Banner Category, nichts zu tun
+	    
+	    $GLOBALS['banner']['debug']['tag']          = false;
+	    $GLOBALS['banner']['debug']['helper']       = false;
+	    $GLOBALS['banner']['debug']['image']        = false;
+	    $GLOBALS['banner']['debug']['referrer']     = false;
+	    $GLOBALS['banner']['debug']['logic']        = false;
+	    $GLOBALS['banner']['debug']['checks']       = false;
 	
+	    $objBanner = \Database::getInstance()
+                    ->prepare("SELECT
+                                    banner_expert_debug_tag,
+                                    banner_expert_debug_helper,
+                                    banner_expert_debug_image,
+                                    banner_expert_debug_referrer,
+                                    banner_expert_debug_logic,
+                                    banner_expert_debug_checks
+                                FROM
+                                    tl_banner_category
+                                WHERE
+                                    id=?
+                                ")
+                    ->limit(1)
+                    ->execute($banner_category_id);
+        while ($objBanner->next())
+        {
+            $GLOBALS['banner']['debug']['tag']          = (boolean)$objBanner->banner_expert_debug_tag;
+            $GLOBALS['banner']['debug']['helper']       = (boolean)$objBanner->banner_expert_debug_helper;
+            $GLOBALS['banner']['debug']['image']        = (boolean)$objBanner->banner_expert_debug_image;
+            $GLOBALS['banner']['debug']['referrer']     = (boolean)$objBanner->banner_expert_debug_referrer;
+            $GLOBALS['banner']['debug']['logic']        = (boolean)$objBanner->banner_expert_debug_logic;
+            $GLOBALS['banner']['debug']['checks']       = (boolean)$objBanner->banner_expert_debug_checks;
+            BannerLog::writeLog('## START ##', '## DEBUG ##', 'T'.(int)$GLOBALS['banner']['debug']['tag'] .'#H'. (int)$GLOBALS['banner']['debug']['helper'] .'#I'. (int)$GLOBALS['banner']['debug']['image'] .'#R'.(int) $GLOBALS['banner']['debug']['referrer']);
+        }
+	}
 	
 	
 	
