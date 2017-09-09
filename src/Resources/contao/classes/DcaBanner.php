@@ -295,8 +295,6 @@ class DcaBanner extends \Backend
      */
     protected function listBannerExternal($row)
     {
-        $fallback_content = '';
-
         $arrImageSize = $this->BannerImage->getBannerImageSize($row['banner_image_extern'], self::BANNER_TYPE_EXTERN);
     
         //resize if necessary
@@ -445,7 +443,7 @@ class DcaBanner extends \Backend
                                                 ->execute($row['banner_jumpTo']);
             if ($objBannerNextPage->numRows)
             {
-                $row['banner_url'] = $this->generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
             }
         }
         

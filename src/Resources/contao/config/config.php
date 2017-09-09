@@ -1,12 +1,12 @@
 <?php 
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2014 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
  * 
  * Modul Banner Config - Backend
  *
  * This is the banner configuration file.
  *
- * @copyright	Glen Langer 2007..2015 <http://contao.ninja>
+ * @copyright	Glen Langer 2007..2017 <http://contao.ninja>
  * @author      Glen Langer (BugBuster)
  * @package     Banner 
  * @license     LGPL 
@@ -47,7 +47,6 @@ $GLOBALS['FE_MOD']['miscellaneous']['banner'] = 'BugBuster\Banner\ModuleBanner';
  * HOOKS
  * -------------------------------------------------------------------------
  */
-//$GLOBALS['TL_HOOKS']['parseBackendTemplate'][] = array('BugBuster\Banner\BannerCheckHelper', 'checkExtensions');
 $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('BugBuster\Banner\BannerInsertTag', 'replaceInsertTagsBanner');
 
 
