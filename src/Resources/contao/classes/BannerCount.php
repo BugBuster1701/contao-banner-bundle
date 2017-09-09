@@ -68,10 +68,17 @@ class BannerCount extends \System
 	        return ; //User Agent Filterung
 	    }
 	
+	    $BannerChecks = new BannerChecks();
+	    if ($BannerChecks->checkBE() === true) 
+	    {
+	        return ; //Backend Login
+	    }
+	    $BannerChecks = null; unset($BannerChecks);
+	    
 	    // Blocker
 	    $lastBanner = array_pop($this->arrBannerData);
 	    $BannerID = $lastBanner['banner_id'];
-	    if ($BannerID==0)
+	    if ($BannerID == 0)
 	    { // kein Banner, nichts zu tun
 	        return;
 	    }

@@ -80,7 +80,7 @@ class FrontendBanner extends \Frontend
 	    $banner_category_id = $this->getBannerCategory($this->intBID);
 	    $objBannerHelper    = new BannerHelper();
 	    $objBannerHelper->setDebugSettings($banner_category_id);
-	    BannerLog::writeLog( __METHOD__ , __LINE__ , ': Banner Cat '.$banner_category_id.' ' );
+	    
 	    //Banner oder Kategorie Banner (Default Banner)
 	    if ( 0 < $this->intBID )
 	    {
@@ -129,10 +129,11 @@ class FrontendBanner extends \Frontend
             $banner_stat_update = false;
             if (   $BannerChecks->checkUserAgent() === false
                 && $BannerChecks->checkBot()       === false
+                && $BannerChecks->checkBE()        === false
                 && $this->getSetReClickBlocker()   === false
                 )
             {
-                // keine User Agent Filterung, kein Bot, kein ReClick
+                // keine User Agent Filterung, kein Bot, kein ReClick, kein BE Login
                 $banner_stat_update = true;
             }
             $BannerChecks = null; unset($BannerChecks);
@@ -397,6 +398,8 @@ class FrontendBanner extends \Frontend
     
         if ( $tstmap >  $BannerBlockTime )
         {
+            BannerLog::writeLog( __METHOD__ , __LINE__ , ': BannerBlockTime: '.date("Y-m-d H:i:s",$BannerBlockTime) );
+            BannerLog::writeLog( __METHOD__ , __LINE__ , ': BannerSessiTime: '.date("Y-m-d H:i:s",$tstmap) );
             return true;
         }
         else

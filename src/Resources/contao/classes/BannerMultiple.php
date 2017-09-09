@@ -54,7 +54,7 @@ class BannerMultiple extends \Frontend
     
     
 
-    function __construct ($arrCategoryValues, $banner_template, $strTemplate, $objTemplate, $arrAllBannersBasic)
+    public function __construct ($arrCategoryValues, $banner_template, $strTemplate, $objTemplate, $arrAllBannersBasic)
     {
         $this->arrCategoryValues  = $arrCategoryValues;
         $this->banner_template    = $banner_template;
@@ -130,285 +130,97 @@ class BannerMultiple extends \Frontend
                                          )
                                 ->limit(1)
                                 ->execute( $banner_id );
-                $intRows = $objBanners->numRows;
-                //Banner vorhanden?
-                if($intRows > 0)
+            $intRows = $objBanners->numRows;
+            //Banner vorhanden?
+            if($intRows > 0)
+            {
+                $arrBanners = array();
+                $objBanners->next();
+                BannerHelper::$arrBannerSeen[] = $objBanners->id;
+                //CSS-ID/Klasse(n) je Banner, für den wrapper
+                $banner_cssID   = '';
+                $banner_class   = '';
+                $banner_classes = '';
+                $_cssID = deserialize($objBanners->banner_cssid);
+                if ( is_array($_cssID) )
                 {
-                    $arrBanners = array();
-                    $objBanners->next();
-                    BannerHelper::$arrBannerSeen[] = $objBanners->id;
-                    //CSS-ID/Klasse(n) je Banner, für den wrapper
-                    $banner_cssID   = '';
-                    $banner_class   = '';
-                    $banner_classes = '';
-                    $_cssID = deserialize($objBanners->banner_cssid);
-                    if ( is_array($_cssID) )
+                    if ($_cssID[0] != '')
                     {
-                        if ($_cssID[0] != '')
+                        $banner_cssID   = ' id="banner_'.$_cssID[0].'"';
+                    }
+                    if ($_cssID[1] != '')
+                    {
+                        $banner_classes = explode(" ", $_cssID[1]);
+                        foreach ($banner_classes as $banner_classone)
                         {
-                            $banner_cssID   = ' id="banner_'.$_cssID[0].'"';
-                        }
-                        if ($_cssID[1] != '')
-                        {
-                            $banner_classes = explode(" ", $_cssID[1]);
-                            foreach ($banner_classes as $banner_classone)
-                            {
-                                $banner_class .= ' banner_'.$banner_classone;
-                            }
+                            $banner_class .= ' banner_'.$banner_classone;
                         }
                     }
-    
-                    //den ersten Banner für den nächsten Aufruf blockieren
-                    if (false === $boolFirstBanner) 
-                    {
-                        $objBannerLogic = new BannerLogic();
-                        $objBannerLogic->setRandomBlockerId($banner_id,$module_id);
-                        $objBannerLogic = null;
-                        unset($objBannerLogic);
-                        $boolFirstBanner = true;
-                    }
-                    
-                    
-                    switch ($objBanners->banner_type)
-                    {
-                        case self::BANNER_TYPE_INTERN :
-                            //Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
-                            $objFile = \FilesModel::findByPk($objBanners->banner_image);
-                            //BannerImage Class
-                            $this->BannerImage = new BannerImage();
-                            //Banner Art und Größe bestimmen
-                            $arrImageSize = $this->BannerImage->getBannerImageSize($objFile->path, self::BANNER_TYPE_INTERN);
-                            //Falls Datei gelöscht wurde, Abbruch
-                            if (false === $arrImageSize)
-                            {
-                                $arrImageSize[2] = 0;
-                                BannerLog::log('Banner Image with ID "'.$objBanners->id.'" not found', 'BannerHelper getMultiBanner', TL_ERROR);
-                                break;
-                            }
-                            //Banner Neue Größe 0:$Width 1:$Height
-                            $arrNewSizeValues = deserialize($objBanners->banner_imgSize);
-                            //Banner Neue Größe ermitteln, return array $Width,$Height,$oriSize
-                            $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1],$arrNewSizeValues[0],$arrNewSizeValues[1]);
-    
-                            //wenn oriSize = true, oder bei GIF/SWF/SWC = original Pfad nehmen
-                            if ($arrImageSizenNew[2] === true
-                                || $arrImageSize[2] == 1  // GIF
-                                || $arrImageSize[2] == 4  // SWF
-                                || $arrImageSize[2] == 13 // SWC
-                                )
-                            {
-                                $FileSrc = $objFile->path;
-                                $arrImageSize[0] = $arrImageSizenNew[0];
-                                $arrImageSize[1] = $arrImageSizenNew[1];
-                                $arrImageSize[3] = ' height="'.$arrImageSizenNew[1].'" width="'.$arrImageSizenNew[0].'"';
-                                 
-                                //fake the Picture::create
-                                $picture['img']   = array
-                                (
-                                    'src'    => \StringUtil::specialchars(ampersand($FileSrc)),
-                                    'width'  => $arrImageSizenNew[0],
-                                    'height' => $arrImageSizenNew[1],
-                                    'srcset' => \StringUtil::specialchars(ampersand($FileSrc))
-                                );
-                                $picture['alt']   = \StringUtil::specialchars(ampersand($objBanners->banner_name));
-                                $picture['title'] = \StringUtil::specialchars(ampersand($objBanners->banner_comment));
-                                 
-                                BannerLog::writeLog(__METHOD__ , __LINE__ , 'Orisize Picture: '. print_r($picture,true));
-                            }
-                            else
-                            {
-                                $FileSrc = \Image::get($this->urlEncode($objFile->path), $arrImageSizenNew[0], $arrImageSizenNew[1],'proportional');
-    
-                                $picture = \Picture::create($this->urlEncode($objFile->path), array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))->getTemplateData();
-                                $picture['alt']   = \StringUtil::specialchars(ampersand($objBanners->banner_name));
-                                $picture['title'] = \StringUtil::specialchars(ampersand($objBanners->banner_comment));
-                                 
-                                BannerLog::writeLog(__METHOD__ , __LINE__ , 'Resize Picture: '. print_r($picture,true));
-    
-                                $arrImageSize[0] = $arrImageSizenNew[0];
-                                $arrImageSize[1] = $arrImageSizenNew[1];
-                                $arrImageSize[3] = ' height="'.$arrImageSizenNew[1].'" width="'.$arrImageSizenNew[0].'"';
-                            }
-                            break;
-                        case self::BANNER_TYPE_EXTERN :
-                            //BannerImage Class
-                            $this->BannerImage = new BannerImage();
-                            //Banner Art und Größe bestimmen
-                            $arrImageSize = $this->BannerImage->getBannerImageSize($objBanners->banner_image_extern, self::BANNER_TYPE_EXTERN);
-                            //Falls Datei gelöscht wurde, Abbruch
-                            if (false === $arrImageSize)
-                            {
-                                $arrImageSize[2] = 0;
-                                BannerLog::log('Banner Image with ID "'.$objBanners->id.'" not found', 'BannerHelper getMultiBanner', TL_ERROR);
-                                break;
-                            }
-                            //Banner Neue Größe 0:$Width 1:$Height
-                            $arrNewSizeValues = deserialize($objBanners->banner_imgSize);
-                            //Banner Neue Größe ermitteln, return array $Width,$Height,$oriSize
-                            $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1],$arrNewSizeValues[0],$arrNewSizeValues[1]);
-                            //Umwandlung bei Parametern
-                            $FileSrc = html_entity_decode($objBanners->banner_image_extern, ENT_NOQUOTES, 'UTF-8');
-                             
-                            //fake the Picture::create
-                            $picture['img']   = array
-                            (
-                                'src'    => \StringUtil::specialchars(ampersand($FileSrc)),
-                                'width'  => $arrImageSizenNew[0],
-                                'height' => $arrImageSizenNew[1],
-                                'srcset' => \StringUtil::specialchars(ampersand($FileSrc))
-                            );
-                            $picture['alt']   = \StringUtil::specialchars(ampersand($objBanners->banner_name));
-                            $picture['title'] = \StringUtil::specialchars(ampersand($objBanners->banner_comment));
-                             
-                            $arrImageSize[0] = $arrImageSizenNew[0];
-                            $arrImageSize[1] = $arrImageSizenNew[1];
-                            $arrImageSize[3] = ' height="'.$arrImageSizenNew[1].'" width="'.$arrImageSizenNew[0].'"';
-                            break;
-                        case self::BANNER_TYPE_TEXT :
-                            $arrImageSize = false;
-                            break;
-                    }
-    
-                    if ($arrImageSize !== false) //Bilder extern/intern
-                    {
-                        $banner_target = ($objBanners->banner_target == '1') ? '' : ' target="_blank"';
-    
-                        if ( strlen($objBanners->banner_comment) > 1 )
-                        {
-                            $banner_comment_pos = strpos($objBanners->banner_comment,"\n",1);
-                            if ($banner_comment_pos !== false)
-                            {
-                                $objBanners->banner_comment = substr($objBanners->banner_comment,0,$banner_comment_pos);
-                            }
-                        }
-    
-                        // Banner Seite als Ziel?
-                        if ($objBanners->banner_jumpTo > 0)
-                        {
-                            $objBanners->banner_url = ''; //default
-                            $domain = \Environment::get('base');
-                            $objParent = \PageModel::findWithDetails($objBanners->banner_jumpTo);
-                            if ($objParent !== null)
-                            {
-                                if ($objParent->domain != '')
-                                {
-                                    $domain = (\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
-                                }
-                                $objBanners->banner_url = $domain . $this->generateFrontendUrl($objParent->row(), '', $objParent->language);
-                            }
-                        }
-                         
-                        //$arrImageSize[0]  eigene Breite
-                        //$arrImageSize[1]  eigene Höhe
-                        //$arrImageSize[3]  Breite und Höhe in der Form height="yyy" width="xxx"
-                        //$arrImageSize[2]
-                        // 1 = GIF, 2 = JPG, 3 = PNG
-                        // 4 = SWF, 13 = SWC (zip-like swf file)
-                        // 5 = PSD, 6 = BMP, 7 = TIFF(intel byte order), 8 = TIFF(motorola byte order)
-                        // 9 = JPC, 10 = JP2, 11 = JPX, 12 = JB2, 13 = SWC, 14 = IFF
-                        switch ($arrImageSize[2])
-                        {
-                            case 1: // GIF
-                            case 2: // JPG
-                            case 3: // PNG
-                                $arrBanners[] = array
-                                (
-                                'banner_key'     => 'bid=',
-                                'banner_wrap_id'    => $banner_cssID,
-                                'banner_wrap_class' => $banner_class,
-                                'banner_id'      => $objBanners->id,
-                                'banner_name'    => \StringUtil::specialchars(ampersand($objBanners->banner_name)),
-                                'banner_url'     => $objBanners->banner_url,
-                                'banner_target'  => $banner_target,
-                                'banner_comment' => \StringUtil::specialchars(ampersand($objBanners->banner_comment)),
-                                'src'            => \StringUtil::specialchars(ampersand($FileSrc)),//specialchars(ampersand($this->urlEncode($FileSrc))),
-                                'alt'            => \StringUtil::specialchars(ampersand($objBanners->banner_name)),
-                                'size'           => $arrImageSize[3],
-                                'banner_pic'     => true,
-                                'banner_flash'   => false,
-                                'banner_text'    => false,
-                                'banner_empty'   => false,
-                                'picture'        => $picture
-                                );
-                                $picture = null; unset($picture);
-                                break;
-                            default:
-                                $arrBanners[] = array
-                                (
-                                'banner_key'     => 'bid=',
-                                'banner_wrap_id'    => $banner_cssID,
-                                'banner_wrap_class' => $banner_class,
-                                'banner_id'      => 0,
-                                'banner_name'    => '',
-                                'banner_url'     => '',
-                                'banner_target'  => '',
-                                'banner_comment' => '',
-                                'src'            => '',
-                                'alt'            => '',
-                                'size'           => '',
-                                'banner_pic'     => true,
-                                );
-                                break;
-                        }//switch
+                }
+
+                //den ersten Banner für den nächsten Aufruf blockieren
+                if (false === $boolFirstBanner) 
+                {
+                    $objBannerLogic = new BannerLogic();
+                    $objBannerLogic->setRandomBlockerId($banner_id,$module_id);
+                    $objBannerLogic = null;
+                    unset($objBannerLogic);
+                    $boolFirstBanner = true;
+                }
+                
+                
+                switch ($objBanners->banner_type)
+                {
+                    case self::BANNER_TYPE_INTERN :
+                        $objBannerInternal = new BannerInternal($objBanners, $banner_cssID, $banner_class);
+                        $objImageData = $objBannerInternal->generateImageData();
+                        
+                        $FileSrc = $objImageData->FileSrc;
+                        $picture = $objImageData->Picture;
+                        $arrImageSize = $objImageData->ImageSize;
+                        
+                        $arrBanners = $objBannerInternal->generateTemplateData($arrImageSize, $FileSrc, $picture);
                         $arrResults[] = $arrBanners[0];
                          
-                        $this->arrBannerData = $arrBanners; //wird von setStatViewUpdate genutzt
+                        //$this->arrBannerData = $arrBanners; //wird von setStatViewUpdate genutzt
                         $this->setStatViewUpdate($arrResults, $module_id, $objBanners->banner_useragent);
-                    }//$arrImageSize !== false
-    
-                    // Text Banner
-                    if ($objBanners->banner_type == 'banner_text')
-                    {
-                        $banner_target = ($objBanners->banner_target == '1') ? '' : ' target="_blank"';
-    
-                        // Banner Seite als Ziel?
-                        if ($objBanners->banner_jumpTo > 0)
-                        {
-                            $domain = \Environment::get('base');
-                            $objParent = \PageModel::findWithDetails($objBanners->banner_jumpTo);
-                            if ($objParent !== null) // is null when page not exist anymore
-                            {
-                                if ($objParent->domain != '')
-                                {
-                                    $domain = (\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
-                                }
-                                $objBanners->banner_url = $domain . $this->generateFrontendUrl($objParent->row(), '', $objParent->language);
-                            }
-                        }
-    
-                        // Kurz URL (nur Domain)
-                        $treffer = parse_url(\Idna::decode($objBanners->banner_url)); // #79
-                        $banner_url_kurz = $treffer['host'];
-                        if (isset($treffer['port']))
-                        {
-                            $banner_url_kurz .= ':'.$treffer['port'];
-                        }
-    
-                        $arrBanners[] = array
-                        (
-                            'banner_key'     => 'bid=',
-                            'banner_wrap_id'    => $banner_cssID,
-                            'banner_wrap_class' => $banner_class,
-                            'banner_id'      => $objBanners->id,
-                            'banner_name'    => \StringUtil::specialchars(ampersand($objBanners->banner_name)),
-                            'banner_url'     => $objBanners->banner_url,
-                            'banner_url_kurz'=> $banner_url_kurz,
-                            'banner_target'  => $banner_target,
-                            'banner_comment' => ampersand(nl2br($objBanners->banner_comment)),
-                            'banner_pic'     => false,
-                            'banner_flash'   => false,
-                            'banner_text'    => true,
-                            'banner_empty'   => false	// issues 733
-                        );
-                         
+                        
+                        break;
+                    case self::BANNER_TYPE_EXTERN :
+                        $objBannerExternal = new BannerExternal($objBanners, $banner_cssID, $banner_class);
+                        $objImageData = $objBannerExternal->generateImageData();
+                        
+                        $FileSrc = $objImageData->FileSrc;
+                        $picture = $objImageData->Picture;
+                        $arrImageSize = $objImageData->ImageSize;
+                        
+                        $arrBanners = $objBannerExternal->generateTemplateData($arrImageSize, $FileSrc, $picture);
+                        
                         $arrResults[] = $arrBanners[0];
                          
-                        $this->arrBannerData = $arrBanners; //wird von setStatViewUpdate genutzt
+                        //$this->arrBannerData = $arrBanners; //wird von setStatViewUpdate genutzt
                         $this->setStatViewUpdate($arrResults, $module_id, $objBanners->banner_useragent);
-                         
-                    }//text banner
+
+                        break;
+                    case self::BANNER_TYPE_TEXT :
+                        $arrImageSize = false;
+                        break;
+                }
+
+                // Text Banner
+                if ($objBanners->banner_type == 'banner_text')
+                {
+                    $objBannerText = new BannerText($objBanners, $banner_cssID, $banner_class);
+                    $arrBanners = $objBannerText->generateTemplateData();
+                    
+                    $arrResults[] = $arrBanners[0];
                      
-                }//Banner vorhanden
+                    //$this->arrBannerData = $arrBanners; //wird von setStatViewUpdate genutzt
+                    $this->setStatViewUpdate($arrResults, $module_id, $objBanners->banner_useragent);
+                     
+                }//text banner
+                 
+            }//Banner vorhanden
         } // foreach($this->arrAllBannersBasic)
          
         //anderes Template?
