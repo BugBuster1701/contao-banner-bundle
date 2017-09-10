@@ -175,6 +175,7 @@ class BannerSingle extends \Frontend
         {
             // auf Leer umschalten
             $this->strTemplate='mod_banner_empty';
+            $this->Template->arrCategoryValues = $this->arrCategoryValues; // #7 / #176 (Banner)
             $this->Template = new \FrontendTemplate($this->strTemplate);
             BannerLog::writeLog(__METHOD__ , __LINE__ , 'Kein BannerDefault, umschalten auf leeres Template');
         }

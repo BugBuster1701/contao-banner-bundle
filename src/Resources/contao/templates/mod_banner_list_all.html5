@@ -5,13 +5,13 @@
 <?php endif; ?>
 <?php foreach ($this->banners as $banner): ?>
 <?php if ($banner['banner_pic']) : ?>
-	<figure class="banner_wrap<?php echo $banner['banner_wrap_class']; ?>"<?php echo $banner['banner_wrap_id']; ?>>
+	<figure class="banner_wrap<?php echo $banner['banner_wrap_class']; ?>"<?php echo $banner['banner_wrap_id']; ?> itemscope itemtype="http://schema.org/ImageObject">
 		<div class="banner_image" id="banner_<?php echo $banner['banner_id']; ?>">
-			<?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>?<?php echo $banner['banner_key'].$banner['banner_id']; ?>" <?php echo $banner['banner_target']; ?> title="<?php echo $banner['banner_comment']; ?>"><?php endif; ?>
+			<?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>?<?php echo $banner['banner_key'].$banner['banner_id']; ?>" <?php echo $banner['banner_target']; ?> title="<?php echo $banner['banner_comment']; ?>" itemprop="contentUrl"><?php endif; ?>
 			<?php $this->insert('picture_default', $banner['picture']) ?>
 			<?php if ($banner['banner_url']): ?></a><?php endif; ?>
 		</div>
-	    <figcaption class="banner_name"><?php echo $banner['banner_name']; ?></figcaption>
+	    <figcaption class="banner_name" itemprop="caption"><?php echo $banner['banner_name']; ?></figcaption>
 	</figure>
 <?php endif; ?>
 <?php if ($banner['banner_text']) : ?>
