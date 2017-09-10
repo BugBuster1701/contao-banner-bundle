@@ -116,7 +116,7 @@ $GLOBALS['TL_DCA']['tl_banner_category'] = array
 	'palettes' => array
 	(
 	    '__selector__'                => array('banner_default', 'banner_protected', 'banner_numbers', 'banner_stat_protected'), 
-		'default'                     => '{title_legend},title;{default_legend:hide},banner_default;{number_legend:hide},banner_numbers;{protected_legend:hide},banner_protected;{protected_stat_legend:hide},banner_stat_protected;{banner_expert_legend:hide},banner_expert_debug_tag,banner_expert_debug_helper,banner_expert_debug_image,banner_expert_debug_referrer,banner_expert_debug_logic,banner_expert_debug_checks'
+		'default'                     => '{title_legend},title;{default_legend:hide},banner_default;{number_legend:hide},banner_numbers;{protected_legend:hide},banner_protected;{protected_stat_legend:hide},banner_stat_protected;{banner_expert_legend:hide},banner_expert_debug_all'
 	),
 	// Subpalettes
 	'subpalettes' => array
@@ -256,44 +256,9 @@ $GLOBALS['TL_DCA']['tl_banner_category'] = array
 			    array('BugBuster\Banner\DcaBannerCategory', 'getAdminCheckbox')
 			)
 		),
-		'banner_expert_debug_tag'=> array
+		'banner_expert_debug_all'=> array
 		(
-		    'label'					  => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_tag'],
-		    'inputType'               => 'checkbox',
-		    'sql'                     => "char(1) NOT NULL default ''",
-		    'eval'                    => array('mandatory'=>false, 'helpwizard'=>false)
-		),
-		'banner_expert_debug_helper'=> array
-		(
-		    'label'					  => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_helper'],
-		    'inputType'               => 'checkbox',
-		    'sql'                     => "char(1) NOT NULL default ''",
-		    'eval'                    => array('mandatory'=>false, 'helpwizard'=>false)
-		),
-		'banner_expert_debug_image'=> array
-		(
-		    'label'					  => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_image'],
-		    'inputType'               => 'checkbox',
-		    'sql'                     => "char(1) NOT NULL default ''",
-		    'eval'                    => array('mandatory'=>false, 'helpwizard'=>false)
-		),
-		'banner_expert_debug_referrer'=> array
-		(
-		    'label'					  => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_referrer'],
-		    'inputType'               => 'checkbox',
-		    'sql'                     => "char(1) NOT NULL default ''",
-		    'eval'                    => array('mandatory'=>false, 'helpwizard'=>false)
-		),
-		'banner_expert_debug_logic'=> array
-		(
-		    'label'					  => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_logic'],
-		    'inputType'               => 'checkbox',
-		    'sql'                     => "char(1) NOT NULL default ''",
-		    'eval'                    => array('mandatory'=>false, 'helpwizard'=>false)
-		),
-		'banner_expert_debug_checks'=> array
-		(
-		    'label'					  => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_checks'],
+		    'label'					  => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_all'],
 		    'inputType'               => 'checkbox',
 		    'sql'                     => "char(1) NOT NULL default ''",
 		    'eval'                    => array('mandatory'=>false, 'helpwizard'=>false)

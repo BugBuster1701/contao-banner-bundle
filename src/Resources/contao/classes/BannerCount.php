@@ -18,9 +18,9 @@
  */
 namespace BugBuster\Banner;
 
-// debug später use BugBuster\Banner\BannerLog;
-use BugBuster\BotDetection\ModuleBotDetection;
+use BugBuster\Banner\BannerLog;
 use BugBuster\Banner\BannerLogic;
+use BugBuster\BotDetection\ModuleBotDetection;
 
 /** 
  * Class BannerCount
@@ -61,16 +61,19 @@ class BannerCount extends \System
 	{
 	    if ($this->bannerCheckBot() === true)
 	    {
+	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'Bot gefunden, wird nicht gezaehlt');
 	        return; //Bot gefunden, wird nicht gezaehlt
 	    }
 	    if ($this->checkUserAgent() === true)
 	    {
+	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'User Agent Filterung, wird nicht gezaehlt');
 	        return ; //User Agent Filterung
 	    }
 	
 	    $BannerChecks = new BannerChecks();
 	    if ($BannerChecks->checkBE() === true) 
 	    {
+	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'Backend Login, wird nicht gezaehlt');
 	        return ; //Backend Login
 	    }
 	    $BannerChecks = null; unset($BannerChecks);
@@ -80,17 +83,20 @@ class BannerCount extends \System
 	    $BannerID = $lastBanner['banner_id'];
 	    if ($BannerID == 0)
 	    { // kein Banner, nichts zu tun
+	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'kein Banner, nichts zu tun');
 	        return;
 	    }
 	
 	    if ( $this->getStatViewUpdateBlockerId($BannerID, $this->module_id) === true )
 	    {
 	        // Eintrag innerhalb der Blockzeit
+	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'Eintrag innerhalb der Blockzeit, wird nicht gezaehlt');
 	        return; // blocken, nicht zählen, raus hier
 	    }
 	    else
 	    {
-	        // nichts geblockt, also blocken fürs den nächsten Aufrufs
+	        // nichts geblockt, also blocken für den nächsten Aufruf
+	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'blocken fuer den naechsten Aufruf');
 	        $this->setStatViewUpdateBlockerId($BannerID, $this->module_id);
 	    }
 	
@@ -116,7 +122,7 @@ class BannerCount extends \System
                             	                `id`=?")
                 	                ->execute(time(), $BannerID);
 	    }
-	
+	    BannerLog::writeLog(__METHOD__ , __LINE__ , 'Zaehlung erfolgt fuer Banner ID: '.$BannerID);
 	}//BannerStatViewUpdate()
 	
 	/**

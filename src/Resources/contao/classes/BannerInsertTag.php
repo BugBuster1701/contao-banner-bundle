@@ -77,20 +77,15 @@ class BannerInsertTag extends BannerHelper
 	            return false; // nicht für uns
 	        }
 	    }
-	    //DEBUG log_message('--------------------------------'.$arrTag[1],'Banner.log');
-	    if (isset($arrTag[1]))
+	    	    
+	    if (isset($arrTag[1])) // banner_module_id
 	    {
 	        $retModuleData = $this->getModuleData($arrTag[1]);
 	        if (false === $retModuleData) 
 	        {
 	        	//kein Banner Modul mit dieser ID 
 	        	BannerLog::log('No banner module with this id "'.$arrTag[1].'"', 'ModuleBannerTag replaceInsertTagsBanner', TL_ERROR);
-	           return false;
-	        }
-	        else 
-	        {
-	            //Get Debug Settings
-	            $this->setDebugSettings($this->banner_categories);
+	            return false;
 	        }
 	    }
 	    else 
@@ -99,6 +94,10 @@ class BannerInsertTag extends BannerHelper
 	        BannerLog::log('Missing parameter (1): banner module id', 'ModuleBannerTag replaceInsertTagsBanner', TL_ERROR);
 	        return false;
 	    }
+	    //Get Debug Settings
+	    $this->setDebugSettings($this->banner_categories);
+	    BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_categories: '. $this->banner_categories);
+	    
 	    if (isset($arrTag[2])) { $this->typePrefix    = $arrTag[2]; } //ce_ / mod_
 	    if (isset($arrTag[3])) { $this->article_class = $arrTag[3]; }
 	    if (isset($arrTag[4])) { $this->article_cssID = $arrTag[4]; }
@@ -122,7 +121,6 @@ class BannerInsertTag extends BannerHelper
 	protected function getModuleData($moduleId)
 	{
 	    $this->module_id = $moduleId; //for RandomBlocker Session
-	    //DEBUG log_message('getModuleData Banner Modul ID:'.$moduleId,'Banner.log');
 	    $objBannerModule = \Database::getInstance()->prepare("SELECT 
                                                                     banner_hideempty,
                                                         	        banner_firstview,

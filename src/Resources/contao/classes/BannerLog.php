@@ -39,24 +39,25 @@ class BannerLog
         {
             if (!isset($GLOBALS['banner']['debug']['first'])) 
             {
-                if ((bool)$GLOBALS['banner']['debug']['tag']         ||
-                    (bool)$GLOBALS['banner']['debug']['helper']      ||
-                    (bool)$GLOBALS['banner']['debug']['image']       ||
-                    (bool)$GLOBALS['banner']['debug']['referrer']    ||
-                    (bool)$GLOBALS['banner']['debug']['logic']       ||
-                    (bool)$GLOBALS['banner']['debug']['checks']
-                   )
+                if ((bool)$GLOBALS['banner']['debug']['all']) 
                 {
                     $arrUniqid = trimsplit('.', uniqid('c0n7a0',true) );
                     $GLOBALS['banner']['debug']['first'] = $arrUniqid[1];
                     self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$method,$line,$value),'banner_debug');
                     return ;
                 }
-                return ;
+                return ; //kein (first) log
             }
             else
             {
-                return ;
+                return ; //kein first log
+            }
+        }
+        else 
+        {
+            if (false === (bool)$GLOBALS['banner']['debug']['all'])
+            {
+                return; //kein Log aktiviert
             }
         }
                 
@@ -69,48 +70,7 @@ class BannerLog
             $value = print_r($value,true);
         }
         
-        switch ($vclass)
-        {
-            case "BannerTag":
-                if ($GLOBALS['banner']['debug']['tag'])
-                {
-                    self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
-                }
-                break;
-            case "BannerHelper":
-                if ($GLOBALS['banner']['debug']['helper'])
-                {
-                    self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
-                }
-                break;
-            case "BannerImage":
-                if ($GLOBALS['banner']['debug']['image'])
-                {
-                    self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
-                }
-                break;
-            case "BannerReferrer":
-                if ($GLOBALS['banner']['debug']['referrer'])
-                {
-                    self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
-                }
-                break;
-            case "BannerLogic":
-                if ($GLOBALS['banner']['debug']['logic'])
-                {
-                    self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
-                }
-                break;
-            case "BannerChecks":
-                if ($GLOBALS['banner']['debug']['checks'])
-                {
-                    self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
-                }
-                break;
-            default:
-                self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$method,$line,'('.$vclass.')'.$value),'banner_debug');
-                break;
-        }
+        self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$vclass.'::'.$arrNamespace[1],$line,$value),'banner_debug');
         return ;
     }
     
