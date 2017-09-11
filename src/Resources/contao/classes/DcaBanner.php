@@ -182,7 +182,7 @@ class DcaBanner extends \Backend
                                                 ->execute($row['banner_jumpTo']);
             if ($objBannerNextPage->numRows)
             {
-                $row['banner_url'] = $this->generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
             }
         }
         $banner_url = ampersand(\Idna::decode($row['banner_url']));
@@ -325,7 +325,7 @@ class DcaBanner extends \Backend
                                                         ->execute($row['banner_jumpTo']);
             if ($objBannerNextPage->numRows)
             {
-                $row['banner_url'] = $this->generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
             }
         }
         $banner_url = ampersand(\Idna::decode($row['banner_url']));

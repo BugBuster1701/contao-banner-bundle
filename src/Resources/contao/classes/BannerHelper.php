@@ -329,4 +329,41 @@ class BannerHelper extends \Frontend
         }
 	}
 	
+	/**
+	 * Generate a front end URL
+	 * Shorted version of Controller::generateFrontendUrl
+	 *
+	 * @param array   $arrRow       An array of page parameters
+	 * @param string  $strParams    An optional string of URL parameters
+	 * @param string  $strForceLang Force a certain language
+	 *
+	 * @return string An URL that can be used in the front end
+	 */
+	public static function frontendUrlGenerator($arrRow, $strParams=null, $strForceLang=null) 
+	{
+	    $arrParams = [];
+	    $arrParams['_locale'] = $strForceLang;
+	    
+	    $objUrlGenerator = \System::getContainer()->get('contao.routing.url_generator');
+	    $strUrl = $objUrlGenerator->generate( ($arrRow['alias'] ?: $arrRow['id']) . $strParams, $arrParams );
+	    // Remove path from absolute URLs
+	    if (0 === strpos($strUrl, '/'))
+	    {
+	        $strUrl = substr($strUrl, strlen(\Environment::get('path')) + 1);
+	    }
+	    
+	    // Decode sprintf placeholders
+	    if (strpos($strParams, '%') !== false)
+	    {
+	        $arrMatches = array();
+	        preg_match_all('/%([sducoxXbgGeEfF])/', $strParams, $arrMatches);
+	    
+	        foreach (array_unique($arrMatches[1]) as $v)
+	        {
+	            $strUrl = str_replace('%25' . $v, '%' . $v, $strUrl);
+	        }
+	    }
+	    
+	    return $strUrl;
+	}
 } // class

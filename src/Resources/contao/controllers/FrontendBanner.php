@@ -187,9 +187,8 @@ class FrontendBanner extends \Frontend
                 if ($objBannerNextPage->numRows)
                 {
                     $objPage = \PageModel::findWithDetails($objBanners->banner_jumpTo);
-                    $objBanners->banner_url = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc(),
-                                                                                null,
-                                                                                $objPage->rootLanguage);
+                    /* deprecated #8 $objBanners->banner_url = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc(), null, $objPage->rootLanguage);*/
+                    $objBanners->banner_url = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objPage->rootLanguage);
                 }
             }
             $banner_redirect = $this->getRedirectType($this->intBID);
@@ -216,6 +215,7 @@ class FrontendBanner extends \Frontend
             $banner_redirect = '303';
 	    }
 	    $banner_url = ampersand($objBanners->banner_url);
+	    BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_url: '. $banner_url);
 	    // 301 Moved Permanently
 	    // 302 Found
 	    // 303 See Other

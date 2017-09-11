@@ -357,7 +357,7 @@ class BannerStatisticsHelper extends \BackendModule
                                     ->execute($Banner['banner_jumpTo']);
             if ($objBannerNextPage->numRows)
             {
-                $Banner['banner_url'] = $this->generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                $Banner['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
             }
         }
         if ($Banner['banner_url'] == '')
