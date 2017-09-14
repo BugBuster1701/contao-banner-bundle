@@ -138,36 +138,8 @@ class FrontendBanner extends \Frontend
             }
             $BannerChecks = null; unset($BannerChecks);
 	    
-            if ($banner_stat_update === true)
-            {
-                if ($banner_not_viewed === false)
-                {
-                    //Update
-                    $tstamp = time();
-                    $banner_clicks = $objBanners->banner_clicks + 1;
-                    \Database::getInstance()->prepare("UPDATE
-                                                            tl_banner_stat
-                                                       SET
-                                                            tstamp=?
-                                                          , banner_clicks=?
-                                                       WHERE
-                                                            id=?")
-                                            ->execute($tstamp, $banner_clicks, $this->intBID);
-                }
-                else
-                {
-                    //Insert
-                    $arrSet = array
-                    (
-                        'id'     => $this->intBID,
-                        'tstamp' => time(),
-                        'banner_clicks' => 1
-                    );
-                    \Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
-                                            ->set($arrSet)
-                                            ->execute();
-                }
-            }
+            //Zählung
+            $this->countClicks($banner_stat_update, $banner_not_viewed, $objBanners);
 	    
             //Banner Ziel per Page?
             if ($objBanners->banner_jumpTo >0)
@@ -221,6 +193,41 @@ class FrontendBanner extends \Frontend
 	    // 303 See Other
 	    // 307 Temporary Redirect (ab Contao 3.1)
 	    $this->redirect($banner_url, $banner_redirect);
+    }
+    
+    protected function countClicks($banner_stat_update, $banner_not_viewed, $objBanners) 
+    {
+        if ($banner_stat_update === true)
+        {
+            if ($banner_not_viewed === false)
+            {
+                //Update
+                $tstamp = time();
+                $banner_clicks = $objBanners->banner_clicks + 1;
+                \Database::getInstance()->prepare("UPDATE
+                                                        tl_banner_stat
+                                                   SET
+                                                        tstamp=?
+                                                      , banner_clicks=?
+                                                   WHERE
+                                                        id=?")
+                                        ->execute($tstamp, $banner_clicks, $this->intBID);
+            }
+            else
+            {
+                //Insert
+                $arrSet = array
+                (
+                    'id'     => $this->intBID,
+                    'tstamp' => time(),
+                    'banner_clicks' => 1
+                );
+                \Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
+                                        ->set($arrSet)
+                                        ->execute();
+            }
+        }
+        return ;
     }
     
     /**
