@@ -343,7 +343,7 @@ class BannerHelper extends \Frontend
 	{
 	    $arrParams = [];
 	    // Set the language
-	    if ($strForceLang != null)
+	    if ($strForceLang !== null)
 	    {
 	        $arrParams['_locale'] = $strForceLang;
 	    }
