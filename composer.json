@@ -54,7 +54,7 @@
 			}
 		},
 		"branch-alias": {
-			"dev-develop": "4.1.x-dev"
+			"dev-develop": "0.4.x-dev"
 		},
 		"contao-manager-plugin": "BugBuster\\BannerBundle\\ContaoManager\\Plugin"
 	}
