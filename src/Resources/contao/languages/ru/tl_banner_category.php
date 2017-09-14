@@ -21,6 +21,7 @@ $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0']   = 'В�
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['1']   = 'Если выбрать эту опцию, ссылка баннера откроется в том же окне браузера.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_url']['0']      = 'Целевой URL баннера';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_url']['1']      = 'Введите целевой URL баннера: http://...';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_all']['0'] = 'Режим отладки для всех классов "Баннер"';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_all']['1'] = 'Записывать отладочную информацию в файл журнала (<em>system/logs/prod-Y-M-D-banner_debug.log</em>)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_legend']         = 'Экспертные настройки';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_groups']['0']           = 'Разрешено участникам групп';
