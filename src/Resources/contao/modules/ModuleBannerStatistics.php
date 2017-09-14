@@ -21,6 +21,8 @@ namespace BugBuster\BannerStatistics;
 
 use BugBuster\BannerStatistics\BannerStatisticsHelper;
 use BugBuster\Banner\BannerImage;
+use BugBuster\Banner\BannerHelper;
+use BugBuster\Banner\BannerLog;
 
 /**
  * Class ModuleBannerStatistics
@@ -65,6 +67,9 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         {
             $this->setZero();
         }
+        //Get Debug Settings
+        $objBannerHelper = new BannerHelper();
+        $objBannerHelper->setDebugSettings($this->intCatID);
     }
     
     /**
@@ -184,7 +189,9 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $arrBannersStat = array();
         // Kurz URL (nur Domain)
         $this->setBannerURL($Banner);
-        $Banner['banner_url'] = \Idna::decode($Banner['banner_url']); // #79
+        BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_url: ' . $Banner['banner_url']);
+        $Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79 
+        BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_url punydecode: ' . $Banner['banner_url']);
         $treffer = parse_url($Banner['banner_url']);
         $banner_url_kurz = $treffer['host'];
         if (isset($treffer['port']))
@@ -231,7 +238,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         // and $Banner['banner_published_class'] published/unpublished
         $this->setBannerPublishedActive($Banner);
         $this->setBannerURL($Banner);
-        $Banner['banner_url'] = \Idna::decode($Banner['banner_url']); // #79
+        $Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79
         
         //Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
         $objFile = \FilesModel::findByPk($Banner['banner_image']);
@@ -323,7 +330,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         // and $Banner['banner_published_class'] published/unpublished
         $this->setBannerPublishedActive($Banner);
         $this->setBannerURL($Banner);
-        $Banner['banner_url']   = \Idna::decode($Banner['banner_url']);
+        $Banner['banner_url']   = BannerHelper::decodePunycode($Banner['banner_url']);
         
         //BannerImage Class
         $this->BannerImage = new BannerImage();

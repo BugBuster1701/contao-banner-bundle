@@ -19,6 +19,8 @@
 namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerImage;
+use BugBuster\Banner\BannerHelper;
+use BugBuster\Banner\BannerLog;
 use Psr\Log\LogLevel;
 use Contao\CoreBundle\Monolog\ContaoContext;
 use Contao\StringUtil;
@@ -63,6 +65,10 @@ class DcaBanner extends \Backend
      */
     public function addHeader($add, $dca)
     {
+        //Get Debug Settings
+        $objBannerHelper = new BannerHelper();
+        $objBannerHelper->setDebugSettings($add['id']);
+        BannerLog::writeLog(__METHOD__ , __LINE__ , '###');
         $catId = $add['id'];
         unset($add['id']); //delete the helper
         
@@ -182,11 +188,15 @@ class DcaBanner extends \Backend
                                                 ->execute($row['banner_jumpTo']);
             if ($objBannerNextPage->numRows)
             {
-                $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                //old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                $objParent = \PageModel::findWithDetails($row['banner_jumpTo']);
+                $row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
+                BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_url: ' . $row['banner_url']);
             }
         }
-        $banner_url = ampersand(\Idna::decode($row['banner_url']));
+        $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
         $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
+        BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_url: ' . $banner_url);
         
         if ( strlen($banner_url) <1 && $row['banner_jumpTo'] <1 )
         {
@@ -325,10 +335,13 @@ class DcaBanner extends \Backend
                                                         ->execute($row['banner_jumpTo']);
             if ($objBannerNextPage->numRows)
             {
-                $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                //old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                $objParent = \PageModel::findWithDetails($row['banner_jumpTo']);
+                $row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
+                BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_url: ' . $row['banner_url']);
             }
         }
-        $banner_url = ampersand(\Idna::decode($row['banner_url']));
+        $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
         if (strlen($banner_url)>0)
         {
             $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
@@ -443,11 +456,14 @@ class DcaBanner extends \Backend
                                                 ->execute($row['banner_jumpTo']);
             if ($objBannerNextPage->numRows)
             {
-                $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                //old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                $objParent = \PageModel::findWithDetails($row['banner_jumpTo']);
+                $row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
+                BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_url: ' . $row['banner_url']);
             }
         }
         
-        $banner_url = ampersand(\Idna::decode($row['banner_url']));
+        $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
         if (strlen($banner_url)>0)
         {
             $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';

@@ -14,6 +14,8 @@
 
 namespace BugBuster\Banner;
 
+use BugBuster\Banner\BannerHelper;
+
 /**
  * Class BannerText
  *
@@ -52,12 +54,13 @@ class BannerText
                 {
                     $domain = (\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
                 }
-                $this->objBanners->banner_url = $domain . \Controller::generateFrontendUrl($objParent->row(), '', $objParent->language);
+                //old $this->objBanners->banner_url = $domain . \Controller::generateFrontendUrl($objParent->row(), '', $objParent->language);
+                $this->objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator($objParent->row(), null, $objParent->language);
             }
         }
          
         // Kurz URL (nur Domain)
-        $treffer = parse_url(\Idna::decode($this->objBanners->banner_url)); // #79
+        $treffer = parse_url(BannerHelper::decodePunycode($this->objBanners->banner_url)); // #79
         $banner_url_kurz = $treffer['host'];
         if (isset($treffer['port']))
         {

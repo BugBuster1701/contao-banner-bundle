@@ -342,7 +342,11 @@ class BannerHelper extends \Frontend
 	public static function frontendUrlGenerator($arrRow, $strParams=null, $strForceLang=null) 
 	{
 	    $arrParams = [];
-	    $arrParams['_locale'] = $strForceLang;
+	    // Set the language
+	    if ($strForceLang != null)
+	    {
+	        $arrParams['_locale'] = $strForceLang;
+	    }
 	    
 	    $objUrlGenerator = \System::getContainer()->get('contao.routing.url_generator');
 	    $strUrl = $objUrlGenerator->generate( ($arrRow['alias'] ?: $arrRow['id']) . $strParams, $arrParams );
@@ -366,4 +370,20 @@ class BannerHelper extends \Frontend
 	    
 	    return $strUrl;
 	}
+	
+    public static function decodePunycode($strUrl) 
+    {
+        if ($strUrl == '')
+        {
+            return '';
+        }
+        $arrUrl = parse_url($strUrl);
+        
+        if (!isset($arrUrl['scheme']))
+        {
+            //interne Seite
+            return $strUrl;
+        }
+        return \Idna::decodeUrl($strUrl);
+    }
 } // class

@@ -15,6 +15,7 @@
 namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerImage;
+use BugBuster\Banner\BannerHelper;
 
 /**
  * Class BannerInternal
@@ -148,7 +149,8 @@ class BannerInternal
                 {
                     $domain = (\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
                 }
-                $this->objBanners->banner_url = $domain . \Controller::generateFrontendUrl($objParent->row(), '', $objParent->language);
+                //old $this->objBanners->banner_url = $domain . \Controller::generateFrontendUrl($objParent->row(), '', $objParent->language);
+                $this->objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator($objParent->row(), null, $objParent->language);
             }
         }
          
