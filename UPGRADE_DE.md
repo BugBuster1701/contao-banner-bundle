@@ -40,7 +40,7 @@ Da es unterschiedliche Wege gibt für ein Upgrade von Contao 3 nach Contao 4, se
 Nach Migration von Contao 3 nach 4 durch das Install Tool (für Contao selbst), kann dann mit der Installation von Contao-Banner-Bundle (bugbuster/contao-banner-bundle) begonnen werden.
 Installationsanleitung siehe [INSTALLATION_DE.md](INSTALLATION_DE.md)
 
-Bei Aufruf vom Install Tool wird dann angeboten, die Änderungen wie oben im Abschnitt [Datenbank Änderungen](datenbank-nderungen) durchzuführen.
+Bei Aufruf vom Install Tool wird dann angeboten, die Änderungen wie oben im Abschnitt [Datenbank Änderungen](UPGRADE_DE.md#datenbank-Änderungen) durchzuführen.
 Das kann bedenkenlos getan werden, da diese Felder wie erwähnt lediglich Einstellungen für den Debug Modus betreffen.
 
 
