@@ -1,0 +1,29 @@
+<!-- indexer::stop -->
+<aside class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<?php foreach ($this->banners as $banner): ?>
+<?php if ($banner['banner_pic']) : ?>
+	<figure class="banner_wrap<?php echo $banner['banner_wrap_class']; ?>"<?php echo $banner['banner_wrap_id']; ?> itemscope itemtype="http://schema.org/ImageObject">
+	    <div class="banner_image" id="banner_<?php echo $banner['banner_id']; ?>">
+	        <?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>?<?php echo $banner['banner_key'].$banner['banner_id']; ?>" <?php echo $banner['banner_target']; ?> title="<?php echo $banner['banner_comment']; ?>" itemprop="contentUrl"><?php endif; ?>
+	        <?php $this->insert('picture_default', $banner['picture']) ?>
+	        <?php if ($banner['banner_url']): ?></a><?php endif; ?>
+	    </div>
+	</figure>
+<?php endif; ?>
+<?php if ($banner['banner_text']) : ?>
+	<figure class="banner_wrap<?php echo $banner['banner_wrap_class']; ?>"<?php echo $banner['banner_wrap_id']; ?>>
+	    <div class="banner_text" id="banner_<?php echo $banner['banner_id']; ?>">
+	    	<div class="banner_text_name"><?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>?<?php echo $banner['banner_key'].$banner['banner_id']; ?>" <?php echo $banner['banner_target']; ?> title="<?php echo $banner['banner_name']; ?>" ><?php endif; ?><?php echo $banner['banner_name']; ?><?php if ($banner['banner_url']): ?></a><?php endif; ?></div>
+	    	<div class="banner_text_comment"><?php echo $banner['banner_comment']; ?></div>
+	        <?php if ($banner['banner_url']): ?><div class="banner_text_url"><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>?<?php echo $banner['banner_key'].$banner['banner_id']; ?>" <?php echo $banner['banner_target']; ?> title="<?php echo $banner['banner_name']; ?>" ><?php echo $banner['banner_url_kurz']; ?></a></div><?php endif; ?>
+	    </div>
+	</figure>
+<?php endif; ?>
+<?php if ($banner['banner_empty']) : ?>
+	<div class="banner_empty">
+	<!-- <?php echo $banner['banner_name']; ?> -->
+	</div>
+<?php endif; ?>
+<?php endforeach; ?>
+</aside>
+<!-- indexer::continue -->

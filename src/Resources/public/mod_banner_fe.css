@@ -1,0 +1,57 @@
+.mod_banner {
+    border:1px solid #000000;
+    margin:20px 10px 20px 10px;
+}
+.mod_banner h1
+{
+	margin:0px 12px 0px 12px;
+}
+
+.mod_banner .banner_name
+{
+	margin:0px 0px 10px 0px;
+	text-align:center;
+	font-weight:bold;
+}
+
+.mod_banner .banner_image
+{
+	margin:10px auto 0px auto;
+	text-align:center;
+}
+
+.mod_banner .banner_flash
+{
+	margin:10px auto 0px auto;
+	text-align:center;
+}
+
+.mod_banner .banner_text
+{
+	margin:10px auto 10px 0px;
+	text-align:left;
+}
+
+.mod_banner .banner_text_name
+{
+	margin:0px auto 0px 10px;
+	text-align:left;
+	font-weight:bold;
+}
+
+.mod_banner .banner_text_comment
+{
+	margin:0px auto 0px 10px;
+	text-align:left;
+}
+
+.mod_banner .banner_text_url
+{
+	margin:0px auto 0px 10px;
+	text-align:left;
+}
+
+.mod_banner .banner_text_url a
+{
+	font-size:0.8em;
+}
