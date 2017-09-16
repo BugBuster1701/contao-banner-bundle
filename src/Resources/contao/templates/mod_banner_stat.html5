@@ -107,12 +107,12 @@
 		        <strong style="padding-left: 14px;"><?php echo $bannerstat['banner_name']; ?></strong>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;">
-		        <form method="post" class="info" id="banner_reset" action="<?php echo $this->banner_base_be; ?>/main.php?do=bannerstat">
+		        <form method="post" class="info" action="<?php echo $this->banner_base_be; ?>/main.php?do=bannerstat">
 		            <input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
 		            <input type="hidden" name="act" value="zero">
 		            <input type="hidden" name="zid" value="<?php echo $bannerstat['banner_id']; ?>">
 		            <input type="hidden" name="id" value="<?php echo $this->bannercatid; ?>">
-		            <input class="tl_img_submit" type="image" value="<?php echo $bannerstat['banner_zero']; ?>" 
+		            <input class="banner_reset" type="image" value="<?php echo $bannerstat['banner_zero']; ?>" 
 		                    title="<?php echo $bannerstat['banner_zero']; ?>" 
 		                    src="bundles/bugbusterbanner/<?php echo $this->theme0; ?>/down0.gif" 
 		                    name="filter" 
@@ -123,11 +123,11 @@
 		</tr>
 		<tr>
 		    <td style="padding-left: 2px; padding-bottom:6px;  padding-top:6px;" class="tl_file_list">
-		        <img style ="<?php echo $bannerstat['banner_style']; ?>" 
-		             alt   ="<?php echo $bannerstat['banner_alt'];   ?>" 
-		             src   ="<?php echo $bannerstat['banner_image']; ?>" 
-		             height="<?php echo $bannerstat['banner_height'];?>" 
-		             width ="<?php echo $bannerstat['banner_width']; ?>" 
+		        <img style ="<?php echo $bannerstat['banner_style']; ?>"
+		             alt   ="<?php echo $bannerstat['banner_alt'];   ?>"
+		             src   ="<?php echo $bannerstat['banner_image']; ?>"
+		             height="<?php echo $bannerstat['banner_height'];?>"
+		             width ="<?php echo $bannerstat['banner_width']; ?>"
 		             title ="<?php echo $bannerstat['banner_title']; ?>"
 		            >
 		        <br><?php echo $this->header_url .': '. $bannerstat['banner_url']; ?>
@@ -193,12 +193,12 @@
 		        <strong style="padding-left: 14px;"><?php echo $bannerstat['banner_name']; ?></strong>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;">
-		        <form method="post" class="info" id="banner_reset" action="<?php echo $this->banner_base_be; ?>/main.php?do=bannerstat">
+		        <form method="post" class="info" action="<?php echo $this->banner_base_be; ?>/main.php?do=bannerstat">
 		            <input type="hidden" name="REQUEST_TOKEN" value="<?php echo REQUEST_TOKEN; ?>">
 		            <input type="hidden" name="act" value="zero">
 		            <input type="hidden" name="zid" value="<?php echo $bannerstat['banner_id']; ?>">
 		            <input type="hidden" name="id" value="<?php echo $this->bannercatid; ?>">
-		            <input class="tl_img_submit" type="image" value="<?php echo $bannerstat['banner_zero']; ?>" 
+		            <input class="banner_reset" type="image" value="<?php echo $bannerstat['banner_zero']; ?>" 
 		                    title="<?php echo $bannerstat['banner_zero']; ?>" 
 		                    src="bundles/bugbusterbanner/<?php echo $this->theme0; ?>/down0.gif" 
 		                    name="filter" 
@@ -208,9 +208,9 @@
 		    </td>
 		</tr>
 		<tr>
-		    <td style="padding-left: 2px; padding-bottom:6px;  padding-top:6px;" class="tl_file_list">
+		    <td style="padding-left: 2px; padding-bottom: 6px; padding-top: 6px;" class="tl_file_list">
 		        <br><?php echo $bannerstat['banner_comment']; ?>
-		        <br><br><?php echo $this->header_url .': '. $bannerstat['banner_url']; ?><?php //echo $bannerstat['banner_url_kurz']; ?>
+		        <br><br><?php echo $this->header_url .': '. $bannerstat['banner_url']; ?>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;" class="tl_file_list">&nbsp;</td>
 		    <td style="padding-left: 2px; text-align: left;" class="tl_file_list">
@@ -233,6 +233,7 @@
 		                    <div class="date_head"><?php echo $this->header_clicks; ?></div>
 		                    <div class="date_data_right"><?php echo $bannerstat['banner_clicks']; ?></div>
 		                </div>
+		                <div style="clear:both;"></div>
 		            <?php if (0 < $bannerstat['banner_clicks']) : ?>
 		                <div class="left">
 		                    <div class="">&nbsp;</div>
