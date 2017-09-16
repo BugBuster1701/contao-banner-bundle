@@ -265,7 +265,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $intHeight = $arrNewBannerImageSize[1];
         $oriSize   = $arrNewBannerImageSize[2];
         
-        return $this->generateTemplateData(self::BANNER_TYPE_INTERN, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize, $objFile);
+        return $this->generateTemplateData(self::BANNER_TYPE_INTERN, $Banner, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize, $objFile);
     } //addBannerIntern
     
     
@@ -307,7 +307,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $oriSize   = $arrNewBannerImageSize[2];
         unset($oriSize);
         
-        return $this->generateTemplateData(self::BANNER_TYPE_EXTERN, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks);
+        return $this->generateTemplateData(self::BANNER_TYPE_EXTERN, $Banner, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks);
     } // addBannerExtern
     
     /**
@@ -338,7 +338,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         return false;
     }
     
-    protected function generateTemplateData($strBannerType, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize=null, $objFile=null) 
+    protected function generateTemplateData($strBannerType, &$Banner, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize=null, $objFile=null) 
     {
         $arrBannersStat = array();
         

@@ -98,9 +98,9 @@
 		    <td style="width:260px; padding-left: 2px; text-align: center;" class="tl_folder_tlist">Statistik</td>
 		    <td style="width:60px; padding-left: 2px; text-align: center;" class="tl_folder_tlist">Reset</td>
 		</tr>
-		<?php if ($this->bannercatid>0 || $this->bannercatid==-1) : ?>
-		    <?php foreach ($this->bannersstat as $bannerstat): ?>
-		        <?php if ($bannerstat['banner_pic']) : ?>
+<?php if ($this->bannercatid>0 || $this->bannercatid==-1) : ?>
+    <?php foreach ($this->bannersstat as $bannerstat): ?>
+        <?php if ($bannerstat['banner_pic']) : ?>
 		<!-- Bild Start -->
 		<tr style="height:20px;">
 		    <td colspan="3" style="font-size:11px;margin-bottom:10px;" class="cte_type <?php echo $bannerstat['banner_pub_class']; ?>">
@@ -185,8 +185,8 @@
 		    <td style="padding-left: 2px; text-align: center;" class="tl_file_list"></td>
 		</tr>
 		<!-- Bild Ende -->
-		        <?php endif; ?>
-		        <?php if ($bannerstat['banner_text']) : ?>
+		<?php endif; ?>
+		<?php if ($bannerstat['banner_text']) : ?>
 		<!-- Text Start -->
 		<tr style="height:20px;">
 		    <td colspan="3" style="font-size:11px;margin-bottom:10px;" class="cte_type <?php echo $bannerstat['banner_pub_class']; ?>">
@@ -264,9 +264,9 @@
 		    <td style="padding-left: 2px; text-align: center;" class="tl_file_list"></td>
 		</tr>
 		<!-- Text Ende -->
-		        <?php endif; ?>
-		    <?php endforeach; ?>
-		<?php endif; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+<?php endif; ?>
 		<tr>
 		    <td colspan="4">&nbsp;</td>
 		</tr>
