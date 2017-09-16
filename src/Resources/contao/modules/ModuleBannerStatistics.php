@@ -265,7 +265,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $intHeight = $arrNewBannerImageSize[1];
         $oriSize   = $arrNewBannerImageSize[2];
         
-        return $this->generateTemplateData(self::BANNER_TYPE_INTERN, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize=null, $objFile=null);
+        return $this->generateTemplateData(self::BANNER_TYPE_INTERN, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize, $objFile);
     } //addBannerIntern
     
     
