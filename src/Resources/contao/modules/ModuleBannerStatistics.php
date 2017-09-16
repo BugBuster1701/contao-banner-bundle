@@ -158,7 +158,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->Template->banner_version   = $GLOBALS['TL_LANG']['tl_banner_stat']['modname'] . ' ' . BANNER_VERSION .'.'. BANNER_BUILD;
         $this->Template->banner_footer    = $GLOBALS['TL_LANG']['tl_banner_stat']['comment'];
         $this->Template->banner_base      = \Environment::get('base');
-        $this->Template->banner_base_be   = \Environment::get('base') . 'contao';
+        $this->Template->banner_base_be   = \Environment::get('base') . 'contao'; //TODO deprecated
         $this->Template->theme            = $this->getTheme();
         $this->Template->theme0           = 'default';
         
@@ -166,6 +166,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->Template->bannercatid   = $this->intCatID;
         $this->Template->bannerstatcat = $GLOBALS['TL_LANG']['tl_banner_stat']['kat'];
         $this->Template->exportfield   = $GLOBALS['TL_LANG']['tl_banner_stat']['kat'].' '.$GLOBALS['TL_LANG']['tl_banner_stat']['export'];
+        $this->Template->bannerzero    = $GLOBALS['TL_LANG']['tl_banner_stat']['banner_zero'];
         $this->Template->bannercatzero        = $GLOBALS['TL_LANG']['tl_banner_stat']['cat_zero'];
         $this->Template->bannercatzerobutton  = $GLOBALS['TL_LANG']['tl_banner_stat']['cat_zero_button'];
         $this->Template->bannercatzerotext    = $GLOBALS['TL_LANG']['tl_banner_stat']['cat_zero_text'];
