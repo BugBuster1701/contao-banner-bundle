@@ -228,7 +228,6 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
      */
     protected function addBannerIntern( &$Banner )
     {
-        $arrBannersStat = array();
         $oriSize = false;
         
         // return array(bool $intMaxViews, bool $intMaxClicks)
@@ -266,13 +265,12 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $intHeight = $arrNewBannerImageSize[1];
         $oriSize   = $arrNewBannerImageSize[2];
         
-        return generateTemplateData(self::BANNER_TYPE_INTERN, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize=null, $objFile=null);
+        return $this->generateTemplateData(self::BANNER_TYPE_INTERN, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize=null, $objFile=null);
     } //addBannerIntern
     
     
     protected function addBannerExtern( &$Banner )
     {
-        $arrBannersStat = array();
         $oriSize = false;
         
         // return array(bool $intMaxViews, bool $intMaxClicks)
@@ -342,6 +340,8 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
     
     protected function generateTemplateData($strBannerType, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize=null, $objFile=null) 
     {
+        $arrBannersStat = array();
+        
         switch ($arrImageSize[2])
         {
             case 1: // GIF
