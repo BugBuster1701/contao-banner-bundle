@@ -4,11 +4,11 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/fr/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/fr/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2014-06-29T00:55:54+02:00
+ * last-updated: 2017-09-17T00:16:11+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_stat']['NoURL']            = 'Sans URL';
@@ -24,7 +24,6 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['clicks']           = 'Clics';
 $GLOBALS['TL_LANG']['tl_banner_stat']['id']               = 'ID';
 $GLOBALS['TL_LANG']['tl_banner_stat']['kat']              = 'Catégorie';
 $GLOBALS['TL_LANG']['tl_banner_stat']['max_yes']          = '(Maximum)';
-$GLOBALS['TL_LANG']['tl_banner_stat']['modname']          = 'Module bannière';
 $GLOBALS['TL_LANG']['tl_banner_stat']['name']             = 'Nom';
 $GLOBALS['TL_LANG']['tl_banner_stat']['picture']          = 'Bannière';
 $GLOBALS['TL_LANG']['tl_banner_stat']['prio']['1']        = 'haut';

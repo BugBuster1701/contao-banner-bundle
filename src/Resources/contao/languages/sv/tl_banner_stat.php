@@ -4,13 +4,12 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/sv/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/sv/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2014-02-08T23:02:16+01:00
+ * last-updated: 2017-09-17T00:16:11+02:00
  */
-
 
 $GLOBALS['TL_LANG']['tl_banner_stat']['NoURL']        = 'Ingen URL';
 $GLOBALS['TL_LANG']['tl_banner_stat']['Prio']         = 'Prioritet';
@@ -21,7 +20,6 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['clicks']       = 'Klick';
 $GLOBALS['TL_LANG']['tl_banner_stat']['id']           = 'ID';
 $GLOBALS['TL_LANG']['tl_banner_stat']['kat']          = 'Kategori';
 $GLOBALS['TL_LANG']['tl_banner_stat']['max_yes']      = '(Maximum)';
-$GLOBALS['TL_LANG']['tl_banner_stat']['modname']      = 'Banner-modul';
 $GLOBALS['TL_LANG']['tl_banner_stat']['name']         = 'Namn';
 $GLOBALS['TL_LANG']['tl_banner_stat']['picture']      = 'Banner';
 $GLOBALS['TL_LANG']['tl_banner_stat']['pub_no']       = 'nej';
