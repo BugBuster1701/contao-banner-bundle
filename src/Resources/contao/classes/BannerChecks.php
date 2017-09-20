@@ -4,7 +4,7 @@
  *
  * FE Helper Class BannerChecks
  *
- * @copyright  Glen Langer 2007 <http://contao.ninja>
+ * @copyright  Glen Langer 2007..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @package    Banner
  * @license    LGPL

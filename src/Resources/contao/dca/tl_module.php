@@ -1,12 +1,12 @@
 <?php 
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2012 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
  * 
  * Modul Banner - Backend DCA tl_module
  *
  * This file modifies the data container array of table tl_module.
  *
- * @copyright  Glen Langer 2007..2015
+ * @copyright  Glen Langer 2007..2017
  * @author     Glen Langer
  * @package    Banner
  * @license    LGPL

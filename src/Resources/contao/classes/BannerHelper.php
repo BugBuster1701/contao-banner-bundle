@@ -5,12 +5,12 @@
  *
  * Modul Banner - FE Helper Class BannerHelper
  *
- * @copyright  Glen Langer 2007..2015 <http://contao.ninja>
+ * @copyright  Glen Langer 2007..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @package    Banner
  * @license    LGPL
  * @filesource
- * @see        https://github.com/BugBuster1701/banner
+ * @see        https://github.com/BugBuster1701/contao-banner-bundle
  */
 
 namespace BugBuster\Banner;
@@ -21,7 +21,7 @@ use BugBuster\Banner\BannerLog;
 /**
  * Class BannerHelper
  *
- * @copyright  Glen Langer 2007..2015 <http://contao.ninja>
+ * @copyright  Glen Langer 2007..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @package    Banner
  * @license    LGPL

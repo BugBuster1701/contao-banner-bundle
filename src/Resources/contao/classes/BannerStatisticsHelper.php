@@ -1,17 +1,17 @@
 <?php
 
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2012 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
 *
 * Module BannerStatistics 
 * Helper class
 *
-* @copyright  Glen Langer 2013 <http://contao.ninja>
+* @copyright  Glen Langer 2013..2017 <http://contao.ninja>
 * @author     Glen Langer (BugBuster)
 * @package    BannerStatistics
 * @license    LGPL
 * @filesource
-* @see        https://github.com/BugBuster1701/banner
+* @see        https://github.com/BugBuster1701/contao-banner-bundle
 */
 
 /**
@@ -25,7 +25,7 @@ use BugBuster\Banner\BannerLog;
 /**
  * Class BotStatisticsHelper
  *
- * @copyright  Glen Langer 2012 <http://contao.ninja>
+ * @copyright  Glen Langer 2013..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @package    BannerStatisticsHelper
  */

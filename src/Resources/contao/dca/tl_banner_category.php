@@ -1,18 +1,14 @@
 <?php 
 
 /**
- * Contao Open Source CMS
- * Copyright (C) 2005-2012 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
  *
- * @link http://www.contao.org
- * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
- * 
  * Modul Banner - Backend DCA tl_banner_category
  *
  * This is the data container array for table tl_banner_category.
  *
  * PHP version 5
- * @copyright  Glen Langer 2007..2015
+ * @copyright  Glen Langer 2007..2017
  * @author     Glen Langer 
  * @package    Banner
  * @license    LGPL
