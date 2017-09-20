@@ -365,7 +365,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                 }
                 
                 $arrBannersStat['banner_id'      ]     = $Banner['id'];
-                $arrBannersStat['banner_style'   ]     = '';
+                $arrBannersStat['banner_style'   ]     = 'padding-bottom: 4px;';
                 $arrBannersStat['banner_name'    ]     = specialchars(ampersand($Banner['banner_name']));
                 $arrBannersStat['banner_alt'     ]     = specialchars(ampersand($Banner['banner_name']));
                 $arrBannersStat['banner_title'   ]     = $Banner['banner_url'];
