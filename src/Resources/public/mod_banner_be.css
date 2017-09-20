@@ -69,7 +69,19 @@
     color: #700000; 
     font-weight: bold;
 }
-
+.banner_reset {
+    border: 0 none;
+    cursor: pointer;
+    height: 16px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    text-indent: 100%;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 16px;
+}
 #tl_banner_category div p.tl_tip {
     overflow: visible;
 	height: auto;
