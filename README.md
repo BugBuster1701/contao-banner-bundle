@@ -23,7 +23,7 @@ Installationsanleitung (DE): [INSTALLATION_DE.md](INSTALLATION_DE.md)
 
 ## Upgrade von Contao 3 nach 4
 
-Upgrade Tutorial (EN); TODO
+Upgrade Tutorial (EN): [UPGRADE_EN.md](UPGRADE_EN.md)
 
 Upgrade Hinweise (DE): [UPGRADE_DE.md](UPGRADE_DE.md)
 
