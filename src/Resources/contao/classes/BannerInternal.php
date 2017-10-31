@@ -104,9 +104,24 @@ class BannerInternal
         {
             //Resize an image and store the resized version in the assets/images folder
             //return The path of the resized image or null
-            $FileSrc = \Image::get(\System::urlEncode($objFile->path), $arrImageSizenNew[0], $arrImageSizenNew[1],'proportional');
+            //alt $FileSrc = \Image::get(\System::urlEncode($objFile->path), $arrImageSizenNew[0], $arrImageSizenNew[1],'proportional');
+            $container = \System::getContainer();
+            $rootDir = $container->getParameter('kernel.project_dir');
+            $FileSrc = $container
+                        ->get('contao.image.image_factory')
+                        ->create($rootDir.'/' . \System::urlEncode($objFile->path), [$arrImageSizenNew[0], $arrImageSizenNew[1], 'proportional'])
+                        ->getUrl($rootDir);
         
-            $picture = \Picture::create(\System::urlEncode($objFile->path), array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))->getTemplateData();
+            //alt $picture = \Picture::create(\System::urlEncode($objFile->path), array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))->getTemplateData();
+            $picture = $container
+                        ->get('contao.image.picture_factory')
+                        ->create($rootDir . '/' . \System::urlEncode($objFile->path), $arrImageSizenNew);
+            $picture = array
+            (
+                'img' => $picture->getImg(TL_ROOT, TL_FILES_URL),
+                'sources' => $picture->getSources(TL_ROOT, TL_FILES_URL)
+            );
+            
             $picture['alt']   = \StringUtil::specialchars(ampersand($this->objBanners->banner_name));
             $picture['title'] = \StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
         

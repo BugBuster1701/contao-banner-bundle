@@ -360,13 +360,18 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                     }
                     else
                     {
-                        $Banner['banner_image'] = \Image::get($this->urlEncode($objFile->path), $intWidth, $intHeight,'proportional');
+                        $container = \System::getContainer();
+                        $rootDir = $container->getParameter('kernel.project_dir');
+                        $Banner['banner_image'] = $container
+                                                    ->get('contao.image.image_factory')
+                                                    ->create($rootDir.'/' . \System::urlEncode($objFile->path), [$intWidth, $intHeight, 'proportional'])
+                                                    ->getUrl($rootDir);
                     }
                 }
                 
                 $arrBannersStat['banner_id'      ]     = $Banner['id'];
                 $arrBannersStat['banner_style'   ]     = 'padding-bottom: 4px;';
-                $arrBannersStat['banner_name'    ]     = specialchars(ampersand($Banner['banner_name']));
+                $arrBannersStat['banner_name'    ]     = 'Test '.specialchars(ampersand($Banner['banner_name']));
                 $arrBannersStat['banner_alt'     ]     = specialchars(ampersand($Banner['banner_name']));
                 $arrBannersStat['banner_title'   ]     = $Banner['banner_url'];
                 $arrBannersStat['banner_url'     ]     = (strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'],-24,24) );
