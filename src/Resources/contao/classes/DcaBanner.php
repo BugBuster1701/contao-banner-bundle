@@ -168,11 +168,16 @@ class DcaBanner extends \Backend
                 $oriSize   = $arrImageSizeNew[2];
                 if ($oriSize || $arrImageSize[2] == 1) // GIF)
                 {
-                    $banner_image = $this->urlEncode($objFile->path);
+                    $banner_image = \System::urlEncode($objFile->path);
                 }
                 else
                 {
-                    $banner_image = \Image::get($this->urlEncode($objFile->path), $intWidth, $intHeight);
+                    $container = \System::getContainer();
+                    $rootDir = $container->getParameter('kernel.project_dir');
+                    $banner_image = $container
+                                        ->get('contao.image.image_factory')
+                                        ->create($rootDir.'/'.\System::urlEncode($objFile->path), [$intWidth, $intHeight, 'proportional'])
+                                        ->getUrl($rootDir);
                 }
                 break;
             default:
