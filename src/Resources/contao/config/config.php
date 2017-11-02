@@ -13,7 +13,7 @@
  * @filesource
  */
 
-define('BANNER_VERSION', '4.0');
+define('BANNER_VERSION', '0.2');
 define('BANNER_BUILD'  , '0');
 
 /**
