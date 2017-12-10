@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
  * @copyright  Glen Langer 2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  *
- * @Route("/bugbuster_febanner", defaults={"_scope" = "frontend", "_token_check" = false})
+ * @Route("/bbfebanner", defaults={"_scope" = "frontend", "_token_check" = false})
  */
 class BannerFeController extends Controller
 {
