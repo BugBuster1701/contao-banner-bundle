@@ -194,6 +194,12 @@ class FrontendBanner extends \Frontend
 	    // 303 See Other
 	    // 307 Temporary Redirect (ab Contao 3.1)
 	    //$this->redirect($banner_url, $banner_redirect);
+	    
+	    // Make the location an absolute URL
+	    if (!preg_match('@^https?://@i', $banner_url))
+	    {
+	        $banner_url = \Environment::get('base') . ltrim($banner_url, '/');
+	    }
 
 	    $objResponse = new RedirectResponse($banner_url, $banner_redirect);
 	    $objResponse->setPrivate();
