@@ -182,7 +182,7 @@ class BannerHelper extends \Frontend
 			$this->arrCategoryValues = false;
 			return false;
 		}
-		$arrGroup = deserialize($objBannerCategory->banner_groups);
+		$arrGroup = \StringUtil::deserialize($objBannerCategory->banner_groups);
 		//Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
 		$objFile = \FilesModel::findByPk($objBannerCategory->banner_default_image);
 		$this->arrCategoryValues = array(
