@@ -46,6 +46,9 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
      */
     protected $intCatID;
     
+    protected $BannerImage;
+    
+    
     /**
      * Constructor
      */
@@ -208,8 +211,8 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $arrBannersStat['banner_url_kurz' ]    = $banner_url_kurz;
         $arrBannersStat['banner_url'      ]    = (strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'],-24,24) );
         $arrBannersStat['banner_prio'     ]    = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
-        $arrBannersStat['banner_views'    ]    = ($MaxViewsClicks[0]) ? $Banner['banner_views']  .'<br />'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
-        $arrBannersStat['banner_clicks'   ]    = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] .'<br />'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
+        $arrBannersStat['banner_views'    ]    = ($MaxViewsClicks[0]) ? $Banner['banner_views']  .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
+        $arrBannersStat['banner_clicks'   ]    = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
         $arrBannersStat['banner_active'   ]    = $Banner['banner_active'];
         $arrBannersStat['banner_pub_class']    = $Banner['banner_published_class'];
         $arrBannersStat['banner_zero'     ]    = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text'];
@@ -239,7 +242,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->setBannerPublishedActive($Banner);
         $this->setBannerURL($Banner);
         $Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79
-        
+        $Banner['banner_url'] = preg_replace('/^app_dev\.php\//', '', $Banner['banner_url']); // #22
         //Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
         $objFile = \FilesModel::findByPk($Banner['banner_image']);
         //BannerImage Class
