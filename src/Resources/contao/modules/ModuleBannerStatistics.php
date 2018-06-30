@@ -83,6 +83,9 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $arrBanners      = array();
         $arrBannersStat  = array();
         $intCatIdAllowed = false;
+        $number_clicks   = 0;
+        $number_views    = 0;
+        
 
         //alle Kategorien holen die der User sehen darf
         $arrBannerCategories = $this->getBannerCategoriesByUsergroups();
