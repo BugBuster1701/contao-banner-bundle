@@ -171,7 +171,6 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->Template->bannercats    = $arrBannerCategories;
         $this->Template->bannercatid   = $this->intCatID;
         $this->Template->bannerstatcat = $GLOBALS['TL_LANG']['tl_banner_stat']['kat'];
-        $this->Template->exportfield   = $GLOBALS['TL_LANG']['tl_banner_stat']['kat'].' '.$GLOBALS['TL_LANG']['tl_banner_stat']['export'];
         $this->Template->bannerzero    = $GLOBALS['TL_LANG']['tl_banner_stat']['banner_zero'];
         $this->Template->bannercatzero        = $GLOBALS['TL_LANG']['tl_banner_stat']['cat_zero'];
         $this->Template->bannercatzerobutton  = $GLOBALS['TL_LANG']['tl_banner_stat']['cat_zero_button'];
