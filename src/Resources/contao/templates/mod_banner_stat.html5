@@ -8,8 +8,8 @@
 		<div class="tl_submit_panel tl_subpanel">
 			<input class="tl_img_submit" 
 					type="image" 
-					value="<?= specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
-					title="<?= specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
+					value="<?= \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
+					title="<?= \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
 					src="system/themes/<?= $this->theme; ?>/images/reload.gif" 
 					name="filter">
 		</div>
