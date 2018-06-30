@@ -41,7 +41,7 @@ class BannerLog
             {
                 if ((bool)$GLOBALS['banner']['debug']['all']) 
                 {
-                    $arrUniqid = trimsplit('.', uniqid('c0n7a0',true) );
+                    $arrUniqid = \StringUtil::trimsplit('.', uniqid('c0n7a0',true) );
                     $GLOBALS['banner']['debug']['first'] = $arrUniqid[1];
                     self::logMessage(sprintf('[%s] [%s] [%s] %s',$GLOBALS['banner']['debug']['first'],$method,$line,$value),'banner_debug');
                     return ;
@@ -61,8 +61,8 @@ class BannerLog
             }
         }
                 
-        $arrNamespace = trimsplit('::', $method);
-        $arrClass =  trimsplit('\\', $arrNamespace[0]);
+        $arrNamespace = \StringUtil::trimsplit('::', $method);
+        $arrClass =  \StringUtil::trimsplit('\\', $arrNamespace[0]);
         $vclass = $arrClass[2]; // class that will write the log
         
         if (is_array($value))
