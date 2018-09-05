@@ -11,9 +11,9 @@
 namespace BugBuster\BannerBundle\Controller;
 
 use BugBuster\Banner\FrontendBanner;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Handles the Banner front end routes.
