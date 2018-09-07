@@ -176,7 +176,7 @@ class DcaBanner extends \Backend
                     $rootDir = $container->getParameter('kernel.project_dir');
                     $banner_image = $container
                                         ->get('contao.image.image_factory')
-                                        ->create($rootDir.'/'.\System::urlEncode($objFile->path), [$intWidth, $intHeight, 'proportional'])
+                                        ->create($rootDir.'/'.$objFile->path, [$intWidth, $intHeight, 'proportional'])
                                         ->getUrl($rootDir);
                 }
                 break;
