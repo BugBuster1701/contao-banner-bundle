@@ -69,7 +69,7 @@ class BannerInsertTag extends BannerHelper
 	 */
 	public function replaceInsertTagsBanner($strTag)
 	{
-	    $arrTag = trimsplit('::', $strTag);
+	    $arrTag = \StringUtil::trimsplit('::', $strTag);
 	    if ($arrTag[0] != 'banner_module')
 	    {
 	        if ($arrTag[0] != 'cache_banner_module')
