@@ -141,7 +141,7 @@ class BannerMultiple extends \Frontend
                 $banner_cssID   = '';
                 $banner_class   = '';
                 $banner_classes = '';
-                $_cssID = deserialize($objBanners->banner_cssid);
+                $_cssID = \StringUtil::deserialize($objBanners->banner_cssid);
                 if ( is_array($_cssID) )
                 {
                     if ($_cssID[0] != '')

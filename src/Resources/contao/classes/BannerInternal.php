@@ -71,7 +71,7 @@ class BannerInternal
             return $objReturn;
         }
         //Banner Neue Größe 0:$Width 1:$Height 2:resize mode
-        $arrNewSizeValues = deserialize($this->objBanners->banner_imgSize);
+        $arrNewSizeValues = \StringUtil::deserialize($this->objBanners->banner_imgSize);
         //Banner Neue Größe ermitteln, return array $Width,$Height,$oriSize
         $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1],$arrNewSizeValues[0],$arrNewSizeValues[1]);
         

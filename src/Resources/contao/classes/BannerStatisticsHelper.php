@@ -518,7 +518,7 @@ class BannerStatisticsHelper extends \BackendModule
         }
         
         //mit isMemberOf ermitteln, ob user Member einer der Cat Groups ist
-        foreach (deserialize($banner_stat_groups) as $id => $groupid)
+        foreach (\StringUtil::deserialize($banner_stat_groups) as $id => $groupid)
         {
             if ( true === $this->User->isMemberOf($groupid) ) 
             {
