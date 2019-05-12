@@ -13,7 +13,7 @@
 
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']        = 'Default banner image';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['1']        = 'This banner will be showed, when no active banners are found. This selection takes priority over modul definition "Hide when empty".';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['1']        = 'This banner will be shown, when no active banners are found. This selection takes priority over modul definition "Hide when empty".';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['0']  = 'Banner default image';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Please select the banner.(GIF,JPG,PNG,SWF)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['0']   = 'Banner Name';
@@ -25,14 +25,14 @@ $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_url']['1']    = 'Pleas
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_groups']['0']         = 'Allowed member groups';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_groups']['1']         = 'Here you can choose which groups will be allowed to see the banners of this category.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_limit']['0']          = 'Limiting the number of banners.';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_limit']['1']          = '0: show all banners (default), otherwise maximum number of banners that will be showed.';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_limit']['1']          = '0: show all banners (default), otherwise maximum number of banners that will be shown.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_numbers']['0']        = 'Show all banners';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_numbers']['1']        = 'If you choose this option, all active banners will be showed in frontend. You can limit the number below.';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_numbers']['1']        = 'If you choose this option, all active banners will be shown in frontend. You can limit the number below.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_protected']['0']      = 'Protect category';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_protected']['1']      = 'Show banner of this category to certain member groups only.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_protected_catagory']  = 'Protected category';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_random']['0']         = 'Random order';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_random']['1']         = 'If you choose this option, the banners will shown in a random order.';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_random']['1']         = 'If you choose this option, the banners will be shown in a random order.';
 $GLOBALS['TL_LANG']['tl_banner_category']['copy']['0']                  = 'Copy category';
 $GLOBALS['TL_LANG']['tl_banner_category']['copy']['1']                  = 'Copy category ID %s';
 $GLOBALS['TL_LANG']['tl_banner_category']['default_legend']             = 'Details for default banner';
