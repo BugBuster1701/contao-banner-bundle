@@ -12,7 +12,7 @@ namespace BugBuster\BannerBundle\Controller;
 
 use BugBuster\Banner\FrontendBanner;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-//use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -30,15 +30,31 @@ class BannerFeController extends AbstractController
      *
      * @return Response
      *
-     * @Route("/banclicks", name="bugbuster_banner_frontend_clicks")
+     * @Route("/banclicks/{strbid}/{bid}", name="bugbuster_banner_frontend_clicks", requirements={"bid"="\d+"})
      */
-    public function banclicksAction()
+    public function banclicksAction($strbid = '',$bid = 0)
     {
+        if ($strbid != 'bid' && $strbid != 'defbid')
+        {
+            $objResponse = new Response( 'Invalid Banner Action (' . $strbid . ')' , 501);
+            return $objResponse;
+        }
+        if ( ('bid' == $strbid && 0 == $bid) || ('bid' == $strbid && 0 > $bid) ) 
+        {
+            $objResponse = new Response( 'Invalid Banner ID (' . $bid . ')' , 501);
+            return $objResponse;
+        }
+        if ( ('defbid' == $strbid && 0 == $bid) || ('defbid' == $strbid && 0 > $bid) )
+        {
+            $objResponse = new Response( 'Invalid Default Banner ID (' . $bid . ')' , 501);
+            return $objResponse;
+        }
+
         //$this->container->get('contao.framework')->initialize();
         $this->get('contao.framework')->initialize();
     
         $controller = new FrontendBanner();
     
-        return $controller->run();
+        return $controller->run($strbid,$bid);
     }
 }
