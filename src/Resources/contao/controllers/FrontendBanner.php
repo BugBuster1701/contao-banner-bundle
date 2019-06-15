@@ -11,6 +11,7 @@
 namespace BugBuster\Banner;
 
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use BugBuster\Banner\BannerChecks;
 use BugBuster\Banner\BannerHelper;
 
@@ -192,7 +193,21 @@ class FrontendBanner extends \Frontend
 	    // 302 Found
 	    // 303 See Other
 	    // 307 Temporary Redirect (ab Contao 3.1)
-	    $this->redirect($banner_url, $banner_redirect);
+	    //$this->redirect($banner_url, $banner_redirect);
+	    
+	    // Make the location an absolute URL
+	    if (!preg_match('@^https?://@i', $banner_url))
+	    {
+	        $banner_url = \Environment::get('base') . ltrim($banner_url, '/');
+	    }
+
+	    $objResponse = new RedirectResponse($banner_url, $banner_redirect);
+	    $objResponse->setPrivate();
+	    $objResponse->setMaxAge(0);
+	    $objResponse->setSharedMaxAge(0);
+	    $objResponse->headers->addCacheControlDirective('must-revalidate', true);
+	    $objResponse->headers->addCacheControlDirective('no-store', true);
+	    return $objResponse;
     }
     
     protected function countClicks($banner_stat_update, $banner_not_viewed, $objBanners) 

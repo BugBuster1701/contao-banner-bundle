@@ -11,9 +11,9 @@
 namespace BugBuster\BannerBundle\Controller;
 
 use BugBuster\Banner\FrontendBanner;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Handles the Banner front end routes.
@@ -21,7 +21,7 @@ use Symfony\Component\HttpFoundation\Response;
  * @copyright  Glen Langer 2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  *
- * @Route("/bugbuster_febanner", defaults={"_scope" = "frontend", "_token_check" = false})
+ * @Route("/bbfebanner", defaults={"_scope" = "frontend", "_token_check" = false})
  */
 class BannerFeController extends Controller
 {

@@ -46,6 +46,9 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
      */
     protected $intCatID;
     
+    protected $BannerImage;
+    
+    
     /**
      * Constructor
      */
@@ -80,6 +83,9 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $arrBanners      = array();
         $arrBannersStat  = array();
         $intCatIdAllowed = false;
+        $number_clicks   = 0;
+        $number_views    = 0;
+        
 
         //alle Kategorien holen die der User sehen darf
         $arrBannerCategories = $this->getBannerCategoriesByUsergroups();
@@ -165,7 +171,6 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->Template->bannercats    = $arrBannerCategories;
         $this->Template->bannercatid   = $this->intCatID;
         $this->Template->bannerstatcat = $GLOBALS['TL_LANG']['tl_banner_stat']['kat'];
-        $this->Template->exportfield   = $GLOBALS['TL_LANG']['tl_banner_stat']['kat'].' '.$GLOBALS['TL_LANG']['tl_banner_stat']['export'];
         $this->Template->bannerzero    = $GLOBALS['TL_LANG']['tl_banner_stat']['banner_zero'];
         $this->Template->bannercatzero        = $GLOBALS['TL_LANG']['tl_banner_stat']['cat_zero'];
         $this->Template->bannercatzerobutton  = $GLOBALS['TL_LANG']['tl_banner_stat']['cat_zero_button'];
@@ -203,13 +208,13 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->setBannerPublishedActive($Banner);
         
         $arrBannersStat['banner_id'       ]    = $Banner['id'];
-        $arrBannersStat['banner_name'     ]    = specialchars(ampersand($Banner['banner_name']));
+        $arrBannersStat['banner_name'     ]    = \StringUtil::specialchars(ampersand($Banner['banner_name']));
         $arrBannersStat['banner_comment'  ]    = nl2br($Banner['banner_comment']);
         $arrBannersStat['banner_url_kurz' ]    = $banner_url_kurz;
         $arrBannersStat['banner_url'      ]    = (strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'],-24,24) );
         $arrBannersStat['banner_prio'     ]    = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
-        $arrBannersStat['banner_views'    ]    = ($MaxViewsClicks[0]) ? $Banner['banner_views']  .'<br />'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
-        $arrBannersStat['banner_clicks'   ]    = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] .'<br />'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
+        $arrBannersStat['banner_views'    ]    = ($MaxViewsClicks[0]) ? $Banner['banner_views']  .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
+        $arrBannersStat['banner_clicks'   ]    = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
         $arrBannersStat['banner_active'   ]    = $Banner['banner_active'];
         $arrBannersStat['banner_pub_class']    = $Banner['banner_published_class'];
         $arrBannersStat['banner_zero'     ]    = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text'];
@@ -239,7 +244,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->setBannerPublishedActive($Banner);
         $this->setBannerURL($Banner);
         $Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79
-        
+        $Banner['banner_url'] = preg_replace('/^app_dev\.php\//', '', $Banner['banner_url']); // #22
         //Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
         $objFile = \FilesModel::findByPk($Banner['banner_image']);
         //BannerImage Class
@@ -364,15 +369,15 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                         $rootDir = $container->getParameter('kernel.project_dir');
                         $Banner['banner_image'] = $container
                                                     ->get('contao.image.image_factory')
-                                                    ->create($rootDir.'/' . \System::urlEncode($objFile->path), [$intWidth, $intHeight, 'proportional'])
+                                                    ->create($rootDir.'/' . $objFile->path, [$intWidth, $intHeight, 'proportional'])
                                                     ->getUrl($rootDir);
                     }
                 }
                 
                 $arrBannersStat['banner_id'      ]     = $Banner['id'];
                 $arrBannersStat['banner_style'   ]     = 'padding-bottom: 4px;';
-                $arrBannersStat['banner_name'    ]     = 'Test '.specialchars(ampersand($Banner['banner_name']));
-                $arrBannersStat['banner_alt'     ]     = specialchars(ampersand($Banner['banner_name']));
+                $arrBannersStat['banner_name'    ]     = 'Test '.\StringUtil::specialchars(ampersand($Banner['banner_name']));
+                $arrBannersStat['banner_alt'     ]     = \StringUtil::specialchars(ampersand($Banner['banner_name']));
                 $arrBannersStat['banner_title'   ]     = $Banner['banner_url'];
                 $arrBannersStat['banner_url'     ]     = (strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'],-24,24) );
                 $arrBannersStat['banner_image'   ]     = $Banner['banner_image'];

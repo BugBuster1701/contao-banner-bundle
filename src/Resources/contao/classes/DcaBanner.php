@@ -176,7 +176,7 @@ class DcaBanner extends \Backend
                     $rootDir = $container->getParameter('kernel.project_dir');
                     $banner_image = $container
                                         ->get('contao.image.image_factory')
-                                        ->create($rootDir.'/'.\System::urlEncode($objFile->path), [$intWidth, $intHeight, 'proportional'])
+                                        ->create($rootDir.'/'.$objFile->path, [$intWidth, $intHeight, 'proportional'])
                                         ->getUrl($rootDir);
                 }
                 break;
@@ -200,6 +200,7 @@ class DcaBanner extends \Backend
             }
         }
         $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
+        $banner_url = preg_replace('/^app_dev\.php\//', '', $banner_url);
         $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
         BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_url: ' . $banner_url);
         

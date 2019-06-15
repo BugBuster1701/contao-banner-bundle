@@ -71,7 +71,7 @@ class BannerInternal
             return $objReturn;
         }
         //Banner Neue Größe 0:$Width 1:$Height 2:resize mode
-        $arrNewSizeValues = deserialize($this->objBanners->banner_imgSize);
+        $arrNewSizeValues = \StringUtil::deserialize($this->objBanners->banner_imgSize);
         //Banner Neue Größe ermitteln, return array $Width,$Height,$oriSize
         $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1],$arrNewSizeValues[0],$arrNewSizeValues[1]);
         
@@ -109,13 +109,13 @@ class BannerInternal
             $rootDir = $container->getParameter('kernel.project_dir');
             $FileSrc = $container
                         ->get('contao.image.image_factory')
-                        ->create($rootDir.'/' . \System::urlEncode($objFile->path), [$arrImageSizenNew[0], $arrImageSizenNew[1], 'proportional'])
+                        ->create($rootDir.'/' . $objFile->path, [$arrImageSizenNew[0], $arrImageSizenNew[1], 'proportional'])
                         ->getUrl($rootDir);
         
             //alt $picture = \Picture::create(\System::urlEncode($objFile->path), array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))->getTemplateData();
             $picture = $container
                         ->get('contao.image.picture_factory')
-                        ->create($rootDir . '/' . \System::urlEncode($objFile->path), $arrImageSizenNew);
+                        ->create($rootDir . '/' . $objFile->path, $arrImageSizenNew);
             $picture = array
             (
                 'img' => $picture->getImg(TL_ROOT, TL_FILES_URL),

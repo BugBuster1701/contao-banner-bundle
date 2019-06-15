@@ -4,21 +4,24 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/fr/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/fr/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2014-06-29T00:55:54+02:00
+ * last-updated: 2017-09-16T01:04:02+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Haute priorité';
 $GLOBALS['TL_LANG']['tl_banner']['2']                        = 'Priorité standard';
 $GLOBALS['TL_LANG']['tl_banner']['3']                        = 'Basse priorité';
+$GLOBALS['TL_LANG']['tl_banner']['banner_active']            = 'publié';
 $GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found']     = 'Aucune catégorie sélectionné dans le module bannière.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['0'] = 'Limite du nombre de clics';
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['1'] = 'En saisissant un nombre, cette bannière n\'apparaîtra plus une fois qu\'elle aura été cliquée le nombre de fois que vous saisissez.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0']      = 'Commentaire Bannière';
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Commentaire pour la balise titre. Pour une bannière texte: ligne de texte.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['0']        = 'Identifiant CSS / classe';
+$GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['1']        = 'Ici, vous pouvez définir un ID et une ou plusieurs classes. Un préfixe "banner_" est automatiquement ajouté.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['0']       = 'Filtrage par nom de domaine';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['1']       = 'Si vous entrez un nom de domaine, la bannière sera utilisée uniquement sur ce domaine. Si le champs est vide, la bannière sera utilisée pour tous les domaines.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Bannière Image';
@@ -27,10 +30,12 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'URL de la banni�
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['1'] = 'URL externe de la bannière image: http://...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['0']      = 'Largeur et hauteur de la bannière';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['1']      = 'Si vous saisissez uniquement la largeur ou uniquement la hauteur (en pixel), la bannière sera redimensionnée proportionnellement. Si vous saisissez les deux valeurs, la bannière sera découpée si besoin est. Si vous ne saisissez aucune de ces deux valeurs, la taille originale sera affichée.<br />NOTE: Pour les les GIFs animés, avec redimensionnement, aboutiront à une image fixe après le traitement GD.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_inactive']          = 'non publié';
 $GLOBALS['TL_LANG']['tl_banner']['banner_jumpTo']['0']       = 'Page cible de la bannière';
 $GLOBALS['TL_LANG']['tl_banner']['banner_jumpTo']['1']       = 'Veuillez sélectionner la page cible depuis l\'arborescence des pages. Cette sélection est prioritaire aux URL cibles.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_name']['0']         = 'Nom de la bannière';
 $GLOBALS['TL_LANG']['tl_banner']['banner_name']['1']         = 'Veuillez saisir le nom de la bannière. Pour une bannière texte: titre.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_number_of']         = 'Nombre de bannières';
 $GLOBALS['TL_LANG']['tl_banner']['banner_published']['0']    = 'Publié';
 $GLOBALS['TL_LANG']['tl_banner']['banner_published']['1']    = 'Tant que cette option n\'est pas choisi, la bannière ne sera pas publié.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_start']['0']        = 'Publier à partir du';
@@ -57,6 +62,7 @@ $GLOBALS['TL_LANG']['tl_banner']['delete']['1']              = 'Effacer bannièr
 $GLOBALS['TL_LANG']['tl_banner']['destination_legend']       = 'Cibles de la bannière';
 $GLOBALS['TL_LANG']['tl_banner']['edit']['0']                = 'Editer Bannière';
 $GLOBALS['TL_LANG']['tl_banner']['edit']['1']                = 'Editer bannière ID %s';
+$GLOBALS['TL_LANG']['tl_banner']['expert_legend']            = 'Paramètres experts';
 $GLOBALS['TL_LANG']['tl_banner']['filter_legend']            = 'Filtrage';
 $GLOBALS['TL_LANG']['tl_banner']['image_legend']             = 'Image de la bannière';
 $GLOBALS['TL_LANG']['tl_banner']['new']['0']                 = 'Nouvelle bannière';
@@ -65,6 +71,8 @@ $GLOBALS['TL_LANG']['tl_banner']['publish_legend']           = 'Paramètres de p
 $GLOBALS['TL_LANG']['tl_banner']['show']['0']                = 'Détails bannière';
 $GLOBALS['TL_LANG']['tl_banner']['show']['1']                = 'Afficher les détails de la bannière ID %s';
 $GLOBALS['TL_LANG']['tl_banner']['source_extern']            = 'externe';
+$GLOBALS['TL_LANG']['tl_banner']['source_fallback']          = 'Image-repli';
+$GLOBALS['TL_LANG']['tl_banner']['source_fallback_no']       = 'Image de repli introuvable.';
 $GLOBALS['TL_LANG']['tl_banner']['source_intern']            = 'interne';
 $GLOBALS['TL_LANG']['tl_banner']['title_legend']             = 'Nom et priorité';
 $GLOBALS['TL_LANG']['tl_banner']['tl_be_max_clicks']         = 'Clics max.';

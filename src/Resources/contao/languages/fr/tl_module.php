@@ -4,16 +4,17 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/fr/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/fr/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2014-02-08T23:02:16+01:00
+ * last-updated: 2017-09-16T01:04:02+02:00
  */
-
 
 $GLOBALS['TL_LANG']['tl_module']['banner_categories']['0'] = 'Catégories bannières';
 $GLOBALS['TL_LANG']['tl_module']['banner_categories']['1'] = 'Veuillez sélectionner les catégorie de bannière que vous souhaitez inclure.';
+$GLOBALS['TL_LANG']['tl_module']['banner_firstview']['0']  = 'Première bannière pour nouveau visiteur';
+$GLOBALS['TL_LANG']['tl_module']['banner_firstview']['1']  = 'Pour chaque nouveau visiteur, la première bannière de la catégorie est d\'abord affichée. Le choix est ensuite retourné en mode aléatoire.';
 $GLOBALS['TL_LANG']['tl_module']['banner_hideempty']['0']  = 'Cacher quand vide';
 $GLOBALS['TL_LANG']['tl_module']['banner_hideempty']['1']  = 'Cacher ce module (partie publique) quand aucune bannière active n\'est trouvée';
 $GLOBALS['TL_LANG']['tl_module']['banner_template']['0']   = 'Modèle Bannière';

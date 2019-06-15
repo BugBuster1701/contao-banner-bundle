@@ -69,7 +69,7 @@ class BannerInsertTag extends BannerHelper
 	 */
 	public function replaceInsertTagsBanner($strTag)
 	{
-	    $arrTag = trimsplit('::', $strTag);
+	    $arrTag = \StringUtil::trimsplit('::', $strTag);
 	    if ($arrTag[0] != 'banner_module')
 	    {
 	        if ($arrTag[0] != 'cache_banner_module')
@@ -264,7 +264,7 @@ class BannerInsertTag extends BannerHelper
 	    if ('mod_' == $this->typePrefix) 
 	    {
 	        //CSS-ID/Klasse
-	        $_cssID = deserialize($this->cssID);
+	        $_cssID = \StringUtil::deserialize($this->cssID);
 	        $this->Template->cssID = '';
 	        $this->Template->class = 'mod_banner';
 	        if ($_cssID[0] != '') 
@@ -277,7 +277,7 @@ class BannerInsertTag extends BannerHelper
 	        }
 	    	
             //Abstand davor und dahinter
-	    	$_style = deserialize($this->space);
+	    	$_style = \StringUtil::deserialize($this->space);
 	    	if ("" != $_style[0]) 
 	    	{
 	    		$this->Template->style .= 'margin-top:'.$_style[0].'px; ';
@@ -299,7 +299,7 @@ class BannerInsertTag extends BannerHelper
             $this->Template->style = $this->article_style;
 	    }
 	    //headline
-	    $_headline = deserialize($this->headline);
+	    $_headline = \StringUtil::deserialize($this->headline);
 	    if ("" != $_headline['value'])
 	    {
 	        $this->Template->hl       = $_headline['unit'];

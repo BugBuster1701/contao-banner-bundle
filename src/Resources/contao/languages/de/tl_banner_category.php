@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-08T23:38:08+02:00
+ * last-updated: 2017-09-16T01:04:02+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']          = 'Banner Standarddatei';
@@ -21,7 +21,7 @@ $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0']   = 'Int
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['1']   = 'Wenn Sie diese Option wählen, wird das Bannerziel im selben Browserfenster geöffnet.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_url']['0']      = 'Bannerziel-URL';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_url']['1']      = 'Bannerziel URL: http://...';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_all']['0'] = 'Debugmodus für all "Banner" Klassen';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_all']['0'] = 'Debugmodus für alle "Banner" Klassen';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_all']['1'] = 'Bei Aktivierung werden Laufzeitinformationen in die Logdatei (<em>system/logs/prod-Y-M-D-banner_debug.log</em>) geschrieben.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_legend']         = 'Experteneinstellungen';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_groups']['0']           = 'Erlaubte Mitgliedergruppen';
