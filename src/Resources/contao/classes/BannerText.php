@@ -69,7 +69,7 @@ class BannerText
          
         $arrBanners[] = array
                         (
-                            'banner_key'     => 'bid=',
+                            'banner_key'     => 'bid',
                             'banner_wrap_id'    => $this->banner_cssID,
                             'banner_wrap_class' => $this->banner_class,
                             'banner_id'      => $this->objBanners->id,
