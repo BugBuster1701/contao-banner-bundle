@@ -63,7 +63,7 @@ class BannerTemplate
             case 3:// PNG
                 $arrBanners[] = array
                 (
-                'banner_key'     => 'bid=',
+                'banner_key'     => 'bid',
                 'banner_wrap_id'    => $banner_cssID,
                 'banner_wrap_class' => $banner_class,
                 'banner_id'      => $objBanners->id,
@@ -84,7 +84,7 @@ class BannerTemplate
             default:
                 $arrBanners[] = array
                 (
-                'banner_key'     => 'bid=',
+                'banner_key'     => 'bid',
                 'banner_wrap_id'    => $banner_cssID,
                 'banner_wrap_class' => $banner_class,
                 'banner_id'      => 0,

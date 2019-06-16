@@ -56,8 +56,8 @@ class FrontendBanner extends \Frontend
 			define('FE_USER_LOGGED_IN', false);
 		}
 	
-		$this->intBID    = (int)\Input::get('bid');
-		$this->intDEFBID = (int)\Input::get('defbid');
+		$this->intBID    = 0;
+		$this->intDEFBID = 0;
 	}
 
 
@@ -66,16 +66,15 @@ class FrontendBanner extends \Frontend
 	 *
 	 * @return Response
 	 */
-	public function run()
+	public function run($strbid,$bid)
 	{
-        // Input a digit >0 ?
-	    if ( 0 == $this->intBID )
+	    if ($strbid == 'bid') 
 	    {
-	        if ( 0 == $this->intDEFBID )
-	        {
-	            $objResponse = new Response( 'Invalid Banner ID (' . \Input::get('bid') . ')' , 501);
-	            return $objResponse;
-	        }
+	        $this->intBID = $bid;
+	    }
+	    else 
+	    {
+	        $this->intDEFBID = $bid;
 	    }
 	    
 	    $banner_category_id = $this->getBannerCategory($this->intBID);

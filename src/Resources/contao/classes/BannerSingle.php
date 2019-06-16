@@ -126,7 +126,7 @@ class BannerSingle extends \Frontend
                 case 3:// PNG
                     $arrBanners[] = array
                                     (
-                                    'banner_key'     => 'defbid=',
+                                    'banner_key'     => 'defbid',
                                     'banner_wrap_id'    => $banner_cssID,
                                     'banner_wrap_class' => $banner_class,
                                     'banner_id'      => $this->arrCategoryValues['id'],
@@ -153,7 +153,7 @@ class BannerSingle extends \Frontend
         $NoBannerFound = ($GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner']) ? $GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner'] : 'no banner, no default banner';
         $arrBanners[] = array
                         (
-                            'banner_key'  => 'bid=',
+                            'banner_key'  => 'bid',
                             'banner_wrap_id'    => $banner_cssID,
                             'banner_wrap_class' => $banner_class,
                             'banner_id'   => 0,
