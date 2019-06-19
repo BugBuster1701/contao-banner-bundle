@@ -7,7 +7,6 @@
  *
  * @copyright  Glen Langer 2007..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  * @filesource
  * @see        https://github.com/BugBuster1701/contao-banner-bundle
@@ -16,19 +15,19 @@
 /**
  * Run in a custom namespace, so the class can be replaced
  */
+
 namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerHelper;
 use BugBuster\Banner\BannerLog;
-use BugBuster\Banner\BannerSingle;
 use BugBuster\Banner\BannerLogic;
+use BugBuster\Banner\BannerSingle;
 
 /**
  * Class BannerInsertTag
  *
  * @copyright  Glen Langer 2007..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  */
 class BannerInsertTag extends BannerHelper
@@ -38,11 +37,11 @@ class BannerInsertTag extends BannerHelper
 	 * @var string
 	 */
 	protected $strTemplate = 'mod_banner_list_all';
-	
+
 	protected $typePrefix = ''; // wie wurde das Modul eingebaut
                                 // ce_  als Artikelelement
                                 // mod_ als Modul direkt im Layout
-	
+
 	//backward compatibility over getModuleData()
 	protected $banner_hideempty  = '';
 	protected $banner_firstview  = '';
@@ -59,12 +58,11 @@ class BannerInsertTag extends BannerHelper
 	protected $outputFormat      = 'html5';
 	protected $templatepfad      = 'templates';
 	protected $module_id          = 0;
-	
-	
+
 	/**
 	 * replaceInsertTagsBanner
 	 * 
-	 * @param unknown $strTag
+	 * @param  unknown      $strTag
 	 * @return boolean|void
 	 */
 	public function replaceInsertTagsBanner($strTag)
@@ -77,7 +75,7 @@ class BannerInsertTag extends BannerHelper
 	            return false; // nicht für uns
 	        }
 	    }
-	    	    
+
 	    if (isset($arrTag[1])) // banner_module_id
 	    {
 	        $retModuleData = $this->getModuleData($arrTag[1]);
@@ -85,6 +83,7 @@ class BannerInsertTag extends BannerHelper
 	        {
 	        	//kein Banner Modul mit dieser ID 
 	        	BannerLog::log('No banner module with this id "'.$arrTag[1].'"', 'ModuleBannerTag replaceInsertTagsBanner', TL_ERROR);
+
 	            return false;
 	        }
 	    }
@@ -92,12 +91,13 @@ class BannerInsertTag extends BannerHelper
 	    {
 	        //keine Banner Modul ID
 	        BannerLog::log('Missing parameter (1): banner module id', 'ModuleBannerTag replaceInsertTagsBanner', TL_ERROR);
+
 	        return false;
 	    }
 	    //Get Debug Settings
 	    $this->setDebugSettings($this->banner_categories);
-	    BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_categories: '. $this->banner_categories);
-	    
+	    BannerLog::writeLog(__METHOD__, __LINE__, 'banner_categories: '. $this->banner_categories);
+
 	    if (isset($arrTag[2])) { $this->typePrefix    = $arrTag[2]; } //ce_ / mod_
 	    if (isset($arrTag[3])) { $this->article_class = $arrTag[3]; }
 	    if (isset($arrTag[4])) { $this->article_cssID = $arrTag[4]; }
@@ -105,17 +105,17 @@ class BannerInsertTag extends BannerHelper
 	    if (isset($arrTag[6])) { $this->outputFormat  = $arrTag[6]; }
 	    if (isset($arrTag[7])) { $this->templatepfad  = $arrTag[7]; }
 
-	    BannerLog::writeLog(__METHOD__ , __LINE__ , 'Insert Tag Parameter: '. print_r($arrTag,true));
-	    
+	    BannerLog::writeLog(__METHOD__, __LINE__, 'Insert Tag Parameter: '. print_r($arrTag, true));
+
 	    return $this->generateBanner();
 	}
-	
+
 	/**
 	 * getModuleData
 	 * 
 	 * Wrapper for backward compatibility
 	 * 
-	 * @param integer $moduleId
+	 * @param  integer $moduleId
 	 * @return boolean
 	 */
 	protected function getModuleData($moduleId)
@@ -149,9 +149,10 @@ class BannerInsertTag extends BannerHelper
         $this->banner_useragent  = $objBannerModule->banner_useragent;
         $this->cssID             = $objBannerModule->cssID;
         $this->headline          = $objBannerModule->headline;
+
         return true;         
 	}
-	
+
 	/**
 	 * generateBanner
 	 * 
@@ -163,6 +164,7 @@ class BannerInsertTag extends BannerHelper
 		if ($this->bannerHelperInit() === false)
 		{
 			BannerLog::log('Problem in bannerHelperInit', 'ModuleBannerTag generateBanner', TL_ERROR);
+
 	        return false;
 		}
 
@@ -172,10 +174,11 @@ class BannerInsertTag extends BannerHelper
 			// auf Leer umschalten
 			$this->strTemplate='mod_banner_empty';
 			$this->Template = new \FrontendTemplate($this->strTemplate);
+
 	        return $this->Template->parse();
 		}
 		$this->Template = new \FrontendTemplate($this->strTemplate);
-		
+
 		if ($this->statusAllBannersBasic === false)
 		{
 			//keine Banner vorhanden in der Kategorie
@@ -189,21 +192,21 @@ class BannerInsertTag extends BannerHelper
 			//Template parsen und Ergebnis zurückgeben
 			return $this->Template->parse();
 		}
-		
+
 		//OK, Banner vorhanden, dann weiter
 		//BannerSeen vorhanden? Dann beachten.
-		if ( count(BannerHelper::$arrBannerSeen) )  //TODO
+		if (\count(BannerHelper::$arrBannerSeen))  //TODO
 		{
 		    //$arrAllBannersBasic dezimieren um die bereits angezeigten
 		    foreach (BannerHelper::$arrBannerSeen as $BannerSeenID) 
 		    {
-		        if (array_key_exists($BannerSeenID,$this->arrAllBannersBasic)) 
+		        if (\array_key_exists($BannerSeenID, $this->arrAllBannersBasic)) 
 		        {
 		            unset($this->arrAllBannersBasic[$BannerSeenID]);
-		        };
+		        }
 		    }
 		    //noch Banner übrig?
-		    if ( count($this->arrAllBannersBasic) == 0 )
+		    if (\count($this->arrAllBannersBasic) == 0)
 		    {
 		        //default Banner holen
 		        //kein default Banner, ausblenden wenn leer?
@@ -212,24 +215,26 @@ class BannerInsertTag extends BannerHelper
 		        $this->Template = $objBannerSingle->getDefaultBanner($this->banner_hideempty);
 		        //Css generieren
 		        $this->setCssClassIdStyle();
+
 		        return $this->Template->parse();
 		    }
 		}
-		
+
 		//OK, noch Banner übrig, weiter gehts	
 		//Single Banner? 
 		if ($this->arrCategoryValues['banner_numbers'] != 1) 
 		{
 		    //FirstViewBanner?
 		    $objBannerLogic = new BannerLogic();
-		    
-		    if ($objBannerLogic->getSetFirstView($this->banner_firstview,$this->banner_categories,$this->module_id) === true) 
+
+		    if ($objBannerLogic->getSetFirstView($this->banner_firstview, $this->banner_categories, $this->module_id) === true) 
 		    {
 		        //alt $this->getSingleBannerFirst();
 		        $objBannerSingle = new BannerSingle($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template, $this->arrAllBannersBasic);
 		        $this->Template = $objBannerSingle->getSingleBannerFirst($this->module_id);
 		        //Css generieren
 		        $this->setCssClassIdStyle();
+
 		        return $this->Template->parse();
 		    }
 		    else 
@@ -239,6 +244,7 @@ class BannerInsertTag extends BannerHelper
 		        $this->Template = $objBannerSingle->getSingleBanner($this->module_id);
 		        //Css generieren
 		        $this->setCssClassIdStyle();
+
 		        return $this->Template->parse();
 		    }
 		}
@@ -249,14 +255,14 @@ class BannerInsertTag extends BannerHelper
 		    $this->Template = $objBannerMultiple->getMultiBanner($this->module_id);
 		    //Css generieren
 		    $this->setCssClassIdStyle();
+
 		    return $this->Template->parse();
 		}
-		
+
 	}
 
 	/**
 	 * setCssClassIdStyle
-	 * 
 	 */
 	protected function setCssClassIdStyle()
 	{
@@ -275,7 +281,7 @@ class BannerInsertTag extends BannerHelper
 	        {
 	            $this->Template->class .= ' '.$_cssID[1];
 	        }
-	    	
+
             //Abstand davor und dahinter
 	    	$_style = \StringUtil::deserialize($this->space);
 	    	if ("" != $_style[0]) 
@@ -306,7 +312,5 @@ class BannerInsertTag extends BannerHelper
 	        $this->Template->headline = $_headline['value'];
 	    }
 	}
-	
-	
 
 }

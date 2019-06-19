@@ -8,7 +8,6 @@
  * @author     Glen Langer (BugBuster)
  * @licence    LGPL
  * @filesource
- * @package    Banner
  * @see	       https://github.com/BugBuster1701/contao-banner-bundle
  */
 
@@ -22,7 +21,6 @@ use BugBuster\Banner\BannerTemplate;
  *
  * @copyright  Glen Langer 2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  */
 class BannerInternal
@@ -33,20 +31,19 @@ class BannerInternal
      * @var string
      */
     const BANNER_TYPE_INTERN = 'banner_image';
-    
-    protected $objBanners = null;
-    protected $banner_cssID = null;
-    protected $banner_class = null;
-    
-    public function __construct ($objBanners, $banner_cssID, $banner_class)
+
+    protected $objBanners;
+    protected $banner_cssID;
+    protected $banner_class;
+
+    public function __construct($objBanners, $banner_cssID, $banner_class)
     {
         $this->objBanners   = $objBanners;
         $this->banner_cssID = $banner_cssID;
         $this->banner_class = $banner_class;
     }
-    
+
     /**
-     * 
      * @return \stdClass
      */
     public function generateImageData() 
@@ -61,20 +58,20 @@ class BannerInternal
         if (false === $arrImageSize)
         {
             $arrImageSize[2] = 0;
-            BannerLog::log('Banner Image with ID "'.$this->objBanners->id.'" not found', __METHOD__ .':'. __LINE__ , TL_ERROR);
+            BannerLog::log('Banner Image with ID "'.$this->objBanners->id.'" not found', __METHOD__ .':'. __LINE__, TL_ERROR);
 
-            $objReturn = new \stdClass;
+            $objReturn = new \stdClass();
             $objReturn->FileSrc = null;
             $objReturn->Picture = null;
             $objReturn->ImageSize = $arrImageSize;
-            
+
             return $objReturn;
         }
         //Banner Neue Größe 0:$Width 1:$Height 2:resize mode
         $arrNewSizeValues = \StringUtil::deserialize($this->objBanners->banner_imgSize);
         //Banner Neue Größe ermitteln, return array $Width,$Height,$oriSize
-        $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1],$arrNewSizeValues[0],$arrNewSizeValues[1]);
-        
+        $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0], $arrImageSize[1], $arrNewSizeValues[0], $arrNewSizeValues[1]);
+
         //wenn oriSize = true, oder bei GIF/SWF/SWC = original Pfad nehmen
         if ($arrImageSizenNew[2] === true //oriSize
             || $arrImageSize[2] == 1  // GIF
@@ -86,7 +83,7 @@ class BannerInternal
             $arrImageSize[0] = $arrImageSizenNew[0];
             $arrImageSize[1] = $arrImageSizenNew[1];
             $arrImageSize[3] = ' height="'.$arrImageSizenNew[1].'" width="'.$arrImageSizenNew[0].'"';
-        
+
             //fake the Picture::create
             $picture['img']   = array
             (
@@ -97,8 +94,8 @@ class BannerInternal
             );
             $picture['alt']   = \StringUtil::specialchars(ampersand($this->objBanners->banner_name));
             $picture['title'] = \StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
-        
-            BannerLog::writeLog(__METHOD__ , __LINE__ , 'Orisize Picture: '. print_r($picture,true));
+
+            BannerLog::writeLog(__METHOD__, __LINE__, 'Orisize Picture: '. print_r($picture, true));
         }
         else
         {
@@ -109,9 +106,9 @@ class BannerInternal
             $rootDir = $container->getParameter('kernel.project_dir');
             $FileSrc = $container
                         ->get('contao.image.image_factory')
-                        ->create($rootDir.'/' . $objFile->path, [$arrImageSizenNew[0], $arrImageSizenNew[1], 'proportional'])
+                        ->create($rootDir.'/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], 'proportional'))
                         ->getUrl($rootDir);
-        
+
             //alt $picture = \Picture::create(\System::urlEncode($objFile->path), array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))->getTemplateData();
             $picture = $container
                         ->get('contao.image.picture_factory')
@@ -121,32 +118,32 @@ class BannerInternal
                 'img' => $picture->getImg(TL_ROOT, TL_FILES_URL),
                 'sources' => $picture->getSources(TL_ROOT, TL_FILES_URL)
             );
-            
+
             $picture['alt']   = \StringUtil::specialchars(ampersand($this->objBanners->banner_name));
             $picture['title'] = \StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
-        
-            BannerLog::writeLog(__METHOD__ , __LINE__ , 'Resize Picture: '. print_r($picture,true));
-        
+
+            BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Picture: '. print_r($picture, true));
+
             $arrImageSize[0] = $arrImageSizenNew[0];
             $arrImageSize[1] = $arrImageSizenNew[1];
             $arrImageSize[3] = ' height="'.$arrImageSizenNew[1].'" width="'.$arrImageSizenNew[0].'"';
         }
-        
-        $objReturn = new \stdClass;
+
+        $objReturn = new \stdClass();
         $objReturn->FileSrc = $FileSrc;
         $objReturn->Picture = $picture;
         $objReturn->ImageSize = $arrImageSize;
-        
+
         return $objReturn;
     }
-    
+
     /**
      * Generate Template Data
      * 
-     * @param array     $arrImageSize
-     * @param string    $FileSrc
-     * @param array     $picture
-     * @return array    $arrBanners
+     * @param  array  $arrImageSize
+     * @param  string $FileSrc
+     * @param  array  $picture
+     * @return array  $arrBanners
      */
     public function generateTemplateData($arrImageSize, $FileSrc, $picture)
     {

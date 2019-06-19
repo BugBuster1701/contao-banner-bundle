@@ -7,7 +7,6 @@
  *
  * @copyright  Glen Langer 2007..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  * @filesource
  * @see        https://github.com/BugBuster1701/contao-banner-bundle
@@ -17,13 +16,11 @@ namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerLog;
 
-
 /**
  * Class BannerHelper
  *
  * @copyright  Glen Langer 2007..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  */
 class BannerHelper extends \Frontend 
@@ -33,88 +30,86 @@ class BannerHelper extends \Frontend
 	 * @var string
 	 */
 	const BANNER_TYPE_INTERN = 'banner_image';
-	
+
 	/**
 	 * Banner extern
 	 * @var string
 	 */
 	const BANNER_TYPE_EXTERN = 'banner_image_extern';
-	
+
 	/**
 	 * Banner text
 	 * @var string
 	 */
 	const BANNER_TYPE_TEXT   = 'banner_text';
-	
+
 	/**
 	 * Banner Data, for BannerStatViewUpdate
 	 */
 	protected $arrBannerData = array();
-	
+
 	/**
 	 * Banner Seen
 	 */
 	public static $arrBannerSeen = array();
-	
+
 	/**
 	 * Banner Random Blocker
 	 */
 	protected $statusRandomBlocker = false;
-	
+
 	/**
 	 * First View Blocker
 	 */
 	protected $statusFirstViewBlocker = false;
-	
+
 	/**
 	 * Banner First View Status
 	 */
 	protected $statusBannerFirstView = false;
-	
+
 	/**
 	 * Banner Frontend Group View
-	 * @var bool	true  = View OK
-	 * 				false = FE User logged in and nothing is allowed to view (wrong group)
+	 * @var bool true  = View OK
+	 *           false = FE User logged in and nothing is allowed to view (wrong group)
 	 */
 	protected $statusBannerFrontendGroupView = true;
-	
+
 	/**
 	 * Banner basic status
-	 * @var bool    true = $arrAllBannersBasic filled | false = error
+	 * @var bool true = filled | false = error
 	 */
 	protected $statusAllBannersBasic = true;
-	
+
 	/**
 	 * Category values 
-	 * @var mixed	array|false, false if category not exists
+	 * @var mixed array|false, false if category not exists
 	 */
 	protected $arrCategoryValues = array();
-	
+
 	/**
 	 * All banner basic data (id,weighting) from a category
 	 * @var array
 	 */
 	protected $arrAllBannersBasic = array();
-	
-	
+
 	/**
 	 * Page Output Format
 	 * @var string
 	 */
 	protected $strFormat = 'html5';
-	
+
 	/**
 	 * Session
 	 *
 	 * @var string
-	 * @access private
 	 */
 	private $_session   = array();
-	 
+
 	/**
 	 * BannerHelper::bannerHelperInit
 	 * 
-	 * @return	false, if anything is wrong
+	 * @return false, if anything is wrong
 	 */
 	protected function bannerHelperInit()
 	{
@@ -126,22 +121,22 @@ class BannerHelper extends \Frontend
 	    $this->statusAllBannersBasic         = true;
 	    $this->arrCategoryValues             = array();
 	    $this->arrAllBannersBasic            = array();
-		
+
 		//set $arrCategoryValues over tl_banner_category
 		if ($this->getSetCategoryValues() === false) { return false; }
-		
+
 		//check for protected user groups
 		//set $statusBannerFrontendGroupView
 		$this->checkSetUserFrontendLogin();
-		
+
 		//get basic banner infos (id,weighting) in $this->arrAllBannersBasic
 		if ($this->getSetAllBannerForCategory() === false) 
 		{
 			$this->statusAllBannersBasic = false;
 		}
-		
+
 		$this->strFormat = 'html5';
-		
+
 		if (!isset($GLOBALS['objPage'])) 
 		{
 			$objPage = new \stdClass();
@@ -149,24 +144,25 @@ class BannerHelper extends \Frontend
 			$objPage->outputFormat = $this->outputFormat;
 			$GLOBALS['objPage'] = $objPage;
 		}
-		
+
 	}
-	
+
 	/**
 	 * BannerHelper::getSetCategoryValues
 	 * 
 	 * Set Category Values in $this->arrCategoryValues over tl_banner_category
 	 * 
-	 * @return boolean    true = OK | false = we have a problem
+	 * @return boolean true = OK | false = we have a problem
 	 */
 	protected function getSetCategoryValues()
 	{
 	    //DEBUG log_message('getSetCategoryValues banner_categories:'.$this->banner_categories,'Banner.log');
 		//$this->banner_categories is now an ID, but the name is backward compatible 
-		if ( !isset($this->banner_categories) || !is_numeric($this->banner_categories) ) 
+		if (!isset($this->banner_categories) || !is_numeric($this->banner_categories)) 
 		{
 			BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'ModulBanner Compile', 'ERROR');
 			$this->arrCategoryValues = false;
+
 			return false;
 		}
 		$objBannerCategory = \Database::getInstance()->prepare("SELECT 
@@ -180,6 +176,7 @@ class BannerHelper extends \Frontend
 		{
 			BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'ModulBanner Compile', 'ERROR');
 			$this->arrCategoryValues = false;
+
 			return false;
 		}
 		$arrGroup = \StringUtil::deserialize($objBannerCategory->banner_groups);
@@ -201,39 +198,41 @@ class BannerHelper extends \Frontend
         //DEBUG log_message('getSetCategoryValues arrCategoryValues:'.print_r($this->arrCategoryValues,true),'Banner.log');
 		return true;
 	}
-	
+
 	/**
 	 * BannerHelper::checkSetUserFrontendLogin
 	 * 
 	 * Check if FE User loggen in and banner category is protected
 	 * 
-	 * @return boolean    true = View allowed | false = View not allowed
+	 * @return boolean true = View allowed | false = View not allowed
 	 */
 	protected function checkSetUserFrontendLogin()
 	{
 		if (FE_USER_LOGGED_IN)
 		{
 		    $this->import('FrontendUser', 'User');
-		    
-		    if ( $this->arrCategoryValues['banner_protected'] == 1 
-		      && $this->arrCategoryValues['banner_group']      > 0 ) 
+
+		    if ($this->arrCategoryValues['banner_protected'] == 1 
+		      && $this->arrCategoryValues['banner_group']      > 0) 
 		    {
-		    	if ( $this->User->isMemberOf($this->arrCategoryValues['banner_group']) === false ) 
+		    	if ($this->User->isMemberOf($this->arrCategoryValues['banner_group']) === false) 
 		    	{
 		    		$this->statusBannerFrontendGroupView = false;
+
 		    		return false;
 		    	}
 		    }
 		}
+
 		return true;
 	}
-	
+
 	/**
 	 * BannerHelper::getSetAllBannerForCategory
 	 * 
 	 * Get all Banner basics (id,weighting) for category, in $arrAllBannersBasic
 	 * 
-	 * @return boolean    true = $arrAllBannersBasic is filled | false = empty $arrAllBannersBasic
+	 * @return boolean true = $arrAllBannersBasic is filled | false = empty $arrAllBannersBasic
 	 */
 	protected function getSetAllBannerForCategory()
 	{
@@ -248,7 +247,7 @@ class BannerHelper extends \Frontend
 		$http_host = \Environment::get('host');
 		//aktueller Zeitstempel
 		$intTime = time();
-		
+
 		//alle gültigen aktiven Banner,
 		//ohne Beachtung der Gewichtung,
 		//mit Beachtung der Domain
@@ -287,20 +286,15 @@ class BannerHelper extends \Frontend
                                        (TLB.banner_domain=? OR RIGHT(?, CHAR_LENGTH(TLB.banner_domain)) = TLB.banner_domain)
                                    ORDER BY TLB.`sorting`"
 				                )
-                        ->execute($this->banner_categories
-        							, '', ''
-        							, '', ''
-        							, 1
-        							, '', $intTime, '', $intTime
-        							, '', $http_host);
+                        ->execute($this->banner_categories, '', '', '', '', 1, '', $intTime, '', $intTime, '', $http_host);
 		while ($objBanners->next())
 		{
 			$this->arrAllBannersBasic[$objBanners->id] = $objBanners->banner_weighting;
 		}
 		//DEBUG log_message('getSetAllBannerForCategory arrAllBannersBasic:'.print_r($this->arrAllBannersBasic,true),'Banner.log');
-		return (bool)$this->arrAllBannersBasic; //false bei leerem array, sonst true
+		return (bool) $this->arrAllBannersBasic; //false bei leerem array, sonst true
 	}
-	
+
 	/**
 	 * setDebugSettings
 	 *
@@ -309,9 +303,9 @@ class BannerHelper extends \Frontend
 	public function setDebugSettings($banner_category_id)
 	{
 	    if (0 == $banner_category_id) { return; }// keine Banner Category, nichts zu tun
-	    
+
 	    $GLOBALS['banner']['debug']['all'] = false;
-	
+
 	    $objBanner = \Database::getInstance()
                     ->prepare("SELECT
                                     banner_expert_debug_all
@@ -324,53 +318,53 @@ class BannerHelper extends \Frontend
                     ->execute($banner_category_id);
         while ($objBanner->next())
         {
-            $GLOBALS['banner']['debug']['all'] = (bool)$objBanner->banner_expert_debug_all;
+            $GLOBALS['banner']['debug']['all'] = (bool) $objBanner->banner_expert_debug_all;
             BannerLog::writeLog('## START ##', '## DEBUG ##', '');
         }
 	}
-	
+
 	/**
 	 * Generate a front end URL
 	 * Shorted version of Controller::generateFrontendUrl
 	 *
-	 * @param array   $arrRow       An array of page parameters
-	 * @param string  $strParams    An optional string of URL parameters
-	 * @param string  $strForceLang Force a certain language
+	 * @param array  $arrRow       An array of page parameters
+	 * @param string $strParams    An optional string of URL parameters
+	 * @param string $strForceLang Force a certain language
 	 *
 	 * @return string An URL that can be used in the front end
 	 */
 	public static function frontendUrlGenerator($arrRow, $strParams=null, $strForceLang=null) 
 	{
-	    $arrParams = [];
+	    $arrParams = array();
 	    // Set the language
 	    if ($strForceLang !== null)
 	    {
 	        $arrParams['_locale'] = $strForceLang;
 	    }
-	    
+
 	    $objUrlGenerator = \System::getContainer()->get('contao.routing.url_generator');
-	    $strUrl = $objUrlGenerator->generate( ($arrRow['alias'] ?: $arrRow['id']) . $strParams, $arrParams );
+	    $strUrl = $objUrlGenerator->generate(($arrRow['alias'] ?: $arrRow['id']) . $strParams, $arrParams);
 	    // Remove path from absolute URLs
 	    if (0 === strpos($strUrl, '/'))
 	    {
-	        $strUrl = substr($strUrl, strlen(\Environment::get('path')) + 1);
+	        $strUrl = substr($strUrl, \strlen(\Environment::get('path')) + 1);
 	    }
-	    
+
 	    // Decode sprintf placeholders
 	    if (strpos($strParams, '%') !== false)
 	    {
 	        $arrMatches = array();
 	        preg_match_all('/%([sducoxXbgGeEfF])/', $strParams, $arrMatches);
-	    
+
 	        foreach (array_unique($arrMatches[1]) as $v)
 	        {
 	            $strUrl = str_replace('%25' . $v, '%' . $v, $strUrl);
 	        }
 	    }
-	    
+
 	    return $strUrl;
 	}
-	
+
     public static function decodePunycode($strUrl) 
     {
         if ($strUrl == '')
@@ -378,12 +372,13 @@ class BannerHelper extends \Frontend
             return '';
         }
         $arrUrl = parse_url($strUrl);
-        
+
         if (!isset($arrUrl['scheme']))
         {
             //interne Seite
             return $strUrl;
         }
+
         return \Idna::decodeUrl($strUrl);
     }
 } // class

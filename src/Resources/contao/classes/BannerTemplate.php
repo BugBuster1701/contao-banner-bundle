@@ -8,7 +8,6 @@
  * @author     Glen Langer (BugBuster)
  * @licence    LGPL
  * @filesource
- * @package    Banner
  * @see	       https://github.com/BugBuster1701/contao-banner-bundle
  */
 
@@ -16,22 +15,21 @@ namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerHelper;
 
-
 class BannerTemplate
 {
     public static function generateTemplateData($arrImageSize, $FileSrc, $picture, $objBanners, $banner_cssID, $banner_class)
     {
         $banner_target = ($objBanners->banner_target == '1') ? '' : ' target="_blank"';
-    
-        if ( strlen($objBanners->banner_comment) > 1 )
+
+        if (\strlen($objBanners->banner_comment) > 1)
         {
-            $banner_comment_pos = strpos($objBanners->banner_comment,"\n",1);
+            $banner_comment_pos = strpos($objBanners->banner_comment, "\n", 1);
             if ($banner_comment_pos !== false)
             {
-                $objBanners->banner_comment = substr($objBanners->banner_comment,0,$banner_comment_pos);
+                $objBanners->banner_comment = substr($objBanners->banner_comment, 0, $banner_comment_pos);
             }
         }
-    
+
         // Banner Seite als Ziel?
         if ($objBanners->banner_jumpTo > 0)
         {
@@ -47,7 +45,7 @@ class BannerTemplate
                 $objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator($objParent->row(), null, $objParent->language);
             }
         }
-    
+
         //$arrImageSize[0]  eigene Breite
         //$arrImageSize[1]  eigene Höhe
         //$arrImageSize[3]  Breite und Höhe in der Form height="yyy" width="xxx"
@@ -71,7 +69,7 @@ class BannerTemplate
                 'banner_url'     => $objBanners->banner_url,
                 'banner_target'  => $banner_target,
                 'banner_comment' => \StringUtil::specialchars(ampersand($objBanners->banner_comment)),
-                'src'            => \StringUtil::specialchars(ampersand($FileSrc)),//specialchars(ampersand($this->urlEncode($FileSrc))),
+                'src'            => \StringUtil::specialchars(ampersand($FileSrc)), //specialchars(ampersand($this->urlEncode($FileSrc))),
                 'alt'            => \StringUtil::specialchars(ampersand($objBanners->banner_name)),
                 'size'           => $arrImageSize[3],
                 'banner_pic'     => true,
@@ -99,7 +97,7 @@ class BannerTemplate
                 );
                 break;
         }//switch
-    
+
         return $arrBanners;
     }
 }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
@@ -7,7 +7,6 @@
  *
  * @copyright  Glen Langer 2012..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  * @filesource
  * @see	       https://github.com/BugBuster1701/contao-banner-bundle
@@ -16,8 +15,8 @@
 /**
  * Run in a custom namespace, so the class can be replaced
  */
-namespace BugBuster\Banner;
 
+namespace BugBuster\Banner;
 
 class DcaBannerCategory extends \Backend
 {
@@ -27,7 +26,7 @@ class DcaBannerCategory extends \Backend
         $version_warning = '';
 
         $bpc = $GLOBALS['TL_LANG']['tl_banner_category']['banner_protected_catagory'];
-        if ( !empty($arrRow['banner_protected']) && strlen($arrRow['banner_groups']) )
+        if (!empty($arrRow['banner_protected']) && \strlen($arrRow['banner_groups']))
         {
             $label_2 = '<img height="16" width="14" alt="'.$bpc.'" title="'.$bpc.'" src="bundles/bugbusterbanner/default/protect_.gif">';
             //$label_2 = " (".$bpc.")"; // ab Contao 3.1 fehlt das protect_.gif :-(
@@ -36,9 +35,10 @@ class DcaBannerCategory extends \Backend
         {
             $label_2 = '';
         }
+
         return $label_1 . ' ' . $label_2 . $version_warning;
     }
-    
+
     public function getAdminCheckbox($varValue)
     {
         return '1';

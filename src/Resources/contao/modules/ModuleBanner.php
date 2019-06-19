@@ -7,7 +7,6 @@
  *
  * @copyright  Glen Langer 2007..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  * @filesource
  * @see        https://github.com/BugBuster1701/contao-banner-bundle
@@ -16,6 +15,7 @@
 /**
  * Run in a custom namespace, so the class can be replaced
  */
+
 namespace BugBuster\Banner;
 
 /**
@@ -23,7 +23,6 @@ namespace BugBuster\Banner;
  *
  * @copyright  Glen Langer 2007..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  */
 class ModuleBanner extends \Module
@@ -33,8 +32,7 @@ class ModuleBanner extends \Module
 	 * @var string
 	 */
 	protected $strTemplate = 'mod_banner_tag';
-	
-		
+
 	/**
 	 * Display a wildcard in the back end
 	 * @return string
@@ -49,13 +47,13 @@ class ModuleBanner extends \Module
 	        $objTemplate->id = $this->id;
 	        $objTemplate->link = $this->name;
 	        $objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
-	        
+
 	        return $objTemplate->parse();
 	    }
+
 	    return parent::generate();
 	}
-	
-	
+
 	protected function compile()
 	{
 	    $this->Template->banner_module_id    = $this->id;

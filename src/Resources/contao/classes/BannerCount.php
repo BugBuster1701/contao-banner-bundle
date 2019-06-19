@@ -9,13 +9,13 @@
  * @author     Glen Langer (BugBuster)
  * @licence    LGPL
  * @filesource
- * @package    Banner
  * @see	       https://github.com/BugBuster1701/contao-banner-bundle
  */
 
 /**
  * Run in a custom namespace, so the class can be replaced
  */
+
 namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerLog;
@@ -27,7 +27,6 @@ use BugBuster\BotDetection\ModuleBotDetection;
  *
  * @copyright  Glen Langer 2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  */
 class BannerCount extends \System 
@@ -36,11 +35,10 @@ class BannerCount extends \System
      * Banner Data, for BannerStatViewUpdate
      */
     protected $arrBannerData = array();
-    
+
     protected $banner_useragent = '';
-    
+
     protected $module_id = 0;
-    
 
 	/**
 	 * public constructor for phpunit
@@ -50,7 +48,7 @@ class BannerCount extends \System
 	    $this->arrBannerData    = $arrBannerData;
 	    $this->banner_useragent = $banner_useragent;
 	    $this->module_id        = $module_id;
-	    
+
 	    parent::__construct();
 	}
 
@@ -61,45 +59,50 @@ class BannerCount extends \System
 	{
 	    if ($this->bannerCheckBot() === true)
 	    {
-	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'Bot gefunden, wird nicht gezaehlt');
+	        BannerLog::writeLog(__METHOD__, __LINE__, 'Bot gefunden, wird nicht gezaehlt');
+
 	        return; //Bot gefunden, wird nicht gezaehlt
 	    }
 	    if ($this->checkUserAgent() === true)
 	    {
-	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'User Agent Filterung, wird nicht gezaehlt');
-	        return ; //User Agent Filterung
+	        BannerLog::writeLog(__METHOD__, __LINE__, 'User Agent Filterung, wird nicht gezaehlt');
+
+	        return; //User Agent Filterung
 	    }
-	
+
 	    $BannerChecks = new BannerChecks();
 	    if ($BannerChecks->checkBE() === true) 
 	    {
-	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'Backend Login, wird nicht gezaehlt');
-	        return ; //Backend Login
+	        BannerLog::writeLog(__METHOD__, __LINE__, 'Backend Login, wird nicht gezaehlt');
+
+	        return; //Backend Login
 	    }
 	    $BannerChecks = null; unset($BannerChecks);
-	    
+
 	    // Blocker
 	    $lastBanner = array_pop($this->arrBannerData);
 	    $BannerID = $lastBanner['banner_id'];
 	    if ($BannerID == 0)
 	    { // kein Banner, nichts zu tun
-	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'kein Banner, nichts zu tun');
+	        BannerLog::writeLog(__METHOD__, __LINE__, 'kein Banner, nichts zu tun');
+
 	        return;
 	    }
-	
-	    if ( $this->getStatViewUpdateBlockerId($BannerID, $this->module_id) === true )
+
+	    if ($this->getStatViewUpdateBlockerId($BannerID, $this->module_id) === true)
 	    {
 	        // Eintrag innerhalb der Blockzeit
-	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'Eintrag innerhalb der Blockzeit, wird nicht gezaehlt');
+	        BannerLog::writeLog(__METHOD__, __LINE__, 'Eintrag innerhalb der Blockzeit, wird nicht gezaehlt');
+
 	        return; // blocken, nicht zählen, raus hier
 	    }
 	    else
 	    {
 	        // nichts geblockt, also blocken für den nächsten Aufruf
-	        BannerLog::writeLog(__METHOD__ , __LINE__ , 'blocken fuer den naechsten Aufruf');
+	        BannerLog::writeLog(__METHOD__, __LINE__, 'blocken fuer den naechsten Aufruf');
 	        $this->setStatViewUpdateBlockerId($BannerID, $this->module_id);
 	    }
-	
+
 	    //Zählung, Insert
 	    $arrSet = array
 	    (
@@ -122,13 +125,13 @@ class BannerCount extends \System
                             	                `id`=?")
                 	                ->execute(time(), $BannerID);
 	    }
-	    BannerLog::writeLog(__METHOD__ , __LINE__ , 'Zaehlung erfolgt fuer Banner ID: '.$BannerID);
+	    BannerLog::writeLog(__METHOD__, __LINE__, 'Zaehlung erfolgt fuer Banner ID: '.$BannerID);
 	}//BannerStatViewUpdate()
-	
+
 	/**
 	 * StatViewUpdate Blocker, Set Banner ID and timestamp
 	 *
-	 * @param integer    $banner_id
+	 * @param integer $banner_id
 	 */
 	protected function setStatViewUpdateBlockerId($banner_id=0)
 	{
@@ -137,10 +140,11 @@ class BannerCount extends \System
 	    }// keine Banner ID, nichts zu tun
 	    //das können mehrere sein!, mergen!
 	    $objBannerLogic = new BannerLogic();
-	    $objBannerLogic->setSession('StatViewUpdateBlocker'.$this->module_id, array( $banner_id => time() ), true );
-	    return ;
+	    $objBannerLogic->setSession('StatViewUpdateBlocker'.$this->module_id, array($banner_id => time()), true);
+
+	    return;
 	}
-	
+
 	/**
 	 * StatViewUpdate Blocker, Get Banner ID if the timestamp ....
 	 *
@@ -150,12 +154,12 @@ class BannerCount extends \System
 	{
 	    $objBannerLogic = new BannerLogic();
 	    $session = $objBannerLogic->getSession('StatViewUpdateBlocker'.$this->module_id);
-	    if ( count($session) )
+	    if (\count($session))
 	    {
 	        reset($session);
 	        foreach ($session as $key => $val)
 	        {
-	            if ( $key == $banner_id &&
+	            if ($key == $banner_id &&
 	                true === $this->removeStatViewUpdateBlockerId($key, $val, $session)
 	                )
 	            {
@@ -165,26 +169,27 @@ class BannerCount extends \System
 	            }
 	        }
 	    }
+
 	    return false;
 	}
-	
+
 	/**
 	 * StatViewUpdate Blocker, Remove old Banner ID
 	 *
-	 * @param  integer    $banner_id
-	 * @return boolean    true = Key is valid, it must be blocked | false = key is invalid
+	 * @param  integer $banner_id
+	 * @return boolean true = Key is valid, it must be blocked | false = key is invalid
 	 */
 	protected function removeStatViewUpdateBlockerId($banner_id, $tstmap, $session)
 	{
 	    $BannerBlockTime = time() - 60*5;  // 5 Minuten, 0-5 min wird geblockt
-	    if ( isset($GLOBALS['TL_CONFIG']['mod_banner_block_time'] )
-	     && intval($GLOBALS['TL_CONFIG']['mod_banner_block_time'])>0
+	    if (isset($GLOBALS['TL_CONFIG']['mod_banner_block_time'])
+	     && (int) ($GLOBALS['TL_CONFIG']['mod_banner_block_time'])>0
 	    )
 	    {
-	        $BannerBlockTime = time() - 60*1*intval($GLOBALS['TL_CONFIG']['mod_banner_block_time']);
+	        $BannerBlockTime = time() - 60*1*(int) ($GLOBALS['TL_CONFIG']['mod_banner_block_time']);
 	    }
-	
-	    if ( $tstmap >  $BannerBlockTime )
+
+	    if ($tstmap >  $BannerBlockTime)
 	    {
 	        return true;
 	    }
@@ -193,7 +198,7 @@ class BannerCount extends \System
 	        //wenn mehrere dann nur den Teil, nicht die ganze Session
 	        unset($session[$banner_id]);
 	        //wenn Anzahl Banner in Session nun 0 dann Session loeschen
-	        if ( count($session) == 0 )
+	        if (\count($session) == 0)
 	        {
 	            //komplett löschen
 	            \Session::getInstance()->remove('StatViewUpdateBlocker'.$this->module_id);
@@ -202,36 +207,37 @@ class BannerCount extends \System
 	        {
 	            //gekuerzte Session neu setzen
 	            $objBannerLogic = new BannerLogic();
-                $objBannerLogic->setSession('StatViewUpdateBlocker'.$this->module_id, $session , false );
+                $objBannerLogic->setSession('StatViewUpdateBlocker'.$this->module_id, $session, false);
                 $objBannerLogic = null;
                 unset($objBannerLogic);
 	        }
 	    }
+
 	    return false;
 	}
-	
-	
+
 	/**
 	 * Spider Bot Check
 	 */
 	protected function bannerCheckBot()
 	{
 	    if (isset($GLOBALS['TL_CONFIG']['mod_banner_bot_check'])
-	      && (int)$GLOBALS['TL_CONFIG']['mod_banner_bot_check'] == 0
+	      && (int) $GLOBALS['TL_CONFIG']['mod_banner_bot_check'] == 0
 	    )
 	    {
 	        //DEBUG log_message('bannerCheckBot abgeschaltet','Banner.log');
 	        return false; //Bot Suche abgeschaltet ueber localconfig.php
 	    }
-	    
+
 	    $bundles = array_keys(\System::getContainer()->getParameter('kernel.bundles')); // old \ModuleLoader::getActive()
-	    if ( !in_array( 'BugBusterBotdetectionBundle', $bundles ) )
+	    if (!\in_array('BugBusterBotdetectionBundle', $bundles))
 	    {
             //botdetection Modul fehlt, Abbruch
 	        BannerLog::log('contao-botdetection-bundle extension required for extension: contao-banner-bundle!', 'BannerCount::bannerCheckBot', TL_ERROR);
+
 	        return false;
 	    }
-	    
+
 	    // Import Helperclass ModuleBotDetection
 	    $ModuleBotDetection = new ModuleBotDetection();
 	    if ($ModuleBotDetection->checkBotAllTests())
@@ -242,13 +248,13 @@ class BannerCount extends \System
 	    //DEBUG log_message('bannerCheckBot False','Banner.log');
 	    return false;
 	} //bannerCheckBot
-	
+
 	/**
 	 * HTTP_USER_AGENT Special Check
 	 */
 	protected function checkUserAgent()
 	{
-	    if ( \Environment::get('httpUserAgent') )
+	    if (\Environment::get('httpUserAgent'))
 	    {
 	        $UserAgent = trim(\Environment::get('httpUserAgent'));
 	    }
@@ -257,11 +263,11 @@ class BannerCount extends \System
 	        return false; // Ohne Absender keine Suche
 	    }
 	    $arrUserAgents = explode(",", $this->banner_useragent);
-	    if (strlen(trim($arrUserAgents[0])) == 0)
+	    if (\strlen(trim($arrUserAgents[0])) == 0)
 	    {
 	        return false; // keine Angaben im Modul
 	    }
-	    array_walk($arrUserAgents, array('self','trimBannerArrayValue'));  // trim der array values
+	    array_walk($arrUserAgents, array('self', 'trimBannerArrayValue'));  // trim der array values
 	    // grobe Suche
 	    $CheckUserAgent = str_replace($arrUserAgents, '#', $UserAgent);
 	    if ($UserAgent != $CheckUserAgent)
@@ -269,14 +275,14 @@ class BannerCount extends \System
 	        //DEBUG log_message('CheckUserAgent Filterung; Treffer!','Banner.log');
 	        return true;
 	    }
+
 	    return false;
 	} //checkUserAgent
 	public static function trimBannerArrayValue(&$data)
 	{
 	    $data = trim($data);
-	    return ;
-	}
-	
 
-	
+	    return;
+	}
+
 }

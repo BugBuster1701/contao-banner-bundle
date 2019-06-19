@@ -9,13 +9,13 @@
  * @author     Glen Langer (BugBuster)
  * @licence    LGPL
  * @filesource
- * @package    Banner
  * @see	       https://github.com/BugBuster1701/contao-banner-bundle
  */
 
 /**
  * Run in a custom namespace, so the class can be replaced
  */
+
 namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerLog;
@@ -25,7 +25,6 @@ use BugBuster\Banner\BannerLog;
  *
  * @copyright  Glen Langer 2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  */
 class BannerImage extends \System 
@@ -35,25 +34,25 @@ class BannerImage extends \System
 	 * @var string
 	 */
 	const BANNER_IMAGE_VERSION = '4.0.0';
-	
+
 	/**
 	 * Banner intern
 	 * @var string
 	 */
 	const BANNER_TYPE_INTERN = 'banner_image';
-	
+
 	/**
 	 * Banner extern
 	 * @var string
 	 */
 	const BANNER_TYPE_EXTERN = 'banner_image_extern';
-	
+
 	/**
 	 * Banner text
 	 * @var string
 	 */
 	const BANNER_TYPE_TEXT   = 'banner_text';
-	
+
 	/**
 	 * public constructor for phpunit
 	 */
@@ -61,54 +60,53 @@ class BannerImage extends \System
 	{
 	    parent::__construct();
 	}
-	
+
 	/**
 	 * Returns the version number
 	 *
 	 * @return string
-	 * @access public
 	 */
 	public function getVersion()
 	{
 	    return self::BANNER_IMAGE_VERSION;
 	}
-	
+
 	/**
 	 * Get the size of an image
 	 *
-	 * @param	string	$BannerImage	Image path/link
-	 * @param	string	$BannerType		intern,extern,text
-	 * @return	mixed	$array / false
+	 * @param  string $BannerImage Image path/link
+	 * @param  string $BannerType  intern,extern,text
+	 * @return mixed  $array / false
 	 */
-	public function getBannerImageSize($BannerImage,$BannerType)
+	public function getBannerImageSize($BannerImage, $BannerType)
 	{
 		switch ($BannerType)
 		{
-			case self::BANNER_TYPE_INTERN :
+			case self::BANNER_TYPE_INTERN:
 				return $this->getImageSizeInternal($BannerImage);
 				break;
-			case self::BANNER_TYPE_EXTERN :
+			case self::BANNER_TYPE_EXTERN:
 				return $this->getImageSizeExternal($BannerImage);
 				break;
-			case self::BANNER_TYPE_TEXT :
+			case self::BANNER_TYPE_TEXT:
 				return false;
 				break;
-			default :
+			default:
 				return false;
 			    break;
 		}
 	}
-	
+
 	/**
 	 * Get the size of an internal image
 	 * 
-	 * @param	string	$BannerImage	Image path
-	 * @return	mixed	$array / false
+	 * @param  string $BannerImage Image path
+	 * @return mixed  $array / false
 	 */
 	protected function getImageSizeInternal($BannerImage)
 	{
 	    $arrImageSize = false;
-	    
+
 	    try 
 	    {
 	        $arrImageSize = getimagesize(TL_ROOT . '/' . $BannerImage);
@@ -117,28 +115,28 @@ class BannerImage extends \System
 	    {
 	        $arrImageSize = false;
 	    }		
-		
-		BannerLog::writeLog(__METHOD__ , __LINE__ , 'Image Size: '. print_r($arrImageSize,true));
-		
+
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: '. print_r($arrImageSize, true));
+
 		return $arrImageSize;
 	}
-	
+
 	/**
 	 * Get the size of an external image
 	 * 
-	 * @param string $BannerImage	Image link
-	 * @return	mixed	$array / false
+	 * @param  string $BannerImage Image link
+	 * @return mixed  $array / false
 	 */
 	protected function getImageSizeExternal($BannerImage)
 	{
 		$token = md5(uniqid(rand(), true));
 		$tmpImage = 'system/tmp/mod_banner_fe_'.$token.'.tmp';
-	    
+
 		$objRequest = new \Request();
 	    $objRequest->redirect = true; // #75: Unterstützung der redirects für externe Affiliat Banner
 	    $objRequest->rlimit = 5;      // #75: Unterstützung der redirects für externe Affiliat Banner
 		$objRequest->send(html_entity_decode($BannerImage, ENT_NOQUOTES, 'UTF-8'));
-		
+
 		//old: Test auf chunked, nicht noetig solange Contao bei HTTP/1.0 bleibt
 		try
 		{
@@ -157,36 +155,37 @@ class BannerImage extends \System
 		    {
 		        BannerLog::logMessage('[getImageSizeExternal] tmpFile Problem: error');
 		    }
+
 		    return false;
 		} 
 		$objRequest=null;
 		unset($objRequest);
 		$arrImageSize = $this->getImageSizeInternal($tmpImage);
-		
+
 		$objFile->delete();
 		$objFile = null;
 		unset($objFile);
 
-		BannerLog::writeLog(__METHOD__ , __LINE__ , 'Image Size: '. print_r($arrImageSize,true));
-		
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: '. print_r($arrImageSize, true));
+
 		return $arrImageSize;
 	}
-	
-    /**
+
+	/**
 	 * Calculate the new size for witdh and height
 	 * 
-	 * @param int 		$oldWidth	,mandatory
-	 * @param int 		$oldHeight	,mandatory
-	 * @param int 		$newWidth	,optional
-	 * @param int 		$newHeight	,optional
-	 * @return array	$Width,$Height,$oriSize
+	 * @param  int   $oldWidth  ,mandatory
+	 * @param  int   $oldHeight ,mandatory
+	 * @param  int   $newWidth  ,optional
+	 * @param  int   $newHeight ,optional
+	 * @return array $Width,$Height,$oriSize
 	 */
-	public function getBannerImageSizeNew($oldWidth,$oldHeight,$newWidth=0,$newHeight=0)
+	public function getBannerImageSizeNew($oldWidth, $oldHeight, $newWidth=0, $newHeight=0)
 	{
 		$Width   = $oldWidth;  //Default, and flash require this
 		$Height  = $oldHeight; //Default, and flash require this
 		$oriSize = true;       //Attribute for images without conversion
-		
+
 		if ($newWidth > 0 && $newHeight > 0) 
 		{
 			$Width   = $newWidth;
@@ -205,16 +204,17 @@ class BannerImage extends \System
 			$Height  = $newHeight;
 			$oriSize = false;
 		}
-		return array($Width,$Height,$oriSize);
+
+		return array($Width, $Height, $oriSize);
 	}
-	
+
 	/**
 	 * Calculate the new size if necessary by comparing with maxWidth and maxHeight
 	 * 
-	 * @param array		$arrImageSize
-	 * @param int		$maxWidth
-	 * @param int		$maxHeight
-	 * @return array	$Width,$Height,$oriSize
+	 * @param  array $arrImageSize
+	 * @param  int   $maxWidth
+	 * @param  int   $maxHeight
+	 * @return array $Width,$Height,$oriSize
 	 */
 	public function getCheckBannerImageSize($arrImageSize, $maxWidth, $maxHeight)
 	{
@@ -225,7 +225,7 @@ class BannerImage extends \System
 		{ 
 		    if ($arrImageSize[0] > $maxWidth)
 		    {	//neue feste Breite
-		    	$newImageSize = $this->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1], $maxWidth, 0);
+		    	$newImageSize = $this->getBannerImageSizeNew($arrImageSize[0], $arrImageSize[1], $maxWidth, 0);
 		        $intWidth  = $newImageSize[0];
 		        $intHeight = $newImageSize[1];
 		        $oriSize   = $newImageSize[2];
@@ -245,14 +245,14 @@ class BannerImage extends \System
 			    if (($maxWidth*$arrImageSize[0]/$arrImageSize[1]) < $maxHeight)
 			    {
 			        // Breite statt Hoehe setzen, Breite auf maximale Hoehe
-			    	$newImageSize = $this->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1], $maxHeight, 0);
+			    	$newImageSize = $this->getBannerImageSizeNew($arrImageSize[0], $arrImageSize[1], $maxHeight, 0);
 			    	$intWidth  = $newImageSize[0];
 			    	$intHeight = $newImageSize[1];
 			    	$oriSize   = $newImageSize[2];
 			    } 
 			    else 
 			    {
-			    	$newImageSize = $this->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1], 0, $maxHeight);
+			    	$newImageSize = $this->getBannerImageSizeNew($arrImageSize[0], $arrImageSize[1], 0, $maxHeight);
 			        $intWidth  = $newImageSize[0];
 			    	$intHeight = $newImageSize[1];
 			    	$oriSize   = $newImageSize[2];
@@ -265,7 +265,8 @@ class BannerImage extends \System
 			    $oriSize = true; // Merkmal fuer Bilder ohne Umrechnung
 			}
 		}
-		return array($intWidth,$intHeight,$oriSize);
+
+		return array($intWidth, $intHeight, $oriSize);
 	}
-	
+
 }
