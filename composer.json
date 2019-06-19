@@ -25,7 +25,8 @@
 		"bugbuster/contao-botdetection-bundle":">=1.0.0,<2"
 	},
 	"require-dev": {
-			"contao/manager-plugin": "^2.0"
+			"contao/manager-plugin": "^2.0",
+			"friendsofphp/php-cs-fixer": "^2.12"
 	},
 	"conflict": {
 			"contao/manager-plugin": "<2.0 || >=3.0"

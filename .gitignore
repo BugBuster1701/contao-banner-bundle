@@ -1,6 +1,7 @@
 # Transifex
 /.tx/
 #for development in vbox
+vendor/
 src/vendor/
 src/composer.json
 composer.lock
