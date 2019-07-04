@@ -206,10 +206,15 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner']['banner_imgSize'],
 			'exclude'                 => true,
 			'inputType'               => 'imageSize',
-			'options'                 => System::getContainer()->get('contao.image.image_sizes')->getAllOptions(),
+			//'options'                 => System::getContainer()->get('contao.image.image_sizes')->getAllOptions(),
+		    'options_callback' => function ()
+		    {
+		        return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+		    },
 			'reference'               => &$GLOBALS['TL_LANG']['MSC'],
 			'sql'                     => "varchar(255) NOT NULL default ''",
-			'eval'                    => array('rgxp'=>'digit', 'nospace'=>true)
+			//'eval'                    => array('rgxp'=>'digit', 'nospace'=>true)
+		    'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true)
 		),
         'banner_comment' => array
         (
