@@ -89,6 +89,7 @@ class BannerInternal
                 $arrNewSizeValues[2] = $imageSize->resizeMode;
             }
         }
+        BannerLog::writeLog(__METHOD__, __LINE__, 'NewSizeValues: '. print_r($arrNewSizeValues, true));
 
         //Banner Neue Größe ermitteln, return array $Width,$Height,$oriSize
         $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0], $arrImageSize[1], $arrNewSizeValues[0], $arrNewSizeValues[1]);
@@ -124,20 +125,23 @@ class BannerInternal
             //return The path of the resized image or null
             //alt $FileSrc = \Image::get(\System::urlEncode($objFile->path), $arrImageSizenNew[0], $arrImageSizenNew[1],'proportional');
             $container = \System::getContainer();
-            $rootDir = $container->getParameter('kernel.project_dir');
+            $rootDir   = $container->getParameter('kernel.project_dir');
+            $staticUrl = $container->get('contao.assets.files_context')->getStaticUrl();
             $FileSrc = $container
                         ->get('contao.image.image_factory')
                         ->create($rootDir.'/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))
                         ->getUrl($rootDir);
-
+            
+            BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Image: '. print_r($FileSrc, true));
+            
             //alt $picture = \Picture::create(\System::urlEncode($objFile->path), array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))->getTemplateData();
             $picture = $container
                         ->get('contao.image.picture_factory')
                         ->create($rootDir . '/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]));
             $picture = array
             (
-                'img' => $picture->getImg(TL_ROOT, TL_FILES_URL),
-                'sources' => $picture->getSources(TL_ROOT, TL_FILES_URL)
+                'img'     => $picture->getImg($rootDir, $staticUrl),
+                'sources' => $picture->getSources($rootDir, $staticUrl)
             );
 
             $picture['alt']   = \StringUtil::specialchars(ampersand($this->objBanners->banner_name));
