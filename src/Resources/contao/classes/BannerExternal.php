@@ -71,6 +71,27 @@ class BannerExternal
         }
         //Banner Neue Größe 0:$Width 1:$Height
         $arrNewSizeValues = \StringUtil::deserialize($this->objBanners->banner_imgSize);
+
+        //Vordefinierte Größe?
+        if (is_numeric($arrNewSizeValues[2])) 
+        {
+            /** @var ImageSizeModel $imagesize */
+            $imageSize = \ImageSizeModel::findByPk((int) $arrNewSizeValues[2]);
+            BannerLog::writeLog(__METHOD__, __LINE__, 'Predefined dimensions: '. print_r($imageSize, true));
+            if ($imageSize === null)
+            {
+                $arrNewSizeValues[0] = 0;
+                $arrNewSizeValues[1] = 0;
+                $arrNewSizeValues[2] = 0;
+            }
+            else
+            {
+                $arrNewSizeValues[0] = ($imageSize->width  > 0) ? $imageSize->width : 0;
+                $arrNewSizeValues[1] = ($imageSize->height > 0) ? $imageSize->height : 0;
+                $arrNewSizeValues[2] = $imageSize->resizeMode;
+            }
+        }
+
         //Banner Neue Größe ermitteln, return array $Width,$Height,$oriSize
         $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1],$arrNewSizeValues[0],$arrNewSizeValues[1]);
         //Umwandlung bei Parametern
