@@ -92,6 +92,8 @@ class BannerExternal
             }
         }
 
+        BannerLog::writeLog(__METHOD__, __LINE__, 'NewSizeValues: '. print_r($arrNewSizeValues, true));
+
         //Banner Neue Größe ermitteln, return array $Width,$Height,$oriSize
         $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0],$arrImageSize[1],$arrNewSizeValues[0],$arrNewSizeValues[1]);
         //Umwandlung bei Parametern

@@ -130,7 +130,7 @@ class BannerInternal
             //alt $FileSrc = \Image::get(\System::urlEncode($objFile->path), $arrImageSizenNew[0], $arrImageSizenNew[1],'proportional');
             $container = \System::getContainer();
             $rootDir   = $container->getParameter('kernel.project_dir');
-            $staticUrl = $container->get('contao.assets.files_context')->getStaticUrl();
+            
             $FileSrc = $container
                         ->get('contao.image.image_factory')
                         ->create($rootDir.'/' . $objFile->path, [$arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]])
@@ -144,8 +144,8 @@ class BannerInternal
                         ->create($rootDir . '/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]));
             $picture = array
             (
-                'img'     => $picture->getImg($rootDir, $staticUrl ),
-                'sources' => $picture->getSources($rootDir, $staticUrl)
+                'img'     => $picture->getImg($rootDir, TL_FILES_URL ),
+                'sources' => $picture->getSources($rootDir, TL_FILES_URL)
             );
             
             $picture['alt']   = \StringUtil::specialchars(ampersand($this->objBanners->banner_name));
