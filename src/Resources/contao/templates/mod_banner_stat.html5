@@ -141,7 +141,7 @@
 		                    <div class="date_head"><?= $this->header_views; ?></div>
 		                    <div class="date_data_right"><?= $bannerstat['banner_views']; ?></div>
 		                </div>
-		                <div style="clear:both;"></div>
+		                <div style="clear:both;height: 0.5em;"></div>
 		                <div class="left">
 		                    <div class="date_head"><?= $this->header_prio; ?></div>
 		                    <div class="date_data"><?= $bannerstat['banner_prio']; ?></div>
@@ -220,7 +220,7 @@
 		                    <div class="date_head"><?= $this->header_views; ?></div>
 		                    <div class="date_data_right"><?= $bannerstat['banner_views']; ?></div>
 		                </div>
-		                <div style="clear:both;"></div>
+		                <div style="clear:both;height: 0.5em;"></div>
 		                <div class="left">
 		                    <div class="date_head"><?= $this->header_prio; ?></div>
 		                    <div class="date_data"><?= $bannerstat['banner_prio']; ?></div>

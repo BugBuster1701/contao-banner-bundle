@@ -23,9 +23,7 @@
     min-width   : 120px;
     border-bottom: 1px solid #ddd;
 }
-.mod_banner_be .date_data {
 
-}
 .mod_banner_be .date_data_right {
 	text-align: right;
 }
@@ -41,9 +39,7 @@
     min-width   : 120px;
     border-bottom: 1px solid #ddd;
 }
-.mod_banner_be .published_data {
-	
-}
+
 .mod_banner_be .filter {
 	clear:both;
 	margin-left : 5px;
