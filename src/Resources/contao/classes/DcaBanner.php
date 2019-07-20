@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2019 Leo Feyer
  *
  * Contao Module "Banner" - DCA Helper Class DcaBanner
  *
- * @copyright  Glen Langer 2012..2017 <http://contao.ninja>
+ * @copyright  Glen Langer 2012..2019 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  * @filesource
@@ -274,8 +274,8 @@ class DcaBanner extends \Backend
         </div>';
 
         $key = $row['banner_published'] ? 'published' : 'unpublished';
-        $style = 'style="font-size:11px;margin-bottom:10px;"';
-        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><strong>' . \StringUtil::specialchars(ampersand($row['banner_name'])) . '</strong></div>';
+        $style = 'class="tl_label"';
+        $output_h = '<div class="cte_type ' . $key . '"><span ' . $style . '>' . \StringUtil::specialchars(ampersand($row['banner_name'])) . '</span></div>';
 
         return $output_h . $output;
     }
@@ -391,8 +391,8 @@ class DcaBanner extends \Backend
         </div>';
 
         $key = $row['banner_published'] ? 'published' : 'unpublished';
-        $style = 'style="font-size:11px;margin-bottom:10px;"';
-        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><strong>' . \StringUtil::specialchars(ampersand($row['banner_name'])) . '</strong></div>';
+        $style = 'class="tl_label"';
+        $output_h = '<div class="cte_type ' . $key . '"><span ' . $style . '>' . \StringUtil::specialchars(ampersand($row['banner_name'])) . '</span></div>';
 
         return $output_h . $output;
     }
@@ -467,8 +467,8 @@ class DcaBanner extends \Backend
         </div>';
 
         $key = $row['banner_published'] ? 'published' : 'unpublished';
-        $style = 'style="font-size:11px;margin-bottom:10px;"';
-        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><strong>' . \StringUtil::specialchars(ampersand($row['banner_name'])) . '</strong></div>';
+        $style = 'class="tl_label"';
+        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><span ' . $style . '>' . \StringUtil::specialchars(ampersand($row['banner_name'])) . '</span></div>';
 
         return $output_h . $output;
     }
