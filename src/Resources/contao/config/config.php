@@ -52,5 +52,7 @@ $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = array('BugBuster\Banner\BannerInse
 /**
  * CSS
  */
-if(TL_MODE == 'BE')
+if (\defined('TL_MODE') && TL_MODE == 'BE')
+{
     $GLOBALS['TL_CSS'][] = 'bundles/bugbusterbanner/backend.css';
+}
