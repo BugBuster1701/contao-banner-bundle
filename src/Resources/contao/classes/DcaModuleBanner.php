@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2019 Leo Feyer
  *
  * Contao Module "Banner" - DCA Helper Class DcaModuleBanner
  *
- * @copyright  Glen Langer 2012..2017 <http://contao.ninja>
+ * @copyright  Glen Langer 2012..2019 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  * @filesource
@@ -21,13 +21,13 @@ namespace BugBuster\Banner;
 /**
  * DCA Helper Class DcaModuleBanner
  *
- * @copyright  Glen Langer 2012..2017 <http://contao.ninja>
+ * @copyright  Glen Langer 2012..2019 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  */
 class DcaModuleBanner extends \Backend
 {
-    public function getBannerTemplates($dc)
+    public function getBannerTemplates()
     {
-        return $this->getTemplateGroup('mod_banner_list_', $dc->activeRecord->pid);
+        return $this->getTemplateGroup('mod_banner_list_');
     }
 }
