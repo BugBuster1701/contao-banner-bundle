@@ -162,7 +162,7 @@ class DcaBanner extends \Backend
         switch ($arrImageSize[2])
         {
             case 1: // GIF
-            case 2: // JPG
+            case 2: // JPG/JPEG
             case 3: // PNG
                 $arrImageSizeNew = $this->BannerImage->getCheckBannerImageSize($arrImageSize, 250, 200);
                 $intWidth  = $arrImageSizeNew[0];

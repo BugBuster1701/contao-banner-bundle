@@ -50,7 +50,7 @@ class BannerTemplate
         //$arrImageSize[1]  eigene Höhe
         //$arrImageSize[3]  Breite und Höhe in der Form height="yyy" width="xxx"
         //$arrImageSize[2]
-        // 1 = GIF, 2 = JPG, 3 = PNG
+        // 1 = GIF, 2 = JPG/JPEG, 3 = PNG
         // 4 = SWF, 13 = SWC (zip-like swf file)
         // 5 = PSD, 6 = BMP, 7 = TIFF(intel byte order), 8 = TIFF(motorola byte order)
         // 9 = JPC, 10 = JP2, 11 = JPX, 12 = JB2, 13 = SWC, 14 = IFF
