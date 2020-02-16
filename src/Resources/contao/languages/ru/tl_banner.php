@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2020-02-16T16:11:57+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Высокий приоритет';
@@ -25,7 +25,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['1']        = 'Вы может�
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['0']       = 'Фильтр доменов';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['1']       = 'Если ввести имя домена, этот баннер будет использован только для данного домена. Если оставить поле пустым, баннер будет использован для всех доменов.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Изображение баннера';
-$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Выберите изображение баннера. (GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Выберите изображение баннера. (GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'URL изображения баннера';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['1'] = 'Внешнее изображение баннера URL: http://...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['0']      = 'Ширина и высота изображения';

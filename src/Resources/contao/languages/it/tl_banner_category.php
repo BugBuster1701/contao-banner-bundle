@@ -8,13 +8,13 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2019-05-12T21:54:26+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']        = 'Immagine default banner';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['1']        = 'Questo banner sarà mostrato in assenza di banner attivi. <br /> Questa selezione ha la priorità sulla definizione modulo "Nascondi quando vuota".';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['0']  = 'Immagine di default banner';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Selezionare il banner. (GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Selezionare il banner. (GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['0']   = 'Nome banner';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['1']   = 'Il nome sarà utilizzato per il tag title';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0'] = 'Link interno';

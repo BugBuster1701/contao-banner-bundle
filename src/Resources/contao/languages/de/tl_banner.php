@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2020-02-16T16:09:35+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Höchste Priorität';
@@ -25,7 +25,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['1']        = 'Hier können Sie
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['0']       = 'Domain Filter';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['1']       = 'Wenn Sie hier eine Domain eingeben, wird dieser Banner nur für diese Domain genutzt. Ohne Angabe wird dieser Banner für alle Domains genutzt.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Bannerdatei';
-$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Bitte eine Bannerdatei auswählen.(GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Bitte eine Bannerdatei auswählen.(GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'Bannerbild-URL';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['1'] = 'Externe Bannerbild-URL: http://... ';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['0']      = 'Bannerbreite und Bannerhöhe';

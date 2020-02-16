@@ -4,16 +4,16 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/fa/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/fa/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2015-02-07T21:13:33+01:00
+ * last-updated: 2017-09-16T01:04:02+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']        = 'تصویر بنر پیش‌فرض';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['0']  = 'تصویر پیش‌فرض بنر';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'بنر را انتخاب کنید. (GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'بنر را انتخاب کنید. (GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['0']   = 'نام بنر';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['1']   = 'نام برای برچسب عنوان نیز می‌باشد.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0'] = 'پیوند داخلی';

@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2020-02-16T16:11:54+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Wysoki priorytet';
@@ -20,7 +20,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['1'] = 'Po wprowadzeniu 
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0']      = 'Komentarz banera';
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Komantarz jest na potrzeby tagu <em>title</em> w kodzie HTML.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Obrazek banera';
-$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Wybierz baner. (GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Wybierz baner. (GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'URL obrazka banera';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['1'] = 'Zewnętrzny URL obrazka banera: http://...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['0']      = 'Szerokość i wysokość banera';

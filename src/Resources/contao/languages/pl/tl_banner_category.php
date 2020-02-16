@@ -8,13 +8,13 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2019-05-12T21:54:27+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']        = 'Domyślny obrazek banera';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['1']        = 'Domyślny obrazek banera będzie wyświetlany, kiedy moduł nie znajdzie aktywnych banerów.<br />Te ustawienie zastępuje opcję "Ukryj kiedy pusty".';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['0']  = 'Domyślny obrazek banera';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Wybierz obrazek banera. (GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Wybierz obrazek banera. (GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['0']   = 'Nazwa banera';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['1']   = 'Nazwa banera jest równiez wykozystywana jako tag title w kodzie HTML.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0'] = 'Wewnętrzny odnośnik';

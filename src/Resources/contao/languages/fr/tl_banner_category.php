@@ -8,13 +8,13 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2019-02-25T23:17:40+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']          = 'Image par défaut de la bannière';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['1']          = 'Cette bannière sera affiché, quand aucune autre bannière active ne sera trouvé.<br />Cette sélection est prioritaire à la définition du module "Cacher quand vide".';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['0']    = 'Image par défaut de la bannière';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']    = 'Veuillez choisir la bannière.(GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']    = 'Veuillez choisir la bannière.(GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['0']     = 'Nom Bannière';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['1']     = 'Le nom sert à la balise du titre également.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0']   = 'Lien interne';

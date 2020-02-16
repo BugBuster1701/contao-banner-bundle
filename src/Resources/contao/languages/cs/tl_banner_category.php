@@ -4,18 +4,17 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/cs/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/cs/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2014-02-08T23:02:16+01:00
+ * last-updated: 2017-09-16T01:04:02+02:00
  */
-
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']        = 'Výchozí banner obrázek';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['1']        = 'Tento banner se ukáže, pokud nejsou nalezeny žádné aktivní bannery.<br />Tato volba má přednost před definicí modulu "Skrýt, když je prázdný".';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['0']  = 'Banner výchozí obrázek';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Prosím, vyberte banner ve formátu (GIF,JPG,PNG,SWF).';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Prosím, vyberte banner ve formátu (GIF,JPG,PNG,WEBP).';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['0']   = 'Jméno banneru';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['1']   = 'Jméno je taky pro zobrazení titulu banneru.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0'] = 'Otevřít ve stejném okně prohlížeče';

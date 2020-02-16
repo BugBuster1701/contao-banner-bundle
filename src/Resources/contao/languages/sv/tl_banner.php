@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2020-02-16T16:12:01+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Högsta prioritet';
@@ -20,7 +20,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['1'] = 'Genom att ange e
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0']      = 'Banner-kommentar';
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Kommentar för bannerns titel-tagg (Banner-text för text-banners).';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Banner-bild';
-$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Välj banner-bild (GIF, JPG, PNG, SWF).';
+$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Välj banner-bild (GIF, JPG, PNG, WEBP).';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'Banner-bildens URL';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['1'] = 'Extern banner-bilds URL: http//...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['0']      = 'Bannerns bredd och höjd';

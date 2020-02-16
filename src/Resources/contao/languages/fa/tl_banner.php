@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2020-02-16T16:11:44+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'اولویت بالا';
@@ -22,7 +22,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'نظر برای 
 $GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['0']        = 'شناسه/کلاس سی‌اس‌اس';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['0']       = 'صافی دامنه';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'تصویر بنر';
-$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'لطفا بنر را انتخاب کنید. (GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'لطفا بنر را انتخاب کنید. (GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'نشانی وب تصویر بنر';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['1'] = 'نشانی وب تصویر بنر خارجی: http://...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['0']      = 'عرض و ارتفاع بنر';
