@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2020-02-16T17:15:05+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']          = 'Изображение баннера по умолчанию';
@@ -51,6 +51,7 @@ $GLOBALS['TL_LANG']['tl_banner_category']['edit']['0']                    = 'Р�
 $GLOBALS['TL_LANG']['tl_banner_category']['edit']['1']                    = 'Редактировать категорию ID %s';
 $GLOBALS['TL_LANG']['tl_banner_category']['editheader']['0']              = 'Редактировать параметры категории';
 $GLOBALS['TL_LANG']['tl_banner_category']['editheader']['1']              = 'Редактировать параметры категории ID %s';
+$GLOBALS['TL_LANG']['tl_banner_category']['formatsWebpNotSupported']      = 'WEBP не поддерживается на сервере.';
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['0']                     = 'Новая категория';
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['1']                     = 'Создание новой категории';
 $GLOBALS['TL_LANG']['tl_banner_category']['number_legend']                = 'Количество баннеров';

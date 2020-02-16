@@ -43,6 +43,7 @@ $GLOBALS['TL_LANG']['tl_banner_category']['edit']['0']                  = 'Edit 
 $GLOBALS['TL_LANG']['tl_banner_category']['edit']['1']                  = 'Edit category ID %s';
 $GLOBALS['TL_LANG']['tl_banner_category']['editheader']['0']            = 'Edit category settings';
 $GLOBALS['TL_LANG']['tl_banner_category']['editheader']['1']            = 'Edit the settings of category ID %s';
+$GLOBALS['TL_LANG']['tl_banner_category']['formatsWebpNotSupported']    = 'WEBP is not supported on your server.';
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['0']                   = 'New category';
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['1']                   = 'Create a new category';
 $GLOBALS['TL_LANG']['tl_banner_category']['number_legend']              = 'Number of banners';
