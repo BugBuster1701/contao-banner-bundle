@@ -131,9 +131,9 @@ class BannerInternal
                         ->get('contao.image.image_factory')
                         ->create($rootDir.'/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))
                         ->getUrl($rootDir);
-            
+
             BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Image: '. print_r($FileSrc, true));
-            
+
             //alt $picture = \Picture::create(\System::urlEncode($objFile->path), array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))->getTemplateData();
             $picture = $container
                         ->get('contao.image.picture_factory')

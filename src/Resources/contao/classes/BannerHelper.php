@@ -345,7 +345,7 @@ class BannerHelper extends \Frontend
 	    $objUrlGenerator = \System::getContainer()->get('contao.routing.url_generator');
 	    $strUrl = $objUrlGenerator->generate(($arrRow['alias'] ?: $arrRow['id']) . $strParams, $arrParams);
 	    // Remove path from absolute URLs
-	    if (0 === strpos($strUrl, '/') && strlen($strUrl)>1)
+	    if (0 === strpos($strUrl, '/') && \strlen($strUrl)>1)
 	    {
 	        $strUrl = substr($strUrl, \strlen(\Environment::get('path')) + 1);
 	    }
