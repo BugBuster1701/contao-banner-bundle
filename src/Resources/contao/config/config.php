@@ -7,14 +7,14 @@
  *
  * This is the banner configuration file.
  *
- * @copyright	Glen Langer 2007..2019 <http://contao.ninja>
+ * @copyright	Glen Langer 2007..2020 <http://contao.ninja>
  * @author      Glen Langer (BugBuster)
  * @license     LGPL 
  * @filesource
  */
 
-\define('BANNER_VERSION', '1.0');
-\define('BANNER_BUILD', '16');
+\define('BANNER_VERSION', '1.1');
+\define('BANNER_BUILD', '0');
 
 /**
  * -------------------------------------------------------------------------

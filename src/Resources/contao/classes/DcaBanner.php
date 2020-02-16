@@ -5,7 +5,7 @@
  *
  * Contao Module "Banner" - DCA Helper Class DcaBanner
  *
- * @copyright  Glen Langer 2012..2019 <http://contao.ninja>
+ * @copyright  Glen Langer 2012..2020 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  * @filesource
@@ -164,6 +164,7 @@ class DcaBanner extends \Backend
             case 1: // GIF
             case 2: // JPG/JPEG
             case 3: // PNG
+            case 18: // WEBP
                 $arrImageSizeNew = $this->BannerImage->getCheckBannerImageSize($arrImageSize, 250, 200);
                 $intWidth  = $arrImageSizeNew[0];
                 $intHeight = $arrImageSizeNew[1];
@@ -221,8 +222,9 @@ class DcaBanner extends \Backend
         switch ($arrImageSize[2])
         {
             case 1: // GIF
-            case 2: // JPG
+            case 2: // JPG / JPEG
             case 3: // PNG
+            case 18: // WEBP
                 $output = '<div class="mod_banner_be">
                     <div class="name">
                         <img alt="'.\StringUtil::specialchars(ampersand($row['banner_name'])).'" src="'. $banner_image .'" height="'.$intHeight.'" width="'.$intWidth.'">
@@ -297,6 +299,7 @@ class DcaBanner extends \Backend
             case 1: // GIF
             case 2: // JPG
             case 3: // PNG
+            case 18: // WEBP
                 $arrImageSizeNew = $this->BannerImage->getCheckBannerImageSize($arrImageSize, 250, 200);
                 $intWidth  = $arrImageSizeNew[0];
                 $intHeight = $arrImageSizeNew[1];
@@ -340,6 +343,7 @@ class DcaBanner extends \Backend
             case 1: // GIF
             case 2: // JPG
             case 3: // PNG
+            case 18: // WEBP
                 $output = '<div class="mod_banner_be">
                     <div class="name">
                         <img alt="'.\StringUtil::specialchars(ampersand($row['banner_name'])).'" src="'. $banner_image .'" height="'.$intHeight.'" width="'.$intWidth.'">
