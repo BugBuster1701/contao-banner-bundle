@@ -4,11 +4,11 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/de/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/de/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2015-02-02T21:48:57+01:00
+ * last-updated: 2017-09-16T01:04:02+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Höchste Priorität';
@@ -49,7 +49,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_type']['1']         = 'Auswahl ob die Q
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['0']        = 'Begrenzung der Views und Klicks';
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['1']        = 'Wenn Sie diese Option wählen, können Sie eine maximale View Anzahl und/oder maximale Klick Anzahl definieren.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_url']['0']          = 'Bannerziel-URL';
-$GLOBALS['TL_LANG']['tl_banner']['banner_url']['1']          = 'Bannerziel-URL: http://... Als Alternative können Sie im nächsten Feld eine Zielseite auswählen.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_url']['1']          = 'Bannerziel-URL: http://... Als Alternative können Sie im nächsten Feld eine Zielseite auswählen. (nicht bei Verwendung einer externer Bannergrafik)';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['0']  = 'Begrenzung der Views';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['1']  = 'Wenn Sie hier eine Zahl eingeben, wird dieser Banner nach dieser Anzahl von Views nicht mehr angezeigt.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_weighting']['0']    = 'Bannergewichtung';

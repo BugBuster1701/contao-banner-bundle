@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2019-02-25T23:17:40+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Haute priorité';
