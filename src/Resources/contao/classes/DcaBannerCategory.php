@@ -62,18 +62,19 @@ class DcaBannerCategory extends \Backend
     private function supportsWebp()
     {
         $imagine = \System::getContainer()->get('contao.image.imagine');
-
-        if ($imagine instanceof Imagine\Imagick\Imagine)
+        $imagineclass = get_class($imagine);
+        
+        if ($imagineclass == "Imagine\Imagick\Imagine")
         {
             return in_array('WEBP', Imagick::queryFormats('WEBP'), true);
         }
 
-        if ($imagine instanceof Imagine\Gmagick\Imagine)
+        if ($imagineclass == "Imagine\Gmagick\Imagine")
         {
             return in_array('WEBP', (new Gmagick())->queryformats('WEBP'), true);
         }
 
-        if ($imagine instanceof Imagine\Gd\Imagine)
+        if ($imagineclass == "Imagine\Gd\Imagine")
         {
             return function_exists('imagewebp');
         }
