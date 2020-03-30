@@ -563,12 +563,12 @@ class DcaBanner extends \Backend
         
         if ($imagineclass == "Imagine\Imagick\Imagine")
         {
-            return in_array('WEBP', Imagick::queryFormats('WEBP'), true);
+            return in_array('WEBP', \Imagick::queryFormats('WEBP'), true);
         }
 
         if ($imagineclass == "Imagine\Gmagick\Imagine")
         {
-            return in_array('WEBP', (new Gmagick())->queryformats('WEBP'), true);
+            return in_array('WEBP', (new \Gmagick())->queryformats('WEBP'), true);
         }
 
         if ($imagineclass == "Imagine\Gd\Imagine")
