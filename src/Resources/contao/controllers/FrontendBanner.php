@@ -185,7 +185,7 @@ class FrontendBanner extends \Frontend
             }
             $banner_redirect = '303';
 	    }
-	    $banner_url = ampersand($objBanners->banner_url);
+	    $banner_url = $objBanners->banner_url;
 	    BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: '. $banner_url);
 	    // 301 Moved Permanently
 	    // 302 Found
