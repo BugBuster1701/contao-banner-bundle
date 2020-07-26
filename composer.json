@@ -21,13 +21,13 @@
 	},
 	"require":{
 		"php": "^7.1",
-		"contao/core-bundle": "~4.7",
+		"contao/core-bundle": "~4.9",
 		"bugbuster/contao-botdetection-bundle":">=1.0.0,<2"
 	},
 	"require-dev": {
 			"contao/manager-plugin": "^2.0",
 			"friendsofphp/php-cs-fixer": "^2.12",
-			"phpunit/phpunit": "^7.0"
+			"phpunit/phpunit": "^8.4"
 	},
 	"conflict": {
 			"contao/manager-plugin": "<2.0 || >=3.0"
@@ -56,7 +56,7 @@
 			}
 		},
 		"branch-alias": {
-			"dev-develop": "1.1.x-dev"
+			"dev-develop": "1.2.x-dev"
 		},
 		"contao-manager-plugin": "BugBuster\\BannerBundle\\ContaoManager\\Plugin"
 	}

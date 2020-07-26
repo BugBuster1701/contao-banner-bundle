@@ -10,3 +10,5 @@ composer.lock
 .project
 .settings/
 .vscode/
+#phpunit
+.phpunit.result.cache

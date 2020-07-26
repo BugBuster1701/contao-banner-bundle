@@ -342,25 +342,8 @@ class BannerHelper extends \Frontend
 	        $arrParams['_locale'] = $strForceLang;
 	    }
 
-	    $objUrlGenerator = \System::getContainer()->get('contao.routing.url_generator');
-	    $strUrl = $objUrlGenerator->generate(($arrRow['alias'] ?: $arrRow['id']) . $strParams, $arrParams);
-	    // Remove path from absolute URLs
-	    if (0 === strpos($strUrl, '/') && \strlen($strUrl)>1)
-	    {
-	        $strUrl = substr($strUrl, \strlen(\Environment::get('path')) + 1);
-	    }
-
-	    // Decode sprintf placeholders
-	    if (strpos($strParams, '%') !== false)
-	    {
-	        $arrMatches = array();
-	        preg_match_all('/%([sducoxXbgGeEfF])/', $strParams, $arrMatches);
-
-	        foreach (array_unique($arrMatches[1]) as $v)
-	        {
-	            $strUrl = str_replace('%25' . $v, '%' . $v, $strUrl);
-	        }
-	    }
+		$objTargetTo = \PageModel::findPublishedById($arrRow['id']);
+		$strUrl = $objTargetTo->getFrontendUrl($strParams, $strForceLang);
 
 	    return $strUrl;
 	}
