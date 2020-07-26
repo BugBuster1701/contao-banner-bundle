@@ -50,33 +50,33 @@ class DcaBannerCategory extends \Backend
         {
             $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image'][1] .= ' (' . $GLOBALS['TL_LANG']['tl_banner_category']['formatsWebpNotSupported'] .')';
         }
-        
+
         return  '';
     }
 
     /**
-    * Check if WEBP is supported
-    *
-    * @return boolean
-    */
+     * Check if WEBP is supported
+     *
+     * @return boolean
+     */
     private function supportsWebp()
     {
         $imagine = \System::getContainer()->get('contao.image.imagine');
-        $imagineclass = get_class($imagine);
-        
-        if ($imagineclass == "Imagine\Imagick\Imagine")
+        $imagineclass = \get_class($imagine);
+
+        if ($imagineclass == "Imagine\\Imagick\\Imagine")
         {
-            return in_array('WEBP', \Imagick::queryFormats('WEBP'), true);
+            return \in_array('WEBP', \Imagick::queryFormats('WEBP'), true);
         }
 
-        if ($imagineclass == "Imagine\Gmagick\Imagine")
+        if ($imagineclass == "Imagine\\Gmagick\\Imagine")
         {
-            return in_array('WEBP', (new \Gmagick())->queryformats('WEBP'), true);
+            return \in_array('WEBP', (new \Gmagick())->queryformats('WEBP'), true);
         }
 
-        if ($imagineclass == "Imagine\Gd\Imagine")
+        if ($imagineclass == "Imagine\\Gd\\Imagine")
         {
-            return function_exists('imagewebp');
+            return \function_exists('imagewebp');
         }
 
         return false;

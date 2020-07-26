@@ -318,6 +318,7 @@ class BannerSingle extends \Frontend
         }//Banner vorhanden
         //falls $arrImageSize = false  und kein Text Banner
         $this->Template->banners = $arrBanners; // leeres array
+
         return $this->Template;
     }
 
@@ -475,6 +476,7 @@ class BannerSingle extends \Frontend
         }//Banner vorhanden
         //falls $arrImageSize = false  und kein Text Banner
         $this->Template->banners = $arrBanners; // leeres array
+
         return $this->Template;
     }
 

@@ -418,6 +418,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                 $arrBannersStat['banner_url']     = $Banner['banner_image'];
                 break;
         } // switch
+
         return $arrBannersStat;
     }
 
