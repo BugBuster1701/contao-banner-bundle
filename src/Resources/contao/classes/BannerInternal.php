@@ -84,8 +84,8 @@ class BannerInternal
             }
             else 
             {
-                $arrNewSizeValues[0] = ($imageSize->width  > 0) ? $imageSize->width : 0;
-                $arrNewSizeValues[1] = ($imageSize->height > 0) ? $imageSize->height : 0;
+                $arrNewSizeValues[0] = 0;
+                $arrNewSizeValues[1] = 0;
                 $arrNewSizeValues[2] = $imageSize->resizeMode;
             }
         }
@@ -138,6 +138,7 @@ class BannerInternal
             $picture = $container
                         ->get('contao.image.picture_factory')
                         ->create($rootDir . '/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]));
+                       
             $picture = array
             (
                 'img'     => $picture->getImg($rootDir, $staticUrl),
