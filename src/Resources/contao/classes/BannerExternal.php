@@ -15,6 +15,8 @@ namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerImage;
 use BugBuster\Banner\BannerTemplate;
+use Contao\StringUtil;
+use Contao\ImageSizeModel;
 
 /**
  * Class BannerExternal
@@ -67,13 +69,13 @@ class BannerExternal
             return $objReturn;
         }
         //Banner Neue Größe 0:$Width 1:$Height
-        $arrNewSizeValues = \StringUtil::deserialize($this->objBanners->banner_imgSize);
+        $arrNewSizeValues = StringUtil::deserialize($this->objBanners->banner_imgSize);
 
         //Vordefinierte Größe?
         if (is_numeric($arrNewSizeValues[2])) 
         {
             /** @var ImageSizeModel $imagesize */
-            $imageSize = \ImageSizeModel::findByPk((int) $arrNewSizeValues[2]);
+            $imageSize = ImageSizeModel::findByPk((int) $arrNewSizeValues[2]);
             BannerLog::writeLog(__METHOD__, __LINE__, 'Predefined dimensions: '. print_r($imageSize, true));
 
             if ($imageSize === null)
@@ -98,13 +100,13 @@ class BannerExternal
         //fake the Picture::create
         $picture['img']   = array
         (
-            'src'    => \StringUtil::specialchars(ampersand($FileSrc)),
+            'src'    => StringUtil::specialchars(ampersand($FileSrc)),
             'width'  => $arrImageSizenNew[0],
             'height' => $arrImageSizenNew[1],
-            'srcset' => \StringUtil::specialchars(ampersand($FileSrc))
+            'srcset' => StringUtil::specialchars(ampersand($FileSrc))
         );
-        $picture['alt']   = \StringUtil::specialchars(ampersand($this->objBanners->banner_name));
-        $picture['title'] = \StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
+        $picture['alt']   = StringUtil::specialchars(ampersand($this->objBanners->banner_name));
+        $picture['title'] = StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
 
         $arrImageSize[0] = $arrImageSizenNew[0];
         $arrImageSize[1] = $arrImageSizenNew[1];

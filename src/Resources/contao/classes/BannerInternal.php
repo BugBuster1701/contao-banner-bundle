@@ -1,10 +1,10 @@
 <?php
 /**
- * Extension for Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
+ * Extension for Contao Open Source CMS, Copyright (C) 2005-2020 Leo Feyer
  *
  * BannerInternal - Frontend Helper Class
  *
- * @copyright  Glen Langer 2017 <http://contao.ninja>
+ * @copyright  Glen Langer 2017..2020 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @licence    LGPL
  * @filesource
@@ -15,11 +15,15 @@ namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerImage;
 use BugBuster\Banner\BannerTemplate;
+use Contao\FilesModel;
+use Contao\System;
+use Contao\StringUtil;
+use Contao\ImageSizeModel;
 
 /**
  * Class BannerInternal
  *
- * @copyright  Glen Langer 2017 <http://contao.ninja>
+ * @copyright  Glen Langer 2017..2020 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
@@ -50,7 +54,7 @@ class BannerInternal
     public function generateImageData() 
     {
         //Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
-        $objFile = \FilesModel::findByPk($this->objBanners->banner_image);
+        $objFile = FilesModel::findByPk($this->objBanners->banner_image);
         //BannerImage Class
         $this->BannerImage = new BannerImage();
         //Banner Art und Größe bestimmen
@@ -69,11 +73,13 @@ class BannerInternal
             return $objReturn;
         }
         //Banner Neue Größe 0:$Width 1:$Height 2:resize mode
-        $arrNewSizeValues = \StringUtil::deserialize($this->objBanners->banner_imgSize);
+        $arrNewSizeValues = StringUtil::deserialize($this->objBanners->banner_imgSize);
+        $predefined = false;
         //Vordefinierte Größe?
         if (is_numeric($arrNewSizeValues[2])) 
         {
-            $imageSize = \ImageSizeModel::findByPk((int) $arrNewSizeValues[2]);
+            $predefined = true;
+            $imageSize = ImageSizeModel::findByPk((int) $arrNewSizeValues[2]);
             BannerLog::writeLog(__METHOD__, __LINE__, 'Predefined dimensions: '. print_r($imageSize, true));
 
             if ($imageSize === null)
@@ -84,8 +90,8 @@ class BannerInternal
             }
             else 
             {
-                $arrNewSizeValues[0] = 0;
-                $arrNewSizeValues[1] = 0;
+                $arrNewSizeValues[0] = ($imageSize->width > 0 ) ? $imageSize->width  : 0;
+                $arrNewSizeValues[1] = ($imageSize->height > 0) ? $imageSize->height : 0;
                 $arrNewSizeValues[2] = $imageSize->resizeMode;
             }
         }
@@ -94,12 +100,10 @@ class BannerInternal
         //Banner Neue Größe ermitteln, return array $Width,$Height,$oriSize
         $arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0], $arrImageSize[1], $arrNewSizeValues[0], $arrNewSizeValues[1]);
 
-        //wenn oriSize = true, oder bei GIF/SWF/SWC = original Pfad nehmen
+        //wenn oriSize = true und GIF original Pfad nehmen
         if ($arrImageSizenNew[2] === true //oriSize
-            || $arrImageSize[2] == 1  // GIF
-            || $arrImageSize[2] == 4  // SWF
-            || $arrImageSize[2] == 13 // SWC
-            )
+             && $arrImageSize[2] == 1  // GIF
+           )
         {
             $FileSrc = $objFile->path;
             $arrImageSize[0] = $arrImageSizenNew[0];
@@ -109,13 +113,13 @@ class BannerInternal
             //fake the Picture::create
             $picture['img']   = array
             (
-                'src'    => \StringUtil::specialchars(ampersand($FileSrc)),
+                'src'    => StringUtil::specialchars(ampersand($FileSrc)),
                 'width'  => $arrImageSizenNew[0],
                 'height' => $arrImageSizenNew[1],
-                'srcset' => \StringUtil::specialchars(ampersand($FileSrc))
+                'srcset' => StringUtil::specialchars(ampersand($FileSrc))
             );
-            $picture['alt']   = \StringUtil::specialchars(ampersand($this->objBanners->banner_name));
-            $picture['title'] = \StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
+            $picture['alt']   = StringUtil::specialchars(ampersand($this->objBanners->banner_name));
+            $picture['title'] = StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
 
             BannerLog::writeLog(__METHOD__, __LINE__, 'Orisize Picture: '. print_r($picture, true));
         }
@@ -123,8 +127,7 @@ class BannerInternal
         {
             //Resize an image and store the resized version in the assets/images folder
             //return The path of the resized image or null
-            //alt $FileSrc = \Image::get(\System::urlEncode($objFile->path), $arrImageSizenNew[0], $arrImageSizenNew[1],'proportional');
-            $container = \System::getContainer();
+            $container = System::getContainer();
             $rootDir   = $container->getParameter('kernel.project_dir');
             $staticUrl = $container->get('contao.assets.files_context')->getStaticUrl();
             $FileSrc = $container
@@ -134,10 +137,15 @@ class BannerInternal
 
             BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Image: '. print_r($FileSrc, true));
 
-            //alt $picture = \Picture::create(\System::urlEncode($objFile->path), array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))->getTemplateData();
-            $picture = $container
-                        ->get('contao.image.picture_factory')
-                        ->create($rootDir . '/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]));
+            $picture = $container->get('contao.image.picture_factory');
+            if ($predefined)
+            {
+                    $picture = $picture->create($rootDir . '/' . $objFile->path, $imageSize->id);
+            }
+            else
+            {
+                    $picture = $picture->create($rootDir . '/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]));
+            }
                        
             $picture = array
             (
@@ -145,8 +153,8 @@ class BannerInternal
                 'sources' => $picture->getSources($rootDir, $staticUrl)
             );
 
-            $picture['alt']   = \StringUtil::specialchars(ampersand($this->objBanners->banner_name));
-            $picture['title'] = \StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
+            $picture['alt']   = StringUtil::specialchars(ampersand($this->objBanners->banner_name));
+            $picture['title'] = StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
 
             BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Picture: '. print_r($picture, true));
 

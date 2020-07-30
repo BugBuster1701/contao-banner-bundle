@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2019 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2020 Leo Feyer
  * 
  * Modul Banner Config - Backend
  *
@@ -14,7 +14,7 @@
  */
 
 \define('BANNER_VERSION', '1.1');
-\define('BANNER_BUILD', '3');
+\define('BANNER_BUILD', '4');
 
 /**
  * -------------------------------------------------------------------------

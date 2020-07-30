@@ -186,6 +186,11 @@ class BannerImage extends \System
 		$Height  = $oldHeight; //Default, and flash require this
 		$oriSize = true;       //Attribute for images without conversion
 
+		if ($oldWidth == $newWidth && $oldHeight == $newHeight)
+		{
+			return array($Width, $Height, $oriSize);
+		}
+		
 		if ($newWidth > 0 && $newHeight > 0) 
 		{
 			$Width   = $newWidth;
