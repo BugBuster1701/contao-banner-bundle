@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2020-02-16T17:15:05+01:00
+ * last-updated: 2020-08-09T23:38:59+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                         = 'Höchste Priorität';
@@ -37,7 +37,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_name']['0']          = 'Bannername';
 $GLOBALS['TL_LANG']['tl_banner']['banner_name']['1']          = 'Bannername. Bei Textbanner: Überschrift';
 $GLOBALS['TL_LANG']['tl_banner']['banner_number_of']          = 'Anzahl der Banner';
 $GLOBALS['TL_LANG']['tl_banner']['banner_overwriteMeta']['0'] = 'Überschreiben mit Metadaten der Datei';
-$GLOBALS['TL_LANG']['tl_banner']['banner_overwriteMeta']['1'] = 'Überschreiben des Alt-Tags (Banner Name) und des Title-Tags (Banner Kommentar) mit den Metadaten der Datei vom Dateimanager';
+$GLOBALS['TL_LANG']['tl_banner']['banner_overwriteMeta']['1'] = 'Überschreiben des Alt-Tags (Bannername) und des Title-Tags (Bannerkommentar) mit den Metadaten der Datei vom Dateimanager';
 $GLOBALS['TL_LANG']['tl_banner']['banner_published']['0']     = 'Veröffentlicht';
 $GLOBALS['TL_LANG']['tl_banner']['banner_published']['1']     = 'Solange Sie diese Option nicht wählen, wird dieser Banner nicht für die Anzeige berücksichtigt.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_start']['0']         = 'Anzeigen ab';
@@ -91,6 +91,7 @@ $GLOBALS['TL_LANG']['tl_banner']['tl_be_stop']                = 'Anzeigen bis';
 $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']                 = 'ja';
 $GLOBALS['TL_LANG']['tl_banner']['toggle']['0']               = 'Banner ein- oder ausschalten';
 $GLOBALS['TL_LANG']['tl_banner']['toggle']['1']               = 'Banner ID %s ein- oder ausschalten';
+$GLOBALS['TL_LANG']['tl_banner']['using_meta_data']           = 'Verwendung von Datei-Metadaten';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']         = 'Interne Bannergrafik';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern']  = 'Externe Bannergrafik';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']          = 'Textbanner';

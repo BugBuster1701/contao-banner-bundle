@@ -271,6 +271,11 @@ class DcaBanner extends \Backend
                     <div class="date_data">' . ($row['banner_clicks_until'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_clicks_until']) . '</div>
                 </div>
                 <div style="clear:both;"></div>
+                <div class="left">
+                    <div class="meta_head">'.$GLOBALS['TL_LANG']['tl_banner']['using_meta_data'].'</div>
+                    <div class="meta_data">' . ($row['banner_overwriteMeta'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']) . '</div>
+                </div>
+                <div style="clear:both;"></div>
             </div>
             <div class="url">'.$banner_url_text . (\strlen($banner_url)<80 ? $banner_url : substr($banner_url, 0, 36)."[...]".substr($banner_url, -36, 36)).'</div>
         </div>';

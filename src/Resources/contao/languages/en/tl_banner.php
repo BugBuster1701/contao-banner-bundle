@@ -92,6 +92,7 @@ $GLOBALS['TL_LANG']['tl_banner']['tl_be_stop']               = 'Show until';
 $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']                = 'yes';
 $GLOBALS['TL_LANG']['tl_banner']['toggle']['0']              = 'Toggle visibility';
 $GLOBALS['TL_LANG']['tl_banner']['toggle']['1']              = 'Toggle the visibility of banner ID %s';
+$GLOBALS['TL_LANG']['tl_banner']['using_meta_data']          = 'Using file meta data';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']        = 'Internal banner image';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern'] = 'External banner image';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']         = 'Text banner';
