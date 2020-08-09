@@ -183,4 +183,20 @@ class BannerInternal
     {
         return BannerTemplate::generateTemplateData($arrImageSize, $FileSrc, $picture, $this->objBanners, $this->banner_cssID, $this->banner_class);
     }
+
+    public function getBannerMetaData($objBanners,$objFile)
+    {
+        $objBannerFile =  new \Contao\File($objFile->path);
+
+        $arrMeta =  \Contao\Frontend::getMetaData($objBannerFile->meta, $objPage->language);
+
+        if (empty($arrMeta))
+        {
+            if ($objPage->rootFallbackLanguage !== null)
+            {
+                $arrMeta =  Frontend::getMetaData($objFile->meta, $objPage->rootFallbackLanguage);
+            }
+        }
+        return $arrMeta;
+    }
 }

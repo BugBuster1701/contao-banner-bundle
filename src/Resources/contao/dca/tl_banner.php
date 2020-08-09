@@ -1,14 +1,14 @@
 <?php
 
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2020 Leo Feyer
  *
  * Modul Banner - Backend DCA tl_banner
  * 
  * This is the data container array for table tl_banner.
  *
  * PHP version 5
- * @copyright  Glen Langer 2007..2017
+ * @copyright  Glen Langer 2007..2020
  * @author     Glen Langer
  * @license    LGPL
  */
@@ -100,9 +100,9 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 	(
 	      '__selector__'                => array('banner_type', 'banner_until'),
 		  'default'                     => 'banner_type',
-		  'banner_image'                => 'banner_type;{title_legend},banner_name,banner_weighting;{destination_legend},banner_url,banner_jumpTo,banner_target;{image_legend},banner_image,banner_imgSize;{comment_legend},banner_comment;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
-		  'banner_image_extern'         => 'banner_type;{title_legend},banner_name,banner_weighting;{destination_legend},banner_url,banner_target;{image_legend},banner_image_extern,banner_imgSize;{comment_legend},banner_comment;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
-		  'banner_text'                 => 'banner_type;{title_legend},banner_name,banner_weighting;{destination_legend},banner_url,banner_jumpTo,banner_target;{comment_legend},banner_comment;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until'
+		  'banner_image'                => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;banner_overwriteMeta;{destination_legend},banner_url,banner_jumpTo,banner_target;{image_legend},banner_image,banner_imgSize;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
+		  'banner_image_extern'         => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;{destination_legend},banner_url,banner_target;{image_legend},banner_image_extern,banner_imgSize;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
+		  'banner_text'                 => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;{destination_legend},banner_url,banner_jumpTo,banner_target;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until'
 	),
     // Subpalettes
 	'subpalettes' => array
@@ -160,6 +160,14 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'explanation'	          => 'banner_help',
 			'sql'                     => "tinyint(1) NOT NULL default '2'",
 			'eval'                    => array('mandatory'=>false, 'maxlength'=>1, 'rgxp'=>'prcnt', 'helpwizard'=>true, 'tl_class'=>'w50')
+		),
+		'banner_overwriteMeta' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_banner']['banner_overwriteMeta'],
+			'exclude'                 => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 clr'),
+			'sql'                     => "char(1) NOT NULL default ''"
 		),
 		'banner_url' => array
 		(
