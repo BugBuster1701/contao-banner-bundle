@@ -190,7 +190,7 @@ class BannerImage extends \System
 		{
 			return array($Width, $Height, $oriSize);
 		}
-		
+
 		if ($newWidth > 0 && $newHeight > 0) 
 		{
 			$Width   = $newWidth;

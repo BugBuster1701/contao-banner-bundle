@@ -15,8 +15,8 @@ namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerImage;
 use BugBuster\Banner\BannerTemplate;
-use Contao\StringUtil;
 use Contao\ImageSizeModel;
+use Contao\StringUtil;
 
 /**
  * Class BannerExternal
