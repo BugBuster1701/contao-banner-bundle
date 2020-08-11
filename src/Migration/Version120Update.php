@@ -84,7 +84,7 @@ class Version120Update extends AbstractMigration
             UPDATE
                 tl_banner
             SET
-                overwriteMeta = '1'
+                banner_overwriteMeta = '1'
             WHERE
                 banner_name = '' AND banner_comment = ''
         ");
