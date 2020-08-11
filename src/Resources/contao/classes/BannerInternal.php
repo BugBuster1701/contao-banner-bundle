@@ -196,7 +196,7 @@ class BannerInternal
     public function getBannerMetaData($objBanners, $objFile)
     {
         $arrMeta = array();
-        if ($objBanners->banner_overwriteMeta != '1')
+        if ($objBanners->banner_overwritemeta != '1')
         {
             $arrMeta['alt']   = StringUtil::specialchars(ampersand($objBanners->banner_name));
             $arrMeta['title'] = StringUtil::specialchars(ampersand($objBanners->banner_comment));

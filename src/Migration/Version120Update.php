@@ -53,7 +53,7 @@ class Version120Update extends AbstractMigration
     /**
      * Must only run if:
      * - the Banner tables are present AND
-     * - the column banner_overwriteMeta is not present.
+     * - the column banner_overwritemeta is not present.
      */
     public function shouldRun(): bool
     {
@@ -65,7 +65,7 @@ class Version120Update extends AbstractMigration
 
         $columns = $schemaManager->listTableColumns('tl_banner');
 
-        return !isset($columns['banner_overwriteMeta']);
+        return !isset($columns['banner_overwritemeta']);
     }
 
     /**
@@ -77,14 +77,14 @@ class Version120Update extends AbstractMigration
             ALTER TABLE
                 tl_banner
             ADD
-                banner_overwriteMeta CHAR(1) DEFAULT '' NOT NULL
+                banner_overwritemeta CHAR(1) DEFAULT '' NOT NULL
         ");
 
         $stmt = $this->connection->prepare("
             UPDATE
                 tl_banner
             SET
-                banner_overwriteMeta = '1'
+                banner_overwritemeta = '1'
             WHERE
                 banner_name = '' AND banner_comment = ''
         ");

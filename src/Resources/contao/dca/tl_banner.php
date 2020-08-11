@@ -161,7 +161,7 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'sql'                     => "tinyint(1) NOT NULL default '2'",
 			'eval'                    => array('mandatory'=>false, 'maxlength'=>1, 'rgxp'=>'prcnt', 'helpwizard'=>true, 'tl_class'=>'w50')
 		),
-		'banner_overwriteMeta' => array
+		'banner_overwritemeta' => array
 		(
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner']['banner_overwriteMeta'],
 			'exclude'                 => true,
