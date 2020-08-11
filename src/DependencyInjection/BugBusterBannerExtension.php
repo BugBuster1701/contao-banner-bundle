@@ -22,7 +22,7 @@ use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
 /**
  * This is the Bundle extension.
  */
-class BugBusterInstallationExtension extends Extension
+class BugBusterBannerExtension extends Extension
 {
     /**
      * {@inheritdoc}
