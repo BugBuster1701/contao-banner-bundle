@@ -166,7 +166,7 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner']['banner_overwriteMeta'],
 			'exclude'                 => true,
 			'inputType'               => 'checkbox',
-			'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'w50 clr'),
+			'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'clr'),
 			'sql'                     => "char(1) NOT NULL default ''"
 		),
 		'banner_url' => array
