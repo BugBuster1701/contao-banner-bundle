@@ -273,7 +273,7 @@ class DcaBanner extends \Backend
                 <div style="clear:both;"></div>
                 <div class="left">
                     <div class="meta_head">'.$GLOBALS['TL_LANG']['tl_banner']['using_meta_data'].'</div>
-                    <div class="meta_data">' . ($row['banner_overwriteMeta'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']) . '</div>
+                    <div class="meta_data">' . ($row['banner_overwritemeta'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']) . '</div>
                 </div>
                 <div style="clear:both;"></div>
             </div>
