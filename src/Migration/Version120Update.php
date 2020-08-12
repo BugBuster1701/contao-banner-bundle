@@ -47,7 +47,7 @@ class Version120Update extends AbstractMigration
      */
     public function getName(): string
     {
-        return 'Enable OverwriteMeta';
+        return 'Banner Bundle Version120Update Enable OverwriteMeta';
     }
 
     /**
