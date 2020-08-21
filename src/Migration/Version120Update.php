@@ -93,7 +93,7 @@ class Version120Update extends AbstractMigration
 
         return new MigrationResult(
             true,
-            'Overwrite Metadata '.$stmt->rowCount().' x activated.'
+            'Overwrite Metadata '.$stmt->rowCount().' x activated. (Banner Bundle)'
         );
     }
 }
