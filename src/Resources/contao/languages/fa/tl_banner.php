@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2020-02-16T17:16:07+01:00
+ * last-updated: 2020-06-24T22:44:53+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'اولویت بالا';

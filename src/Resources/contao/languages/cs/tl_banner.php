@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2020-02-16T17:15:19+01:00
+ * last-updated: 2020-06-24T22:44:50+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Nejvyšší priorita';

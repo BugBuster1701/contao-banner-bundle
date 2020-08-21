@@ -16,9 +16,9 @@ namespace BugBuster\Banner;
 use BugBuster\Banner\BannerImage;
 use BugBuster\Banner\BannerTemplate;
 use Contao\FilesModel;
-use Contao\System;
-use Contao\StringUtil;
 use Contao\ImageSizeModel;
+use Contao\StringUtil;
+use Contao\System;
 
 /**
  * Class BannerInternal
@@ -90,7 +90,7 @@ class BannerInternal
             }
             else 
             {
-                $arrNewSizeValues[0] = ($imageSize->width > 0 ) ? $imageSize->width  : 0;
+                $arrNewSizeValues[0] = ($imageSize->width > 0) ? $imageSize->width : 0;
                 $arrNewSizeValues[1] = ($imageSize->height > 0) ? $imageSize->height : 0;
                 $arrNewSizeValues[2] = $imageSize->resizeMode;
             }
@@ -118,8 +118,9 @@ class BannerInternal
                 'height' => $arrImageSizenNew[1],
                 'srcset' => StringUtil::specialchars(ampersand($FileSrc))
             );
-            $picture['alt']   = StringUtil::specialchars(ampersand($this->objBanners->banner_name));
-            $picture['title'] = StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
+            $arrMeta = $this->getBannerMetaData($this->objBanners, $objFile);
+            $picture['alt']   = $arrMeta['alt'];
+            $picture['title'] = $arrMeta['title'];
 
             BannerLog::writeLog(__METHOD__, __LINE__, 'Orisize Picture: '. print_r($picture, true));
         }
@@ -146,15 +147,16 @@ class BannerInternal
             {
                     $picture = $picture->create($rootDir . '/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]));
             }
-                       
+
             $picture = array
             (
                 'img'     => $picture->getImg($rootDir, $staticUrl),
                 'sources' => $picture->getSources($rootDir, $staticUrl)
             );
 
-            $picture['alt']   = StringUtil::specialchars(ampersand($this->objBanners->banner_name));
-            $picture['title'] = StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
+            $arrMeta = $this->getBannerMetaData($this->objBanners, $objFile);
+            $picture['alt']   = $arrMeta['alt'];
+            $picture['title'] = $arrMeta['title'];
 
             BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Picture: '. print_r($picture, true));
 
@@ -182,5 +184,45 @@ class BannerInternal
     public function generateTemplateData($arrImageSize, $FileSrc, $picture)
     {
         return BannerTemplate::generateTemplateData($arrImageSize, $FileSrc, $picture, $this->objBanners, $this->banner_cssID, $this->banner_class);
+    }
+
+    /**
+     * Get Banner Meta Data
+     *
+     * @param  object $objBanners
+     * @param  object $objFile
+     * @return array
+     */
+    public function getBannerMetaData($objBanners, $objFile)
+    {
+        $arrMeta = array();
+        if ($objBanners->banner_overwritemeta != '1')
+        {
+            $arrMeta['alt']   = StringUtil::specialchars(ampersand($objBanners->banner_name));
+            $arrMeta['title'] = StringUtil::specialchars(ampersand($objBanners->banner_comment));
+
+            return $arrMeta;
+        }
+        global $objPage;
+        $objBannerFile =  new \Contao\File($objFile->path);
+
+        $arrMeta =  \Contao\Frontend::getMetaData($objBannerFile->meta, $objPage->language);
+
+        if (empty($arrMeta))
+        {
+            if ($objPage->rootFallbackLanguage !== null)
+            {
+                $arrMeta =  \Contao\Frontend::getMetaData($objFile->meta, $objPage->rootFallbackLanguage);
+                BannerLog::writeLog(__METHOD__, __LINE__, 'BannerMetaData rootFallback: '. print_r($arrMeta, true));
+            }
+        }
+        if (empty($arrMeta['alt'])) {
+            $arrMeta['alt']   = StringUtil::specialchars(ampersand($objBanners->banner_name));
+        }
+        if (empty($arrMeta['title'])) {
+            $arrMeta['title']   = StringUtil::specialchars(ampersand($objBanners->banner_comment));
+        }
+
+        return $arrMeta;
     }
 }

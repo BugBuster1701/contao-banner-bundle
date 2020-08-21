@@ -1,0 +1,89 @@
+Nach neuer Image\Image Klasse von Ausi die in Contao 4.9 mit dabei ist:
+https://github.com/Tastaturberuf/contao-image-copyright-bundle/blob/master/Controller/ImageCopyrightListController.php#L71
+
+--
+so gehts, aber alt:
+ *     $picture = new Picture(new File('example.jpg'));
+ *
+ *     $data = $picture
+ *         ->setImportantPart(array('x'=>10, 'y'=>10, 'width'=>100, 'height'=>100))
+ *         ->setImageSize(ImageSizeModel::findByPk(1))
+ *         ->setImageSizeItems(ImageSizeItemModel::findVisibleByPid(1, array('order'=>'sorting ASC')))
+ *         ->getTemplateData()
+ *     ;
+ *
+ *     // Shortcut
+ *     $data = Picture::create('example.jpg', 1)->getTemplateData();
+ *     $data = Picture::create('example.jpg', array(100, 100, 'crop'))->getTemplateData();
+
+$data = array:2 [▼
+  "img" => array:6 [▼
+    "srcset" => "assets/images/e/DSC_5403-626c3cdb.jpg 150w, assets/images/c/DSC_5403-9a9ef658.jpg 225w, assets/images/b/DSC_5403-3721847a.jpg 300w"
+    "src" => "assets/images/e/DSC_5403-626c3cdb.jpg"
+    "width" => 150
+    "height" => 100
+    "sizes" => "(max-width: 100px) 100vw, 50vw"
+    "hasSingleAspectRatio" => true
+  ]
+  "sources" => []
+]
+
+muss dann ergeben:
+<picture>
+    <source srcset="assets/images/8/DSC_5403-017ce918.jpg" media="(max-width: 600px)">
+    <img src="assets/images/e/DSC_5403-626c3cdb.jpg" 
+	     srcset="assets/images/e/DSC_5403-626c3cdb.jpg 150w, assets/images/c/DSC_5403-9a9ef658.jpg 225w, assets/images/b/DSC_5403-3721847a.jpg 300w" 
+		 sizes="(max-width: 100px) 100vw, 50vw" 
+		 alt="MetaAlternateText" 
+		 class="bannercss" itemprop="image" width="150" height="100">
+  </picture>
+
+   $picture2 = new \Picture(new \File($objFile->path));
+   $data2 = $picture2
+         ->setImageSize($imageSize)
+         ->getTemplateData()
+     ;dump($data2); $picture['img'] = $data2['img'];
+
+$picture['img'] so wird img korrekt geholt.
+aha, ich muss bei create nur die ID übergeben wenn bei theme was defineirt war, oder [0,0,id]
+---
+alt:
+
+$objPic1 = new stdClass();
+$objPic2 = new stdClass();
+
+$this->addImageToTemplate($objPic1, $objA->row());  
+$this->addImageToTemplate($objPic2, $objB->row());  
+
+$this->Template->pictures = array($objPic1, $objPic2);  
+
+
+ContentGallery
+				$objCell = new \stdClass();
+				$key = 'row_' . $rowcount . $class_tr . $class_eo;
+
+				// Empty cell
+				if (($j+$i) >= $limit || !\is_array($images[($i+$j)]))
+				{
+					$objCell->colWidth = $colwidth . '%';
+					$objCell->class = 'col_' . $j . $class_td;
+				}
+				else
+				{
+					// Add size and margin
+					$images[($i+$j)]['size'] = $this->size;
+					$images[($i+$j)]['imagemargin'] = $this->imagemargin;
+					$images[($i+$j)]['fullsize'] = $this->fullsize;
+
+					$this->addImageToTemplate($objCell, $images[($i+$j)], null, $strLightboxId, $images[($i+$j)]['filesModel']);
+
+					// Add column width and class
+					$objCell->colWidth = $colwidth . '%';
+					$objCell->class = 'col_' . $j . $class_td;
+                    
+https://docs.contao.org/dev/framework/image-processing/legacy/
+
+https://community.contao.org/de/showthread.php?70132-Bild-ausgeben-in-Contao-4-4-DCA-Modulerweiterung-(Nachrichten-Titelbild)&p=469200&viewfull=1#post469200
+
+https://pdir.de/news/erstellung-eines-eigenen-content-elements-in-contao.html
+
