@@ -26,14 +26,14 @@
 		"forum":"https://community.contao.org/de/forumdisplay.php?24-banner"
 	},
 	"require":{
-		"php": "^7.1",
+		"php": "^7.2 || ^8.0",
 		"contao/core-bundle": "~4.9",
-		"bugbuster/contao-botdetection-bundle":">=1.0.0,<2"
+		"bugbuster/contao-botdetection-bundle":">=1.7.0,<2"
 	},
 	"require-dev": {
 			"contao/manager-plugin": "^2.0",
-			"friendsofphp/php-cs-fixer": "^2.12",
-			"phpunit/phpunit": "^8.4"
+			"friendsofphp/php-cs-fixer": "^2.17",
+			"phpunit/phpunit": "^8.5 || ^9.3"
 	},
 	"conflict": {
 			"contao/manager-plugin": "<2.0 || >=3.0"

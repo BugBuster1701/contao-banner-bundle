@@ -349,7 +349,7 @@ class BannerStatisticsHelper extends \BackendModule
                 BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url jumpto: ' . $Banner['banner_url']);
             }
         }
-        if ($Banner['banner_url'] == '')
+        if (empty($Banner['banner_url']))
         {
             $Banner['banner_url'] = $GLOBALS['TL_LANG']['tl_banner_stat']['NoURL'];
             if ($Banner['banner_clicks'] == 0)
@@ -368,8 +368,8 @@ class BannerStatisticsHelper extends \BackendModule
     protected function setBannerPublishedActive(&$Banner)
     {
         if (($Banner['banner_published'] == 1) 
-           &&  ($Banner['banner_start'] == '' || $Banner['banner_start'] <= time()) 
-           &&  ($Banner['banner_stop']  == '' || $Banner['banner_stop']   > time())
+           &&  (empty($Banner['banner_start']) || $Banner['banner_start'] <= time()) 
+           &&  (empty($Banner['banner_stop'])  || $Banner['banner_stop']   > time())
            )
         {
             $Banner['banner_active'] = '<span class="banner_stat_yes">'.$GLOBALS['TL_LANG']['tl_banner_stat']['pub_yes'].'</span>';
