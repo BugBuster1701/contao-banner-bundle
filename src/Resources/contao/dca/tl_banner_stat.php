@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
  *
@@ -9,7 +10,6 @@
  * PHP version 5
  * @copyright  Glen Langer 2007..2017
  * @author     Glen Langer
- * @package    Banner
  * @license    LGPL
  */
 
@@ -52,5 +52,4 @@ $GLOBALS['TL_DCA']['tl_banner_stat'] = array
         ),
 	)
 );
-
 

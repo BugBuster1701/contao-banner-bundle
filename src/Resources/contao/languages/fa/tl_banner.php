@@ -4,11 +4,11 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/fa/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/fa/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2015-02-07T21:13:33+01:00
+ * last-updated: 2020-06-24T22:44:53+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'اولویت بالا';
@@ -22,7 +22,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'نظر برای 
 $GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['0']        = 'شناسه/کلاس سی‌اس‌اس';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['0']       = 'صافی دامنه';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'تصویر بنر';
-$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'لطفا بنر را انتخاب کنید. (GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'لطفا بنر را انتخاب کنید. (GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'نشانی وب تصویر بنر';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['1'] = 'نشانی وب تصویر بنر خارجی: http://...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['0']      = 'عرض و ارتفاع بنر';

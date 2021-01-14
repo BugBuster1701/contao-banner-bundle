@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
  * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
  * 
@@ -8,7 +9,6 @@
  *
  * @copyright  Glen Langer 2007..2017
  * @author     Glen Langer
- * @package    Banner
  * @license    LGPL
  */
 
@@ -21,7 +21,6 @@
  * Add a palette to tl_module
  */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['banner'] = 'name,type,headline;banner_hideempty,banner_firstview;banner_categories,banner_template;banner_redirect;{expert_legend:hide},protected,guests,banner_useragent,cssID';
-
 
 /**
  * Add fields to tl_module

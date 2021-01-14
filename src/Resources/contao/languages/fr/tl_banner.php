@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2020-06-24T22:44:54+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Haute priorité';
@@ -25,7 +25,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['1']        = 'Ici, vous pouvez
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['0']       = 'Filtrage par nom de domaine';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['1']       = 'Si vous entrez un nom de domaine, la bannière sera utilisée uniquement sur ce domaine. Si le champs est vide, la bannière sera utilisée pour tous les domaines.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Bannière Image';
-$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Veuillez choisir la bannière.(GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Veuillez choisir la bannière.(GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'URL de la bannière image';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['1'] = 'URL externe de la bannière image: http://...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['0']      = 'Largeur et hauteur de la bannière';

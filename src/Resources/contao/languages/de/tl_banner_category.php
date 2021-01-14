@@ -8,13 +8,13 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2020-02-16T17:15:05+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']          = 'Banner Standarddatei';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['1']          = 'Wenn Sie diese Option wählen, können Sie eine Bannerdatei auswählen die angezeigt wird, wenn kein Banner in der Kategorie aktiv ist. Eine Auswahl hat Vorrang vor der Modul Definition "Ausblenden, wenn leer".';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['0']    = 'Banner Standarddatei';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']    = 'Bitte eine Bannerdatei auswählen.(GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']    = 'Bitte eine Bannerdatei auswählen.(GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['0']     = 'Bannername';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['1']     = 'Bannername, erscheint auch als title Tag.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0']   = 'Interner Link';
@@ -51,6 +51,7 @@ $GLOBALS['TL_LANG']['tl_banner_category']['edit']['0']                    = 'Kat
 $GLOBALS['TL_LANG']['tl_banner_category']['edit']['1']                    = 'Kategorie ID %s bearbeiten';
 $GLOBALS['TL_LANG']['tl_banner_category']['editheader']['0']              = 'Einstellungen der Kategorie bearbeiten';
 $GLOBALS['TL_LANG']['tl_banner_category']['editheader']['1']              = 'Einstellungen der Kategorie ID %s bearbeiten';
+$GLOBALS['TL_LANG']['tl_banner_category']['formatsWebpNotSupported']      = 'WEBP wird auf Ihrem Server nicht unterstützt.';
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['0']                     = 'Neue Kategorie';
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['1']                     = 'Eine neue Kategorie anlegen';
 $GLOBALS['TL_LANG']['tl_banner_category']['number_legend']                = 'Anzeige Definition';

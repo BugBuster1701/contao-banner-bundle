@@ -8,13 +8,13 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-08T23:36:41+02:00
+ * last-updated: 2020-02-16T17:15:05+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']          = 'Изображение баннера по умолчанию';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['1']          = 'Этот баннер будет показан, если не будут найдены активные баннеры.<br />Выбор этой опции имеет приоритет над опцией "Скрыть модуль если пусто".';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['0']    = 'Изображение баннера по умолчанию';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']    = 'Выберите баннер. (GIF, JPG, PNG, SWF)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']    = 'Выберите баннер. (GIF, JPG, PNG, WEBP)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['0']     = 'Название баннера';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['1']     = 'Название для тега заголовка.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0']   = 'Внутренняя ссылка';
@@ -51,6 +51,7 @@ $GLOBALS['TL_LANG']['tl_banner_category']['edit']['0']                    = 'Р�
 $GLOBALS['TL_LANG']['tl_banner_category']['edit']['1']                    = 'Редактировать категорию ID %s';
 $GLOBALS['TL_LANG']['tl_banner_category']['editheader']['0']              = 'Редактировать параметры категории';
 $GLOBALS['TL_LANG']['tl_banner_category']['editheader']['1']              = 'Редактировать параметры категории ID %s';
+$GLOBALS['TL_LANG']['tl_banner_category']['formatsWebpNotSupported']      = 'WEBP не поддерживается на сервере.';
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['0']                     = 'Новая категория';
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['1']                     = 'Создание новой категории';
 $GLOBALS['TL_LANG']['tl_banner_category']['number_legend']                = 'Количество баннеров';

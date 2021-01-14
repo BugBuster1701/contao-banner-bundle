@@ -4,13 +4,12 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/it/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/it/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2014-02-08T23:02:16+01:00
+ * last-updated: 2020-06-24T22:44:56+02:00
  */
-
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Priorità alta';
 $GLOBALS['TL_LANG']['tl_banner']['2']                        = 'Priorità normale';
@@ -21,7 +20,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['1'] = 'Inserendo un val
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0']      = 'Commento banner';
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Il commento sarà il titolo del banner. Per i banner testuali sarà la linea di testo.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Immagine banner';
-$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Selezionare il banner (GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Selezionare il banner (GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'URL immagine banner';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['1'] = 'URL esterno dell\'immagine banner';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['0']      = 'larghezza ed altezza banner';

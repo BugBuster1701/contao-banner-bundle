@@ -8,13 +8,13 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-16T01:04:02+02:00
+ * last-updated: 2019-05-12T21:54:26+02:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']        = 'Standard-banner-bild';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['1']        = 'Denna banner kommer att visas när ingen aktiv banner kan hittas.<br />Detta val övertar moduldefinitionen "Dölj om tom".';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['0']  = 'Källfil';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Välj banner-bild (GIF, JPG, PNG, SWF).';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Välj banner-bild (GIF, JPG, PNG, WEBP).';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['0']   = 'Banner-namn';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['1']   = 'Bannerns namn (används även i titel-taggen).';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0'] = 'Intern sida';

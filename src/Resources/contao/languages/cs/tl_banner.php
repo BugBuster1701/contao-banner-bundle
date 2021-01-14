@@ -4,13 +4,12 @@
  * or to help to maintain an existing one, please register at transifex.com.
  *
  * @link http://help.transifex.com/intro/translating.html
- * @link https://www.transifex.com/projects/p/contao-banner/language/cs/
+ * @link https://www.transifex.com/projects/p/contao-banner-bundle/language/cs/
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2014-02-08T23:02:16+01:00
+ * last-updated: 2020-06-24T22:44:50+02:00
  */
-
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Nejvyšší priorita';
 $GLOBALS['TL_LANG']['tl_banner']['2']                        = 'Normální priorita';
@@ -23,7 +22,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Komentář je pr
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['0']       = 'Filtr domény';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['1']       = 'Pokud zadáte název domény, je tento banner použity pouze pro tuto doménu. Pokud necháte pole prázdné, je tento banner pro všechny domény.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Obrázek banneru';
-$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Prosím, vyberte obrázek banner ve formátu (GIF,JPG,PNG,SWF).';
+$GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Prosím, vyberte obrázek banner ve formátu (GIF,JPG,PNG,WEBP).';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'Banner, externí URL obrázku';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['1'] = 'Externí URL obrázku banner : http://www.domena.cz/banner.jpg';
 $GLOBALS['TL_LANG']['tl_banner']['banner_imgSize']['0']      = 'Šířka a výška banneru';

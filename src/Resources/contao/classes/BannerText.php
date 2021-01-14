@@ -8,7 +8,6 @@
  * @author     Glen Langer (BugBuster)
  * @licence    LGPL
  * @filesource
- * @package    Banner
  * @see	       https://github.com/BugBuster1701/contao-banner-bundle
  */
 
@@ -21,28 +20,26 @@ use BugBuster\Banner\BannerHelper;
  *
  * @copyright  Glen Langer 2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    Banner
  * @license    LGPL
  */
 class BannerText
 {
 
-    protected $objBanners   = null;
-    protected $banner_cssID = null;
-    protected $banner_class = null;
-    
+    protected $objBanners;
+    protected $banner_cssID;
+    protected $banner_class;
 
-    public function __construct ($objBanners, $banner_cssID, $banner_class)
+    public function __construct($objBanners, $banner_cssID, $banner_class)
     {
         $this->objBanners   = $objBanners;
         $this->banner_cssID = $banner_cssID;
         $this->banner_class = $banner_class;
     }
-    
+
     public function generateTemplateData() 
     {
         $banner_target = ($this->objBanners->banner_target == '1') ? '' : ' target="_blank"';
-                 
+
         // Banner Seite als Ziel?
         if ($this->objBanners->banner_jumpTo > 0)
         {
@@ -58,7 +55,7 @@ class BannerText
                 $this->objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator($objParent->row(), null, $objParent->language);
             }
         }
-         
+
         // Kurz URL (nur Domain)
         $treffer = parse_url(BannerHelper::decodePunycode($this->objBanners->banner_url)); // #79
         $banner_url_kurz = $treffer['host'];
@@ -66,7 +63,7 @@ class BannerText
         {
             $banner_url_kurz .= ':'.$treffer['port'];
         }
-         
+
         $arrBanners[] = array
                         (
                             'banner_key'     => 'bid',
@@ -83,6 +80,7 @@ class BannerText
                             'banner_text'    => true,
                             'banner_empty'   => false	// issues 733
                         );
+
         return $arrBanners;
     }
 }

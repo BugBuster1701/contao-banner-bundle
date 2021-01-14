@@ -2,21 +2,21 @@
 
 /**
  * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
-*
-* Module BannerStatistics 
-* Helper class
-*
-* @copyright  Glen Langer 2013..2017 <http://contao.ninja>
-* @author     Glen Langer (BugBuster)
-* @package    BannerStatistics
-* @license    LGPL
-* @filesource
-* @see        https://github.com/BugBuster1701/contao-banner-bundle
-*/
+ *
+ * Module BannerStatistics 
+ * Helper class
+ *
+ * @copyright  Glen Langer 2013..2017 <http://contao.ninja>
+ * @author     Glen Langer (BugBuster)
+ * @license    LGPL
+ * @filesource
+ * @see        https://github.com/BugBuster1701/contao-banner-bundle
+ */
 
 /**
  * Run in a custom namespace, so the class can be replaced
-*/
+ */
+
 namespace BugBuster\BannerStatistics;
 
 use BugBuster\Banner\BannerHelper;
@@ -27,7 +27,6 @@ use BugBuster\Banner\BannerLog;
  *
  * @copyright  Glen Langer 2013..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @package    BannerStatisticsHelper
  */
 class BannerStatisticsHelper extends \BackendModule
 {
@@ -36,19 +35,19 @@ class BannerStatisticsHelper extends \BackendModule
      * @var string
      */
     const BANNER_TYPE_INTERN = 'banner_image';
-    
+
     /**
      * Banner extern
      * @var string
      */
     const BANNER_TYPE_EXTERN = 'banner_image_extern';
-    
+
     /**
      * Banner text
      * @var string
      */
     const BANNER_TYPE_TEXT   = 'banner_text';
-    
+
     /**
      * Current object instance
      * @var object
@@ -64,7 +63,6 @@ class BannerStatisticsHelper extends \BackendModule
         parent::__construct();
     }
 
-
     protected function compile()
     {
 
@@ -77,17 +75,17 @@ class BannerStatisticsHelper extends \BackendModule
     {
         if (self::$instance === null)
         {
-            self::$instance = new BannerStatisticsHelper();
+            self::$instance = new self();
         }
 
         return self::$instance;
     }
-    
+
     /**
      * Get min category id
      * 
      * @deprecated  why? TODO
-     * @return number    CatID    0|min(pid)
+     * @return number CatID    0|min(pid)
      */
     protected function getCatID()
     {
@@ -106,29 +104,30 @@ class BannerStatisticsHelper extends \BackendModule
             return $objBannerCatID->ID;
         }
     }
-    
+
     /**
      * Get first category id by arrCategories
      *
-     * @param   array   $arrBannerCategories
-     * @return  number  CatID    
+     * @param  array  $arrBannerCategories
+     * @return number CatID    
      */
     protected function getCatIdByCategories($arrBannerCategories)
     {
         $arrFirstCat = array_shift($arrBannerCategories);
+
         return $arrFirstCat['id'];
     }
-    
+
     /**
      * Get banners by category id
      * 
-     * @param integer   $CatID
-     * @return array    $arrBanners
+     * @param  integer $CatID
+     * @return array   $arrBanners
      */
     protected function getBannersByCatID($CatID = 0)
     {
         $arrBanners = array();
-        
+
         if ($CatID == -1)
         { // all Categories
             $objBanners = \Database::getInstance()
@@ -197,36 +196,20 @@ class BannerStatisticsHelper extends \BackendModule
         {
             while ($objBanners->next())
             {
-                $arrBanners[] = array('id'                  => $objBanners->id
-                                    , 'banner_type'         => $objBanners->banner_type
-                                    , 'banner_name'         => $objBanners->banner_name
-                                    , 'banner_url'          => $objBanners->banner_url
-                                    , 'banner_jumpTo'       => $objBanners->banner_jumpTo
-                                    , 'banner_image'        => $objBanners->banner_image
-                                    , 'banner_image_extern' => $objBanners->banner_image_extern
-                                    , 'banner_weighting'    => $objBanners->banner_weighting
-                                    , 'banner_start'        => $objBanners->banner_start
-                                    , 'banner_stop'         => $objBanners->banner_stop
-                                    , 'banner_published'    => $objBanners->banner_published
-                                    , 'banner_until'        => $objBanners->banner_until
-                                    , 'banner_comment'      => $objBanners->banner_comment
-                                    , 'banner_views_until'  => $objBanners->banner_views_until
-                                    , 'banner_clicks_until' => $objBanners->banner_clicks_until
-                                    , 'banner_views'        => $objBanners->banner_views
-                                    , 'banner_clicks'       => $objBanners->banner_clicks                        
+                $arrBanners[] = array('id'                  => $objBanners->id, 'banner_type'         => $objBanners->banner_type, 'banner_name'         => $objBanners->banner_name, 'banner_url'          => $objBanners->banner_url, 'banner_jumpTo'       => $objBanners->banner_jumpTo, 'banner_image'        => $objBanners->banner_image, 'banner_image_extern' => $objBanners->banner_image_extern, 'banner_weighting'    => $objBanners->banner_weighting, 'banner_start'        => $objBanners->banner_start, 'banner_stop'         => $objBanners->banner_stop, 'banner_published'    => $objBanners->banner_published, 'banner_until'        => $objBanners->banner_until, 'banner_comment'      => $objBanners->banner_comment, 'banner_views_until'  => $objBanners->banner_views_until, 'banner_clicks_until' => $objBanners->banner_clicks_until, 'banner_views'        => $objBanners->banner_views, 'banner_clicks'       => $objBanners->banner_clicks                        
                                      );
             } // while
         }
-        
+
         return $arrBanners;
     } // getBannersByCatID
-    
+
     /**
      * Get banner categories
      * 
      * @deprecated  why? TODO
-     * @param     integer    $banner_number
-     * @return    array      $arrBannerCats
+     * @param  integer $banner_number
+     * @return array   $arrBannerCats
      */
     protected function getBannerCategories($banner_number)
     {
@@ -254,7 +237,7 @@ class BannerStatisticsHelper extends \BackendModule
                                         ORDER BY 
                                             title")
                             ->execute();
-        
+
         if ($objBannerCat->numRows > 0)
         {
             if ($banner_number == 0)
@@ -288,15 +271,16 @@ class BannerStatisticsHelper extends \BackendModule
                 'title' => '---------'
             );
         }
+
         return $arrBannerCats;
-        
+
     } // getBannerCategories
-    
+
     /**
      * Get banner categories by usergroups
      * 
-     * @param array $Usergroups
-     * @return array 
+     * @param  array $Usergroups
+     * @return array
      */
     protected function getBannerCategoriesByUsergroups()
     {
@@ -317,7 +301,7 @@ class BannerStatisticsHelper extends \BackendModule
                             ->execute();
         while ($objBannerCat->next())
         {
-            if ( true === $this->isUserInBannerStatGroups($objBannerCat->banner_stat_groups, 
+            if (true === $this->isUserInBannerStatGroups($objBannerCat->banner_stat_groups,
                                                    (bool) $objBannerCat->banner_stat_protected)) 
             {
                 $arrBannerCats[] = array
@@ -327,22 +311,21 @@ class BannerStatisticsHelper extends \BackendModule
                 );
             }
         }
-        
-        if (0 == count($arrBannerCats)) 
+
+        if (0 == \count($arrBannerCats)) 
         {
         	$arrBannerCats[] = array('id' => '0', 'title' => '---------');
         }
-        
+
         return $arrBannerCats;
     }
-    
-    
+
     /**
      * Set banner_url
      * 
-     * @param referenz    $Banner
+     * @param referenz $Banner
      */
-    protected function setBannerURL( &$Banner )
+    protected function setBannerURL(&$Banner)
     {
         //Banner Ziel per Page?
         if ($Banner['banner_jumpTo'] > 0)
@@ -363,7 +346,7 @@ class BannerStatisticsHelper extends \BackendModule
                 //old $Banner['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
                 $objParent = \PageModel::findWithDetails($Banner['banner_jumpTo']);
                 $Banner['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
-                BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_url jumpto: ' . $Banner['banner_url']);
+                BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url jumpto: ' . $Banner['banner_url']);
             }
         }
         if ($Banner['banner_url'] == '')
@@ -374,24 +357,24 @@ class BannerStatisticsHelper extends \BackendModule
                 $Banner['banner_clicks'] = '--';
             }
         }
-        BannerLog::writeLog(__METHOD__ , __LINE__ , 'banner_url: ' . $Banner['banner_url']);
+        BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $Banner['banner_url']);
     }
-    
+
     /**
      * Set banner_published
      *
-     * @param referenz    $Banner
+     * @param referenz $Banner
      */
-    protected function setBannerPublishedActive( &$Banner )
+    protected function setBannerPublishedActive(&$Banner)
     {
-        if ( ($Banner['banner_published'] == 1) 
-           &&  ($Banner['banner_start'] == '' || $Banner['banner_start'] <= time() ) 
-           &&  ($Banner['banner_stop']  == '' || $Banner['banner_stop']   > time() )
+        if (($Banner['banner_published'] == 1) 
+           &&  ($Banner['banner_start'] == '' || $Banner['banner_start'] <= time()) 
+           &&  ($Banner['banner_stop']  == '' || $Banner['banner_stop']   > time())
            )
         {
             $Banner['banner_active'] = '<span class="banner_stat_yes">'.$GLOBALS['TL_LANG']['tl_banner_stat']['pub_yes'].'</span>';
             $Banner['banner_published_class'] = 'published';
-            
+
             if ($Banner['banner_until'] == 1 
              && $Banner['banner_views_until'] != '' 
              && $Banner['banner_views'] >= $Banner['banner_views_until']
@@ -401,7 +384,7 @@ class BannerStatisticsHelper extends \BackendModule
                 $Banner['banner_active'] = '<span class="banner_stat_no">'.$GLOBALS['TL_LANG']['tl_banner_stat']['pub_no'].'</span>';
                 $Banner['banner_published_class'] = 'unpublished';
             }
-            
+
             if ($Banner['banner_until'] == 1 
              && $Banner['banner_clicks_until'] !='' 
              && $Banner['banner_clicks'] >= $Banner['banner_clicks_until']
@@ -418,18 +401,18 @@ class BannerStatisticsHelper extends \BackendModule
             $Banner['banner_published_class'] = 'unpublished';
         }
     }
-    
+
     /**
      * Get status of maxviews and maxclicks
      * 
-     * @param    array    $Banner
-     * @return   array    array(bool $intMaxViews, bool $intMaxClicks)
+     * @param  array $Banner
+     * @return array array(bool $intMaxViews, bool $intMaxClicks)
      */
-    protected function getMaxViewsClicksStatus( &$Banner )
+    protected function getMaxViewsClicksStatus(&$Banner)
     {
         $intMaxViews = false;
         $intMaxClicks= false;
-        
+
         if ($Banner['banner_until'] == 1
          && $Banner['banner_views_until'] != ''
          && $Banner['banner_views'] >= $Banner['banner_views_until']
@@ -438,7 +421,7 @@ class BannerStatisticsHelper extends \BackendModule
             //max views erreicht
             $intMaxViews =  true;
         }
-        
+
         if ($Banner['banner_until'] == 1
          && $Banner['banner_clicks_until'] !=''
          && $Banner['banner_clicks'] >= $Banner['banner_clicks_until']
@@ -447,17 +430,17 @@ class BannerStatisticsHelper extends \BackendModule
             //max clicks erreicht
             $intMaxClicks = true;
         }
-        
-        return array($intMaxViews,$intMaxClicks);
+
+        return array($intMaxViews, $intMaxClicks);
     }
-    
+
     /**
      * Statistic, set on zero
      */
     protected function setZero()
     {
         //Banner
-        $intBID = (int)\Input::post('zid',true) ;
+        $intBID = (int) \Input::post('zid', true);
         if ($intBID>0)
         {
             \Database::getInstance()->prepare("UPDATE
@@ -468,11 +451,12 @@ class BannerStatisticsHelper extends \BackendModule
                                                   , banner_clicks=0
                                                WHERE
                                                     id=?")
-                                    ->execute( time() , $intBID );
-            return ;
+                                    ->execute(time(), $intBID);
+
+            return;
         }
         //Category
-        $intCatBID = (int)\Input::post('catzid',true) ;
+        $intCatBID = (int) \Input::post('catzid', true);
         if ($intCatBID>0)
         {
             \Database::getInstance()->prepare("UPDATE
@@ -486,20 +470,21 @@ class BannerStatisticsHelper extends \BackendModule
                                                   , banner_clicks=0
                                                WHERE
                                                     pid=?")
-                                    ->execute( time() , $intCatBID );
+                                    ->execute(time(), $intCatBID);
         }
-        return ;
+
+        return;
     }
-    
+
     /**
      * Check if User member of group in banner statistik groups 
      * 
      * @param   string  DB Field "banner_stat_groups", serialized array
-     * @return  bool    true / false
+     * @return bool true / false
      */
     protected function isUserInBannerStatGroups($banner_stat_groups, $banner_stat_protected)
     {
-        if ( true === $this->User->isAdmin )
+        if (true === $this->User->isAdmin)
         {
             //DEBUG log_message('Ich bin Admin', 'banner.log');
             return true; // Admin darf immer
@@ -511,16 +496,16 @@ class BannerStatisticsHelper extends \BackendModule
             return true;
         }
         //Schutz aktiviert, Einschränkungen vorhanden?
-        if (0 == strlen($banner_stat_groups)) 
+        if (0 == \strlen($banner_stat_groups)) 
         {
             //DEBUG log_message('banner_stat_groups ist leer', 'banner.log');
         	return false; //nicht gefiltert, also darf keiner außer Admin
         }
-        
+
         //mit isMemberOf ermitteln, ob user Member einer der Cat Groups ist
         foreach (\StringUtil::deserialize($banner_stat_groups) as $id => $groupid)
         {
-            if ( true === $this->User->isMemberOf($groupid) ) 
+            if (true === $this->User->isMemberOf($groupid)) 
             {
                 //DEBUG log_message('Ich bin in der richtigen Gruppe '.$groupid, 'banner.log');
             	return true; // User is Member of banner_stat_group 
@@ -529,5 +514,5 @@ class BannerStatisticsHelper extends \BackendModule
         //Debug log_message('Ich bin in der falschen Gruppe', 'banner.log');
         return false;
     }
-    
+
 } // class

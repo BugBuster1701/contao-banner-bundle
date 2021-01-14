@@ -1,15 +1,15 @@
-<?php 
+<?php
+
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2020 Leo Feyer
  *
  * Modul Banner - Backend DCA tl_banner
  * 
  * This is the data container array for table tl_banner.
  *
  * PHP version 5
- * @copyright  Glen Langer 2007..2017
+ * @copyright  Glen Langer 2007..2020
  * @author     Glen Langer
- * @package    Banner
  * @license    LGPL
  */
 
@@ -44,7 +44,7 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'filter'                  => true,
 			'fields'                  => array('sorting'),
 			'panelLayout'             => 'filter;search,limit',
-			'headerFields'            => array('title', 'banner_protected', 'tstamp','id'),
+			'headerFields'            => array('title', 'banner_protected', 'tstamp', 'id'),
 			'header_callback'         => array('BugBuster\Banner\DcaBanner', 'addHeader'),
 			'child_record_callback'   => array('BugBuster\Banner\DcaBanner', 'listBanner')
 		),		
@@ -98,18 +98,17 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 	// Palettes
 	'palettes' => array
 	(
-	      '__selector__'                => array('banner_type','banner_until'),
+	      '__selector__'                => array('banner_type', 'banner_until'),
 		  'default'                     => 'banner_type',
-		  'banner_image'                => 'banner_type;{title_legend},banner_name,banner_weighting;{destination_legend},banner_url,banner_jumpTo,banner_target;{image_legend},banner_image,banner_imgSize;{comment_legend},banner_comment;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
-		  'banner_image_extern'         => 'banner_type;{title_legend},banner_name,banner_weighting;{destination_legend},banner_url,banner_target;{image_legend},banner_image_extern,banner_imgSize;{comment_legend},banner_comment;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
-		  'banner_text'                 => 'banner_type;{title_legend},banner_name,banner_weighting;{destination_legend},banner_url,banner_jumpTo,banner_target;{comment_legend},banner_comment;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until'
+		  'banner_image'                => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;banner_overwritemeta;{destination_legend},banner_url,banner_jumpTo,banner_target;{image_legend},banner_image,banner_imgSize;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
+		  'banner_image_extern'         => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;{destination_legend},banner_url,banner_target;{image_legend},banner_image_extern,banner_imgSize;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
+		  'banner_text'                 => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;{destination_legend},banner_url,banner_jumpTo,banner_target;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until'
 	),
     // Subpalettes
 	'subpalettes' => array
 	(
 		'banner_until'                => 'banner_views_until,banner_clicks_until'
 	),
-
 
 	// Fields
 	'fields' => array
@@ -137,7 +136,7 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'exclude'                 => true,
 			'filter'                  => true,
 			'inputType'               => 'select',
-			'options'                 => array('default','banner_image', 'banner_image_extern', 'banner_text'),
+			'options'                 => array('default', 'banner_image', 'banner_image_extern', 'banner_text'),
 			'reference'               => &$GLOBALS['TL_LANG']['tl_banner_type'],
 			'sql'                     => "varchar(32) NOT NULL default 'banner_image'",
 			'eval'                    => array('helpwizard'=>false, 'submitOnChange'=>true)
@@ -161,6 +160,14 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'explanation'	          => 'banner_help',
 			'sql'                     => "tinyint(1) NOT NULL default '2'",
 			'eval'                    => array('mandatory'=>false, 'maxlength'=>1, 'rgxp'=>'prcnt', 'helpwizard'=>true, 'tl_class'=>'w50')
+		),
+		'banner_overwritemeta' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_banner']['banner_overwriteMeta'],
+			'exclude'                 => true,
+			'inputType'               => 'checkbox',
+			'eval'                    => array('submitOnChange'=>true, 'tl_class'=>'clr'),
+			'sql'                     => "char(1) NOT NULL default ''"
 		),
 		'banner_url' => array
 		(
@@ -192,7 +199,11 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'explanation'	          => 'banner_help',
 			'inputType'               => 'fileTree',
 			'sql'                     => "binary(16) NULL",
-			'eval'                    => array('mandatory'=>true, 'files'=>true, 'filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'jpg,jpe,gif,png', 'maxlength'=>255, 'helpwizard'=>true)
+			'eval'                    => array('mandatory'=>true, 'files'=>true, 'filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'jpg,jpe,jpeg,gif,png,webp', 'maxlength'=>255, 'helpwizard'=>true),
+			'xlabel' => array
+			(
+					array('BugBuster\Banner\DcaBanner', 'fieldLabelCallback')
+			)
 		),
 		'banner_image_extern' => array
 		(
@@ -207,10 +218,15 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner']['banner_imgSize'],
 			'exclude'                 => true,
 			'inputType'               => 'imageSize',
-			'options'                 => System::getContainer()->get('contao.image.image_sizes')->getAllOptions(),
+			//'options'                 => System::getContainer()->get('contao.image.image_sizes')->getAllOptions(),
+		    'options_callback' => function ()
+		    {
+		        return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+		    },
 			'reference'               => &$GLOBALS['TL_LANG']['MSC'],
 			'sql'                     => "varchar(255) NOT NULL default ''",
-			'eval'                    => array('rgxp'=>'digit', 'nospace'=>true)
+			//'eval'                    => array('rgxp'=>'digit', 'nospace'=>true)
+		    'eval'                    => array('rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true)
 		),
         'banner_comment' => array
         (
@@ -290,5 +306,4 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 		),
 	)
 );
-
 

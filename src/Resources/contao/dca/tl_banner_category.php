@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /**
  * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
@@ -10,7 +10,6 @@
  * PHP version 5
  * @copyright  Glen Langer 2007..2017
  * @author     Glen Langer 
- * @package    Banner
  * @license    LGPL
  */
 
@@ -174,7 +173,12 @@ $GLOBALS['TL_DCA']['tl_banner_category'] = array
 			'inputType'               => 'fileTree',
 			//'sql'                     => "varchar(255) NOT NULL default ''",
 			'sql'                     => "binary(16) NULL",
-			'eval'                    => array('mandatory'=>true, 'files'=>true, 'filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'jpg,jpe,gif,png', 'maxlength'=>255, 'helpwizard'=>false, 'tl_class'=>'clr')
+			'eval'                    => array('mandatory'=>true, 'files'=>true, 'filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'jpg,jpe,jpeg,gif,png,webp', 'maxlength'=>255, 'helpwizard'=>false, 'tl_class'=>'clr'),
+			'xlabel' => array
+						(
+								array('BugBuster\Banner\DcaBannerCategory', 'fieldLabelCallback')
+						)
+
 		),
 		'banner_default_target'		  => array
 		(

@@ -15,7 +15,7 @@
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['0']        = 'Default banner image';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default']['1']        = 'This banner will be shown, when no active banners are found. This selection takes priority over modul definition "Hide when empty".';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['0']  = 'Banner default image';
-$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Please select the banner.(GIF,JPG,PNG,SWF)';
+$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image']['1']  = 'Please select the banner.(GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['0']   = 'Banner Name';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name']['1']   = 'Name is for title tag too.';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target']['0'] = 'Internal Link';
@@ -43,6 +43,7 @@ $GLOBALS['TL_LANG']['tl_banner_category']['edit']['0']                  = 'Edit 
 $GLOBALS['TL_LANG']['tl_banner_category']['edit']['1']                  = 'Edit category ID %s';
 $GLOBALS['TL_LANG']['tl_banner_category']['editheader']['0']            = 'Edit category settings';
 $GLOBALS['TL_LANG']['tl_banner_category']['editheader']['1']            = 'Edit the settings of category ID %s';
+$GLOBALS['TL_LANG']['tl_banner_category']['formatsWebpNotSupported']    = 'WEBP is not supported on your server.';
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['0']                   = 'New category';
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['1']                   = 'Create a new category';
 $GLOBALS['TL_LANG']['tl_banner_category']['number_legend']              = 'Number of banners';

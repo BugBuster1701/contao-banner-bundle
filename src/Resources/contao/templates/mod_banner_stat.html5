@@ -100,8 +100,8 @@
         <?php if ($bannerstat['banner_pic']) : ?>
 		<!-- Bild Start -->
 		<tr style="height:20px;">
-		    <td colspan="3" style="font-size:11px;margin-bottom:10px;" class="cte_type <?= $bannerstat['banner_pub_class']; ?>">
-		        <strong style="padding-left: 14px;"><?= $bannerstat['banner_name']; ?></strong>
+		    <td colspan="3" class="cte_type <?= $bannerstat['banner_pub_class']; ?>">
+		        <span class="tl_label"><?= $bannerstat['banner_name']; ?></span>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;">
 		        <form method="post" class="info" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
@@ -141,7 +141,7 @@
 		                    <div class="date_head"><?= $this->header_views; ?></div>
 		                    <div class="date_data_right"><?= $bannerstat['banner_views']; ?></div>
 		                </div>
-		                <div style="clear:both;"></div>
+		                <div style="clear:both;height: 0.5em;"></div>
 		                <div class="left">
 		                    <div class="date_head"><?= $this->header_prio; ?></div>
 		                    <div class="date_data"><?= $bannerstat['banner_prio']; ?></div>
@@ -185,8 +185,8 @@
 		<?php if ($bannerstat['banner_text']) : ?>
 		<!-- Text Start -->
 		<tr style="height:20px;">
-		    <td colspan="3" style="font-size:11px;margin-bottom:10px;" class="cte_type <?= $bannerstat['banner_pub_class']; ?>">
-		        <strong style="padding-left: 14px;"><?= $bannerstat['banner_name']; ?></strong>
+		    <td colspan="3" class="cte_type <?= $bannerstat['banner_pub_class']; ?>">
+		        <span class="tl_label"><?= $bannerstat['banner_name']; ?></span>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;">
 		        <form method="post" class="info" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
@@ -220,7 +220,7 @@
 		                    <div class="date_head"><?= $this->header_views; ?></div>
 		                    <div class="date_data_right"><?= $bannerstat['banner_views']; ?></div>
 		                </div>
-		                <div style="clear:both;"></div>
+		                <div style="clear:both;height: 0.5em;"></div>
 		                <div class="left">
 		                    <div class="date_head"><?= $this->header_prio; ?></div>
 		                    <div class="date_data"><?= $bannerstat['banner_prio']; ?></div>
