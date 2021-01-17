@@ -350,7 +350,7 @@ class BannerHelper extends \Frontend
 
     public static function decodePunycode($strUrl) 
     {
-        if ($strUrl == '')
+        if (empty($strUrl))
         {
             return '';
         }
