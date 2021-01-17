@@ -120,39 +120,16 @@ class BannerChecks extends \Frontend
      *
      * @return bool
      */
-    public function checkBE($strCookie = 'BE_USER_AUTH')
+    public function checkBE()
     {
-        $cookie = \Input::cookie($strCookie);
-        if ($cookie === null)
+        $objTokenChecker = \System::getContainer()->get('contao.security.token_checker');
+        if ($objTokenChecker->hasBackendUser())
         {
-            BannerLog::writeLog(__METHOD__, __LINE__, ': False1');
-
-            return false;
+            BannerLog::writeLog(__METHOD__, __LINE__, ': True');
+            return true;
         }
-
-        $hash = $this->getSessionHash($strCookie);
-
-        // Validate the cookie hash
-        if ($cookie == $hash)
-        {
-            // Try to find the session
-            $objSession = \SessionModel::findByHashAndName($hash, $strCookie);
-
-            // Validate the session ID and timeout
-            if ($objSession !== null
-                && $objSession->sessionID == \System::getContainer()->get('session')->getId()
-                && (\System::getContainer()->getParameter('contao.security.disable_ip_check') || $objSession->ip == \Environment::get('ip'))
-                && ($objSession->tstamp + \Config::get('sessionTimeout')) > time()
-                )
-            {
-                // The session could be verified
-                BannerLog::writeLog(__METHOD__, __LINE__, ': True');
-
-                return true;
-            }
-        }
-        BannerLog::writeLog(__METHOD__, __LINE__, ': False2');
-
+        
+        BannerLog::writeLog(__METHOD__, __LINE__, ': False');
         return false;
 
     } //CheckBE

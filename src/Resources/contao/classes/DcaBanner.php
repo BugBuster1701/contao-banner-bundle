@@ -137,7 +137,7 @@ class DcaBanner extends \Backend
      */
     protected function listBannerInternal($row)
     {
-        if ($row['banner_image'] == '')
+        if (empty($row['banner_image']))
         {
             return '<p class="error">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_read_error'].' (1)</p>';
         }
@@ -246,7 +246,7 @@ class DcaBanner extends \Backend
             <div class="right">
                 <div class="left">
                     <div class="published_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_published'][0].'</div>
-                    <div class="published_data">'.($row['banner_published'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']).' </div>
+                    <div class="published_data">'.(empty($row['banner_published']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']).' </div>
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_type'][0].'</div>
@@ -255,25 +255,25 @@ class DcaBanner extends \Backend
                 <div style="clear:both;"></div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_start'].'</div>
-                    <div class="date_data">' . ($row['banner_start']=='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_start'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_start'])) . '</div>
+                    <div class="date_data">' . (empty($row['banner_start']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_start'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_start'])) . '</div>
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_stop'].'</div>
-                    <div class="date_data">' . ($row['banner_stop'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_stop'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_stop'])) . '</div>
+                    <div class="date_data">' . (empty($row['banner_stop']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_stop'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_stop'])) . '</div>
                 </div>
                 <div style="clear:both;"></div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_max_views'].'</div>
-                    <div class="date_data">' . ($row['banner_views_until']=='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_views_until']) . '</div>
+                    <div class="date_data">' . (empty($row['banner_views_until']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_views_until']) . '</div>
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_max_clicks'].'</div>
-                    <div class="date_data">' . ($row['banner_clicks_until'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_clicks_until']) . '</div>
+                    <div class="date_data">' . (empty($row['banner_clicks_until']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_clicks_until']) . '</div>
                 </div>
                 <div style="clear:both;"></div>
                 <div class="left">
                     <div class="meta_head">'.$GLOBALS['TL_LANG']['tl_banner']['using_meta_data'].'</div>
-                    <div class="meta_data">' . ($row['banner_overwritemeta'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']) . '</div>
+                    <div class="meta_data">' . (empty($row['banner_overwritemeta']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']) . '</div>
                 </div>
                 <div style="clear:both;"></div>
             </div>
@@ -370,7 +370,7 @@ class DcaBanner extends \Backend
             <div class="right">
                 <div class="left">
                     <div class="published_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_published'][0].'</div>
-                    <div class="published_data">'.($row['banner_published'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']).' </div>
+                    <div class="published_data">'.(empty($row['banner_published']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']).' </div>
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_type'][0].'</div>
@@ -379,20 +379,20 @@ class DcaBanner extends \Backend
                 <div style="clear:both;"></div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_start'].'</div>
-                    <div class="date_data">' . ($row['banner_start']=='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_start'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_start'])) . '</div>
+                    <div class="date_data">' . (empty($row['banner_start']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_start'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_start'])) . '</div>
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_stop'].'</div>
-                    <div class="date_data">' . ($row['banner_stop'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_stop'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_stop'])) . '</div>
+                    <div class="date_data">' . (empty($row['banner_stop']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_stop'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_stop'])) . '</div>
                 </div>
                 <div style="clear:both;"></div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_max_views'].'</div>
-                    <div class="date_data">' . ($row['banner_views_until']=='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_views_until']) . '</div>
+                    <div class="date_data">' . (empty($row['banner_views_until']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_views_until']) . '</div>
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_max_clicks'].'</div>
-                    <div class="date_data">' . ($row['banner_clicks_until'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_clicks_until']) . '</div>
+                    <div class="date_data">' . (empty($row['banner_clicks_until']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_clicks_until']) . '</div>
                 </div>
                 <div style="clear:both;"></div>
             </div>
@@ -447,7 +447,7 @@ class DcaBanner extends \Backend
             <div class="right">
                 <div class="left">
                     <div class="published_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_published'][0].'</div>
-                    <div class="published_data">'.($row['banner_published'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']).' </div>
+                    <div class="published_data">'.(empty($row['banner_published']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']).' </div>
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_type'][0].'</div>
@@ -456,20 +456,20 @@ class DcaBanner extends \Backend
                 <div style="clear:both;"></div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_start'].'</div>
-                    <div class="date_data">' . ($row['banner_start']=='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_start'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_start'])) . '</div>
+                    <div class="date_data">' . (empty($row['banner_start']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_start'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_start'])) . '</div>
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_stop'].'</div>
-                    <div class="date_data">' . ($row['banner_stop'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_stop'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_stop'])) . '</div>
+                    <div class="date_data">' . (empty($row['banner_stop']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_stop'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_stop'])) . '</div>
                 </div>
                 <div style="clear:both;"></div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_max_views'].'</div>
-                    <div class="date_data">' . ($row['banner_views_until']=='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_views_until']) . '</div>
+                    <div class="date_data">' . (empty($row['banner_views_until']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_views_until']) . '</div>
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_max_clicks'].'</div>
-                    <div class="date_data">' . ($row['banner_clicks_until'] =='' ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_clicks_until']) . '</div>
+                    <div class="date_data">' . (empty($row['banner_clicks_until']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_clicks_until']) . '</div>
                 </div>
                 <div style="clear:both;"></div>
             </div>

@@ -137,7 +137,7 @@ class BannerReferrer
 		}
 
 		$host = rtrim($_SERVER['HTTP_HOST']);
-		if ($host == '')
+		if (empty($host))
 		{
 			$host = rtrim($_SERVER['SERVER_NAME']);
 		}
