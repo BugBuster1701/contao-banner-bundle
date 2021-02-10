@@ -5,7 +5,7 @@
     <!-- Categorie Row //-->
 	<form	method="post" class="info" id="banner_statistik" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
 		<input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN; ?>">
-		<div class="tl_submit_panel tl_subpanel">
+		<div class="tl_submit_panel tl_subpanel" style="text-align: left;">
 			<input class="tl_img_submit banner_filter" 
 					type="image" 
 					value="<?= \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
