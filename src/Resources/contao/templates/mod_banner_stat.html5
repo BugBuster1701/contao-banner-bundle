@@ -6,7 +6,7 @@
 	<form	method="post" class="info" id="banner_statistik" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
 		<input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN; ?>">
 		<div class="tl_submit_panel tl_subpanel">
-			<input class="tl_img_submit" 
+			<input class="tl_img_submit banner_filter" 
 					type="image" 
 					value="<?= \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
 					title="<?= \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
@@ -265,16 +265,9 @@
         <?php endif; ?>
     <?php endforeach; ?>
 <?php endif; ?>
-		<tr>
-		    <td colspan="4">&nbsp;</td>
-		</tr>
 		</tbody>
 		</table>
-		<table class="tl_listing">
-			<tr>
-				<th colspan="4" style="padding-left: 2px; text-align:right; color:#444;" class="tl_folder_tlist"><?= $this->banner_version; ?></th>
-			</tr>
-		</table>
+		<div class="tl_panel" style="margin-top: 10px;"><?= $this->banner_version; ?></div>
 	</div>
 </div>
 <span style="padding-left: 18px;"><?= $this->banner_footer; ?></span>
