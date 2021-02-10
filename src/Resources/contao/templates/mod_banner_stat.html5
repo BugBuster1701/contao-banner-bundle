@@ -10,7 +10,9 @@
 					type="image" 
 					value="<?= \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
 					title="<?= \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
-					src="system/themes/<?= $this->theme; ?>/images/reload.gif" 
+					src="system/themes/<?= $this->theme; ?>/icons/sync.svg" 
+					width="16" 
+					height="16"
 					name="filter">
 		</div>
 		<div class="tl_search tl_subpanel">
@@ -53,7 +55,7 @@
 		<?= $panel; ?>
     <?php endforeach; ?>
 <?php endif; ?>
-<div class="tl_formbody_edit">
+<div class="tl_listing_container">
 	<div class="tl_header">
 		<table class="tl_header_table">
 		  <tbody>
@@ -111,7 +113,7 @@
 		            <input type="hidden" name="id" value="<?= $this->bannercatid; ?>">
 		            <input class="banner_reset" type="image" value="<?= $bannerstat['banner_zero']; ?>" 
 		                    title="<?= $bannerstat['banner_zero']; ?>" 
-		                    src="bundles/bugbusterbanner/<?= $this->theme0; ?>/down0.gif" 
+		                    src="bundles/bugbusterbanner/<?= $this->theme0; ?>/down0.svg" 
 		                    name="filter" 
 		                    onclick="if (!confirm('<?= $bannerstat['banner_confirm']; ?>')) return false; Backend.getScrollOffset();"
 		                >
@@ -196,7 +198,7 @@
 		            <input type="hidden" name="id" value="<?= $this->bannercatid; ?>">
 		            <input class="banner_reset" type="image" value="<?= $bannerstat['banner_zero']; ?>" 
 		                    title="<?= $bannerstat['banner_zero']; ?>" 
-		                    src="bundles/bugbusterbanner/<?= $this->theme0; ?>/down0.gif" 
+		                    src="bundles/bugbusterbanner/<?= $this->theme0; ?>/down0.svg" 
 		                    name="filter" 
 		                    onclick="if (!confirm('<?= $bannerstat['banner_confirm']; ?>')) return false; Backend.getScrollOffset();"
 		                >
