@@ -90,12 +90,12 @@
 		<table class="tl_listing">
 		<tbody>
 		<tr>
-		    <td style="padding-left: 2px;" class="tl_folder_tlist">
+		    <th style="padding-left: 2px;" class="tl_folder_tlist">
 		        <?= $this->header_picture." / ".$this->header_name." / ".$this->header_url; ?>
-		    </td>
-		    <td style="width:10px; padding-left: 2px; text-align: center;" class="tl_folder_tlist"></td>
-		    <td style="width:260px; padding-left: 2px; text-align: center;" class="tl_folder_tlist"><?= $this->bannercatzero; ?></td>
-		    <td style="width:60px; padding-left: 2px; text-align: center;" class="tl_folder_tlist"><?= $this->bannerzero; ?></td>
+		    </th>
+		    <th style="width:10px; padding-left: 2px; text-align: center;" class="tl_folder_tlist"></th>
+		    <th style="width:260px; padding-left: 2px; text-align: center;" class="tl_folder_tlist"><?= $this->bannercatzero; ?></th>
+		    <th style="width:60px; padding-left: 2px; text-align: center;" class="tl_folder_tlist"><?= $this->bannerzero; ?></th>
 		</tr>
 <?php if ($this->bannercatid>0 || $this->bannercatid==-1) : ?>
     <?php foreach ($this->bannersstat as $bannerstat): ?>
@@ -268,10 +268,12 @@
 		<tr>
 		    <td colspan="4">&nbsp;</td>
 		</tr>
-		<tr>
-		    <td colspan="4" style="padding-left: 2px; text-align:right;" class="tl_folder_tlist"><?= $this->banner_version; ?></td>
-		</tr>
 		</tbody>
+		</table>
+		<table class="tl_listing">
+			<tr>
+				<th colspan="4" style="padding-left: 2px; text-align:right; color:#444;" class="tl_folder_tlist"><?= $this->banner_version; ?></th>
+			</tr>
 		</table>
 	</div>
 </div>
