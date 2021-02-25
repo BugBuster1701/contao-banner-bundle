@@ -251,6 +251,7 @@ $GLOBALS['TL_DCA']['tl_banner_category'] = array
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_stat_admins'],
 	        'inputType'               => 'checkbox',
 			'eval'                    => array('disabled'=>true),
+			'sql'				      => null,
 			'load_callback' => array
 			(
 			    array('BugBuster\Banner\DcaBannerCategory', 'getAdminCheckbox')
