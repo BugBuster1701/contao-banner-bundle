@@ -335,15 +335,8 @@ class BannerHelper extends \Frontend
 	 */
 	public static function frontendUrlGenerator($arrRow, $strParams=null, $strForceLang=null) 
 	{
-	    $arrParams = array();
-	    // Set the language
-	    if ($strForceLang !== null)
-	    {
-	        $arrParams['_locale'] = $strForceLang;
-	    }
-
 		$objTargetTo = \PageModel::findPublishedById($arrRow['id']);
-		$strUrl = $objTargetTo->getFrontendUrl($strParams, $strForceLang);
+		$strUrl = $objTargetTo->getFrontendUrl($strParams);
 
 	    return $strUrl;
 	}
