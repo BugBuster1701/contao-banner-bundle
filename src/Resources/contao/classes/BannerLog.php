@@ -37,7 +37,7 @@ class BannerLog
         {
             if (!isset($GLOBALS['banner']['debug']['first'])) 
             {
-                if ((bool) $GLOBALS['banner']['debug']['all']) 
+                if ((bool) ($GLOBALS['banner']['debug']['all'] ?? false)) 
                 {
                     $arrUniqid = \StringUtil::trimsplit('.', uniqid('c0n7a0', true));
                     $GLOBALS['banner']['debug']['first'] = $arrUniqid[1];
@@ -55,7 +55,7 @@ class BannerLog
         }
         else 
         {
-            if (false === (bool) $GLOBALS['banner']['debug']['all'])
+            if (false === (bool) ($GLOBALS['banner']['debug']['all'] ?? false))
             {
                 return; //kein Log aktiviert
             }
