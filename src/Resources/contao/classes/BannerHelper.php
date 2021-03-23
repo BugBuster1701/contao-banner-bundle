@@ -193,7 +193,7 @@ class BannerHelper extends \Frontend
                                         'banner_random'			=> $objBannerCategory->banner_random,
                                         'banner_limit'			=> $objBannerCategory->banner_limit, // 0:all, others = max 
                                         'banner_protected'		=> $objBannerCategory->banner_protected,
-                                        'banner_group'			=> $arrGroup[0]
+                                        'banner_group'			=> $arrGroup[0] ?? 0
                                         );
         //DEBUG log_message('getSetCategoryValues arrCategoryValues:'.print_r($this->arrCategoryValues,true),'Banner.log');
 		return true;
