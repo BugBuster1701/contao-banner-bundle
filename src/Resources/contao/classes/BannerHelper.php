@@ -186,7 +186,7 @@ class BannerHelper extends \Frontend
                                         'id'                    => $objBannerCategory->id,
                                         'banner_default'		=> $objBannerCategory->banner_default,
                                         'banner_default_name'	=> $objBannerCategory->banner_default_name,
-                                        'banner_default_image'	=> $objFile->path,
+                                        'banner_default_image'	=> $objFile->path ?? '',
                                         'banner_default_url'	=> $objBannerCategory->banner_default_url,
                                         'banner_default_target'	=> $objBannerCategory->banner_default_target,
                                         'banner_numbers'		=> $objBannerCategory->banner_numbers, //0:single,1:multi,see banner_limit
