@@ -282,16 +282,19 @@ class BannerInsertTag extends BannerHelper
 	            $this->Template->class .= ' '.$_cssID[1];
 	        }
 
-            //Abstand davor und dahinter
-	    	$_style = \StringUtil::deserialize($this->space);
-	    	if ("" != $_style[0]) 
-	    	{
-	    		$this->Template->style .= 'margin-top:'.$_style[0].'px; ';
-	    	}
-	    	if ("" != $_style[1])
-	    	{
-	    	    $this->Template->style .= 'margin-bottom:'.$_style[1].'px;';
-	    	}
+            //Abstand davor und dahinter, wenn vorhanden
+			if (!empty($this->space))
+			{
+				$_style = \StringUtil::deserialize($this->space);
+				if ("" != $_style[0]) 
+				{
+					$this->Template->style .= 'margin-top:'.$_style[0].'px; ';
+				}
+				if ("" != $_style[1])
+				{
+					$this->Template->style .= 'margin-bottom:'.$_style[1].'px;';
+				}
+			}
 	    }
 	    //Modul als Artikelelement
 	    if ('ce_' == $this->typePrefix) 
