@@ -159,7 +159,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->Template->header_clicks    = $GLOBALS['TL_LANG']['tl_banner_stat']['clicks'];
         $this->Template->header_views     = $GLOBALS['TL_LANG']['tl_banner_stat']['views'];
         $this->Template->banner_version   = $GLOBALS['TL_LANG']['tl_banner_stat']['modname'] . ' ' . BANNER_VERSION .'.'. BANNER_BUILD;
-        $this->Template->banner_footer    = $GLOBALS['TL_LANG']['tl_banner_stat']['comment'];
+        $this->Template->banner_footer    = $GLOBALS['TL_LANG']['tl_banner_stat']['comment'] ?? '';
         $this->Template->banner_base      = \Environment::get('base');
         $this->Template->banner_base_be   = \Environment::get('base') . 'contao'; //TODO deprecated
         $this->Template->theme            = $this->getTheme();
@@ -196,7 +196,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79 
         BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url punydecode: ' . $Banner['banner_url']);
         $treffer = parse_url($Banner['banner_url']);
-        $banner_url_kurz = $treffer['host'];
+        $banner_url_kurz = $treffer['host'] ?? '';
         if (isset($treffer['port']))
         {
             $banner_url_kurz .= ':'.$treffer['port'];
