@@ -61,7 +61,7 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['banner_template'] = array
 $GLOBALS['TL_DCA']['tl_module']['fields']['banner_redirect'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_page']['redirect'],
-	'default'                 => 'permanent',
+	'default'                 => 'temporary',
 	'exclude'                 => true,
 	'inputType'               => 'select',
 	'options'                 => array('permanent', 'temporary'),
