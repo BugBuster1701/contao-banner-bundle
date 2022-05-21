@@ -230,6 +230,7 @@ class BannerMultiple extends \Frontend
 
         //falls $arrImageSize = false  und kein Text Banner ist es ein leeres array
         $this->Template->banners = $arrResults;
+        $this->Template->bmid = "bmid".$module_id;
 
         return $this->Template;
     }

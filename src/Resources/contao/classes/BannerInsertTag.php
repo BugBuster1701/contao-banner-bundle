@@ -186,7 +186,7 @@ class BannerInsertTag extends BannerHelper
 			//kein default Banner, ausblenden wenn leer?
 			//alt $this->getDefaultBanner();
 			$objBannerSingle = new BannerSingle($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template, $this->arrAllBannersBasic);
-		    $this->Template = $objBannerSingle->getDefaultBanner($this->banner_hideempty); 
+		    $this->Template = $objBannerSingle->getDefaultBanner($this->banner_hideempty, $this->module_id); 
 			//Css generieren
 			$this->setCssClassIdStyle();
 			//Template parsen und Ergebnis zurückgeben
@@ -212,7 +212,7 @@ class BannerInsertTag extends BannerHelper
 		        //kein default Banner, ausblenden wenn leer?
 		        //alt $this->getDefaultBanner();
 		        $objBannerSingle = new BannerSingle($this->arrCategoryValues, $this->banner_template, $this->strTemplate, $this->Template, $this->arrAllBannersBasic);
-		        $this->Template = $objBannerSingle->getDefaultBanner($this->banner_hideempty);
+		        $this->Template = $objBannerSingle->getDefaultBanner($this->banner_hideempty, $this->module_id);
 		        //Css generieren
 		        $this->setCssClassIdStyle();
 

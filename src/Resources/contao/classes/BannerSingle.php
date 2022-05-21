@@ -73,7 +73,7 @@ class BannerSingle extends \Frontend
      *
      * @return $this->strTemplate
      */
-    public function getDefaultBanner($banner_hideempty)
+    public function getDefaultBanner($banner_hideempty, $module_id)
     {
         $arrImageSize = array();
         //CSS-ID/Klasse(n) je Banner, für den wrapper
@@ -148,6 +148,7 @@ class BannerSingle extends \Frontend
             }
             $arrResults[] = $arrBanners[0];
             $this->Template->banners = $arrResults;
+            $this->Template->bmid = "bmid".$module_id;
 
             return $this->Template;
         }
@@ -182,6 +183,7 @@ class BannerSingle extends \Frontend
             BannerLog::writeLog(__METHOD__, __LINE__, 'Kein BannerDefault, umschalten auf leeres Template');
         }
         $this->Template->banners = $arrResults;
+        $this->Template->bmid = "bmid".$module_id;
 
         return $this->Template;
     }
@@ -261,6 +263,7 @@ class BannerSingle extends \Frontend
                     }
                     $this->setStatViewUpdate($arrBanners, $module_id, $objBanners->banner_useragent);
                     $this->Template->banners = $arrBanners;
+                    $this->Template->bmid = "bmid".$module_id;
 
                     return $this->Template;
 
@@ -285,6 +288,7 @@ class BannerSingle extends \Frontend
                     }
                     $this->setStatViewUpdate($arrBanners, $module_id, $objBanners->banner_useragent);
                     $this->Template->banners = $arrBanners;
+                    $this->Template->bmid = "bmid".$module_id;
 
                     return $this->Template;
 
@@ -310,6 +314,7 @@ class BannerSingle extends \Frontend
                 }
                 $arrResults[] = $arrBanners[0];
                 $this->Template->banners = $arrResults;
+                $this->Template->bmid = "bmid".$module_id;
 
                 $this->setStatViewUpdate($arrResults, $module_id, $objBanners->banner_useragent);
 
@@ -318,6 +323,7 @@ class BannerSingle extends \Frontend
         }//Banner vorhanden
         //falls $arrImageSize = false  und kein Text Banner
         $this->Template->banners = $arrBanners; // leeres array
+        $this->Template->bmid = "bmid".$module_id;
 
         return $this->Template;
     }
@@ -420,6 +426,7 @@ class BannerSingle extends \Frontend
                     }
                     $this->setStatViewUpdate($arrBanners, $module_id, $objBanners->banner_useragent);
                     $this->Template->banners = $arrBanners;
+                    $this->Template->bmid = "bmid".$module_id;
 
                     return $this->Template;
 
@@ -444,6 +451,7 @@ class BannerSingle extends \Frontend
                     }
                     $this->setStatViewUpdate($arrBanners, $module_id, $objBanners->banner_useragent);
                     $this->Template->banners = $arrBanners;
+                    $this->Template->bmid = "bmid".$module_id;
 
                     return $this->Template;
                     break;
@@ -468,6 +476,7 @@ class BannerSingle extends \Frontend
                 }
                 $arrResults[] = $arrBanners[0];
                 $this->Template->banners = $arrResults;
+                $this->Template->bmid = "bmid".$module_id;
 
                 $this->setStatViewUpdate($arrResults, $module_id, $objBanners->banner_useragent);
 
@@ -475,7 +484,8 @@ class BannerSingle extends \Frontend
             }
         }//Banner vorhanden
         //falls $arrImageSize = false  und kein Text Banner
-        $this->Template->banners = $arrBanners; // leeres array
+        $this->Template->banners = []; // leeres array
+        $this->Template->bmid = "bmid".$module_id;
 
         return $this->Template;
     }
