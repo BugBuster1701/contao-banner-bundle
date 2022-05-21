@@ -20,7 +20,6 @@
     ],
 	"support":{
 		"issues":"https://github.com/BugBuster1701/contao-banner-bundle/issues",
-		"irc":"irc://irc.freenode.org/contao.dev",
 		"source":"https://github.com/BugBuster1701/contao-banner-bundle",
 		"wiki":"http://de.contaowiki.org/Banner",
 		"forum":"https://community.contao.org/de/forumdisplay.php?24-banner"
@@ -62,7 +61,7 @@
 			}
 		},
 		"branch-alias": {
-			"dev-develop": "1.2.x-dev"
+			"dev-develop": "1.4.x-dev"
 		},
 		"contao-manager-plugin": "BugBuster\\BannerBundle\\ContaoManager\\Plugin"
 	}
