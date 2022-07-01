@@ -337,9 +337,9 @@ class BannerHelper extends \Frontend
 	{
 		$objTargetTo = \PageModel::findPublishedById($arrRow['id']);
 
-        if ($objTargetTo === null) {
-            return '';
-        }
+		if ($objTargetTo === null) {
+			return '';
+		}
 
 		$strUrl = $objTargetTo->getFrontendUrl($strParams);
 
