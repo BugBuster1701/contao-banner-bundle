@@ -23,7 +23,7 @@ use BugBuster\Banner\BannerLog;
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
-class BannerHelper extends \Frontend 
+class BannerHelper extends \Frontend
 {
 	/**
 	 * Banner intern
@@ -82,7 +82,7 @@ class BannerHelper extends \Frontend
 	protected $statusAllBannersBasic = true;
 
 	/**
-	 * Category values 
+	 * Category values
 	 * @var mixed array|false, false if category not exists
 	 */
 	protected $arrCategoryValues = array();
@@ -108,7 +108,7 @@ class BannerHelper extends \Frontend
 
 	/**
 	 * BannerHelper::bannerHelperInit
-	 * 
+	 *
 	 * @return false, if anything is wrong
 	 */
 	protected function bannerHelperInit()
@@ -130,14 +130,14 @@ class BannerHelper extends \Frontend
 		$this->checkSetUserFrontendLogin();
 
 		//get basic banner infos (id,weighting) in $this->arrAllBannersBasic
-		if ($this->getSetAllBannerForCategory() === false) 
+		if ($this->getSetAllBannerForCategory() === false)
 		{
 			$this->statusAllBannersBasic = false;
 		}
 
 		$this->strFormat = 'html5';
 
-		if (!isset($GLOBALS['objPage'])) 
+		if (!isset($GLOBALS['objPage']))
 		{
 			$objPage = new \stdClass();
 			$objPage->templateGroup = $this->templatepfad;
@@ -149,16 +149,16 @@ class BannerHelper extends \Frontend
 
 	/**
 	 * BannerHelper::getSetCategoryValues
-	 * 
+	 *
 	 * Set Category Values in $this->arrCategoryValues over tl_banner_category
-	 * 
+	 *
 	 * @return boolean true = OK | false = we have a problem
 	 */
 	protected function getSetCategoryValues()
 	{
 	    //DEBUG log_message('getSetCategoryValues banner_categories:'.$this->banner_categories,'Banner.log');
-		//$this->banner_categories is now an ID, but the name is backward compatible 
-		if (!isset($this->banner_categories) || !is_numeric($this->banner_categories)) 
+		//$this->banner_categories is now an ID, but the name is backward compatible
+		if (!isset($this->banner_categories) || !is_numeric($this->banner_categories))
 		{
 			BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'ModulBanner Compile', 'ERROR');
 			$this->arrCategoryValues = false;
@@ -171,8 +171,8 @@ class BannerHelper extends \Frontend
                                                                     tl_banner_category 
                                                                 WHERE 
                                                                     id=?")
-											         ->execute($this->banner_categories); 
-		if ($objBannerCategory->numRows == 0) 
+											         ->execute($this->banner_categories);
+		if ($objBannerCategory->numRows == 0)
 		{
 			BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'ModulBanner Compile', 'ERROR');
 			$this->arrCategoryValues = false;
@@ -191,7 +191,7 @@ class BannerHelper extends \Frontend
                                         'banner_default_target'	=> $objBannerCategory->banner_default_target,
                                         'banner_numbers'		=> $objBannerCategory->banner_numbers, //0:single,1:multi,see banner_limit
                                         'banner_random'			=> $objBannerCategory->banner_random,
-                                        'banner_limit'			=> $objBannerCategory->banner_limit, // 0:all, others = max 
+                                        'banner_limit'			=> $objBannerCategory->banner_limit, // 0:all, others = max
                                         'banner_protected'		=> $objBannerCategory->banner_protected,
                                         'banner_group'			=> $arrGroup[0] ?? 0
                                         );
@@ -201,9 +201,9 @@ class BannerHelper extends \Frontend
 
 	/**
 	 * BannerHelper::checkSetUserFrontendLogin
-	 * 
+	 *
 	 * Check if FE User loggen in and banner category is protected
-	 * 
+	 *
 	 * @return boolean true = View allowed | false = View not allowed
 	 */
 	protected function checkSetUserFrontendLogin()
@@ -212,10 +212,10 @@ class BannerHelper extends \Frontend
 		{
 		    $this->import('FrontendUser', 'User');
 
-		    if ($this->arrCategoryValues['banner_protected'] == 1 
-		      && $this->arrCategoryValues['banner_group']      > 0) 
+		    if ($this->arrCategoryValues['banner_protected'] == 1
+		      && $this->arrCategoryValues['banner_group']      > 0)
 		    {
-		    	if ($this->User->isMemberOf($this->arrCategoryValues['banner_group']) === false) 
+		    	if ($this->User->isMemberOf($this->arrCategoryValues['banner_group']) === false)
 		    	{
 		    		$this->statusBannerFrontendGroupView = false;
 
@@ -229,17 +229,17 @@ class BannerHelper extends \Frontend
 
 	/**
 	 * BannerHelper::getSetAllBannerForCategory
-	 * 
+	 *
 	 * Get all Banner basics (id,weighting) for category, in $arrAllBannersBasic
-	 * 
+	 *
 	 * @return boolean true = $arrAllBannersBasic is filled | false = empty $arrAllBannersBasic
 	 */
 	protected function getSetAllBannerForCategory()
 	{
-	    $this->arrAllBannersBasic = array(); 
+	    $this->arrAllBannersBasic = array();
 		//wenn mit der definierte Kategorie ID keine Daten gefunden wurden
 		//macht Suche nach Banner kein Sinn
-		if ($this->arrCategoryValues === false) 
+		if ($this->arrCategoryValues === false)
 		{
 			return false;
 		}
@@ -252,7 +252,7 @@ class BannerHelper extends \Frontend
 		//ohne Beachtung der Gewichtung,
 		//mit Beachtung der Domain
 		//sortiert nach "sorting"
-		//nur Basic Felder `id`, `banner_weighting` 
+		//nur Basic Felder `id`, `banner_weighting`
 		$objBanners = \Database::getInstance()
 		                ->prepare("SELECT 
                                         TLB.`id`, TLB.`banner_weighting`
@@ -333,15 +333,20 @@ class BannerHelper extends \Frontend
 	 *
 	 * @return string An URL that can be used in the front end
 	 */
-	public static function frontendUrlGenerator($arrRow, $strParams=null, $strForceLang=null) 
+	public static function frontendUrlGenerator($arrRow, $strParams=null, $strForceLang=null)
 	{
 		$objTargetTo = \PageModel::findPublishedById($arrRow['id']);
+
+		if ($objTargetTo === null) {
+			return '';
+		}
+
 		$strUrl = $objTargetTo->getFrontendUrl($strParams);
 
 	    return $strUrl;
 	}
 
-    public static function decodePunycode($strUrl) 
+    public static function decodePunycode($strUrl)
     {
         if (empty($strUrl))
         {
