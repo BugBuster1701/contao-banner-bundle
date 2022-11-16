@@ -263,6 +263,86 @@
 		</tr>
 		<!-- Text Ende -->
         <?php endif; ?>
+        <?php if ($bannerstat['banner_video']) : ?>
+		<!-- Text Start -->
+		<tr style="height:20px;">
+		    <td colspan="3" class="cte_type <?= $bannerstat['banner_pub_class']; ?>">
+		        <span class="tl_label"><?= $bannerstat['banner_name']; ?></span>
+		    </td>
+		    <td style="padding-left: 2px; text-align: center;">
+		        <form method="post" class="info" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
+		            <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN; ?>">
+		            <input type="hidden" name="act" value="zero">
+		            <input type="hidden" name="zid" value="<?= $bannerstat['banner_id']; ?>">
+		            <input type="hidden" name="id" value="<?= $this->bannercatid; ?>">
+		            <input class="banner_reset" type="image" value="<?= $bannerstat['banner_zero']; ?>"
+		                    title="<?= $bannerstat['banner_zero']; ?>"
+		                    src="bundles/bugbusterbanner/<?= $this->theme0; ?>/down0.svg"
+		                    name="filter"
+		                    onclick="if (!confirm('<?= $bannerstat['banner_confirm']; ?>')) return false; Backend.getScrollOffset();"
+		                >
+		        </form>
+		    </td>
+		</tr>
+		<tr>
+		    <td style="padding-left: 2px; padding-bottom: 6px; padding-top: 6px;" class="tl_file_list">
+		        <?= $bannerstat['banner_videos'] ?>
+		        <br><?= $bannerstat['banner_comment']; ?>
+		        <br><br><?= $this->header_url .': '. $bannerstat['banner_url']; ?>
+		    </td>
+		    <td style="padding-left: 2px; text-align: center;" class="tl_file_list">&nbsp;</td>
+		    <td style="padding-left: 2px; text-align: left;" class="tl_file_list">
+		        <div class="mod_banner_be">
+		            <div class="right">
+		                <div class="left">
+		                    <div class="published_head"><?= $this->header_active; ?></div>
+		                    <div class="published_data"><?= $bannerstat['banner_active']; ?></div>
+		                </div>
+		                <div class="left">
+		                    <div class="date_head"><?= $this->header_views; ?></div>
+		                    <div class="date_data_right"><?= $bannerstat['banner_views']; ?></div>
+		                </div>
+		                <div style="clear:both;height: 0.5em;"></div>
+		                <div class="left">
+		                    <div class="date_head"><?= $this->header_prio; ?></div>
+		                    <div class="date_data"><?= $bannerstat['banner_prio']; ?></div>
+		                </div>
+		                <div class="left">
+		                    <div class="date_head"><?= $this->header_clicks; ?></div>
+		                    <div class="date_data_right"><?= $bannerstat['banner_clicks']; ?></div>
+		                </div>
+		                <div style="clear:both;"></div>
+		            <?php if (0 < $bannerstat['banner_clicks']) : ?>
+		                <div class="left">
+		                    <div class="">&nbsp;</div>
+		                    <div class="">&nbsp;</div>
+		                </div>
+		                <div class="left">
+		                    <div class="date_head"><?= $this->bannerclickthroughrate; ?></div>
+		                    <div class="date_data_right"><?php
+		            			if (0 == $bannerstat['banner_views']) { echo "0%"; }
+							else { echo round($bannerstat['banner_clicks'] * 100 / $bannerstat['banner_views'],2)."%"; } ?>
+							</div>
+		                </div>
+		                <div style="clear:both;"></div>
+		            <?php else: ?>
+		                <div class="left">
+		                    <div class="">&nbsp;</div>
+		                    <div class="">&nbsp;</div>
+		                </div>
+		                <div class="left">
+		                    <div class="">&nbsp;</div>
+		                    <div class="">&nbsp;</div>
+		                </div>
+		            	<div style="clear:both;"></div>
+		            <?php endif; ?>
+		            </div>
+		        </div>
+		    </td>
+		    <td style="padding-left: 2px; text-align: center;" class="tl_file_list"></td>
+		</tr>
+		<!-- Video Ende -->
+        <?php endif; ?>
     <?php endforeach; ?>
 <?php endif; ?>
 		</tbody>

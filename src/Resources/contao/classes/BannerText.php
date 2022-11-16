@@ -78,6 +78,7 @@ class BannerText
                             'banner_pic'     => false,
                             'banner_flash'   => false,
                             'banner_text'    => true,
+                            'banner_video'   => false,
                             'banner_empty'   => false	// issues 733
                         );
 

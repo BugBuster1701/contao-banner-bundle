@@ -102,7 +102,8 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 		  'default'                     => 'banner_type',
 		  'banner_image'                => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;banner_overwritemeta;{destination_legend},banner_url,banner_jumpTo,banner_target;{image_legend},banner_image,banner_imgSize;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
 		  'banner_image_extern'         => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;{destination_legend},banner_url,banner_target;{image_legend},banner_image_extern,banner_imgSize;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
-		  'banner_text'                 => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;{destination_legend},banner_url,banner_jumpTo,banner_target;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until'
+		  'banner_text'                 => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;{destination_legend},banner_url,banner_jumpTo,banner_target;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
+		  'banner_video'                => 'banner_type;{title_legend},banner_name,banner_weighting;{video_source_legend},banner_playerSRC;{player_legend},banner_playerSize,banner_playerStart,banner_playerStop,banner_playerCaption;{poster_legend:hide},banner_posterSRC;{comment_legend},banner_comment;{destination_legend},banner_url,banner_jumpTo,banner_target;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until'
 	),
     // Subpalettes
 	'subpalettes' => array
@@ -136,7 +137,7 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'exclude'                 => true,
 			'filter'                  => true,
 			'inputType'               => 'select',
-			'options'                 => array('default', 'banner_image', 'banner_image_extern', 'banner_text'),
+			'options'                 => array('default', 'banner_image', 'banner_image_extern', 'banner_text', 'banner_video'),
 			'reference'               => &$GLOBALS['TL_LANG']['tl_banner_type'],
 			'sql'                     => "varchar(32) NOT NULL default 'banner_image'",
 			'eval'                    => array('helpwizard'=>false, 'submitOnChange'=>true)
@@ -302,6 +303,54 @@ $GLOBALS['TL_DCA']['tl_banner'] = array
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'eval'                    => array('multiple'=>true, 'size'=>2),
+			'sql'                     => "varchar(255) NOT NULL default ''"
+		),
+		'banner_playerSRC' => array
+		(
+			'exclude'                 => true,
+			'inputType'               => 'fileTree',
+			'eval'                    => array(
+				'multiple'   => true,
+				'fieldType'  => 'checkbox',
+				'files'      => true,
+				'mandatory'  => true,
+				'extensions' => 'mp4,m4v,mov,wmv,webm,ogv',
+			),
+			'sql'                     => "blob NULL"
+		),
+		'banner_posterSRC' => array
+		(
+			'exclude'                 => true,
+			'inputType'               => 'fileTree',
+			'eval'                    => array('filesOnly'=>true, 'fieldType'=>'radio'),
+			'sql'                     => "binary(16) NULL"
+		),
+		'banner_playerSize' => array
+		(
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('multiple'=>true, 'size'=>2, 'rgxp'=>'natural', 'nospace'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "varchar(64) COLLATE ascii_bin NOT NULL default ''"
+		),
+		'banner_playerStart' => array
+		(
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'natural', 'nospace'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "int(10) unsigned NOT NULL default 0"
+		),
+		'banner_playerStop' => array
+		(
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('rgxp'=>'natural', 'nospace'=>true, 'tl_class'=>'w50'),
+			'sql'                     => "int(10) unsigned NOT NULL default 0"
+		),
+		'banner_playerCaption' => array
+		(
+			'exclude'                 => true,
+			'inputType'               => 'text',
+			'eval'                    => array('tl_class'=>'w50'),
 			'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 	)
