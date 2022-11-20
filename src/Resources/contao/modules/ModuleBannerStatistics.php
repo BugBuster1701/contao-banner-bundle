@@ -232,7 +232,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
     }
 
     /**
-     * Add textbanner
+     * Add videobanner
      *
      * @param  referenz $Banner
      * @return array    $arrBannersStat
