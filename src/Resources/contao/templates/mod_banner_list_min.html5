@@ -19,6 +19,20 @@
 	    </div>
 	</figure>
 <?php endif; ?>
+<?php if ($banner['banner_video']) : ?>
+    <figure class="banner_wrap<?php echo $banner['banner_wrap_class']; ?> video_container"<?php echo $banner['banner_wrap_id']; ?>>
+        <?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>/<?php echo $banner['banner_key'].'/'.$banner['banner_id']; ?>" <?php echo $banner['banner_target']; ?> title="<?php echo $banner['banner_comment']; ?>"><?php endif; ?>
+            <video<?= $banner['video_size'] ?><?php if ($banner['video_poster']): ?> poster="<?= $banner['video_poster'] ?>"<?php endif; ?> preload="auto" autoplay="" loop="" playsinline="" muted="" disablepictureinpicture="">
+                <?php foreach ($banner['video_files'] as $file): ?>
+                    <source type="<?= $file->mime ?>" src="<?= $file->path.$banner['video_range'] ?>">
+                <?php endforeach; ?>
+            </video>
+            <?php if ($banner['banner_url']): ?></a><?php endif; ?>
+        <?php if ($banner['video_caption']): ?>
+            <figcaption class="caption"><?= $banner['video_caption'] ?></figcaption>
+        <?php endif; ?>
+    </figure>
+<?php endif; ?>
 <?php if ($banner['banner_empty']) : ?>
 	<div class="banner_empty">
 	<!-- <?php echo $banner['banner_name']; ?> -->

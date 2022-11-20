@@ -216,6 +216,19 @@ class BannerMultiple extends \Frontend
 
                 }//text banner
 
+                // Video Banner
+                if ($objBanners->banner_type == BannerVideo::BANNER_TYPE_VIDEO)
+                {
+                    $objBannerVideo = new BannerVideo($objBanners, $banner_cssID, $banner_class);
+                    $arrBanners = $objBannerVideo->generateTemplateData();
+
+                    $arrResults[] = $arrBanners[0];
+
+                    //$this->arrBannerData = $arrBanners; //wird von setStatViewUpdate genutzt
+                    $this->setStatViewUpdate($arrResults, $module_id, $objBanners->banner_useragent);
+
+                }//video banner
+
             }//Banner vorhanden
         } // foreach($this->arrAllBannersBasic)
 

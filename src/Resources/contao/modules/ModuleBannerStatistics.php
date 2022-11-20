@@ -22,7 +22,11 @@ namespace BugBuster\BannerStatistics;
 use BugBuster\Banner\BannerHelper;
 use BugBuster\Banner\BannerImage;
 use BugBuster\Banner\BannerLog;
-use BugBuster\BannerStatistics\BannerStatisticsHelper;
+use BugBuster\Banner\BannerVideo;
+use Contao\File;
+use Contao\FilesModel;
+use Contao\Image;
+use Contao\StringUtil;
 
 /**
  * Class ModuleBannerStatistics
@@ -130,6 +134,10 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                     //generate data
                     $arrBannersStat[] = $this->addBannerText($Banner);
                     break;
+                case BannerVideo::BANNER_TYPE_VIDEO:
+                    //generate data
+                    $arrBannersStat[] = $this->addBannerVideo($Banner);
+                    break;
             }
             //Gesamt Aktiv / Inaktiv zählen
             if ($Banner['banner_published_class'] == 'published') 
@@ -219,6 +227,64 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $arrBannersStat['banner_pic']    = false; // Es ist kein Bild
         $arrBannersStat['banner_flash']    = false;
         $arrBannersStat['banner_text']    = true;   // Es ist ein Textbanner
+
+        return $arrBannersStat;
+    }
+
+    /**
+     * Add videobanner
+     *
+     * @param  referenz $Banner
+     * @return array    $arrBannersStat
+     */
+    protected function addBannerVideo(&$Banner)
+    {
+        $arrBannersStat = array();
+        // Kurz URL (nur Domain)
+        $this->setBannerURL($Banner);
+        BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $Banner['banner_url']);
+        $Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79
+        BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url punydecode: ' . $Banner['banner_url']);
+        $treffer = parse_url($Banner['banner_url']);
+        $banner_url_kurz = $treffer['host'] ?? '';
+        if (isset($treffer['port']))
+        {
+            $banner_url_kurz .= ':'.$treffer['port'];
+        }
+        $MaxViewsClicks = $this->getMaxViewsClicksStatus($Banner);
+        $this->setBannerPublishedActive($Banner);
+
+        $objFiles = FilesModel::findMultipleByUuidsAndExtensions(
+            StringUtil::deserialize($Banner['banner_playerSRC'], true),
+            ['mp4', 'm4v', 'mov', 'wmv', 'webm', 'ogv']
+        );
+        $return = '<ul>';
+
+        while ($objFiles && $objFiles->next())
+        {
+            $objFile = new File($objFiles->path);
+            $return .= '<li>' . Image::getHtml($objFile->icon, '', 'class="mime_icon"') . ' <span>' . $objFile->name . '</span> <span class="size">(' . $this->getReadableSize($objFile->size) . ')</span></li>';
+        }
+
+        $return .= '</ul>';
+
+        $arrBannersStat['banner_id']    = $Banner['id'];
+        $arrBannersStat['banner_name']    = \StringUtil::specialchars(ampersand($Banner['banner_name']));
+        $arrBannersStat['banner_comment']    = nl2br($Banner['banner_comment']);
+        $arrBannersStat['banner_url_kurz']    = $banner_url_kurz;
+        $arrBannersStat['banner_url']    = (\strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'], -24, 24));
+        $arrBannersStat['banner_prio']    = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
+        $arrBannersStat['banner_views']    = ($MaxViewsClicks[0]) ? $Banner['banner_views']  .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
+        $arrBannersStat['banner_clicks']    = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
+        $arrBannersStat['banner_active']    = $Banner['banner_active'];
+        $arrBannersStat['banner_pub_class']    = $Banner['banner_published_class'];
+        $arrBannersStat['banner_zero']    = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text'];
+        $arrBannersStat['banner_confirm']    = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm'];
+        $arrBannersStat['banner_pic']    = false; // Es ist kein Bild
+        $arrBannersStat['banner_flash']    = false;
+        $arrBannersStat['banner_text']    = false;
+        $arrBannersStat['banner_video']   = true;
+        $arrBannersStat['banner_videos']  = $return;
 
         return $arrBannersStat;
     }

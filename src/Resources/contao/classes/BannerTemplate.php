@@ -78,6 +78,7 @@ class BannerTemplate
                 'banner_flash'   => false,
                 'banner_text'    => false,
                 'banner_empty'   => false,
+                'banner_video'   => false,
                 'picture'        => $picture
                 );
                 break;
@@ -96,6 +97,7 @@ class BannerTemplate
                 'alt'            => '',
                 'size'           => '',
                 'banner_pic'     => true,
+                'banner_video'   => false,
                 );
                 break;
         }//switch

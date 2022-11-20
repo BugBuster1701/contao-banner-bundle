@@ -22,6 +22,8 @@ use BugBuster\Banner\BannerHelper;
 use BugBuster\Banner\BannerImage;
 use BugBuster\Banner\BannerLog;
 use Contao\CoreBundle\Monolog\ContaoContext;
+use Contao\File;
+use Contao\FilesModel;
 use Contao\Image;
 use Contao\StringUtil;
 use Psr\Log\LogLevel;
@@ -122,6 +124,9 @@ class DcaBanner extends \Backend
                 break;
             case self::BANNER_TYPE_TEXT:
                 return $this->listBannerText($row);
+                break;
+            case BannerVideo::BANNER_TYPE_VIDEO:
+                return $this->listBannerVideo($row);
                 break;
             default:
                 return false;
@@ -442,6 +447,97 @@ class DcaBanner extends \Backend
         //Output
         $output = '<div class="mod_banner_be">
             <div class="name"><br>'.$row['banner_name'].'<br>
+                <span style="font-weight:normal;">'.nl2br($row['banner_comment']).'<br><br>'.$banner_url_text .(\strlen($banner_url)<60 ? $banner_url : substr($banner_url, 0, 31)."[...]".substr($banner_url, -21, 21)).'</span>
+            </div>
+            <div class="right">
+                <div class="left">
+                    <div class="published_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_published'][0].'</div>
+                    <div class="published_data">'.(empty($row['banner_published']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_no'] : $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']).' </div>
+                </div>
+                <div class="left">
+                    <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_type'][0].'</div>
+                    <div class="date_data">'.$GLOBALS['TL_LANG']['tl_banner_type']['banner_text'].'</div>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="left">
+                    <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_start'].'</div>
+                    <div class="date_data">' . (empty($row['banner_start']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_start'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_start'])) . '</div>
+                </div>
+                <div class="left">
+                    <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_stop'].'</div>
+                    <div class="date_data">' . (empty($row['banner_stop']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_stop'] : date($GLOBALS['TL_CONFIG']['datimFormat'], $row['banner_stop'])) . '</div>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="left">
+                    <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_max_views'].'</div>
+                    <div class="date_data">' . (empty($row['banner_views_until']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_views_until']) . '</div>
+                </div>
+                <div class="left">
+                    <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_max_clicks'].'</div>
+                    <div class="date_data">' . (empty($row['banner_clicks_until']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_clicks_until']) . '</div>
+                </div>
+                <div style="clear:both;"></div>
+            </div>
+        </div>';
+
+        $key = $row['banner_published'] ? 'published' : 'unpublished';
+        $style = 'class="tl_label"';
+        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><span ' . $style . '>' . \StringUtil::specialchars(ampersand($row['banner_name'])) . '</span></div>';
+
+        return $output_h . $output;
+    }
+
+    /**
+     * List video banner record
+     *
+     * @param  object $row
+     * @return string record as html
+     */
+    protected function listBannerVideo($row)
+    {
+        //Banner Ziel per Page?
+        if ($row['banner_jumpTo'] >0)
+        {
+            //url generieren
+            $objBannerNextPage = \Database::getInstance()->prepare("SELECT id, alias FROM tl_page WHERE id=?")
+                ->limit(1)
+                ->execute($row['banner_jumpTo']);
+            if ($objBannerNextPage->numRows)
+            {
+                //old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
+                $objParent = \PageModel::findWithDetails($row['banner_jumpTo']);
+                $row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
+                BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $row['banner_url']);
+            }
+        }
+
+        $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
+        if (\strlen($banner_url)>0)
+        {
+            $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
+        }
+        else
+        {
+            $banner_url_text = '';
+        }
+
+        $objFiles = FilesModel::findMultipleByUuidsAndExtensions(
+            StringUtil::deserialize($row['banner_playerSRC'], true),
+            ['mp4', 'm4v', 'mov', 'wmv', 'webm', 'ogv']
+        );
+        $return = '<ul>';
+
+        while ($objFiles && $objFiles->next())
+        {
+            $objFile = new File($objFiles->path);
+            $return .= '<li>' . Image::getHtml($objFile->icon, '', 'class="mime_icon"') . ' <span>' . $objFile->name . '</span> <span class="size">(' . $this->getReadableSize($objFile->size) . ')</span></li>';
+        }
+
+        $return .= '</ul>';
+
+        //Output
+        $output = '<div class="mod_banner_be">
+            <div class="name"><br>'.$row['banner_name'].$return.'<br>
                 <span style="font-weight:normal;">'.nl2br($row['banner_comment']).'<br><br>'.$banner_url_text .(\strlen($banner_url)<60 ? $banner_url : substr($banner_url, 0, 31)."[...]".substr($banner_url, -21, 21)).'</span>
             </div>
             <div class="right">
