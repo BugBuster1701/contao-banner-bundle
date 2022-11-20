@@ -2,9 +2,9 @@
 /**
  * Extension for Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
  *
- * BannerText - Frontend Helper Class
+ * BannerVideo - Frontend Helper Class
  *
- * @copyright  Glen Langer 2017 <http://contao.ninja>
+ * @copyright  Glen Langer 2022 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @licence    LGPL
  * @filesource
@@ -22,9 +22,9 @@ use Contao\StringUtil;
 use function array_filter;
 
 /**
- * Class BannerText
+ * Class BannerVideo
  *
- * @copyright  Glen Langer 2017 <http://contao.ninja>
+ * @copyright  Glen Langer 2022 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
