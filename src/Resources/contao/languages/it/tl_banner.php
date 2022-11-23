@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2020-06-24T22:44:56+02:00
+ * last-updated: 2021-01-14T22:19:47+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Priorità alta';
@@ -42,7 +42,6 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_type']['1']         = 'Selezionare se s
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['0']        = 'Limita il numero di visualizzazioni e di click';
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['1']        = 'Se questa opzione viene selezionata si può indicare il numero massimo di visualizzazioni e di click.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_url']['0']          = 'URL banner';
-$GLOBALS['TL_LANG']['tl_banner']['banner_url']['1']          = 'Inserire la destinazione del banner: http://...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['0']  = 'Limita il numero di visualizzazioni';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['1']  = 'Inserendo un valore, il banner corrente, non verrà visualizzato oltre il numero indicato.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_weighting']['0']    = 'Priorità banner';

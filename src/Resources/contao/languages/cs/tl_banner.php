@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2020-06-24T22:44:50+02:00
+ * last-updated: 2021-01-14T22:19:47+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Nejvyšší priorita';
@@ -44,7 +44,6 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_type']['1']         = 'Selection whethe
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['0']        = 'Omezení počtu zobrazení a prokliků';
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['1']        = 'Pokud zvolíte tuto možnost, můžete definovat maximální počet zobrazení a/nebo maximální počet kliknutí.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_url']['0']          = 'Cílové URL banneru';
-$GLOBALS['TL_LANG']['tl_banner']['banner_url']['1']          = 'Prosím, zadejte cílové URL banneru: http://www.domena.cz';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['0']  = 'Omezení počtu zobrazení';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['1']  = 'Pokud zvolíte tuto možnost, můžete definovat maximální počet zobrazení.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_weighting']['0']    = 'Priorita banneru';

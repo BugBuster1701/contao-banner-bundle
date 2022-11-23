@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2020-06-24T22:44:57+02:00
+ * last-updated: 2021-01-14T22:19:47+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Wysoki priorytet';
@@ -42,7 +42,6 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_type']['1']         = 'Wybór źródła
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['0']        = 'Ograniczenie ilości wyświetleń i kliknięć';
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['1']        = 'Jeśli wybierzesz tę opcję, będziesz mógł zdefiniować maksymalną liczbę odsłon i/lub maksymalną liczbę kliknięć.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_url']['0']          = 'Docelowy URL banera';
-$GLOBALS['TL_LANG']['tl_banner']['banner_url']['1']          = 'Wprowadź docelowy URL banera: http://...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['0']  = 'Ograniczenie ilości odsłon';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['1']  = 'Po wprowadzeniu limitu ilości odsłon, aktualny baner nie będzie więcej wyświetlany po osiągnięciu tej ilości odsłon.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_weighting']['0']    = 'Priorytet banera';

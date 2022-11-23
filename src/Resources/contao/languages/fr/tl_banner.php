@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2020-06-24T22:44:54+02:00
+ * last-updated: 2021-01-14T22:19:47+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Haute priorité';
@@ -49,7 +49,6 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_type']['1']         = 'Sélectionnez si
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['0']        = 'Limite du nombre de vues et de clics';
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['1']        = 'Si vous choisissez cette option, vous pouvez définir un nombre maximum de vues ou de clics.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_url']['0']          = 'URL Cible de la bannière';
-$GLOBALS['TL_LANG']['tl_banner']['banner_url']['1']          = 'Veuillez saisir la cible de l\'URL de la bannière: http://...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['0']  = 'Limite du nombre de vues';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['1']  = 'En saisissant un nombre, cette bannière n\'apparaîtra plus une fois qu\'elle aura été vu le nombre de fois que vous saisissez.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_weighting']['0']    = 'Priorité Bannière';
