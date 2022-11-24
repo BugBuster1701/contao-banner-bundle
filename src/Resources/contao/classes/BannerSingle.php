@@ -20,6 +20,7 @@ use BugBuster\Banner\BannerInternal;
 use BugBuster\Banner\BannerLog;
 use BugBuster\Banner\BannerLogic;
 use BugBuster\Banner\BannerText;
+use Contao\FrontendTemplate;
 
 /**
  * Class BannerSingle
@@ -141,6 +142,7 @@ class BannerSingle extends \Frontend
                                     'banner_pic'     => true,
                                     'banner_flash'   => false,
                                     'banner_text'    => false,
+                                    'banner_video'   => false,
                                     'banner_empty'   => false,	// issues 733
                                     'picture'        => $picture
                                     );
@@ -170,6 +172,7 @@ class BannerSingle extends \Frontend
                             'banner_pic' 	=> false,
                             'banner_flash'  => false,
                             'banner_text'   => false,
+                            'banner_video'  => false,
                             'banner_empty'  => true	// issues 733
                         );
         $arrResults[] = $arrBanners[0];
@@ -311,6 +314,29 @@ class BannerSingle extends \Frontend
                 {
                     $this->strTemplate = $this->banner_template;
                     $this->Template = new \FrontendTemplate($this->strTemplate);
+                }
+                $arrResults[] = $arrBanners[0];
+                $this->Template->banners = $arrResults;
+                $this->Template->bmid = "bmid".$module_id;
+
+                $this->setStatViewUpdate($arrResults, $module_id, $objBanners->banner_useragent);
+
+                return $this->Template;
+            }
+
+            // Video Banner
+            if ($objBanners->banner_type === BannerVideo::BANNER_TYPE_VIDEO)
+            {
+                $objBannerVideo = new BannerVideo($objBanners, $banner_cssID, $banner_class);
+                $arrBanners = $objBannerVideo->generateTemplateData();
+
+                //anderes Template?
+                if (($this->banner_template != $this->strTemplate)
+                    && ($this->banner_template != '')
+                )
+                {
+                    $this->strTemplate = $this->banner_template;
+                    $this->Template = new FrontendTemplate($this->strTemplate);
                 }
                 $arrResults[] = $arrBanners[0];
                 $this->Template->banners = $arrResults;
@@ -473,6 +499,29 @@ class BannerSingle extends \Frontend
                 {
                     $this->strTemplate = $this->banner_template;
                     $this->Template = new \FrontendTemplate($this->strTemplate);
+                }
+                $arrResults[] = $arrBanners[0];
+                $this->Template->banners = $arrResults;
+                $this->Template->bmid = "bmid".$module_id;
+
+                $this->setStatViewUpdate($arrResults, $module_id, $objBanners->banner_useragent);
+
+                return $this->Template;
+            }
+
+            // Video Banner
+            if ($objBanners->banner_type === BannerVideo::BANNER_TYPE_VIDEO)
+            {
+                $objBannerVideo = new BannerVideo($objBanners, $banner_cssID, $banner_class);
+                $arrBanners = $objBannerVideo->generateTemplateData();
+
+                //anderes Template?
+                if (($this->banner_template != $this->strTemplate)
+                    && ($this->banner_template != '')
+                )
+                {
+                    $this->strTemplate = $this->banner_template;
+                    $this->Template = new FrontendTemplate($this->strTemplate);
                 }
                 $arrResults[] = $arrBanners[0];
                 $this->Template->banners = $arrResults;

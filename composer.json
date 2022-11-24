@@ -64,5 +64,11 @@
 			"dev-develop": "1.4.x-dev"
 		},
 		"contao-manager-plugin": "BugBuster\\BannerBundle\\ContaoManager\\Plugin"
+	},
+	"config": {
+		"allow-plugins": {
+			"contao-components/installer": true,
+			"contao/manager-plugin": true
+		}
 	}
 }

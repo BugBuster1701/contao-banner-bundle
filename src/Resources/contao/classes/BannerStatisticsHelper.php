@@ -147,6 +147,7 @@ class BannerStatisticsHelper extends \BackendModule
                                           , tb.banner_comment
                                           , tb.banner_views_until
                                           , tb.banner_clicks_until
+                                          , tb.banner_playerSRC
                                           , tbs.banner_views
                                           , tbs.banner_clicks
                                        FROM 
@@ -178,6 +179,7 @@ class BannerStatisticsHelper extends \BackendModule
                                           , tb.banner_comment
                                           , tb.banner_views_until
                                           , tb.banner_clicks_until
+                                          , tb.banner_playerSRC
                                           , tbs.banner_views
                                           , tbs.banner_clicks
                                        FROM
@@ -196,7 +198,7 @@ class BannerStatisticsHelper extends \BackendModule
         {
             while ($objBanners->next())
             {
-                $arrBanners[] = array('id'                  => $objBanners->id, 'banner_type'         => $objBanners->banner_type, 'banner_name'         => $objBanners->banner_name, 'banner_url'          => $objBanners->banner_url, 'banner_jumpTo'       => $objBanners->banner_jumpTo, 'banner_image'        => $objBanners->banner_image, 'banner_image_extern' => $objBanners->banner_image_extern, 'banner_weighting'    => $objBanners->banner_weighting, 'banner_start'        => $objBanners->banner_start, 'banner_stop'         => $objBanners->banner_stop, 'banner_published'    => $objBanners->banner_published, 'banner_until'        => $objBanners->banner_until, 'banner_comment'      => $objBanners->banner_comment, 'banner_views_until'  => $objBanners->banner_views_until, 'banner_clicks_until' => $objBanners->banner_clicks_until, 'banner_views'        => $objBanners->banner_views, 'banner_clicks'       => $objBanners->banner_clicks                        
+                $arrBanners[] = array('id'                  => $objBanners->id, 'banner_type'         => $objBanners->banner_type, 'banner_name'         => $objBanners->banner_name, 'banner_url'          => $objBanners->banner_url, 'banner_jumpTo'       => $objBanners->banner_jumpTo, 'banner_image'        => $objBanners->banner_image, 'banner_image_extern' => $objBanners->banner_image_extern, 'banner_weighting'    => $objBanners->banner_weighting, 'banner_start'        => $objBanners->banner_start, 'banner_stop'         => $objBanners->banner_stop, 'banner_published'    => $objBanners->banner_published, 'banner_until'        => $objBanners->banner_until, 'banner_comment'      => $objBanners->banner_comment, 'banner_views_until'  => $objBanners->banner_views_until, 'banner_clicks_until' => $objBanners->banner_clicks_until, 'banner_views'        => $objBanners->banner_views, 'banner_clicks'       => $objBanners->banner_clicks, 'banner_playerSRC' => $objBanners->banner_playerSRC
                                      );
             } // while
         }
