@@ -219,8 +219,8 @@ class BannerMultiple extends \Frontend
                 // Video Banner
                 if ($objBanners->banner_type == BannerVideo::BANNER_TYPE_VIDEO)
                 {
-                    $objBannerText = new BannerVideo($objBanners, $banner_cssID, $banner_class);
-                    $arrBanners = $objBannerText->generateTemplateData();
+                    $objBannerVideo = new BannerVideo($objBanners, $banner_cssID, $banner_class);
+                    $arrBanners = $objBannerVideo->generateTemplateData();
 
                     $arrResults[] = $arrBanners[0];
 

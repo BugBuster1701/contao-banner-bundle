@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2020-06-24T22:44:53+02:00
+ * last-updated: 2021-01-14T22:19:47+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'اولویت بالا';
@@ -37,7 +37,6 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_target']['0']       = 'پیوند دا�
 $GLOBALS['TL_LANG']['tl_banner']['banner_type']['0']         = 'منبع بنر';
 $GLOBALS['TL_LANG']['tl_banner']['banner_until']['0']        = 'محدود کردن تعداد بازدید و کلیک';
 $GLOBALS['TL_LANG']['tl_banner']['banner_url']['0']          = 'نشانی وب مقصد بنر';
-$GLOBALS['TL_LANG']['tl_banner']['banner_url']['1']          = 'نشانی وب مقصد بنر را وارد نمایید:‌http://...';
 $GLOBALS['TL_LANG']['tl_banner']['banner_views_until']['0']  = 'محدود کردن تعداد بازدید';
 $GLOBALS['TL_LANG']['tl_banner']['banner_weighting']['0']    = 'توزین بنر';
 $GLOBALS['TL_LANG']['tl_banner']['banner_weighting']['1']    = 'اولیت را انتخاب کنید';

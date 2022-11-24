@@ -488,7 +488,7 @@ class DcaBanner extends \Backend
     }
 
     /**
-     * List text banner record
+     * List video banner record
      *
      * @param  object $row
      * @return string record as html
