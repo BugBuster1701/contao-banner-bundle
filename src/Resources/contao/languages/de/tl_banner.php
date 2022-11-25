@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2022-11-25T01:13:25+01:00
+ * last-updated: 2022-11-25T19:32:49+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                         = 'Höchste Priorität';
@@ -19,7 +19,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found']      = 'Keine Kategorie
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['0']  = 'Begrenzung der Klicks';
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['1']  = 'Wenn Sie hier eine Zahl eingeben, wird dieser Banner nach dieser Anzahl von Klicks nicht mehr angezeigt.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0']       = 'Bannerkommentar';
-$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']       = 'Erste Zeile erscheint als title Tag. Bei Textbanner: Textzeile';
+$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']       = 'Erste Zeile erscheint als title Tag. Bei Textbanner: Textzeile. Für Videobanner: zusätzlich als Kommentarzeile .';
 $GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['0']         = 'CSS-ID/Klasse';
 $GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['1']         = 'Hier können Sie eine ID und beliebig viele Klassen eingeben. Ein Präfix "banner_" wird automatisch hinzugefügt.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['0']        = 'Domain Filter';
@@ -46,9 +46,9 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_playerSRC']['0']     = 'Video Dateien';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerSRC']['1']     = 'Hier können Sie die Videodatei oder mehrere Dateien hinzufügen, wenn Sie verschiedene Codecs verwenden.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerSize']['0']    = 'Player Größe';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerSize']['1']    = 'Breite und Höhe des Media Players in Pixeln (z. B. 640x480).';
-$GLOBALS['TL_LANG']['tl_banner']['banner_playerStart']['0']   = 'Start bei';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerStart']['0']   = 'Start bei Sekunde';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerStart']['1']   = 'Startet die Wiedergabe des Videos nach der angegebenen Anzahl von Sekunden.';
-$GLOBALS['TL_LANG']['tl_banner']['banner_playerStop']['0']    = 'Stopp bei';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerStop']['0']    = 'Stopp bei Sekunde';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerStop']['1']    = 'Stoppt die Wiedergabe des Videos nach der angegebenen Anzahl von Sekunden. Zum Deaktivieren auf 0 setzen.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_posterSRC']['0']     = 'Vorschaubild';
 $GLOBALS['TL_LANG']['tl_banner']['banner_posterSRC']['1']     = 'Zeigen Sie dieses Bild anstelle des ersten Bildes des Videos vor der Wiedergabe an.';

@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2021-01-14T22:19:47+01:00
+ * last-updated: 2022-11-25T19:32:49+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Högsta prioritet';
@@ -18,7 +18,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found']     = 'Ingen kategori h
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['0'] = 'Begränsa antalet klick';
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['1'] = 'Genom att ange ett värde så visas inte bannern efter att detta antal klick uppnåtts.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0']      = 'Banner-kommentar';
-$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Kommentar för bannerns titel-tagg (Banner-text för text-banners).';
+$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Kommentar för bannerns titel-tagg (Banner-text för text-banners, för videobanner: dessutom som kommentarsrad.).';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Banner-bild';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Välj banner-bild (GIF, JPG, PNG, WEBP).';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'Banner-bildens URL';
@@ -79,3 +79,4 @@ $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']        = 'Intern banner-bi
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern'] = 'Extern banner-bild';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']         = 'Text-banner';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']             = 'Välj';
+

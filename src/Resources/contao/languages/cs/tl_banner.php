@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2021-01-14T22:19:47+01:00
+ * last-updated: 2022-11-25T19:32:49+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Nejvyšší priorita';
@@ -18,7 +18,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found']     = 'Nebyla vybrána 
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['0'] = 'Omezení počtu prokliků';
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['1'] = 'Pokud zvolíte tuto možnost, můžete definovat maximální počet kliknutí.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0']      = 'Komentář banneru';
-$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Komentář je pro štítek názvu. U textového banneru: textový řádek.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Komentář je pro štítek názvu. U textového banneru: textový řádek. U banneru videa: navíc jako řádek komentáře.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['0']       = 'Filtr domény';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['1']       = 'Pokud zadáte název domény, je tento banner použity pouze pro tuto doménu. Pokud necháte pole prázdné, je tento banner pro všechny domény.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Obrázek banneru';
@@ -86,3 +86,4 @@ $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']        = 'Interní obrázk
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern'] = 'Externí obrázkový banner';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']         = 'Interní textový banner';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']             = 'Prosím, vyberte';
+

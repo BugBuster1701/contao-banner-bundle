@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2021-01-14T22:19:47+01:00
+ * last-updated: 2022-11-25T19:32:49+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Haute priorité';
@@ -19,7 +19,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found']     = 'Aucune catégori
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['0'] = 'Limite du nombre de clics';
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['1'] = 'En saisissant un nombre, cette bannière n\'apparaîtra plus une fois qu\'elle aura été cliquée le nombre de fois que vous saisissez.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0']      = 'Commentaire Bannière';
-$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Commentaire pour la balise titre. Pour une bannière texte: ligne de texte.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Commentaire pour la balise titre. Pour une bannière texte: ligne de texte. Pour la bannière vidéo : en plus de la ligne de commentaire.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['0']        = 'Identifiant CSS / classe';
 $GLOBALS['TL_LANG']['tl_banner']['banner_cssid']['1']        = 'Ici, vous pouvez définir un ID et une ou plusieurs classes. Un préfixe "banner_" est automatiquement ajouté.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_domain']['0']       = 'Filtrage par nom de domaine';
@@ -92,3 +92,4 @@ $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']        = 'Image bannière 
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern'] = 'Image bannière externe';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']         = 'Bannière texte';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']             = 'Veuillez sélectionner';
+
