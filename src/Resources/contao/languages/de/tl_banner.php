@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2021-01-14T22:19:47+01:00
+ * last-updated: 2022-11-25T01:13:25+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                         = 'Höchste Priorität';
@@ -44,14 +44,12 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_playerCaption']['0'] = 'Untertitel';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerCaption']['1'] = 'Hier können Sie eine Beschriftung eingeben.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerOptions']['0'] = 'Player Optionen';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerOptions']['1'] = 'Hier können Sie die Player-Optionen auswählen.';
-$GLOBALS['TL_LANG']['tl_banner']['banner_playerPreload']['0'] = 'Vorladen';
-$GLOBALS['TL_LANG']['tl_banner']['banner_playerPreload']['1'] = 'Hier können Sie angeben, wie der Browser das Video vorladen soll';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerSRC']['0']     = 'Video Dateien';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerSRC']['1']     = 'Hier können Sie die Videodatei oder mehrere Dateien hinzufügen, wenn Sie verschiedene Codecs verwenden.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerSize']['0']    = 'Player Größe';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerSize']['1']    = 'Breite und Höhe des Media Players in Pixeln (z. B. 640x480).';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerStart']['0']   = 'Start bei';
-$GLOBALS['TL_LANG']['tl_banner']['banner_playerStart']['1']   = 'Startet die Wiedergabe des Videos nach der angegebenen Anzahl von Sekunden. Zum Deaktivieren auf 0 setzen.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerStart']['1']   = 'Startet die Wiedergabe des Videos nach der angegebenen Anzahl von Sekunden.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerStop']['0']    = 'Stopp bei';
 $GLOBALS['TL_LANG']['tl_banner']['banner_playerStop']['1']    = 'Stoppt die Wiedergabe des Videos nach der angegebenen Anzahl von Sekunden. Zum Deaktivieren auf 0 setzen.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_posterSRC']['0']     = 'Vorschaubild';
@@ -118,3 +116,4 @@ $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern']  = 'Externe Bannerg
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']          = 'Textbanner';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_video']         = 'Video Banner';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']              = 'Bitte auswählen';
+
