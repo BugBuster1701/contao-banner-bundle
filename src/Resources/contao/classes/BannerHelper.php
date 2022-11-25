@@ -46,12 +46,12 @@ class BannerHelper extends \Frontend
 	/**
 	 * Banner Data, for BannerStatViewUpdate
 	 */
-	protected $arrBannerData = array();
+	protected $arrBannerData = [];
 
 	/**
 	 * Banner Seen
 	 */
-	public static $arrBannerSeen = array();
+	public static $arrBannerSeen = [];
 
 	/**
 	 * Banner Random Blocker
@@ -85,13 +85,13 @@ class BannerHelper extends \Frontend
 	 * Category values
 	 * @var mixed array|false, false if category not exists
 	 */
-	protected $arrCategoryValues = array();
+	protected $arrCategoryValues = [];
 
 	/**
 	 * All banner basic data (id,weighting) from a category
 	 * @var array
 	 */
-	protected $arrAllBannersBasic = array();
+	protected $arrAllBannersBasic = [];
 
 	/**
 	 * Page Output Format
@@ -104,7 +104,7 @@ class BannerHelper extends \Frontend
 	 *
 	 * @var string
 	 */
-	private $_session   = array();
+	private $_session   = [];
 
 	/**
 	 * BannerHelper::bannerHelperInit
@@ -119,8 +119,8 @@ class BannerHelper extends \Frontend
 	    $this->statusBannerFirstView         = false;
 	    $this->statusBannerFrontendGroupView = true;
 	    $this->statusAllBannersBasic         = true;
-	    $this->arrCategoryValues             = array();
-	    $this->arrAllBannersBasic            = array();
+	    $this->arrCategoryValues             = [];
+	    $this->arrAllBannersBasic            = [];
 
 		//set $arrCategoryValues over tl_banner_category
 		if ($this->getSetCategoryValues() === false) { return false; }
@@ -182,7 +182,7 @@ class BannerHelper extends \Frontend
 		$arrGroup = \StringUtil::deserialize($objBannerCategory->banner_groups);
 		//Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
 		$objFile = \FilesModel::findByPk($objBannerCategory->banner_default_image);
-		$this->arrCategoryValues = array(
+		$this->arrCategoryValues = [
                                         'id'                    => $objBannerCategory->id,
                                         'banner_default'		=> $objBannerCategory->banner_default,
                                         'banner_default_name'	=> $objBannerCategory->banner_default_name,
@@ -194,7 +194,7 @@ class BannerHelper extends \Frontend
                                         'banner_limit'			=> $objBannerCategory->banner_limit, // 0:all, others = max
                                         'banner_protected'		=> $objBannerCategory->banner_protected,
                                         'banner_group'			=> $arrGroup[0] ?? 0
-                                        );
+                                        ];
         //DEBUG log_message('getSetCategoryValues arrCategoryValues:'.print_r($this->arrCategoryValues,true),'Banner.log');
 		return true;
 	}
@@ -236,7 +236,7 @@ class BannerHelper extends \Frontend
 	 */
 	protected function getSetAllBannerForCategory()
 	{
-	    $this->arrAllBannersBasic = array();
+	    $this->arrAllBannersBasic = [];
 		//wenn mit der definierte Kategorie ID keine Daten gefunden wurden
 		//macht Suche nach Banner kein Sinn
 		if ($this->arrCategoryValues === false)
@@ -254,7 +254,8 @@ class BannerHelper extends \Frontend
 		//sortiert nach "sorting"
 		//nur Basic Felder `id`, `banner_weighting`
 		$objBanners = \Database::getInstance()
-		                ->prepare("SELECT 
+		                ->prepare(
+		                    "SELECT 
                                         TLB.`id`, TLB.`banner_weighting`
                                    FROM 
                                         tl_banner AS TLB 
@@ -285,7 +286,7 @@ class BannerHelper extends \Frontend
                                    AND 
                                        (TLB.banner_domain=? OR RIGHT(?, CHAR_LENGTH(TLB.banner_domain)) = TLB.banner_domain)
                                    ORDER BY TLB.`sorting`"
-				                )
+		                )
                         ->execute($this->banner_categories, '', '', '', '', 1, '', $intTime, '', $intTime, '', $http_host);
 		while ($objBanners->next())
 		{

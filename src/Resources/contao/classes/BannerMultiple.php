@@ -44,11 +44,11 @@ class BannerMultiple extends \Frontend
      */
     const BANNER_TYPE_TEXT   = 'banner_text';
 
-    protected $arrCategoryValues  = array(); 
+    protected $arrCategoryValues  = []; 
     protected $banner_template;
     protected $strTemplate;
     protected $Template;
-    protected $arrAllBannersBasic = array();
+    protected $arrAllBannersBasic = [];
     protected $BannerImage;
 
     public function __construct($arrCategoryValues, $banner_template, $strTemplate, $objTemplate, $arrAllBannersBasic)
@@ -65,7 +65,7 @@ class BannerMultiple extends \Frontend
 
     public function getMultiBanner($module_id)
     {
-        $arrResults = array();
+        $arrResults = [];
         $boolFirstBanner = false;
 
         /* $this->arrCategoryValues[...]
@@ -118,20 +118,21 @@ class BannerMultiple extends \Frontend
         {
             unset($banner_weigth);
             $objBanners  = \Database::getInstance()
-                                ->prepare("SELECT
+                                ->prepare(
+                                    "SELECT
                                                 TLB.*
                                            FROM
                                 	            tl_banner AS TLB
                                            WHERE
                                                 TLB.`id`=?"
-                                         )
+                                )
                                 ->limit(1)
                                 ->execute($banner_id);
             $intRows = $objBanners->numRows;
             //Banner vorhanden?
             if($intRows > 0)
             {
-                $arrBanners = array();
+                $arrBanners = [];
                 $objBanners->next();
                 BannerHelper::$arrBannerSeen[] = $objBanners->id;
                 //CSS-ID/Klasse(n) je Banner, für den wrapper

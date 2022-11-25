@@ -34,7 +34,7 @@ class FrontendBanner extends \Frontend
      *
      * @var string
      */
-    private $_session   = array();
+    private $_session   = [];
 
 	/**
 	 * Initialize the object (do not remove)
@@ -230,12 +230,12 @@ class FrontendBanner extends \Frontend
             else
             {
                 //Insert
-                $arrSet = array
-                (
+                $arrSet = 
+                [
                     'id'     => $this->intBID,
                     'tstamp' => time(),
                     'banner_clicks' => 1
-                );
+                ];
                 \Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
                                         ->set($arrSet)
                                         ->execute();
@@ -275,7 +275,7 @@ class FrontendBanner extends \Frontend
         {
             return '301'; // error, but the show must go on
         }
-        $arrBRT = array();
+        $arrBRT = [];
         while ($objBRT->next())
         {
             $arrBRT[] = ($objBRT->banner_redirect == 'temporary') ? '302' : '301';
@@ -373,7 +373,7 @@ class FrontendBanner extends \Frontend
     {
         if ($banner_id==0) { return; }// keine Banner ID, nichts zu tun
         //das können mehrere sein!, mergen!
-        $this->setSession('ReClickBlocker', array($banner_id => time()), true);
+        $this->setSession('ReClickBlocker', [$banner_id => time()], true);
 
         return;
     }

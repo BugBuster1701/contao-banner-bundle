@@ -52,7 +52,7 @@ class BannerStatisticsHelper extends \BackendModule
      * Current object instance
      * @var object
      */
-    protected static $instance = null;
+    protected static $instance;
 
     /**
      * Constructor
@@ -126,7 +126,7 @@ class BannerStatisticsHelper extends \BackendModule
      */
     protected function getBannersByCatID($CatID = 0)
     {
-        $arrBanners = array();
+        $arrBanners = [];
 
         if ($CatID == -1)
         { // all Categories
@@ -198,8 +198,8 @@ class BannerStatisticsHelper extends \BackendModule
         {
             while ($objBanners->next())
             {
-                $arrBanners[] = array('id'                  => $objBanners->id, 'banner_type'         => $objBanners->banner_type, 'banner_name'         => $objBanners->banner_name, 'banner_url'          => $objBanners->banner_url, 'banner_jumpTo'       => $objBanners->banner_jumpTo, 'banner_image'        => $objBanners->banner_image, 'banner_image_extern' => $objBanners->banner_image_extern, 'banner_weighting'    => $objBanners->banner_weighting, 'banner_start'        => $objBanners->banner_start, 'banner_stop'         => $objBanners->banner_stop, 'banner_published'    => $objBanners->banner_published, 'banner_until'        => $objBanners->banner_until, 'banner_comment'      => $objBanners->banner_comment, 'banner_views_until'  => $objBanners->banner_views_until, 'banner_clicks_until' => $objBanners->banner_clicks_until, 'banner_views'        => $objBanners->banner_views, 'banner_clicks'       => $objBanners->banner_clicks, 'banner_playerSRC' => $objBanners->banner_playerSRC
-                                     );
+                $arrBanners[] = ['id'                  => $objBanners->id, 'banner_type'         => $objBanners->banner_type, 'banner_name'         => $objBanners->banner_name, 'banner_url'          => $objBanners->banner_url, 'banner_jumpTo'       => $objBanners->banner_jumpTo, 'banner_image'        => $objBanners->banner_image, 'banner_image_extern' => $objBanners->banner_image_extern, 'banner_weighting'    => $objBanners->banner_weighting, 'banner_start'        => $objBanners->banner_start, 'banner_stop'         => $objBanners->banner_stop, 'banner_published'    => $objBanners->banner_published, 'banner_until'        => $objBanners->banner_until, 'banner_comment'      => $objBanners->banner_comment, 'banner_views_until'  => $objBanners->banner_views_until, 'banner_clicks_until' => $objBanners->banner_clicks_until, 'banner_views'        => $objBanners->banner_views, 'banner_clicks'       => $objBanners->banner_clicks, 'banner_playerSRC' => $objBanners->banner_playerSRC
+                                     ];
             } // while
         }
 
@@ -244,34 +244,34 @@ class BannerStatisticsHelper extends \BackendModule
         {
             if ($banner_number == 0)
             { // gewählte Kategorie hat keine Banner, es gibt aber weitere Kategorien
-                $arrBannerCats[] = array
-                (
+                $arrBannerCats[] = 
+                [
                     'id'    => '0',
                     'title' => $GLOBALS['TL_LANG']['tl_banner_stat']['select']
-                );
+                ];
                 $this->intCatID = 0; // template soll nichts anzeigen
             }
-            $arrBannerCats[] = array
-            (
+            $arrBannerCats[] = 
+            [
                 'id'    => '-1',
                 'title' => $GLOBALS['TL_LANG']['tl_banner_stat']['allkat']
-            );
+            ];
             while ($objBannerCat->next())
             {
-                $arrBannerCats[] = array
-                (
+                $arrBannerCats[] = 
+                [
                     'id'    => $objBannerCat->id,
                     'title' => $objBannerCat->title
-                );
+                ];
             }
         }
         else
         { // es gibt keine Kategorie mit Banner
-            $arrBannerCats[] = array
-            (
+            $arrBannerCats[] = 
+            [
                 'id'    => '0',
                 'title' => '---------'
-            );
+            ];
         }
 
         return $arrBannerCats;
@@ -286,7 +286,7 @@ class BannerStatisticsHelper extends \BackendModule
      */
     protected function getBannerCategoriesByUsergroups()
     {
-        $arrBannerCats = array();
+        $arrBannerCats = [];
 
         $objBannerCat = \Database::getInstance()
                             ->prepare("SELECT
@@ -303,20 +303,22 @@ class BannerStatisticsHelper extends \BackendModule
                             ->execute();
         while ($objBannerCat->next())
         {
-            if (true === $this->isUserInBannerStatGroups($objBannerCat->banner_stat_groups,
-                                                   (bool) $objBannerCat->banner_stat_protected)) 
+            if (true === $this->isUserInBannerStatGroups(
+                $objBannerCat->banner_stat_groups,
+                (bool) $objBannerCat->banner_stat_protected
+            )) 
             {
-                $arrBannerCats[] = array
-                (
+                $arrBannerCats[] = 
+                [
                     'id'    => $objBannerCat->id,
                     'title' => $objBannerCat->title
-                );
+                ];
             }
         }
 
         if (0 == \count($arrBannerCats)) 
         {
-        	$arrBannerCats[] = array('id' => '0', 'title' => '---------');
+        	$arrBannerCats[] = ['id' => '0', 'title' => '---------'];
         }
 
         return $arrBannerCats;
@@ -433,7 +435,7 @@ class BannerStatisticsHelper extends \BackendModule
             $intMaxClicks = true;
         }
 
-        return array($intMaxViews, $intMaxClicks);
+        return [$intMaxViews, $intMaxClicks];
     }
 
     /**

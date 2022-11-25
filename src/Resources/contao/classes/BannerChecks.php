@@ -42,9 +42,11 @@ class BannerChecks extends \Frontend
             //BugBusterBotdetectionBundle Modul fehlt, Abbruch
             \System::getContainer()
                         ->get('monolog.logger.contao')
-                        ->log(LogLevel::ERROR,
+                        ->log(
+                            LogLevel::ERROR,
                             'contao-botdetection-bundle extension required for extension: Banner!',
-                            array('contao' => new ContaoContext('BannerChecks checkBot ', TL_ERROR)));
+                            ['contao' => new ContaoContext('BannerChecks checkBot ', TL_ERROR)]
+                        );
             BannerLog::writeLog(__METHOD__, __LINE__, print_r($bundles, true));
 
             return false;
@@ -94,7 +96,7 @@ class BannerChecks extends \Frontend
         {
             return false; // keine Angaben im Modul
         }
-        array_walk($arrUserAgents, array('self', 'bannerclickTrimArrayValue'));  // trim der array values
+        array_walk($arrUserAgents, ['self', 'bannerclickTrimArrayValue']);  // trim der array values
         // grobe Suche
         $CheckUserAgent=str_replace($arrUserAgents, '#', $UserAgent);
         if ($UserAgent != $CheckUserAgent)
@@ -126,10 +128,12 @@ class BannerChecks extends \Frontend
         if ($objTokenChecker->hasBackendUser())
         {
             BannerLog::writeLog(__METHOD__, __LINE__, ': True');
+
             return true;
         }
-        
+
         BannerLog::writeLog(__METHOD__, __LINE__, ': False');
+
         return false;
 
     } //CheckBE

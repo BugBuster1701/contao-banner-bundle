@@ -13,13 +13,13 @@
 
 namespace BugBuster\Banner;
 
+use function array_filter;
 use Contao\Environment;
 use Contao\File;
 use Contao\FilesModel;
 use Contao\PageModel;
-use Contao\StringUtil;
 
-use function array_filter;
+use Contao\StringUtil;
 
 /**
  * Class BannerVideo
@@ -91,10 +91,10 @@ class BannerVideo
                     $domain = (Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
                 }
                 $this->objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator(
-                        $objParent->row(),
-                        null,
-                        $objParent->language
-                    );
+                    $objParent->row(),
+                    null,
+                    $objParent->language
+                );
             }
         }
     }

@@ -16,40 +16,40 @@
 /**
  * Table tl_banner_stat
  */
-$GLOBALS['TL_DCA']['tl_banner_stat'] = array
-(
+$GLOBALS['TL_DCA']['tl_banner_stat'] = 
+[
 
 	// Config
-	'config' => array
-	(
+	'config' => 
+	[
 		'dataContainer'               => 'Table',
-        'sql' => array
-        (
-            'keys' => array
-            (
+        'sql' => 
+        [
+            'keys' => 
+            [
                 'id'    => 'primary'
-            )
-        ),
-	),
+            ]
+        ],
+	],
 	// Fields
-	'fields' => array
-	(
-    	'id' => array
-    	(
+	'fields' => 
+	[
+    	'id' => 
+    	[
     	        'sql'           => "int(10) unsigned NOT NULL default '0'"
-    	),
-    	'tstamp' => array
-    	(
+    	],
+    	'tstamp' => 
+    	[
     	        'sql'           => "int(10) unsigned NOT NULL default '0'"
-    	),
-        'banner_views' => array
-        (
+    	],
+        'banner_views' => 
+        [
                 'sql'           => "int(10) unsigned NOT NULL default '0'"
-        ),
-        'banner_clicks' => array
-        (
+        ],
+        'banner_clicks' => 
+        [
                 'sql'           => "int(10) unsigned NOT NULL default '0'"
-        ),
-	)
-);
+        ],
+	]
+];
 

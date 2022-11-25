@@ -34,7 +34,7 @@ class BannerCount extends \System
     /**
      * Banner Data, for BannerStatViewUpdate
      */
-    protected $arrBannerData = array();
+    protected $arrBannerData = [];
 
     protected $banner_useragent = '';
 
@@ -104,12 +104,12 @@ class BannerCount extends \System
 	    }
 
 	    //Zählung, Insert
-	    $arrSet = array
-	    (
+	    $arrSet = 
+	    [
 	            'id' => $BannerID,
 	            'tstamp' => time(),
 	            'banner_views' => 1
-	    );
+	    ];
 	    $objInsert = \Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
                                             ->set($arrSet)
                                             ->execute();
@@ -140,7 +140,7 @@ class BannerCount extends \System
 	    }// keine Banner ID, nichts zu tun
 	    //das können mehrere sein!, mergen!
 	    $objBannerLogic = new BannerLogic();
-	    $objBannerLogic->setSession('StatViewUpdateBlocker'.$this->module_id, array($banner_id => time()), true);
+	    $objBannerLogic->setSession('StatViewUpdateBlocker'.$this->module_id, [$banner_id => time()], true);
 
 	    return;
 	}
@@ -267,7 +267,7 @@ class BannerCount extends \System
 	    {
 	        return false; // keine Angaben im Modul
 	    }
-	    array_walk($arrUserAgents, array('self', 'trimBannerArrayValue'));  // trim der array values
+	    array_walk($arrUserAgents, ['self', 'trimBannerArrayValue']);  // trim der array values
 	    // grobe Suche
 	    $CheckUserAgent = str_replace($arrUserAgents, '#', $UserAgent);
 	    if ($UserAgent != $CheckUserAgent)

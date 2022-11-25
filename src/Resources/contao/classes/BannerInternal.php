@@ -111,13 +111,13 @@ class BannerInternal
             $arrImageSize[3] = ' height="'.$arrImageSizenNew[1].'" width="'.$arrImageSizenNew[0].'"';
 
             //fake the Picture::create
-            $picture['img']   = array
-            (
+            $picture['img']   = 
+            [
                 'src'    => StringUtil::specialchars(ampersand($FileSrc)),
                 'width'  => $arrImageSizenNew[0],
                 'height' => $arrImageSizenNew[1],
                 'srcset' => StringUtil::specialchars(ampersand($FileSrc))
-            );
+            ];
             $arrMeta = $this->getBannerMetaData($this->objBanners, $objFile);
             $picture['alt']   = $arrMeta['alt'];
             $picture['title'] = $arrMeta['title'];
@@ -133,7 +133,7 @@ class BannerInternal
             $staticUrl = $container->get('contao.assets.files_context')->getStaticUrl();
             $FileSrc = $container
                         ->get('contao.image.image_factory')
-                        ->create($rootDir.'/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))
+                        ->create($rootDir.'/' . $objFile->path, [$arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]])
                         ->getUrl($rootDir);
 
             BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Image: '. print_r($FileSrc, true));
@@ -145,14 +145,14 @@ class BannerInternal
             }
             else
             {
-                    $picture = $picture->create($rootDir . '/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]));
+                    $picture = $picture->create($rootDir . '/' . $objFile->path, [$arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]]);
             }
 
-            $picture = array
-            (
+            $picture = 
+            [
                 'img'     => $picture->getImg($rootDir, $staticUrl),
                 'sources' => $picture->getSources($rootDir, $staticUrl)
-            );
+            ];
 
             $arrMeta = $this->getBannerMetaData($this->objBanners, $objFile);
             $picture['alt']   = $arrMeta['alt'];
@@ -195,7 +195,7 @@ class BannerInternal
      */
     public function getBannerMetaData($objBanners, $objFile)
     {
-        $arrMeta = array();
+        $arrMeta = [];
         if ($objBanners->banner_overwritemeta != '1')
         {
             $arrMeta['alt']   = StringUtil::specialchars(ampersand($objBanners->banner_name));

@@ -98,13 +98,13 @@ class BannerExternal
         $FileSrc = html_entity_decode($this->objBanners->banner_image_extern, ENT_NOQUOTES, 'UTF-8');
 
         //fake the Picture::create
-        $picture['img']   = array
-        (
+        $picture['img']   = 
+        [
             'src'    => StringUtil::specialchars(ampersand($FileSrc)),
             'width'  => $arrImageSizenNew[0],
             'height' => $arrImageSizenNew[1],
             'srcset' => StringUtil::specialchars(ampersand($FileSrc))
-        );
+        ];
         $picture['alt']   = StringUtil::specialchars(ampersand($this->objBanners->banner_name));
         $picture['title'] = StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
 

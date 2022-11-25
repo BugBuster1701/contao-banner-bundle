@@ -16,253 +16,253 @@
 /**
  * Table tl_banner_category 
  */
-$GLOBALS['TL_DCA']['tl_banner_category'] = array
-(
+$GLOBALS['TL_DCA']['tl_banner_category'] = 
+[
 
 	// Config
-	'config' => array
-	(
+	'config' => 
+	[
 		'dataContainer'               => 'Table',
-		'ctable'                      => array('tl_banner'),
+		'ctable'                      => ['tl_banner'],
 		'switchToEdit'                => true,
 		'enableVersioning'            => true,
-        'sql' => array
-        (
-            'keys' => array
-            (
+        'sql' => 
+        [
+            'keys' => 
+            [
                 'id'    => 'primary'
-            )
-        ),
-	),
+            ]
+        ],
+	],
 
 	// List
-	'list' => array
-	(
-		'sorting' => array
-		(
+	'list' => 
+	[
+		'sorting' => 
+		[
 			'mode'                    => 1,
-			'fields'                  => array('title'),
+			'fields'                  => ['title'],
 			'flag'                    => 1,
 			'panelLayout'             => 'search,limit'
-		),
-		'label' => array
-		(
+		],
+		'label' => 
+		[
 			//'fields'                  => array('title','banner_template','banner_protected'),
 			//'format'                  => '%s <br /><span style="color:#b3b3b3;">[%s]<br />[%s]</span>'
-			'fields'                  => array('tag'),
+			'fields'                  => ['tag'],
 			'format'                  => '%s',
-			'label_callback'		  => array('BugBuster\Banner\DcaBannerCategory', 'labelCallback'),
-		),
-		'global_operations' => array
-		(
-			'all' => array
-			(
+			'label_callback'		  => ['BugBuster\Banner\DcaBannerCategory', 'labelCallback'],
+		],
+		'global_operations' => 
+		[
+			'all' => 
+			[
 				'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
 				'href'                => 'act=select',
 				'class'               => 'header_edit_all',
 				'attributes'          => 'onclick="Backend.getScrollOffset();"'
-			)
-		),
-		'operations' => array
-		(
-			'edit' => array
-			(
+			]
+		],
+		'operations' => 
+		[
+			'edit' => 
+			[
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['edit'],
 				'href'                => 'table=tl_banner',
 				'icon'                => 'edit.gif',
 				'attributes'          => 'class="contextmenu"'
-			),
-			'editheader' => array
-			(
+			],
+			'editheader' => 
+			[
 		        'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['editheader'],
 		        'href'                => 'act=edit',
 		        'icon'                => 'header.gif',
 		        'attributes'          => 'class="edit-header"'
-			),
-			'copy' => array
-			(
+			],
+			'copy' => 
+			[
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['copy'],
 				'href'                => 'act=copy',
 				'icon'                => 'copy.gif'
-			),
-			'delete' => array
-			(
+			],
+			'delete' => 
+			[
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['delete'],
 				'href'                => 'act=delete',
 				'icon'                => 'delete.gif',
 				'attributes'          => 'onclick="if (!confirm(\'' . ($GLOBALS['TL_LANG']['tl_banner_category']['deleteConfirm'] ?? null) . '\')) return false; Backend.getScrollOffset();"'
-			),
-			'show' => array
-			(
+			],
+			'show' => 
+			[
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['show'],
 				'href'                => 'act=show',
 				'icon'                => 'show.gif'
-			),
-			'stat' => array
-			(
+			],
+			'stat' => 
+			[
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['stat'],
 				'href'                => 'do=bannerstat',
 				'icon'                => 'bundles/bugbusterbanner/iconBannerStat.gif'
-			)
-		)
-	),
+			]
+		]
+	],
 
 	// Palettes
-	'palettes' => array
-	(
-	    '__selector__'                => array('banner_default', 'banner_protected', 'banner_numbers', 'banner_stat_protected'), 
+	'palettes' => 
+	[
+	    '__selector__'                => ['banner_default', 'banner_protected', 'banner_numbers', 'banner_stat_protected'], 
 		'default'                     => '{title_legend},title;{default_legend:hide},banner_default;{number_legend:hide},banner_numbers;{protected_legend:hide},banner_protected;{protected_stat_legend:hide},banner_stat_protected;{banner_expert_legend:hide},banner_expert_debug_all'
-	),
+	],
 	// Subpalettes
-	'subpalettes' => array
-	(
+	'subpalettes' => 
+	[
 		'banner_default'              => 'banner_default_name,banner_default_url,banner_default_image,banner_default_target',
 		'banner_protected'            => 'banner_groups',
 		'banner_numbers'              => 'banner_limit,banner_random',
 		'banner_stat_protected'       => 'banner_stat_groups,banner_stat_admins',      
-	),
+	],
 
 	// Fields
-	'fields' => array
-	(
-    	'id' => array
-    	(
+	'fields' => 
+	[
+    	'id' => 
+    	[
     	    'sql'                     => "int(10) unsigned NOT NULL auto_increment"
-    	),
-    	'tstamp' => array
-    	(
+    	],
+    	'tstamp' => 
+    	[
     	    'sql'                     => "int(10) unsigned NOT NULL default '0'"
-    	),
-		'title' 					  => array
-		(
+    	],
+		'title' 					  => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['title'],
 			'exclude'                 => true,
 			'search'                  => true,
 			'inputType'               => 'text',
 			'sql'                     => "varchar(60) NOT NULL default ''",
-			'eval'                    => array('mandatory'=>true, 'maxlength'=>60, 'tl_class'=>'w50')
-		),
-		'banner_default'              => array
-		(
+			'eval'                    => ['mandatory'=>true, 'maxlength'=>60, 'tl_class'=>'w50']
+		],
+		'banner_default'              => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_default'],
 			'exclude'                 => true,
 			'inputType'               => 'checkbox',
 			'sql'                     => "char(1) NOT NULL default ''",
-			'eval'                    => array('submitOnChange'=>true)
-		),
-		'banner_default_name'         => array
-		(
+			'eval'                    => ['submitOnChange'=>true]
+		],
+		'banner_default_name'         => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_name'],
 			'inputType'               => 'text',
 			'search'                  => true,
 			'sql'                     => "varchar(64) NOT NULL default ''",
-			'eval'                    => array('mandatory'=>false, 'maxlength'=>64, 'tl_class'=>'w50')
-		),
-		'banner_default_url'		  => array
-		(
+			'eval'                    => ['mandatory'=>false, 'maxlength'=>64, 'tl_class'=>'w50']
+		],
+		'banner_default_url'		  => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_url'],
 			'inputType'               => 'text',
 			'explanation'	          => 'banner_help',
 			'sql'                     => "varchar(128) NOT NULL default ''",
-			'eval'                    => array('mandatory'=>false, 'maxlength'=>128, 'tl_class'=>'w50')
-		),
-		'banner_default_image'        => array
-		(
+			'eval'                    => ['mandatory'=>false, 'maxlength'=>128, 'tl_class'=>'w50']
+		],
+		'banner_default_image'        => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image'],
 			'exclude'                 => true,
 			'inputType'               => 'fileTree',
 			//'sql'                     => "varchar(255) NOT NULL default ''",
 			'sql'                     => "binary(16) NULL",
-			'eval'                    => array('mandatory'=>true, 'files'=>true, 'filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'jpg,jpe,jpeg,gif,png,webp', 'maxlength'=>255, 'helpwizard'=>false, 'tl_class'=>'clr'),
-			'xlabel' => array
-						(
-								array('BugBuster\Banner\DcaBannerCategory', 'fieldLabelCallback')
-						)
+			'eval'                    => ['mandatory'=>true, 'files'=>true, 'filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'jpg,jpe,jpeg,gif,png,webp', 'maxlength'=>255, 'helpwizard'=>false, 'tl_class'=>'clr'],
+			'xlabel' => 
+						[
+								['BugBuster\Banner\DcaBannerCategory', 'fieldLabelCallback']
+						]
 
-		),
-		'banner_default_target'		  => array
-		(
+		],
+		'banner_default_target'		  => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_default_target'],
 			'exclude'                 => true,
 			'sql'                     => "char(1) NOT NULL default ''",
 			'inputType'               => 'checkbox'
-		),
-		'banner_numbers'			  => array
-		(
+		],
+		'banner_numbers'			  => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_numbers'],
 			'exclude'                 => true,
 			'inputType'               => 'checkbox',
 			'sql'                     => "char(1) NOT NULL default ''",
-			'eval'                    => array('submitOnChange'=>true)
-		),
-		'banner_random'				  => array
-		(
+			'eval'                    => ['submitOnChange'=>true]
+		],
+		'banner_random'				  => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_random'],
 			'exclude'                 => true,
 			'inputType'               => 'checkbox',
 			'sql'                     => "char(1) NOT NULL default ''"
-		),
-		'banner_limit'				  => array
-		(
+		],
+		'banner_limit'				  => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_limit'],
 			'exclude'                 => true,
 			'inputType'               => 'text',
 			'sql'                     => "int(10) unsigned NOT NULL default '0'",
-			'eval'                    => array('rgxp'=>'digit', 'nospace'=>true, 'maxlength'=>10)
-		),
-		'banner_protected'            => array
-		(
+			'eval'                    => ['rgxp'=>'digit', 'nospace'=>true, 'maxlength'=>10]
+		],
+		'banner_protected'            => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_protected'],
 			'exclude'                 => true,
 			'filter'                  => true,
 			'inputType'               => 'checkbox',
 			'sql'                     => "char(1) NOT NULL default ''",
-			'eval'                    => array('submitOnChange'=>true)
-		),
-		'banner_groups'               => array
-		(
+			'eval'                    => ['submitOnChange'=>true]
+		],
+		'banner_groups'               => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_groups'],
 			'exclude'                 => true,
 			'inputType'               => 'checkbox',
 			'foreignKey'              => 'tl_member_group.name',
 			'sql'                     => "varchar(255) NOT NULL default ''",
-			'eval'                    => array('multiple'=>true)
-		),
-		'banner_stat_protected'       => array
-		(
+			'eval'                    => ['multiple'=>true]
+		],
+		'banner_stat_protected'       => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_stat_protected'],
 			'exclude'                 => true,
 			'filter'                  => true,
 			'inputType'               => 'checkbox',
 			'sql'                     => "char(1) NOT NULL default ''",
-			'eval'                    => array('submitOnChange'=>true)
-		),
-		'banner_stat_groups'          => array
-		(
+			'eval'                    => ['submitOnChange'=>true]
+		],
+		'banner_stat_groups'          => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_stat_groups'],
 			'exclude'                 => true,
 			'inputType'               => 'checkbox',
 			'foreignKey'              => 'tl_user_group.name',
 			'sql'                     => "varchar(255) NOT NULL default ''",
-			'eval'                    => array('multiple'=>true)
-		),
-		'banner_stat_admins' => array
-		(
+			'eval'                    => ['multiple'=>true]
+		],
+		'banner_stat_admins' => 
+		[
 			'label'                   => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_stat_admins'],
 	        'inputType'               => 'checkbox',
-			'eval'                    => array('disabled'=>true),
+			'eval'                    => ['disabled'=>true],
 			'sql'				      => null,
-			'load_callback' => array
-			(
-			    array('BugBuster\Banner\DcaBannerCategory', 'getAdminCheckbox')
-			)
-		),
-		'banner_expert_debug_all'=> array
-		(
+			'load_callback' => 
+			[
+			    ['BugBuster\Banner\DcaBannerCategory', 'getAdminCheckbox']
+			]
+		],
+		'banner_expert_debug_all'=> 
+		[
 		    'label'					  => &$GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_all'],
 		    'inputType'               => 'checkbox',
 		    'sql'                     => "char(1) NOT NULL default ''",
-		    'eval'                    => array('mandatory'=>false, 'helpwizard'=>false)
-		)
-	)
-);
+		    'eval'                    => ['mandatory'=>false, 'helpwizard'=>false]
+		]
+	]
+];

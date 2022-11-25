@@ -163,7 +163,7 @@ class DcaBanner extends \Backend
         $arrImageSize = $this->BannerImage->getBannerImageSize($objFile->path, self::BANNER_TYPE_INTERN);
 
         //resize if necessary
-        $arrImageSizeNew = array();
+        $arrImageSizeNew = [];
         switch ($arrImageSize[2])
         {
             case 1: // GIF
@@ -184,7 +184,7 @@ class DcaBanner extends \Backend
                     $rootDir = $container->getParameter('kernel.project_dir');
                     $banner_image = $container
                                         ->get('contao.image.image_factory')
-                                        ->create($rootDir.'/'.$objFile->path, array($intWidth, $intHeight, 'proportional'))
+                                        ->create($rootDir.'/'.$objFile->path, [$intWidth, $intHeight, 'proportional'])
                                         ->getUrl($rootDir);
                 }
                 break;
@@ -303,7 +303,7 @@ class DcaBanner extends \Backend
         $arrImageSize = $this->BannerImage->getBannerImageSize($row['banner_image_extern'], self::BANNER_TYPE_EXTERN);
 
         //resize if necessary
-        $arrImageSizeNew = array();
+        $arrImageSizeNew = [];
         switch ($arrImageSize[2])
         {
             case 1: // GIF
@@ -624,9 +624,11 @@ class DcaBanner extends \Backend
         {
             \System::getContainer()
                 ->get('monolog.logger.contao')
-                ->log(LogLevel::ERROR,
-                        'Not enough permissions to publish/unpublish Banner ID "'.$intId.'"',
-                        array('contao' => new ContaoContext('tl_banner toggleVisibility', TL_ERROR)));
+                ->log(
+                    LogLevel::ERROR,
+                    'Not enough permissions to publish/unpublish Banner ID "'.$intId.'"',
+                    ['contao' => new ContaoContext('tl_banner toggleVisibility', TL_ERROR)]
+                );
 
             $this->redirect('contao/main.php?act=error');
         }

@@ -188,7 +188,7 @@ class BannerImage extends \System
 
 		if ($oldWidth == $newWidth && $oldHeight == $newHeight)
 		{
-			return array($Width, $Height, $oriSize);
+			return [$Width, $Height, $oriSize];
 		}
 
 		if ($newWidth > 0 && $newHeight > 0) 
@@ -210,7 +210,7 @@ class BannerImage extends \System
 			$oriSize = false;
 		}
 
-		return array($Width, $Height, $oriSize);
+		return [$Width, $Height, $oriSize];
 	}
 
 	/**
@@ -271,7 +271,7 @@ class BannerImage extends \System
 			}
 		}
 
-		return array($intWidth, $intHeight, $oriSize);
+		return [$intWidth, $intHeight, $oriSize];
 	}
 
 }

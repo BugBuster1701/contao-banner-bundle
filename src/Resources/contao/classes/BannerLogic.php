@@ -26,7 +26,7 @@ use BugBuster\Banner\BannerReferrer;
  class BannerLogic
 {
 
-    private $_session = array();
+    private $_session = [];
 
     public $statusRandomBlocker = false;
     public $statusBannerFirstView;
@@ -40,8 +40,8 @@ use BugBuster\Banner\BannerReferrer;
      */
     public function getSingleWeighting($arrAllBannersBasic)
     {
-        $arrPrio = array();
-        $arrPrioW = array();
+        $arrPrio = [];
+        $arrPrioW = [];
         $arrWeights = array_flip($arrAllBannersBasic);
 
         //welche Wichtungen gibt es?
@@ -55,15 +55,15 @@ use BugBuster\Banner\BannerReferrer;
             $arrPrioW[3] = 3;
         }
 
-        $arrPrio[0] = array('start'=>0,  'stop'=>0);
-        $arrPrio[1] = array('start'=>1,  'stop'=>90);
-        $arrPrio[2] = array('start'=>91, 'stop'=>150);
-        $arrPrio[3] = array('start'=>151, 'stop'=>180);
+        $arrPrio[0] = ['start'=>0,  'stop'=>0];
+        $arrPrio[1] = ['start'=>1,  'stop'=>90];
+        $arrPrio[2] = ['start'=>91, 'stop'=>150];
+        $arrPrio[3] = ['start'=>151, 'stop'=>180];
         if (!\array_key_exists(2, $arrPrioW))
         {
             // no prio 2 banner
-            $arrPrio[2] = array('start'=>0,  'stop'=>0);
-            $arrPrio[3] = array('start'=>91, 'stop'=>120);
+            $arrPrio[2] = ['start'=>0,  'stop'=>0];
+            $arrPrio[3] = ['start'=>91, 'stop'=>120];
         }
         $intPrio1 = (\count($arrPrioW)) ? min($arrPrioW) : 0;
         $intPrio2 = (\count($arrPrioW)) ? max($arrPrioW) : 0;
@@ -146,7 +146,7 @@ use BugBuster\Banner\BannerReferrer;
         if ($BannerID==0) { return; }// kein Banner, nichts zu tun
 
         $this->statusRandomBlocker = true;
-        $this->setSession('RandomBlocker'.$module_id, array($BannerID => time()));
+        $this->setSession('RandomBlocker'.$module_id, [$BannerID => time()]);
         BannerLog::writeLog(__METHOD__, __LINE__, 'setRandomBlockerId BannerID:'.$BannerID);
 
         return;
@@ -190,7 +190,7 @@ use BugBuster\Banner\BannerReferrer;
         if ($banner_categorie==0) { return; }// keine Banner Kategorie, nichts zu tun
 
         $this->statusFirstViewBlocker = true;
-        $this->setSession('FirstViewBlocker'.$module_id, array($banner_categorie => time()));
+        $this->setSession('FirstViewBlocker'.$module_id, [$banner_categorie => time()]);
 
         return;
     }

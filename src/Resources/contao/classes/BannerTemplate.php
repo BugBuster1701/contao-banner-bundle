@@ -61,8 +61,8 @@ class BannerTemplate
             case 2:// JPG
             case 3:// PNG
             case 18: // WEBP
-                $arrBanners[] = array
-                (
+                $arrBanners[] = 
+                [
                 'banner_key'     => 'bid',
                 'banner_wrap_id'    => $banner_cssID,
                 'banner_wrap_class' => $banner_class,
@@ -80,11 +80,11 @@ class BannerTemplate
                 'banner_empty'   => false,
                 'banner_video'   => false,
                 'picture'        => $picture
-                );
+                ];
                 break;
             default:
-                $arrBanners[] = array
-                (
+                $arrBanners[] = 
+                [
                 'banner_key'     => 'bid',
                 'banner_wrap_id'    => $banner_cssID,
                 'banner_wrap_class' => $banner_class,
@@ -98,7 +98,7 @@ class BannerTemplate
                 'size'           => '',
                 'banner_pic'     => true,
                 'banner_video'   => false,
-                );
+                ];
                 break;
         }//switch
 

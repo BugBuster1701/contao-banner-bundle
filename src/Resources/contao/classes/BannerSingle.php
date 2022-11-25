@@ -50,7 +50,7 @@ class BannerSingle extends \Frontend
      */
     const BANNER_TYPE_TEXT   = 'banner_text';
 
-    protected $arrCategoryValues = array();
+    protected $arrCategoryValues = [];
     protected $BannerImage;
     protected $banner_template;
     protected $strTemplate;
@@ -76,7 +76,7 @@ class BannerSingle extends \Frontend
      */
     public function getDefaultBanner($banner_hideempty, $module_id)
     {
-        $arrImageSize = array();
+        $arrImageSize = [];
         //CSS-ID/Klasse(n) je Banner, für den wrapper
         $banner_cssID   = '';
         $banner_class   = ' banner_default';
@@ -108,13 +108,13 @@ class BannerSingle extends \Frontend
             // 18 = WEBP
 
             //fake the Picture::create
-            $picture['img']   = array
-            (
+            $picture['img']   = 
+            [
                 'src'    => $this->urlEncode($this->arrCategoryValues['banner_default_image']),
                 'width'  => $arrImageSize[0],
                 'height' => $arrImageSize[1],
                 'srcset' => $this->urlEncode($this->arrCategoryValues['banner_default_image'])
-            );
+            ];
             $picture['alt']   = \StringUtil::specialchars(ampersand($this->arrCategoryValues['banner_default_name']));
             $picture['title'] = '';
 
@@ -126,8 +126,8 @@ class BannerSingle extends \Frontend
                 case 2:// JPG
                 case 3:// PNG
                 case 18: // WEBP
-                    $arrBanners[] = array
-                                    (
+                    $arrBanners[] = 
+                                    [
                                     'banner_key'     => 'defbid',
                                     'banner_wrap_id'    => $banner_cssID,
                                     'banner_wrap_class' => $banner_class,
@@ -145,7 +145,7 @@ class BannerSingle extends \Frontend
                                     'banner_video'   => false,
                                     'banner_empty'   => false,	// issues 733
                                     'picture'        => $picture
-                                    );
+                                    ];
                     break;
             }
             $arrResults[] = $arrBanners[0];
@@ -156,8 +156,8 @@ class BannerSingle extends \Frontend
         }
         //Kein BannerDefault
         $NoBannerFound = ($GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner']) ? $GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner'] : 'no banner, no default banner';
-        $arrBanners[] = array
-                        (
+        $arrBanners[] = 
+                        [
                             'banner_key'  => 'bid',
                             'banner_wrap_id'    => $banner_cssID,
                             'banner_wrap_class' => $banner_class,
@@ -174,7 +174,7 @@ class BannerSingle extends \Frontend
                             'banner_text'   => false,
                             'banner_video'  => false,
                             'banner_empty'  => true	// issues 733
-                        );
+                        ];
         $arrResults[] = $arrBanners[0];
         //Ausblenden wenn leer?
         if ($banner_hideempty == 1)
@@ -198,8 +198,8 @@ class BannerSingle extends \Frontend
      */
     public function getSingleBannerFirst($module_id)
     {
-        $arrBanners = array();
-        $arrResults = array();
+        $arrBanners = [];
+        $arrResults = [];
         $FileSrc = '';
 
         //first aktiv banner in category
@@ -208,13 +208,14 @@ class BannerSingle extends \Frontend
         $banner_keys = array_keys($this->arrAllBannersBasic);
         $banner_id   = array_shift($banner_keys);
         $objBanners  = \Database::getInstance()
-                            ->prepare("SELECT
+                            ->prepare(
+                                "SELECT
                             	            TLB.*
                                        FROM
                             	            tl_banner AS TLB
                                        WHERE
                                             TLB.`id`=?"
-                                    )
+                            )
                             ->limit(1)
                             ->execute($banner_id);
         $intRows = $objBanners->numRows;
@@ -394,13 +395,14 @@ class BannerSingle extends \Frontend
         $objBannerLogic->setRandomBlockerId($banner_id, $module_id);
 
         $objBanners  = \Database::getInstance()
-                            ->prepare("SELECT
+                            ->prepare(
+                                "SELECT
                             	            TLB.*
                                        FROM
                             	            tl_banner AS TLB
                                        WHERE
                                             TLB.`id`=?"
-                                    )
+                            )
                             ->limit(1)
                             ->execute($banner_id);
         $intRows = $objBanners->numRows;

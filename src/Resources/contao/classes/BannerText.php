@@ -64,8 +64,8 @@ class BannerText
             $banner_url_kurz .= ':'.$treffer['port'];
         }
 
-        $arrBanners[] = array
-                        (
+        $arrBanners[] = 
+                        [
                             'banner_key'     => 'bid',
                             'banner_wrap_id'    => $this->banner_cssID,
                             'banner_wrap_class' => $this->banner_class,
@@ -80,7 +80,7 @@ class BannerText
                             'banner_text'    => true,
                             'banner_video'   => false,
                             'banner_empty'   => false	// issues 733
-                        );
+                        ];
 
         return $arrBanners;
     }

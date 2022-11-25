@@ -82,8 +82,8 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
      */
     protected function compile()
     {
-        $arrBanners      = array();
-        $arrBannersStat  = array();
+        $arrBanners      = [];
+        $arrBannersStat  = [];
         $intCatIdAllowed = false;
         $number_clicks   = 0;
         $number_views    = 0;
@@ -197,7 +197,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
      */
     protected function addBannerText(&$Banner)
     {
-        $arrBannersStat = array();
+        $arrBannersStat = [];
         // Kurz URL (nur Domain)
         $this->setBannerURL($Banner);
         BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $Banner['banner_url']);
@@ -239,7 +239,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
      */
     protected function addBannerVideo(&$Banner)
     {
-        $arrBannersStat = array();
+        $arrBannersStat = [];
         // Kurz URL (nur Domain)
         $this->setBannerURL($Banner);
         BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $Banner['banner_url']);
@@ -413,7 +413,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 
     protected function generateTemplateData($strBannerType, &$Banner, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize=null, $objFile=null) 
     {
-        $arrBannersStat = array();
+        $arrBannersStat = [];
 
         switch ($arrImageSize[2])
         {
@@ -437,7 +437,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                         $rootDir = $container->getParameter('kernel.project_dir');
                         $Banner['banner_image'] = $container
                                                     ->get('contao.image.image_factory')
-                                                    ->create($rootDir.'/' . $objFile->path, array($intWidth, $intHeight, 'proportional'))
+                                                    ->create($rootDir.'/' . $objFile->path, [$intWidth, $intHeight, 'proportional'])
                                                     ->getUrl($rootDir);
                     }
                 }
