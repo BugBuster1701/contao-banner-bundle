@@ -28,4 +28,3 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['select']       = 'Zaznacz';
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']        = 'Odsłon';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm'] = 'Czy naprawdę chcesz zresetować licznik statystyk banera (wyświetlenia i kliknięcia)?';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text']    = 'Statystyki banera zostaną zresetowane do zera.';
-

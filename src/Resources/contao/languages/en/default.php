@@ -13,4 +13,3 @@
 
 
 $GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner'] = 'No banner found and no banner default image';
-

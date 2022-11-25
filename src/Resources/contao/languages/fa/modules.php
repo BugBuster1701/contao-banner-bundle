@@ -18,4 +18,3 @@ $GLOBALS['TL_LANG']['MOD']['banner']['0']     = 'بنر';
 $GLOBALS['TL_LANG']['MOD']['banner']['1']     = 'ماژول تبلیغاتی بنر کوچک';
 $GLOBALS['TL_LANG']['MOD']['bannerstat']['0'] = 'آمار بنر';
 $GLOBALS['TL_LANG']['MOD']['bannerstat']['1'] = 'آمار از ماژول بنر';
-

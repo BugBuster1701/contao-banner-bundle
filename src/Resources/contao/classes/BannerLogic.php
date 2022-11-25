@@ -16,16 +16,15 @@ namespace BugBuster\Banner;
 use BugBuster\Banner\BannerLog;
 use BugBuster\Banner\BannerReferrer;
 
- /**
-  * Class BannerLogic
-  *
-  * @copyright  Glen Langer 2017 <http://contao.ninja>
-  * @author     Glen Langer (BugBuster)
-  * @license    LGPL
-  */
- class BannerLogic
+/**
+ * Class BannerLogic
+ *
+ * @copyright  Glen Langer 2017 <http://contao.ninja>
+ * @author     Glen Langer (BugBuster)
+ * @license    LGPL
+ */
+class BannerLogic
 {
-
     private $_session = [];
 
     public $statusRandomBlocker = false;
@@ -33,7 +32,7 @@ use BugBuster\Banner\BannerReferrer;
 
     /**
      * Get weighting for single banner
-     * 
+     *
      * @param $arrAllBannersBasic [id,weighting]
      *
      * @return integer 0|1|2|3    0 on error
@@ -59,8 +58,7 @@ use BugBuster\Banner\BannerReferrer;
         $arrPrio[1] = ['start'=>1,  'stop'=>90];
         $arrPrio[2] = ['start'=>91, 'stop'=>150];
         $arrPrio[3] = ['start'=>151, 'stop'=>180];
-        if (!\array_key_exists(2, $arrPrioW))
-        {
+        if (!\array_key_exists(2, $arrPrioW)) {
             // no prio 2 banner
             $arrPrio[2] = ['start'=>0,  'stop'=>0];
             $arrPrio[3] = ['start'=>91, 'stop'=>120];
@@ -69,26 +67,20 @@ use BugBuster\Banner\BannerReferrer;
         $intPrio2 = (\count($arrPrioW)) ? max($arrPrioW) : 0;
 
         //wenn Wichtung vorhanden, dann per Zufall eine auswählen
-        if ($intPrio1>0)
-        {
+        if ($intPrio1>0) {
             $intWeightingHigh = mt_rand($arrPrio[$intPrio1]['start'], $arrPrio[$intPrio2]['stop']);
 
             // 1-180 auf 1-3 umrechnen
-            if ($intWeightingHigh<=$arrPrio[3]['stop'])
-            {
+            if ($intWeightingHigh<=$arrPrio[3]['stop']) {
                 $intWeighting=3;
             }
-            if ($intWeightingHigh<=$arrPrio[2]['stop'])
-            {
+            if ($intWeightingHigh<=$arrPrio[2]['stop']) {
                 $intWeighting=2;
             }
-            if ($intWeightingHigh<=$arrPrio[1]['stop'])
-            {
+            if ($intWeightingHigh<=$arrPrio[1]['stop']) {
                 $intWeighting=1;
             }
-        }
-        else
-        {
+        } else {
             $intWeighting=0;
         }
 
@@ -117,20 +109,16 @@ use BugBuster\Banner\BannerReferrer;
      */
     public function setSession($session_name, $arrData, $merge = false)
     {
-        if ($merge)
-        {
+        if ($merge) {
             $this->_session = \Session::getInstance()->get($session_name);
 
             // numerische Schlüssel werden neu numeriert, daher
             // geht nicht: array_merge($this->_session, $arrData)
             $merge_array = (array) $this->_session + $arrData;
             \Session::getInstance()->set($session_name, $merge_array);
-        }
-        else
-        {
+        } else {
             \Session::getInstance()->set($session_name, $arrData);
         }
-
     }
 
     /**
@@ -143,7 +131,9 @@ use BugBuster\Banner\BannerReferrer;
      */
     public function setRandomBlockerId($BannerID, $module_id)
     {
-        if ($BannerID==0) { return; }// kein Banner, nichts zu tun
+        if ($BannerID==0) {
+            return;
+        }// kein Banner, nichts zu tun
 
         $this->statusRandomBlocker = true;
         $this->setSession('RandomBlocker'.$module_id, [$BannerID => time()]);
@@ -163,8 +153,7 @@ use BugBuster\Banner\BannerReferrer;
     public function getRandomBlockerId($module_id)
     {
         $this->getSession('RandomBlocker'.$module_id);
-        if (\count($this->_session))
-        {
+        if (\count($this->_session)) {
             $key   = key($this->_session);
             $value = current($this->_session);
             unset($value);
@@ -187,7 +176,9 @@ use BugBuster\Banner\BannerReferrer;
      */
     public function setFirstViewBlockerId($banner_categorie, $module_id)
     {
-        if ($banner_categorie==0) { return; }// keine Banner Kategorie, nichts zu tun
+        if ($banner_categorie==0) {
+            return;
+        }// keine Banner Kategorie, nichts zu tun
 
         $this->statusFirstViewBlocker = true;
         $this->setSession('FirstViewBlocker'.$module_id, [$banner_categorie => time()]);
@@ -205,14 +196,12 @@ use BugBuster\Banner\BannerReferrer;
     public function getFirstViewBlockerId($module_id)
     {
         $this->getSession('FirstViewBlocker'.$module_id);
-        if (\count($this->_session))
-        {
+        if (\count($this->_session)) {
             // each deprecated in PHP 7.2, daher
             $key    = key($this->_session);
             $tstmap = current($this->_session);
             reset($this->_session);
-            if ($this->removeOldFirstViewBlockerId($key, $tstmap) === true)
-            {
+            if ($this->removeOldFirstViewBlockerId($key, $tstmap) === true) {
                 // Key ist noch gültig und es muss daher geblockt werden
                 //DEBUG log_message('getFirstViewBlockerId Banner Kat ID: '.$key,'Banner.log');
                 return $key;
@@ -235,12 +224,9 @@ use BugBuster\Banner\BannerReferrer;
         // 5 Minuten Blockierung, älter >= 5 Minuten wird gelöscht
         $FirstViewBlockTime = time() - 60*5;
 
-        if ($tstmap >  $FirstViewBlockTime)
-        {
+        if ($tstmap >  $FirstViewBlockTime) {
             return true;
-        }
-        else
-        {
+        } else {
             \Session::getInstance()->remove($key);
         }
 
@@ -259,22 +245,22 @@ use BugBuster\Banner\BannerReferrer;
     {
         //return true; // for Test only
         //FirstViewBanner gewünscht?
-        if ($banner_firstview !=1) { return false; }
+        if ($banner_firstview !=1) {
+            return false;
+        }
 
         $this->BannerReferrer = new BannerReferrer();
         $this->BannerReferrer->checkReferrer();
         $ReferrerDNS = $this->BannerReferrer->getReferrerDNS();
         // o own , w wrong
-        if ($ReferrerDNS === 'o')
-        {
+        if ($ReferrerDNS === 'o') {
             // eigener Referrer, Begrenzung auf First View nicht nötig.
             $this->statusBannerFirstView = false;
 
             return false;
         }
 
-        if ($this->getFirstViewBlockerId($module_id) === false)
-        {
+        if ($this->getFirstViewBlockerId($module_id) === false) {
             // nichts geblockt, also blocken fürs den nächsten Aufruf
             $this->setFirstViewBlockerId($banner_categories, $module_id);
 
@@ -282,13 +268,10 @@ use BugBuster\Banner\BannerReferrer;
             $this->statusBannerFirstView = true;
 
             return true;
-        }
-        else
-        {
+        } else {
             $this->statusBannerFirstView = false;
 
             return false;
         }
-
     }
 }

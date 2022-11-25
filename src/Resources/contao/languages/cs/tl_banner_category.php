@@ -55,4 +55,3 @@ $GLOBALS['TL_LANG']['tl_banner_category']['title']['1']                 = 'Pros�
 $GLOBALS['TL_LANG']['tl_banner_category']['title_legend']               = 'Kategorie a šablony banneru';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['0']                = 'Datum revize';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['1']                = 'Datum a čas poslední revize';
-

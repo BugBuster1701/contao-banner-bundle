@@ -66,4 +66,3 @@ $GLOBALS['TL_LANG']['tl_banner_category']['title']['1']                   = 'Bit
 $GLOBALS['TL_LANG']['tl_banner_category']['title_legend']                 = 'Kategorie und Bannervorlage';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['0']                  = 'Änderungsdatum';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['1']                  = 'Datum und Uhrzeit der letzten Änderung';
-

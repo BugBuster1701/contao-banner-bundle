@@ -13,13 +13,13 @@
 
 namespace BugBuster\Banner;
 
-use function array_filter;
 use Contao\Environment;
 use Contao\File;
 use Contao\FilesModel;
 use Contao\PageModel;
-
 use Contao\StringUtil;
+
+use function array_filter;
 
 /**
  * Class BannerVideo
@@ -43,7 +43,7 @@ class BannerVideo
         $this->banner_class = $banner_class;
     }
 
-    public function generateTemplateData() 
+    public function generateTemplateData()
     {
         $banner_target = ($this->objBanners->banner_target == '1') ? '' : ' target="_blank"';
 
@@ -85,8 +85,7 @@ class BannerVideo
         if ($this->objBanners->banner_jumpTo > 0) {
             $domain = Environment::get('base');
             $objParent = PageModel::findWithDetails($this->objBanners->banner_jumpTo);
-            if ($objParent !== null) // is null when page not exist anymore
-            {
+            if ($objParent !== null) { // is null when page not exist anymore
                 if ($objParent->domain != '') {
                     $domain = (Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
                 }
@@ -139,18 +138,15 @@ class BannerVideo
         $strLanguage = str_replace('-', '_', $objPage->language);
 
         // Pass File objects to the template
-        foreach ($objFiles as $objFileModel)
-        {
+        foreach ($objFiles as $objFileModel) {
             /** @var FilesModel $objFileModel */
             $objMeta = $objFileModel->getMetadata($strLanguage);
             $strTitle = null;
 
-            if (null !== $objMeta)
-            {
+            if (null !== $objMeta) {
                 $strTitle = $objMeta->getTitle();
 
-                if (empty($strCaption))
-                {
+                if (empty($strCaption)) {
                     $strCaption = $objMeta->getCaption();
                 }
             }
@@ -179,8 +175,7 @@ class BannerVideo
     {
         $size = StringUtil::deserialize($this->objBanners->banner_playerSize);
 
-        if (\is_array($size) && !empty($size[0]) && !empty($size[1]))
-        {
+        if (\is_array($size) && !empty($size[0]) && !empty($size[1])) {
             return ' width="' . $size[0] . '" height="' . $size[1] . '"';
         }
 
@@ -189,17 +184,14 @@ class BannerVideo
 
     private function getVideoRange(): ?string
     {
-        if ($this->objBanners->banner_playerStart || $this->objBanners->banner_playerStop)
-        {
+        if ($this->objBanners->banner_playerStart || $this->objBanners->banner_playerStop) {
             $range = '#t=';
 
-            if ($this->objBanners->banner_playerStart)
-            {
+            if ($this->objBanners->banner_playerStart) {
                 $range .= $this->objBanners->banner_playerStart;
             }
 
-            if ($this->objBanners->banner_playerStop)
-            {
+            if ($this->objBanners->banner_playerStop) {
                 $range .= ',' . $this->objBanners->banner_playerStop;
             }
 

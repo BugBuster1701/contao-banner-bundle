@@ -20,4 +20,3 @@ $GLOBALS['TL_LANG']['tl_module']['banner_template']['0']   = 'Banner-mall';
 $GLOBALS['TL_LANG']['tl_module']['banner_template']['1']   = 'Välj en banner-mall. Banner-mallarnas filer börjar med <em>mod_banner_list_</em>.';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['0']  = 'Ingen registering av denna HTTP_USER_AGENT-identifierare';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['1']  = 'Här kan du specificera en HTTP_USER_AGENT-identifierare som gör att dina åtgärder inte räknas. HTTP_USER_AGENT-identifierare måste ändras i din webbläsare.<br />Se Wikin.';
-

@@ -31,4 +31,3 @@ $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['0'] = 'Omezení počtu prokliků
 $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['1'] = 'Zadáním počtu prokliků, můžete definovat maximální počet kliknutí.<br />Volba "Limit počtu zobrazení a prokliků" musí zůstat aktivní.<br />Příklad:<br /><br /><pre>   100</pre><br />';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['9']['0'] = 'HTTP_USER_AGENT dílčí identifikátor';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['9']['1'] = 'With the change of a user agent with a unique string and entry in this field can be prevented, that will count your own requests.<br />Přesný popis naleznete ve Wiki.';
-

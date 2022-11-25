@@ -68,5 +68,3 @@ $GLOBALS['TL_LANG']['tl_banner_category']['banner_stat_admins']['1']    = 'Admin
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_all']['0']      = 'Debug mode for all "Banner" classes';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_debug_all']['1']      = 'With activation, write debug information to the log file (<em>system/logs/prod-Y-M-D-banner_debug.log</em>)';
 $GLOBALS['TL_LANG']['tl_banner_category']['banner_expert_legend']              = 'Expert settings';
-
-

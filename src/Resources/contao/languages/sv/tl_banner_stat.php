@@ -29,4 +29,3 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['select']       = 'Vänligen välj';
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']        = 'Visningar';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm'] = 'Vill du verkligen återställa banner-statistiken (visningar och klick)?';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text']    = 'Statistikräknaren för bannern återställs till noll.';
-

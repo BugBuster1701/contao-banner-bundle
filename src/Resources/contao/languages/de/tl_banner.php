@@ -118,4 +118,3 @@ $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern']  = 'Externe Bannerg
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']          = 'Textbanner';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_video']         = 'Video Banner';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']              = 'Bitte auswählen';
-

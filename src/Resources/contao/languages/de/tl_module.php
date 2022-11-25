@@ -22,4 +22,3 @@ $GLOBALS['TL_LANG']['tl_module']['banner_template']['0']   = 'Bannervorlage';
 $GLOBALS['TL_LANG']['tl_module']['banner_template']['1']   = 'Bitte wählen Sie eine Bannervorlage. Sie können eigene Vorlagen im Ordner <em>templates</em> speichern oder im Template-Ordner des Themes. Vorlagen müssen mit <em>mod_banner_list_</em> beginnen und die Dateiendung <em>.html5</em> haben.';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['0']  = 'Keine Zählung bei HTTP_USER_AGENT Teilkennung';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['1']  = 'Hier kann eine Teilkennung angegeben werden, bei der keine Zählung erfolgen soll. Dazu muss die HTTP_USER_AGENT Kennung des Browser verändert werden.<br>Siehe Wiki.';
-

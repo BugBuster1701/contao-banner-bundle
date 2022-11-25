@@ -25,164 +25,161 @@ use BugBuster\Banner\BannerLog;
  */
 class BannerHelper extends \Frontend
 {
-	/**
-	 * Banner intern
-	 * @var string
-	 */
-	const BANNER_TYPE_INTERN = 'banner_image';
+    /**
+     * Banner intern
+     * @var string
+     */
+    public const BANNER_TYPE_INTERN = 'banner_image';
 
-	/**
-	 * Banner extern
-	 * @var string
-	 */
-	const BANNER_TYPE_EXTERN = 'banner_image_extern';
+    /**
+     * Banner extern
+     * @var string
+     */
+    public const BANNER_TYPE_EXTERN = 'banner_image_extern';
 
-	/**
-	 * Banner text
-	 * @var string
-	 */
-	const BANNER_TYPE_TEXT   = 'banner_text';
+    /**
+     * Banner text
+     * @var string
+     */
+    public const BANNER_TYPE_TEXT   = 'banner_text';
 
-	/**
-	 * Banner Data, for BannerStatViewUpdate
-	 */
-	protected $arrBannerData = [];
+    /**
+     * Banner Data, for BannerStatViewUpdate
+     */
+    protected $arrBannerData = [];
 
-	/**
-	 * Banner Seen
-	 */
-	public static $arrBannerSeen = [];
+    /**
+     * Banner Seen
+     */
+    public static $arrBannerSeen = [];
 
-	/**
-	 * Banner Random Blocker
-	 */
-	protected $statusRandomBlocker = false;
+    /**
+     * Banner Random Blocker
+     */
+    protected $statusRandomBlocker = false;
 
-	/**
-	 * First View Blocker
-	 */
-	protected $statusFirstViewBlocker = false;
+    /**
+     * First View Blocker
+     */
+    protected $statusFirstViewBlocker = false;
 
-	/**
-	 * Banner First View Status
-	 */
-	protected $statusBannerFirstView = false;
+    /**
+     * Banner First View Status
+     */
+    protected $statusBannerFirstView = false;
 
-	/**
-	 * Banner Frontend Group View
-	 * @var bool true  = View OK
-	 *           false = FE User logged in and nothing is allowed to view (wrong group)
-	 */
-	protected $statusBannerFrontendGroupView = true;
+    /**
+     * Banner Frontend Group View
+     * @var bool true  = View OK
+     *           false = FE User logged in and nothing is allowed to view (wrong group)
+     */
+    protected $statusBannerFrontendGroupView = true;
 
-	/**
-	 * Banner basic status
-	 * @var bool true = filled | false = error
-	 */
-	protected $statusAllBannersBasic = true;
+    /**
+     * Banner basic status
+     * @var bool true = filled | false = error
+     */
+    protected $statusAllBannersBasic = true;
 
-	/**
-	 * Category values
-	 * @var mixed array|false, false if category not exists
-	 */
-	protected $arrCategoryValues = [];
+    /**
+     * Category values
+     * @var mixed array|false, false if category not exists
+     */
+    protected $arrCategoryValues = [];
 
-	/**
-	 * All banner basic data (id,weighting) from a category
-	 * @var array
-	 */
-	protected $arrAllBannersBasic = [];
+    /**
+     * All banner basic data (id,weighting) from a category
+     * @var array
+     */
+    protected $arrAllBannersBasic = [];
 
-	/**
-	 * Page Output Format
-	 * @var string
-	 */
-	protected $strFormat = 'html5';
+    /**
+     * Page Output Format
+     * @var string
+     */
+    protected $strFormat = 'html5';
 
-	/**
-	 * Session
-	 *
-	 * @var string
-	 */
-	private $_session   = [];
+    /**
+     * Session
+     *
+     * @var string
+     */
+    private $_session   = [];
 
-	/**
-	 * BannerHelper::bannerHelperInit
-	 *
-	 * @return false, if anything is wrong
-	 */
-	protected function bannerHelperInit()
-	{
-	    //Fix the planet
-	    $this->statusRandomBlocker           = false;
-	    $this->statusFirstViewBlocker        = false;
-	    $this->statusBannerFirstView         = false;
-	    $this->statusBannerFrontendGroupView = true;
-	    $this->statusAllBannersBasic         = true;
-	    $this->arrCategoryValues             = [];
-	    $this->arrAllBannersBasic            = [];
+    /**
+     * BannerHelper::bannerHelperInit
+     *
+     * @return false, if anything is wrong
+     */
+    protected function bannerHelperInit()
+    {
+        //Fix the planet
+        $this->statusRandomBlocker           = false;
+        $this->statusFirstViewBlocker        = false;
+        $this->statusBannerFirstView         = false;
+        $this->statusBannerFrontendGroupView = true;
+        $this->statusAllBannersBasic         = true;
+        $this->arrCategoryValues             = [];
+        $this->arrAllBannersBasic            = [];
 
-		//set $arrCategoryValues over tl_banner_category
-		if ($this->getSetCategoryValues() === false) { return false; }
+        //set $arrCategoryValues over tl_banner_category
+        if ($this->getSetCategoryValues() === false) {
+            return false;
+        }
 
-		//check for protected user groups
-		//set $statusBannerFrontendGroupView
-		$this->checkSetUserFrontendLogin();
+        //check for protected user groups
+        //set $statusBannerFrontendGroupView
+        $this->checkSetUserFrontendLogin();
 
-		//get basic banner infos (id,weighting) in $this->arrAllBannersBasic
-		if ($this->getSetAllBannerForCategory() === false)
-		{
-			$this->statusAllBannersBasic = false;
-		}
+        //get basic banner infos (id,weighting) in $this->arrAllBannersBasic
+        if ($this->getSetAllBannerForCategory() === false) {
+            $this->statusAllBannersBasic = false;
+        }
 
-		$this->strFormat = 'html5';
+        $this->strFormat = 'html5';
 
-		if (!isset($GLOBALS['objPage']))
-		{
-			$objPage = new \stdClass();
-			$objPage->templateGroup = $this->templatepfad;
-			$objPage->outputFormat = $this->outputFormat;
-			$GLOBALS['objPage'] = $objPage;
-		}
+        if (!isset($GLOBALS['objPage'])) {
+            $objPage = new \stdClass();
+            $objPage->templateGroup = $this->templatepfad;
+            $objPage->outputFormat = $this->outputFormat;
+            $GLOBALS['objPage'] = $objPage;
+        }
+    }
 
-	}
+    /**
+     * BannerHelper::getSetCategoryValues
+     *
+     * Set Category Values in $this->arrCategoryValues over tl_banner_category
+     *
+     * @return boolean true = OK | false = we have a problem
+     */
+    protected function getSetCategoryValues()
+    {
+        //DEBUG log_message('getSetCategoryValues banner_categories:'.$this->banner_categories,'Banner.log');
+        //$this->banner_categories is now an ID, but the name is backward compatible
+        if (!isset($this->banner_categories) || !is_numeric($this->banner_categories)) {
+            BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'ModulBanner Compile', 'ERROR');
+            $this->arrCategoryValues = false;
 
-	/**
-	 * BannerHelper::getSetCategoryValues
-	 *
-	 * Set Category Values in $this->arrCategoryValues over tl_banner_category
-	 *
-	 * @return boolean true = OK | false = we have a problem
-	 */
-	protected function getSetCategoryValues()
-	{
-	    //DEBUG log_message('getSetCategoryValues banner_categories:'.$this->banner_categories,'Banner.log');
-		//$this->banner_categories is now an ID, but the name is backward compatible
-		if (!isset($this->banner_categories) || !is_numeric($this->banner_categories))
-		{
-			BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'ModulBanner Compile', 'ERROR');
-			$this->arrCategoryValues = false;
-
-			return false;
-		}
-		$objBannerCategory = \Database::getInstance()->prepare("SELECT 
+            return false;
+        }
+        $objBannerCategory = \Database::getInstance()->prepare("SELECT 
                                                                     * 
                                                                 FROM  
                                                                     tl_banner_category 
                                                                 WHERE 
                                                                     id=?")
-											         ->execute($this->banner_categories);
-		if ($objBannerCategory->numRows == 0)
-		{
-			BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'ModulBanner Compile', 'ERROR');
-			$this->arrCategoryValues = false;
+                                                     ->execute($this->banner_categories);
+        if ($objBannerCategory->numRows == 0) {
+            BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'ModulBanner Compile', 'ERROR');
+            $this->arrCategoryValues = false;
 
-			return false;
-		}
-		$arrGroup = \StringUtil::deserialize($objBannerCategory->banner_groups);
-		//Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
-		$objFile = \FilesModel::findByPk($objBannerCategory->banner_default_image);
-		$this->arrCategoryValues = [
+            return false;
+        }
+        $arrGroup = \StringUtil::deserialize($objBannerCategory->banner_groups);
+        //Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
+        $objFile = \FilesModel::findByPk($objBannerCategory->banner_default_image);
+        $this->arrCategoryValues = [
                                         'id'                    => $objBannerCategory->id,
                                         'banner_default'		=> $objBannerCategory->banner_default,
                                         'banner_default_name'	=> $objBannerCategory->banner_default_name,
@@ -196,66 +193,62 @@ class BannerHelper extends \Frontend
                                         'banner_group'			=> $arrGroup[0] ?? 0
                                         ];
         //DEBUG log_message('getSetCategoryValues arrCategoryValues:'.print_r($this->arrCategoryValues,true),'Banner.log');
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * BannerHelper::checkSetUserFrontendLogin
-	 *
-	 * Check if FE User loggen in and banner category is protected
-	 *
-	 * @return boolean true = View allowed | false = View not allowed
-	 */
-	protected function checkSetUserFrontendLogin()
-	{
-		if (FE_USER_LOGGED_IN)
-		{
-		    $this->import('FrontendUser', 'User');
+    /**
+     * BannerHelper::checkSetUserFrontendLogin
+     *
+     * Check if FE User loggen in and banner category is protected
+     *
+     * @return boolean true = View allowed | false = View not allowed
+     */
+    protected function checkSetUserFrontendLogin()
+    {
+        if (FE_USER_LOGGED_IN) {
+            $this->import('FrontendUser', 'User');
 
-		    if ($this->arrCategoryValues['banner_protected'] == 1
-		      && $this->arrCategoryValues['banner_group']      > 0)
-		    {
-		    	if ($this->User->isMemberOf($this->arrCategoryValues['banner_group']) === false)
-		    	{
-		    		$this->statusBannerFrontendGroupView = false;
+            if ($this->arrCategoryValues['banner_protected'] == 1
+              && $this->arrCategoryValues['banner_group']      > 0) {
+                if ($this->User->isMemberOf($this->arrCategoryValues['banner_group']) === false) {
+                    $this->statusBannerFrontendGroupView = false;
 
-		    		return false;
-		    	}
-		    }
-		}
+                    return false;
+                }
+            }
+        }
 
-		return true;
-	}
+        return true;
+    }
 
-	/**
-	 * BannerHelper::getSetAllBannerForCategory
-	 *
-	 * Get all Banner basics (id,weighting) for category, in $arrAllBannersBasic
-	 *
-	 * @return boolean true = $arrAllBannersBasic is filled | false = empty $arrAllBannersBasic
-	 */
-	protected function getSetAllBannerForCategory()
-	{
-	    $this->arrAllBannersBasic = [];
-		//wenn mit der definierte Kategorie ID keine Daten gefunden wurden
-		//macht Suche nach Banner kein Sinn
-		if ($this->arrCategoryValues === false)
-		{
-			return false;
-		}
-		//Domain Name ermitteln
-		$http_host = \Environment::get('host');
-		//aktueller Zeitstempel
-		$intTime = time();
+    /**
+     * BannerHelper::getSetAllBannerForCategory
+     *
+     * Get all Banner basics (id,weighting) for category, in $arrAllBannersBasic
+     *
+     * @return boolean true = $arrAllBannersBasic is filled | false = empty $arrAllBannersBasic
+     */
+    protected function getSetAllBannerForCategory()
+    {
+        $this->arrAllBannersBasic = [];
+        //wenn mit der definierte Kategorie ID keine Daten gefunden wurden
+        //macht Suche nach Banner kein Sinn
+        if ($this->arrCategoryValues === false) {
+            return false;
+        }
+        //Domain Name ermitteln
+        $http_host = \Environment::get('host');
+        //aktueller Zeitstempel
+        $intTime = time();
 
-		//alle gültigen aktiven Banner,
-		//ohne Beachtung der Gewichtung,
-		//mit Beachtung der Domain
-		//sortiert nach "sorting"
-		//nur Basic Felder `id`, `banner_weighting`
-		$objBanners = \Database::getInstance()
-		                ->prepare(
-		                    "SELECT 
+        //alle gültigen aktiven Banner,
+        //ohne Beachtung der Gewichtung,
+        //mit Beachtung der Domain
+        //sortiert nach "sorting"
+        //nur Basic Felder `id`, `banner_weighting`
+        $objBanners = \Database::getInstance()
+                        ->prepare(
+                            "SELECT 
                                         TLB.`id`, TLB.`banner_weighting`
                                    FROM 
                                         tl_banner AS TLB 
@@ -286,28 +279,29 @@ class BannerHelper extends \Frontend
                                    AND 
                                        (TLB.banner_domain=? OR RIGHT(?, CHAR_LENGTH(TLB.banner_domain)) = TLB.banner_domain)
                                    ORDER BY TLB.`sorting`"
-		                )
+                        )
                         ->execute($this->banner_categories, '', '', '', '', 1, '', $intTime, '', $intTime, '', $http_host);
-		while ($objBanners->next())
-		{
-			$this->arrAllBannersBasic[$objBanners->id] = $objBanners->banner_weighting;
-		}
-		//DEBUG log_message('getSetAllBannerForCategory arrAllBannersBasic:'.print_r($this->arrAllBannersBasic,true),'Banner.log');
-		return (bool) $this->arrAllBannersBasic; //false bei leerem array, sonst true
-	}
+        while ($objBanners->next()) {
+            $this->arrAllBannersBasic[$objBanners->id] = $objBanners->banner_weighting;
+        }
+        //DEBUG log_message('getSetAllBannerForCategory arrAllBannersBasic:'.print_r($this->arrAllBannersBasic,true),'Banner.log');
+        return (bool) $this->arrAllBannersBasic; //false bei leerem array, sonst true
+    }
 
-	/**
-	 * setDebugSettings
-	 *
-	 * @param unknown $banner_category_id
-	 */
-	public function setDebugSettings($banner_category_id)
-	{
-	    if (0 == $banner_category_id) { return; }// keine Banner Category, nichts zu tun
+    /**
+     * setDebugSettings
+     *
+     * @param unknown $banner_category_id
+     */
+    public function setDebugSettings($banner_category_id)
+    {
+        if (0 == $banner_category_id) {
+            return;
+        }// keine Banner Category, nichts zu tun
 
-	    $GLOBALS['banner']['debug']['all'] = false;
+        $GLOBALS['banner']['debug']['all'] = false;
 
-	    $objBanner = \Database::getInstance()
+        $objBanner = \Database::getInstance()
                     ->prepare("SELECT
                                     banner_expert_debug_all
                                 FROM
@@ -317,46 +311,43 @@ class BannerHelper extends \Frontend
                                 ")
                     ->limit(1)
                     ->execute($banner_category_id);
-        while ($objBanner->next())
-        {
+        while ($objBanner->next()) {
             $GLOBALS['banner']['debug']['all'] = (bool) $objBanner->banner_expert_debug_all;
             BannerLog::writeLog('## START ##', '## DEBUG ##', '');
         }
-	}
+    }
 
-	/**
-	 * Generate a front end URL
-	 * Shorted version of Controller::generateFrontendUrl
-	 *
-	 * @param array  $arrRow       An array of page parameters
-	 * @param string $strParams    An optional string of URL parameters
-	 * @param string $strForceLang Force a certain language
-	 *
-	 * @return string An URL that can be used in the front end
-	 */
-	public static function frontendUrlGenerator($arrRow, $strParams=null, $strForceLang=null)
-	{
-		$objTargetTo = \PageModel::findPublishedById($arrRow['id']);
+    /**
+     * Generate a front end URL
+     * Shorted version of Controller::generateFrontendUrl
+     *
+     * @param array  $arrRow       An array of page parameters
+     * @param string $strParams    An optional string of URL parameters
+     * @param string $strForceLang Force a certain language
+     *
+     * @return string An URL that can be used in the front end
+     */
+    public static function frontendUrlGenerator($arrRow, $strParams=null, $strForceLang=null)
+    {
+        $objTargetTo = \PageModel::findPublishedById($arrRow['id']);
 
-		if ($objTargetTo === null) {
-			return '';
-		}
+        if ($objTargetTo === null) {
+            return '';
+        }
 
-		$strUrl = $objTargetTo->getFrontendUrl($strParams);
+        $strUrl = $objTargetTo->getFrontendUrl($strParams);
 
-	    return $strUrl;
-	}
+        return $strUrl;
+    }
 
     public static function decodePunycode($strUrl)
     {
-        if (empty($strUrl))
-        {
+        if (empty($strUrl)) {
             return '';
         }
         $arrUrl = parse_url($strUrl);
 
-        if (!isset($arrUrl['scheme']))
-        {
+        if (!isset($arrUrl['scheme'])) {
             //interne Seite
             return $strUrl;
         }

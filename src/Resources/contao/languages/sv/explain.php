@@ -32,4 +32,3 @@ $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['0'] = 'Begränsa antalet klick';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['1'] = 'Genom att ange ett värde så begränsas antalet klick på bannern till detta antal.<br />Valet "Begränsa antalet Visningar och Klick" måste vara aktiverat.<br />Exempel:<br /><br /><pre> 100</pre><br />';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['9']['0'] = 'HTTP_USER_AGENT-identifiering';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['9']['1'] = 'Genom att ändra User Agent med en unik textsträng i din webbläsare samt fylla i detta fält kan du undvika att dina egna visningar och klick räknas.<br />Detaljerad instruktion finns i Wikin.';
-

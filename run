@@ -16,8 +16,8 @@ function php-cs-fixer() {
     exit 1
   fi
 
-  vendor/bin/php-cs-fixer fix -v
-  vendor/bin/php-cs-fixer fix -v --config .php_cs.legacy
+  vendor/bin/php-cs-fixer fix . -v
+  #vendor/bin/php-cs-fixer fix -v --config .php_cs.legacy
 }
 
 

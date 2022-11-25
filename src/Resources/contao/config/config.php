@@ -2,14 +2,14 @@
 
 /**
  * Contao Open Source CMS, Copyright (C) 2005-2020 Leo Feyer
- * 
+ *
  * Modul Banner Config - Backend
  *
  * This is the banner configuration file.
  *
  * @copyright	Glen Langer 2007..2020 <http://contao.ninja>
  * @author      Glen Langer (BugBuster)
- * @license     LGPL 
+ * @license     LGPL
  * @filesource
  */
 
@@ -21,18 +21,18 @@
  * BACK END MODULES
  * -------------------------------------------------------------------------
  */
-$GLOBALS['BE_MOD']['content']['banner'] = 
+$GLOBALS['BE_MOD']['content']['banner'] =
 [
-	'tables'     => ['tl_banner_category', 'tl_banner'],
-	'icon'       => 'bundles/bugbusterbanner/iconBanner.gif',
-	'stylesheet' => 'bundles/bugbusterbanner/mod_banner_be.css'
+    'tables'     => ['tl_banner_category', 'tl_banner'],
+    'icon'       => 'bundles/bugbusterbanner/iconBanner.gif',
+    'stylesheet' => 'bundles/bugbusterbanner/mod_banner_be.css'
 ];
 
-$GLOBALS['BE_MOD']['system']['bannerstat'] = 
+$GLOBALS['BE_MOD']['system']['bannerstat'] =
 [
-	'callback'   => 'BugBuster\BannerStatistics\ModuleBannerStatistics',
-	'icon'       => 'bundles/bugbusterbanner/iconBannerStat.gif',
-	'stylesheet' => 'bundles/bugbusterbanner/mod_banner_be.css'
+    'callback'   => 'BugBuster\BannerStatistics\ModuleBannerStatistics',
+    'icon'       => 'bundles/bugbusterbanner/iconBannerStat.gif',
+    'stylesheet' => 'bundles/bugbusterbanner/mod_banner_be.css'
 ];
 
 /**
@@ -52,7 +52,6 @@ $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = ['BugBuster\Banner\BannerInsertTag
 /**
  * CSS
  */
-if (\defined('TL_MODE') && TL_MODE == 'BE')
-{
+if (\defined('TL_MODE') && TL_MODE == 'BE') {
     $GLOBALS['TL_CSS'][] = 'bundles/bugbusterbanner/backend.css';
 }

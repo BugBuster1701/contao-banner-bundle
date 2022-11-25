@@ -30,4 +30,3 @@ $GLOBALS['TL_LANG']['XPL']['banner_help']['7']['0'] = 'Limit ilości odsłon';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['7']['1'] = 'Po wprowadzeniu limitu ilości odsłon, aktualny baner nie będzie więcej wyświetlany po osiągnięciu tej ilości odsłon.<br />Opcja "Limit ilości odsłon" musi zostać aktywowana.<br />Przykład:<br /><br /><pre> 1000</pre><br />';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['0'] = 'Limit ilości kliknięć';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['1'] = 'Po wprowadzeniu limitu ilości kliknięć, aktualny baner nie będzie więcej wyświetlany po osiągnięciu tej ilości kliknięć.<br />Opcja "Limit ilości odsłon" musi zostać aktywowana.<br />Przykład:<br /><br /><pre> 100</pre><br />';
-

@@ -51,4 +51,3 @@ $GLOBALS['TL_LANG']['tl_banner_category']['title']['1']                 = 'Indic
 $GLOBALS['TL_LANG']['tl_banner_category']['title_legend']               = 'Categoria e template banner';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['0']                = 'Data revisione';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['1']                = 'Data ultima modifica';
-

@@ -41,4 +41,3 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['select']                 = 'Bitte auswäh
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']                  = 'Ansichten';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm']           = 'View- und Klickstatistik wirklich auf 0 setzen für diesen Werbebanner?';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text']              = 'Bannerstatistik auf 0 setzen für diesen Banner.';
-

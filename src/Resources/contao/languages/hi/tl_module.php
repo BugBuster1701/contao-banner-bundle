@@ -13,4 +13,3 @@
 
 
 $GLOBALS['TL_LANG']['tl_module']['banner_hideempty']['0'] = 'छुपाएँ, जब खाली हो';
-

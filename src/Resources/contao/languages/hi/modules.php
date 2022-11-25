@@ -13,4 +13,3 @@
 
 
 $GLOBALS['TL_LANG']['FMD']['banner']['1'] = 'बैनर दिखाएँ';
-

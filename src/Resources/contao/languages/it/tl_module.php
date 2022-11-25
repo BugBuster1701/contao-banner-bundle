@@ -20,4 +20,3 @@ $GLOBALS['TL_LANG']['tl_module']['banner_template']['0']   = 'Template banner';
 $GLOBALS['TL_LANG']['tl_module']['banner_template']['1']   = 'Selezionare il template del banner. I template iniziano con <em>mod_banner_list_</em>';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['0']  = 'Non conteggiare questo identificativo HTTP_USER_AGENT';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['1']  = 'Modificando nel proprio browser la stringa user agent è possibile evitare il conteggio da questo determinato computer. <br /> Istruzioni dettagliate, possono essere trovate nel Wiki.';
-

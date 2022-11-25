@@ -36,7 +36,6 @@ use Contao\StringUtil;
  */
 class ModuleBannerStatistics extends BannerStatisticsHelper
 {
-
     /**
      * Template
      * @var string
@@ -57,19 +56,15 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
     public function __construct()
     {
         parent::__construct();
-        \System::loadLanguageFile('tl_banner_stat'); 
+        \System::loadLanguageFile('tl_banner_stat');
 
-        if ((int) \Input::get('id') == 0)
-        {
+        if ((int) \Input::get('id') == 0) {
             $this->intCatID = (int) \Input::post('id'); //id for redirect on banner reset, category reset
-        }
-        else
-        {
+        } else {
             $this->intCatID = (int) \Input::get('id'); //directly category link
         }
 
-        if (\Input::post('act', true)=='zero') //action banner reset, category reset
-        {
+        if (\Input::post('act', true)=='zero') { //action banner reset, category reset
             $this->setZero();
         }
         //Get Debug Settings
@@ -94,34 +89,25 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         // empty array   : array('id' => '0', 'title' => '---------');
         // array[0..n]   : array(0, array('id' => '1', ....), 1, ....)
 
-        if ($this->intCatID == 0) //direkter Aufruf ohne ID
-        {
+        if ($this->intCatID == 0) { //direkter Aufruf ohne ID
             $this->intCatID = $this->getCatIdByCategories($arrBannerCategories);
-        }
-        else 
-        {
+        } else {
             // ID des Aufrufes erlaubt?
-            foreach ($arrBannerCategories as $value)
-            {
-                if ($this->intCatID == $value['id'])
-                {
+            foreach ($arrBannerCategories as $value) {
+                if ($this->intCatID == $value['id']) {
                     $intCatIdAllowed = true;
                 }
             }
-            if (false === $intCatIdAllowed) 
-            {
-            	$this->intCatID = $this->getCatIdByCategories($arrBannerCategories);
+            if (false === $intCatIdAllowed) {
+                $this->intCatID = $this->getCatIdByCategories($arrBannerCategories);
             }
-
         }
         $arrBanners = $this->getBannersByCatID($this->intCatID);
         $number_active   = 0;
         $number_inactive = 0;
-        foreach ($arrBanners as $Banner) 
-        {
+        foreach ($arrBanners as $Banner) {
             // Aufteilen nach intern, extern, text Banner
-            switch ($Banner['banner_type'])
-            {
+            switch ($Banner['banner_type']) {
                 case self::BANNER_TYPE_INTERN:
                     //generate data
                     $arrBannersStat[] = $this->addBannerIntern($Banner);
@@ -140,16 +126,13 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                     break;
             }
             //Gesamt Aktiv / Inaktiv zählen
-            if ($Banner['banner_published_class'] == 'published') 
-            {
+            if ($Banner['banner_published_class'] == 'published') {
                 $number_active++;
-            }
-            else 
-            {
+            } else {
                 $number_inactive++;
             }
             //Gesamt Views / Klicks zählen
-            $number_clicks += (int) $Banner['banner_clicks']; 
+            $number_clicks += (int) $Banner['banner_clicks'];
             $number_views  += (int) $Banner['banner_views'];
         }
 
@@ -186,12 +169,11 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->Template->bannernumberviewsclicks    = $GLOBALS['TL_LANG']['tl_banner_stat']['number_views_clicks'];
 
         $this->Template->banner_hook_panels = $this->addStatisticPanelLineHook();
-
     } // compile
 
     /**
      * Add textbanner
-     *  
+     *
      * @param  referenz $Banner
      * @return array    $arrBannersStat
      */
@@ -201,12 +183,11 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         // Kurz URL (nur Domain)
         $this->setBannerURL($Banner);
         BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $Banner['banner_url']);
-        $Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79 
+        $Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79
         BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url punydecode: ' . $Banner['banner_url']);
         $treffer = parse_url($Banner['banner_url']);
         $banner_url_kurz = $treffer['host'] ?? '';
-        if (isset($treffer['port']))
-        {
+        if (isset($treffer['port'])) {
             $banner_url_kurz .= ':'.$treffer['port'];
         }
         $MaxViewsClicks = $this->getMaxViewsClicksStatus($Banner);
@@ -247,8 +228,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url punydecode: ' . $Banner['banner_url']);
         $treffer = parse_url($Banner['banner_url']);
         $banner_url_kurz = $treffer['host'] ?? '';
-        if (isset($treffer['port']))
-        {
+        if (isset($treffer['port'])) {
             $banner_url_kurz .= ':'.$treffer['port'];
         }
         $MaxViewsClicks = $this->getMaxViewsClicksStatus($Banner);
@@ -260,8 +240,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         );
         $return = '<ul>';
 
-        while ($objFiles && $objFiles->next())
-        {
+        while ($objFiles && $objFiles->next()) {
             $objFile = new File($objFiles->path);
             $return .= '<li>' . Image::getHtml($objFile->icon, '', 'class="mime_icon"') . ' <span>' . $objFile->name . '</span> <span class="size">(' . $this->getReadableSize($objFile->size) . ')</span></li>';
         }
@@ -319,13 +298,12 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         // 4 = SWF, 13 = SWC (zip-like swf file)
         // 5 = PSD, 6 = BMP, 7 = TIFF(intel byte order), 8 = TIFF(motorola byte order)
         // 9 = JPC, 10 = JP2, 11 = JPX, 12 = JB2, 13 = SWC, 14 = IFF
-        switch ($arrImageSize[2])
-        {
+        switch ($arrImageSize[2]) {
             case 1:  // GIF
             case 2:  // JPG
             case 3:  // PNG
             case 18: // WEBP
-                //Check ob Banner zu groß für Anzeige, @return array $Width,$Height,$oriSize     
+                //Check ob Banner zu groß für Anzeige, @return array $Width,$Height,$oriSize
                 $arrNewBannerImageSize = $this->BannerImage->getCheckBannerImageSize($arrImageSize, 250, 200);
                 break;
             default:
@@ -361,8 +339,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         // 5 = PSD, 6 = BMP, 7 = TIFF(intel byte order), 8 = TIFF(motorola byte order)
         // 9 = JPC, 10 = JP2, 11 = JPX, 12 = JB2, 13 = SWC, 14 = IFF
         // 18 = WEBP
-        switch ($arrImageSize[2])
-        {
+        switch ($arrImageSize[2]) {
             case 1:  // GIF
             case 2:  // JPG
             case 3:  // PNG
@@ -395,12 +372,10 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
      */
     protected function addStatisticPanelLineHook()
     {
-        if (isset($GLOBALS['TL_BANNER_HOOKS']['addStatisticPanelLine']) 
+        if (isset($GLOBALS['TL_BANNER_HOOKS']['addStatisticPanelLine'])
             && \is_array($GLOBALS['TL_BANNER_HOOKS']['addStatisticPanelLine'])
-           )
-        {
-            foreach ($GLOBALS['TL_BANNER_HOOKS']['addStatisticPanelLine'] as $callback)
-            {
+        ) {
+            foreach ($GLOBALS['TL_BANNER_HOOKS']['addStatisticPanelLine'] as $callback) {
                 $this->import($callback[0]);
                 $result[] = $this->{$callback[0]}->{$callback[1]}($this->intCatID); //#170
             }
@@ -411,28 +386,21 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         return false;
     }
 
-    protected function generateTemplateData($strBannerType, &$Banner, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize=null, $objFile=null) 
+    protected function generateTemplateData($strBannerType, &$Banner, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize=null, $objFile=null)
     {
         $arrBannersStat = [];
 
-        switch ($arrImageSize[2])
-        {
+        switch ($arrImageSize[2]) {
             case 1: // GIF
             case 2: // JPG
             case 3: // PNG
             case 18: // WEBP
-                if (self::BANNER_TYPE_EXTERN == $strBannerType) 
-                {
+                if (self::BANNER_TYPE_EXTERN == $strBannerType) {
                     $Banner['banner_image'] = $Banner['banner_image_extern']; // Banner URL
-                }
-                else 
-                {
-                    if ($oriSize || $arrImageSize[2] == 1) // GIF
-                    {
+                } else {
+                    if ($oriSize || $arrImageSize[2] == 1) { // GIF
                         $Banner['banner_image'] = $this->urlEncode($objFile->path);
-                    }
-                    else
-                    {
+                    } else {
                         $container = \System::getContainer();
                         $rootDir = $container->getParameter('kernel.project_dir');
                         $Banner['banner_image'] = $container
@@ -463,16 +431,13 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                 $arrBannersStat['banner_text']     = false;
                 break;
             default:
-                if (self::BANNER_TYPE_EXTERN == $strBannerType)
-                {
+                if (self::BANNER_TYPE_EXTERN == $strBannerType) {
                     $Banner['banner_image'] = $Banner['banner_image_extern']; // Banner URL
-                }
-                else 
-                {
+                } else {
                     $Banner['banner_image'] = $this->urlEncode($objFile->path);
                 }
 
-                $arrBannersStat['banner_pic']     = true; 
+                $arrBannersStat['banner_pic']     = true;
                 $arrBannersStat['banner_flash']     = false;
                 $arrBannersStat['banner_text']     = false;
                 $arrBannersStat['banner_prio']     = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
@@ -487,5 +452,4 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 
         return $arrBannersStat;
     }
-
 } // class

@@ -51,4 +51,3 @@ $GLOBALS['TL_LANG']['tl_banner_category']['title']['1']                 = 'Ange 
 $GLOBALS['TL_LANG']['tl_banner_category']['title_legend']               = 'Kategori och Banner-mallar';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['0']                = 'Revisionsdatum';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['1']                = 'Datum och tid för senaste revision';
-

@@ -35,4 +35,3 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['read_error']             = 'پرونده 
 $GLOBALS['TL_LANG']['tl_banner_stat']['select']                 = 'انتخاب کنید';
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']                  = 'مشاهده‌ها';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text']              = 'شمارنده آمار بنر به صفر تنظیم خواهد شد.';
-

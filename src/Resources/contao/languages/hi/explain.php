@@ -14,4 +14,3 @@
 
 $GLOBALS['TL_LANG']['XPL']['banner_help']['0']['0'] = 'बैनर नाम';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['6']['0'] = 'तबतक दिखाएँ (दिनांक और समय)';
-

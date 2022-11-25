@@ -13,4 +13,3 @@
 
 
 $GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner'] = 'Aucune bannière trouvée et aucune image par défaut de la bannière';
-
