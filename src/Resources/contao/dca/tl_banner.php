@@ -291,7 +291,7 @@ $GLOBALS['TL_DCA']['tl_banner'] =
         'banner_playerStart' => [
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => ['rgxp'=>'natural', 'nospace'=>true, 'tl_class'=>'w50'],
+            'eval'                    => ['rgxp'=>'natural', 'nospace'=>true, 'tl_class'=>'w50 clr'],
             'sql'                     => "int(10) unsigned NOT NULL default 0"
         ],
         'banner_playerStop' => [
