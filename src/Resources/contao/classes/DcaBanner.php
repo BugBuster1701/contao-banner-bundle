@@ -34,19 +34,19 @@ class DcaBanner extends \Backend
      * Banner intern
      * @var string
      */
-    const BANNER_TYPE_INTERN = 'banner_image';
+    public const BANNER_TYPE_INTERN = 'banner_image';
 
     /**
      * Banner extern
      * @var string
      */
-    const BANNER_TYPE_EXTERN = 'banner_image_extern';
+    public const BANNER_TYPE_EXTERN = 'banner_image_extern';
 
     /**
      * Banner text
      * @var string
      */
-    const BANNER_TYPE_TEXT   = 'banner_text';
+    public const BANNER_TYPE_TEXT   = 'banner_text';
 
     protected $BannerImage;
 
@@ -59,7 +59,6 @@ class DcaBanner extends \Backend
         parent::__construct();
         $this->import('BackendUser', 'User');
         $this->BannerImage = new BannerImage();
-
     }
 
     /**
@@ -80,25 +79,21 @@ class DcaBanner extends \Backend
                 WHERE `pid`=?
                 GROUP BY 1';
         $objNumbers = \Database::getInstance()->prepare($sql)->execute($catId);
-        if ($objNumbers->numRows == 0)
-        {
+        if ($objNumbers->numRows == 0) {
             return $add;
         }
         $published     = 0;
         $not_published = 0;
-        while ($objNumbers->next())
-        {
-            if ($objNumbers->published == 0) 
-            {
-            	$not_published = $objNumbers->numbers;
+        while ($objNumbers->next()) {
+            if ($objNumbers->published == 0) {
+                $not_published = $objNumbers->numbers;
             }
-            if ($objNumbers->published == 1)
-            {
+            if ($objNumbers->published == 1) {
                 $published = $objNumbers->numbers;
             }
         }
 
-        $add[$GLOBALS['TL_LANG']['tl_banner']['banner_number_of']] = $published." " 
+        $add[$GLOBALS['TL_LANG']['tl_banner']['banner_number_of']] = $published." "
                         . $GLOBALS['TL_LANG']['tl_banner']['banner_active']
                         . " / "
                         . $not_published." "
@@ -114,8 +109,7 @@ class DcaBanner extends \Backend
      */
     public function listBanner($row)
     {
-        switch ($row['banner_type'])
-        {
+        switch ($row['banner_type']) {
             case self::BANNER_TYPE_INTERN:
                 return $this->listBannerInternal($row);
                 break;
@@ -142,17 +136,14 @@ class DcaBanner extends \Backend
      */
     protected function listBannerInternal($row)
     {
-        if (empty($row['banner_image']))
-        {
+        if (empty($row['banner_image'])) {
             return '<p class="error">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_read_error'].' (1)</p>';
         }
         //convert DB file ID into file path ($objFile->path)
         $objFile = \FilesModel::findByUuid($row['banner_image']);
-        if ($objFile === null)
-        {
+        if ($objFile === null) {
             // Check for version 3 format
-            if (!\Validator::isUuid($row['banner_image']))
-            {
+            if (!\Validator::isUuid($row['banner_image'])) {
                 return '<p class="error">'.$GLOBALS['TL_LANG']['ERR']['version2format'].'</p>';
             }
 
@@ -163,9 +154,8 @@ class DcaBanner extends \Backend
         $arrImageSize = $this->BannerImage->getBannerImageSize($objFile->path, self::BANNER_TYPE_INTERN);
 
         //resize if necessary
-        $arrImageSizeNew = array();
-        switch ($arrImageSize[2])
-        {
+        $arrImageSizeNew = [];
+        switch ($arrImageSize[2]) {
             case 1: // GIF
             case 2: // JPG/JPEG
             case 3: // PNG
@@ -174,17 +164,14 @@ class DcaBanner extends \Backend
                 $intWidth  = $arrImageSizeNew[0];
                 $intHeight = $arrImageSizeNew[1];
                 $oriSize   = $arrImageSizeNew[2];
-                if ($oriSize || $arrImageSize[2] == 1) // GIF)
-                {
+                if ($oriSize || $arrImageSize[2] == 1) { // GIF)
                     $banner_image = \System::urlEncode($objFile->path);
-                }
-                else
-                {
+                } else {
                     $container = \System::getContainer();
                     $rootDir = $container->getParameter('kernel.project_dir');
                     $banner_image = $container
                                         ->get('contao.image.image_factory')
-                                        ->create($rootDir.'/'.$objFile->path, array($intWidth, $intHeight, 'proportional'))
+                                        ->create($rootDir.'/'.$objFile->path, [$intWidth, $intHeight, 'proportional'])
                                         ->getUrl($rootDir);
                 }
                 break;
@@ -193,14 +180,12 @@ class DcaBanner extends \Backend
         }
 
         //Banner Ziel per Page?
-        if ($row['banner_jumpTo'] >0)
-        {
+        if ($row['banner_jumpTo'] >0) {
             //url generieren
             $objBannerNextPage = \Database::getInstance()->prepare("SELECT id, alias FROM tl_page WHERE id=?")
                                                 ->limit(1)
                                                 ->execute($row['banner_jumpTo']);
-            if ($objBannerNextPage->numRows)
-            {
+            if ($objBannerNextPage->numRows) {
                 //old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
                 $objParent = \PageModel::findWithDetails($row['banner_jumpTo']);
                 $row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
@@ -212,20 +197,17 @@ class DcaBanner extends \Backend
         $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
         BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $banner_url);
 
-        if (\strlen($banner_url) <1 && $row['banner_jumpTo'] <1)
-        {
+        if (\strlen($banner_url) <1 && $row['banner_jumpTo'] <1) {
             //weder externe URL noch interne Seite definiert
             $banner_url = $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined'];
         }
-        if (\strlen($banner_url) <1 && $row['banner_jumpTo'] >0)
-        {
+        if (\strlen($banner_url) <1 && $row['banner_jumpTo'] >0) {
             //externe Seite definiert die aber nicht mehr existiert ($banner_url<1)
             $banner_url = '<span class="tl_gerror">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_page_not_found'].'</span>';
         }
 
         //Output
-        switch ($arrImageSize[2])
-        {
+        switch ($arrImageSize[2]) {
             case 1: // GIF
             case 2: // JPG / JPEG
             case 3: // PNG
@@ -239,8 +221,7 @@ class DcaBanner extends \Backend
                 break;
         }//switch
 
-        if ($arrImageSize === false)
-        {
+        if ($arrImageSize === false) {
             //Interne Banner Grafik, Bannerdatei nicht gefunden oder Lesefehler
             $output = '<div class="mod_banner_be">
                 <div class="name">
@@ -303,9 +284,8 @@ class DcaBanner extends \Backend
         $arrImageSize = $this->BannerImage->getBannerImageSize($row['banner_image_extern'], self::BANNER_TYPE_EXTERN);
 
         //resize if necessary
-        $arrImageSizeNew = array();
-        switch ($arrImageSize[2])
-        {
+        $arrImageSizeNew = [];
+        switch ($arrImageSize[2]) {
             case 1: // GIF
             case 2: // JPG
             case 3: // PNG
@@ -323,14 +303,12 @@ class DcaBanner extends \Backend
         $banner_image = $row['banner_image_extern'];
 
         //Banner Ziel per Page?
-        if ($row['banner_jumpTo'] >0)
-        {
+        if ($row['banner_jumpTo'] >0) {
             //url generieren
             $objBannerNextPage = \Database::getInstance()->prepare("SELECT id, alias FROM tl_page WHERE id=?")
                                                         ->limit(1)
                                                         ->execute($row['banner_jumpTo']);
-            if ($objBannerNextPage->numRows)
-            {
+            if ($objBannerNextPage->numRows) {
                 //old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
                 $objParent = \PageModel::findWithDetails($row['banner_jumpTo']);
                 $row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
@@ -338,18 +316,14 @@ class DcaBanner extends \Backend
             }
         }
         $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
-        if (\strlen($banner_url)>0)
-        {
+        if (\strlen($banner_url)>0) {
             $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
-        }
-        else
-        {
+        } else {
             $banner_url_text = '';
         }
 
         //Output
-        switch ($arrImageSize[2])
-        {
+        switch ($arrImageSize[2]) {
             case 1: // GIF
             case 2: // JPG
             case 3: // PNG
@@ -363,8 +337,7 @@ class DcaBanner extends \Backend
                 break;
         }//switch
 
-        if ($arrImageSize === false)
-        {
+        if ($arrImageSize === false) {
             //Externe Banner Grafik, Bannerdatei nicht gefunden oder Lesefehler
             $output = '<div class="mod_banner_be">
                 <div class="name">
@@ -420,14 +393,12 @@ class DcaBanner extends \Backend
     protected function listBannerText($row)
     {
         //Banner Ziel per Page?
-        if ($row['banner_jumpTo'] >0)
-        {
+        if ($row['banner_jumpTo'] >0) {
             //url generieren
             $objBannerNextPage = \Database::getInstance()->prepare("SELECT id, alias FROM tl_page WHERE id=?")
                                                 ->limit(1)
                                                 ->execute($row['banner_jumpTo']);
-            if ($objBannerNextPage->numRows)
-            {
+            if ($objBannerNextPage->numRows) {
                 //old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
                 $objParent = \PageModel::findWithDetails($row['banner_jumpTo']);
                 $row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
@@ -436,12 +407,9 @@ class DcaBanner extends \Backend
         }
 
         $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
-        if (\strlen($banner_url)>0)
-        {
+        if (\strlen($banner_url)>0) {
             $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
-        }
-        else
-        {
+        } else {
             $banner_url_text = '';
         }
         //Output
@@ -496,14 +464,12 @@ class DcaBanner extends \Backend
     protected function listBannerVideo($row)
     {
         //Banner Ziel per Page?
-        if ($row['banner_jumpTo'] >0)
-        {
+        if ($row['banner_jumpTo'] >0) {
             //url generieren
             $objBannerNextPage = \Database::getInstance()->prepare("SELECT id, alias FROM tl_page WHERE id=?")
                 ->limit(1)
                 ->execute($row['banner_jumpTo']);
-            if ($objBannerNextPage->numRows)
-            {
+            if ($objBannerNextPage->numRows) {
                 //old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
                 $objParent = \PageModel::findWithDetails($row['banner_jumpTo']);
                 $row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
@@ -512,12 +478,9 @@ class DcaBanner extends \Backend
         }
 
         $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
-        if (\strlen($banner_url)>0)
-        {
+        if (\strlen($banner_url)>0) {
             $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
-        }
-        else
-        {
+        } else {
             $banner_url_text = '';
         }
 
@@ -527,8 +490,7 @@ class DcaBanner extends \Backend
         );
         $return = '<ul>';
 
-        while ($objFiles && $objFiles->next())
-        {
+        while ($objFiles && $objFiles->next()) {
             $objFile = new File($objFiles->path);
             $return .= '<li>' . Image::getHtml($objFile->icon, '', 'class="mime_icon"') . ' <span>' . $objFile->name . '</span> <span class="size">(' . $this->getReadableSize($objFile->size) . ')</span></li>';
         }
@@ -590,22 +552,19 @@ class DcaBanner extends \Backend
      */
     public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
     {
-        if (\strlen(\Input::get('tid')))
-        {
+        if (\strlen(\Input::get('tid'))) {
             $this->toggleVisibility(\Input::get('tid'), (\Input::get('state') == 1));
             $this->redirect($this->getReferer());
         }
 
         // Check permissions AFTER checking the tid, so hacking attempts are logged
-        if (!$this->User->isAdmin && !$this->User->hasAccess('tl_banner::banner_published', 'alexf'))
-        {
+        if (!$this->User->isAdmin && !$this->User->hasAccess('tl_banner::banner_published', 'alexf')) {
             return '';
         }
 
         $href .= '&amp;tid='.$row['id'].'&amp;state='. ($row['banner_published'] ? '' : 1);
 
-        if (!$row['banner_published'])
-        {
+        if (!$row['banner_published']) {
             $icon = 'invisible.svg';
         }
 
@@ -620,13 +579,14 @@ class DcaBanner extends \Backend
     public function toggleVisibility($intId, $blnVisible)
     {
         // Check permissions to publish
-        if (!$this->User->isAdmin && !$this->User->hasAccess('tl_banner::banner_published', 'alexf'))
-        {
+        if (!$this->User->isAdmin && !$this->User->hasAccess('tl_banner::banner_published', 'alexf')) {
             \System::getContainer()
                 ->get('monolog.logger.contao')
-                ->log(LogLevel::ERROR,
-                        'Not enough permissions to publish/unpublish Banner ID "'.$intId.'"',
-                        array('contao' => new ContaoContext('tl_banner toggleVisibility', TL_ERROR)));
+                ->log(
+                    LogLevel::ERROR,
+                    'Not enough permissions to publish/unpublish Banner ID "'.$intId.'"',
+                    ['contao' => new ContaoContext('tl_banner toggleVisibility', TL_ERROR)]
+                );
 
             $this->redirect('contao/main.php?act=error');
         }
@@ -643,8 +603,7 @@ class DcaBanner extends \Backend
 
     public function fieldLabelCallback($dc)
     {
-        if (!$this->supportsWebp())
-        {
+        if (!$this->supportsWebp()) {
             \System::loadLanguageFile('tl_banner_category');
             $GLOBALS['TL_LANG']['tl_banner']['banner_image'][1] .= ' (' . $GLOBALS['TL_LANG']['tl_banner_category']['formatsWebpNotSupported'] .')';
         }
@@ -662,18 +621,15 @@ class DcaBanner extends \Backend
         $imagine = \System::getContainer()->get('contao.image.imagine');
         $imagineclass = \get_class($imagine);
 
-        if ($imagineclass == "Imagine\\Imagick\\Imagine")
-        {
+        if ($imagineclass == "Imagine\\Imagick\\Imagine") {
             return \in_array('WEBP', \Imagick::queryFormats('WEBP'), true);
         }
 
-        if ($imagineclass == "Imagine\\Gmagick\\Imagine")
-        {
+        if ($imagineclass == "Imagine\\Gmagick\\Imagine") {
             return \in_array('WEBP', (new \Gmagick())->queryformats('WEBP'), true);
         }
 
-        if ($imagineclass == "Imagine\\Gd\\Imagine")
-        {
+        if ($imagineclass == "Imagine\\Gd\\Imagine") {
             return \function_exists('imagewebp');
         }
 

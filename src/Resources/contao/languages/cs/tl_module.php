@@ -22,4 +22,3 @@ $GLOBALS['TL_LANG']['tl_module']['banner_template']['0']   = 'Banner šablony';
 $GLOBALS['TL_LANG']['tl_module']['banner_template']['1']   = 'Prosím, vyberte banner šablony. Začít se soubory šablon<em>mod_banner_list_</em>.';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['0']  = 'Žádné počítání pro tento HTTP_USER_AGENT částečný identifikátor';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['1']  = 'Here you can specify a partial identifier, it will be no counting. These HTTP_USER_AGENT partial identifier of the browser must be changed.<br />See Wiki.';
-

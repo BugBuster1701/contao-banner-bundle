@@ -41,4 +41,3 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['select']                 = 'Veuillez sél
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']                  = 'Vues';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm']           = 'Souhaitez-vous vraiment réinitialiser le compteur des statistiques de la bannière (vues et clics)?';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text']              = 'Le compteur des statistiques de la bannière sera réinitialisé à zéro.';
-

@@ -27,12 +27,11 @@ use Contao\StringUtil;
  */
 class BannerExternal
 {
-
     /**
      * Banner extern
      * @var string
      */
-    const BANNER_TYPE_EXTERN = 'banner_image_extern';
+    public const BANNER_TYPE_EXTERN = 'banner_image_extern';
 
     protected $objBanners;
     protected $banner_cssID;
@@ -56,8 +55,7 @@ class BannerExternal
         //Banner Art und Größe bestimmen
         $arrImageSize = $this->BannerImage->getBannerImageSize($this->objBanners->banner_image_extern, self::BANNER_TYPE_EXTERN);
         //Falls Datei gelöscht wurde, Abbruch
-        if (false === $arrImageSize)
-        {
+        if (false === $arrImageSize) {
             $arrImageSize[2] = 0;
             BannerLog::log('Banner Image with ID "'.$this->objBanners->id.'" not found', __METHOD__ .':'. __LINE__, TL_ERROR);
 
@@ -72,20 +70,16 @@ class BannerExternal
         $arrNewSizeValues = StringUtil::deserialize($this->objBanners->banner_imgSize);
 
         //Vordefinierte Größe?
-        if (is_numeric($arrNewSizeValues[2])) 
-        {
+        if (is_numeric($arrNewSizeValues[2])) {
             /** @var ImageSizeModel $imagesize */
             $imageSize = ImageSizeModel::findByPk((int) $arrNewSizeValues[2]);
             BannerLog::writeLog(__METHOD__, __LINE__, 'Predefined dimensions: '. print_r($imageSize, true));
 
-            if ($imageSize === null)
-            {
+            if ($imageSize === null) {
                 $arrNewSizeValues[0] = 0;
                 $arrNewSizeValues[1] = 0;
                 $arrNewSizeValues[2] = 0;
-            }
-            else
-            {
+            } else {
                 $arrNewSizeValues[0] = ($imageSize->width  > 0) ? $imageSize->width : 0;
                 $arrNewSizeValues[1] = ($imageSize->height > 0) ? $imageSize->height : 0;
                 $arrNewSizeValues[2] = $imageSize->resizeMode;
@@ -98,13 +92,13 @@ class BannerExternal
         $FileSrc = html_entity_decode($this->objBanners->banner_image_extern, ENT_NOQUOTES, 'UTF-8');
 
         //fake the Picture::create
-        $picture['img']   = array
-        (
+        $picture['img']   =
+        [
             'src'    => StringUtil::specialchars(ampersand($FileSrc)),
             'width'  => $arrImageSizenNew[0],
             'height' => $arrImageSizenNew[1],
             'srcset' => StringUtil::specialchars(ampersand($FileSrc))
-        );
+        ];
         $picture['alt']   = StringUtil::specialchars(ampersand($this->objBanners->banner_name));
         $picture['title'] = StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
 
@@ -132,5 +126,4 @@ class BannerExternal
     {
         return BannerTemplate::generateTemplateData($arrImageSize, $FileSrc, $picture, $this->objBanners, $this->banner_cssID, $this->banner_class);
     }
-
 }

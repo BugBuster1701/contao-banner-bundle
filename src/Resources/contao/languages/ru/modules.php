@@ -18,4 +18,3 @@ $GLOBALS['TL_LANG']['MOD']['banner']['0']     = 'Баннеры';
 $GLOBALS['TL_LANG']['MOD']['banner']['1']     = 'Маленький модуль баннерной рекламы';
 $GLOBALS['TL_LANG']['MOD']['bannerstat']['0'] = 'Статистика баннеров';
 $GLOBALS['TL_LANG']['MOD']['bannerstat']['1'] = 'Вывод статистики баннеров из модуля показа баннеров.';
-

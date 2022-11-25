@@ -21,24 +21,19 @@ class BannerTemplate
     {
         $banner_target = ($objBanners->banner_target == '1') ? '' : ' target="_blank"';
 
-        if (\strlen($objBanners->banner_comment) > 1)
-        {
+        if (\strlen($objBanners->banner_comment) > 1) {
             $banner_comment_pos = strpos($objBanners->banner_comment, "\n", 1);
-            if ($banner_comment_pos !== false)
-            {
+            if ($banner_comment_pos !== false) {
                 $objBanners->banner_comment = substr($objBanners->banner_comment, 0, $banner_comment_pos);
             }
         }
 
         // Banner Seite als Ziel?
-        if ($objBanners->banner_jumpTo > 0)
-        {
+        if ($objBanners->banner_jumpTo > 0) {
             $domain = \Environment::get('base');
             $objParent = \PageModel::findWithDetails($objBanners->banner_jumpTo);
-            if ($objParent !== null) // is null when page not exist anymore
-            {
-                if ($objParent->domain != '')
-                {
+            if ($objParent !== null) { // is null when page not exist anymore
+                if ($objParent->domain != '') {
                     $domain = (\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
                 }
                 // old $objBanners->banner_url = $domain . \Controller::generateFrontendUrl($objParent->row(), '', $objParent->language);
@@ -55,14 +50,13 @@ class BannerTemplate
         // 5 = PSD, 6 = BMP, 7 = TIFF(intel byte order), 8 = TIFF(motorola byte order)
         // 9 = JPC, 10 = JP2, 11 = JPX, 12 = JB2, 13 = SWC, 14 = IFF
         // 18 = WEBP
-        switch ($arrImageSize[2])
-        {
+        switch ($arrImageSize[2]) {
             case 1:// GIF
             case 2:// JPG
             case 3:// PNG
             case 18: // WEBP
-                $arrBanners[] = array
-                (
+                $arrBanners[] =
+                [
                 'banner_key'     => 'bid',
                 'banner_wrap_id'    => $banner_cssID,
                 'banner_wrap_class' => $banner_class,
@@ -80,11 +74,11 @@ class BannerTemplate
                 'banner_empty'   => false,
                 'banner_video'   => false,
                 'picture'        => $picture
-                );
+                ];
                 break;
             default:
-                $arrBanners[] = array
-                (
+                $arrBanners[] =
+                [
                 'banner_key'     => 'bid',
                 'banner_wrap_id'    => $banner_cssID,
                 'banner_wrap_class' => $banner_class,
@@ -98,7 +92,7 @@ class BannerTemplate
                 'size'           => '',
                 'banner_pic'     => true,
                 'banner_video'   => false,
-                );
+                ];
                 break;
         }//switch
 

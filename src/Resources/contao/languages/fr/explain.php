@@ -31,4 +31,3 @@ $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['0'] = 'Limiter le nombre de clic
 $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['1'] = 'En saisissant un nombre, cette bannière n\'apparaîtra plus une fois qu\'elle aura été cliquée le nombre de fois que vous saisissez.<br />Cette option "Limiter le nombre de clics" doit rester active.<br />Ex:<br /><br /><pre>100</pre><br />';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['9']['0'] = 'identificateur HTTP_USER_AGENT';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['9']['1'] = 'En saisissant une chaîne de caractère unique correspondant à votre identification utilisateur, vous éviterez de comptabiliser vos propres requêtes.<br />Des explications détaillées sont trouvable dans le Wiki.';
-

@@ -42,4 +42,3 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['select']           = 'Please select';
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']            = 'Views';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm']     = 'Do you really want to reset the banner statistic counters (views and clicks)?';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text']        = 'The banner statistic counter will be reset to zero.';
-

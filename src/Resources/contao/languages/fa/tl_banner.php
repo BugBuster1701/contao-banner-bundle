@@ -79,4 +79,3 @@ $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']        = 'بنر تصوی�
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern'] = 'بنر تصویری خارجی';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']         = 'بنر متنی';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']             = 'لطفا انتخاب کنید';
-

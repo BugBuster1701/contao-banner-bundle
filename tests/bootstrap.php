@@ -31,4 +31,3 @@ $fixtureLoader = function ($class): void {
     }
 };
 spl_autoload_register($fixtureLoader, true, true);
-

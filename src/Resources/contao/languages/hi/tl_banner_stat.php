@@ -29,4 +29,3 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['pub_no']              = 'नहीं';
 $GLOBALS['TL_LANG']['tl_banner_stat']['pub_yes']             = 'हाँ';
 $GLOBALS['TL_LANG']['tl_banner_stat']['select']              = 'कृपया चुनें';
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']               = 'दिखा';
-

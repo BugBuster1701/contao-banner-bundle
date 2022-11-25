@@ -33,12 +33,9 @@ class BannerLog
      */
     public static function writeLog($method, $line, $value)
     {
-        if ($method == '## START ##') 
-        {
-            if (!isset($GLOBALS['banner']['debug']['first'])) 
-            {
-                if ((bool) ($GLOBALS['banner']['debug']['all'] ?? false)) 
-                {
+        if ($method == '## START ##') {
+            if (!isset($GLOBALS['banner']['debug']['first'])) {
+                if ((bool) ($GLOBALS['banner']['debug']['all'] ?? false)) {
                     $arrUniqid = \StringUtil::trimsplit('.', uniqid('c0n7a0', true));
                     $GLOBALS['banner']['debug']['first'] = $arrUniqid[1];
                     self::logMessage(sprintf('[%s] [%s] [%s] %s', $GLOBALS['banner']['debug']['first'], $method, $line, $value), 'banner_debug');
@@ -47,16 +44,11 @@ class BannerLog
                 }
 
                 return; //kein (first) log
-            }
-            else
-            {
+            } else {
                 return; //kein first log
             }
-        }
-        else 
-        {
-            if (false === (bool) ($GLOBALS['banner']['debug']['all'] ?? false))
-            {
+        } else {
+            if (false === (bool) ($GLOBALS['banner']['debug']['all'] ?? false)) {
                 return; //kein Log aktiviert
             }
         }
@@ -65,8 +57,7 @@ class BannerLog
         $arrClass =  \StringUtil::trimsplit('\\', $arrNamespace[0]);
         $vclass = $arrClass[2]; // class that will write the log
 
-        if (\is_array($value))
-        {
+        if (\is_array($value)) {
             $value = print_r($value, true);
         }
 
@@ -83,24 +74,19 @@ class BannerLog
      */
     public static function logMessage($strMessage, $strLog=null)
     {
-        if ($strLog === null)
-        {
+        if ($strLog === null) {
             $strLog = 'prod-' . date('Y-m-d') . '.log';
-        }
-        else
-        {
+        } else {
             $strLog = 'prod-' . date('Y-m-d') . '-' . $strLog . '.log';
         }
 
         $strLogsDir = null;
 
-        if (($container = \System::getContainer()) !== null)
-        {
+        if (($container = \System::getContainer()) !== null) {
             $strLogsDir = $container->getParameter('kernel.logs_dir');
         }
 
-        if (!$strLogsDir)
-        {
+        if (!$strLogsDir) {
             $strLogsDir = TL_ROOT . '/var/logs';
         }
 
@@ -119,7 +105,6 @@ class BannerLog
         $level = TL_ERROR === $strCategory ? LogLevel::ERROR : LogLevel::INFO;
         $logger = \System::getContainer()->get('monolog.logger.contao');
 
-        $logger->log($level, $strText, array('contao' => new ContaoContext($strFunction, $strCategory)));
+        $logger->log($level, $strText, ['contao' => new ContaoContext($strFunction, $strCategory)]);
     }
-
 }

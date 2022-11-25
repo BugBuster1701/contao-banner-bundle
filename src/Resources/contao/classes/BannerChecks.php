@@ -28,8 +28,7 @@ class BannerChecks extends \Frontend
     {
         if (isset($GLOBALS['TL_CONFIG']['mod_banner_bot_check'])
             && (int) $GLOBALS['TL_CONFIG']['mod_banner_bot_check'] == 0
-            )
-        {
+        ) {
             BannerLog::writeLog(__METHOD__, __LINE__, ': False: Bot Suche abgeschaltet ueber localconfig.php');
 
             return false; //Bot Suche abgeschaltet ueber localconfig.php
@@ -37,21 +36,21 @@ class BannerChecks extends \Frontend
 
         $bundles = array_keys(\System::getContainer()->getParameter('kernel.bundles')); // old \ModuleLoader::getActive()
 
-        if (!\in_array('BugBusterBotdetectionBundle', $bundles))
-        {
+        if (!\in_array('BugBusterBotdetectionBundle', $bundles)) {
             //BugBusterBotdetectionBundle Modul fehlt, Abbruch
             \System::getContainer()
                         ->get('monolog.logger.contao')
-                        ->log(LogLevel::ERROR,
+                        ->log(
+                            LogLevel::ERROR,
                             'contao-botdetection-bundle extension required for extension: Banner!',
-                            array('contao' => new ContaoContext('BannerChecks checkBot ', TL_ERROR)));
+                            ['contao' => new ContaoContext('BannerChecks checkBot ', TL_ERROR)]
+                        );
             BannerLog::writeLog(__METHOD__, __LINE__, print_r($bundles, true));
 
             return false;
         }
         $ModuleBotDetection = new ModuleBotDetection();
-        if ($ModuleBotDetection->checkBotAllTests())
-        {
+        if ($ModuleBotDetection->checkBotAllTests()) {
             BannerLog::writeLog(__METHOD__, __LINE__, ': True');
 
             return true;
@@ -66,12 +65,9 @@ class BannerChecks extends \Frontend
      */
     public function checkUserAgent()
     {
-        if (\Environment::get('httpUserAgent'))
-        {
+        if (\Environment::get('httpUserAgent')) {
             $UserAgent = trim(\Environment::get('httpUserAgent'));
-        }
-        else
-        {
+        } else {
             return false; // Ohne Absender keine Suche
         }
 
@@ -83,22 +79,19 @@ class BannerChecks extends \Frontend
                                                                 `banner_useragent` !=?")
                                                 ->limit(1)
                                                 ->execute('');
-        if (!$objUserAgent->next())
-        {
+        if (!$objUserAgent->next()) {
             BannerLog::writeLog(__METHOD__, __LINE__, ': False: keine Angaben im Modul!');
 
             return false; // keine Angaben im Modul
         }
         $arrUserAgents = explode(",", $objUserAgent->banner_useragent);
-        if (\strlen(trim($arrUserAgents[0])) == 0)
-        {
+        if (\strlen(trim($arrUserAgents[0])) == 0) {
             return false; // keine Angaben im Modul
         }
-        array_walk($arrUserAgents, array('self', 'bannerclickTrimArrayValue'));  // trim der array values
+        array_walk($arrUserAgents, ['self', 'bannerclickTrimArrayValue']);  // trim der array values
         // grobe Suche
         $CheckUserAgent=str_replace($arrUserAgents, '#', $UserAgent);
-        if ($UserAgent != $CheckUserAgent)
-        {   //es wurde ersetzt also was gefunden
+        if ($UserAgent != $CheckUserAgent) {   //es wurde ersetzt also was gefunden
             BannerLog::writeLog(__METHOD__, __LINE__, ': True: Treffer!');
 
             return true;
@@ -123,15 +116,14 @@ class BannerChecks extends \Frontend
     public function checkBE()
     {
         $objTokenChecker = \System::getContainer()->get('contao.security.token_checker');
-        if ($objTokenChecker->hasBackendUser())
-        {
+        if ($objTokenChecker->hasBackendUser()) {
             BannerLog::writeLog(__METHOD__, __LINE__, ': True');
+
             return true;
         }
-        
+
         BannerLog::writeLog(__METHOD__, __LINE__, ': False');
+
         return false;
-
     } //CheckBE
-
 }

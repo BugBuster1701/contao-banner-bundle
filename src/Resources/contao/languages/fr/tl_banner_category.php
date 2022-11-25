@@ -65,4 +65,3 @@ $GLOBALS['TL_LANG']['tl_banner_category']['title']['1']                   = 'Veu
 $GLOBALS['TL_LANG']['tl_banner_category']['title_legend']                 = 'Modèle Bannière et Catégorie';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['0']                  = 'Date de version';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['1']                  = 'Date et heure de la dernière version';
-

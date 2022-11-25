@@ -22,4 +22,3 @@ $GLOBALS['TL_LANG']['tl_module']['banner_template']['0']   = 'Banner template';
 $GLOBALS['TL_LANG']['tl_module']['banner_template']['1']   = 'Please choose the Banner-Template. Banner template files start with <em>mod_banner_list_</em>.';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['0']  = 'No counting for this HTTP_USER_AGENT partial identifier';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['1']  = 'Here you can specify a partial identifier, it will be no counting. These HTTP_USER_AGENT partial identifier of the browser must be changed.<br />See Wiki.';
-

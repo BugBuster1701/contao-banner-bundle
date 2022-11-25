@@ -18,4 +18,3 @@ $GLOBALS['TL_LANG']['MOD']['banner']['0']     = 'Banner';
 $GLOBALS['TL_LANG']['MOD']['banner']['1']     = 'A little banner advertisement module.';
 $GLOBALS['TL_LANG']['MOD']['bannerstat']['0'] = 'Banner Statistics';
 $GLOBALS['TL_LANG']['MOD']['bannerstat']['1'] = 'Statistics from banner module.';
-

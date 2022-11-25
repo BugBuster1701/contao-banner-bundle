@@ -21,4 +21,3 @@ $GLOBALS['TL_LANG']['tl_module']['banner_template']['0']   = 'Modèle Bannière'
 $GLOBALS['TL_LANG']['tl_module']['banner_template']['1']   = 'Veuillez choisir le modèle de la bannière. Les fichiers des modèles de bannière commencent par <em>mod_banner_list_</em>.';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['0']  = 'Aucun résultat pour cet identificateur HTTP_USER_AGENT';
 $GLOBALS['TL_LANG']['tl_module']['banner_useragent']['1']  = 'Ici vous pouvez préciser un identificateur partiel, qui ne sera pas compté. Cet identificateur partiel du navigateur HTTP_USER_AGENT doit être modifié.<br />Lisez le Wiki.';
-

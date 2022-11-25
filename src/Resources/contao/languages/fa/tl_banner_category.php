@@ -54,4 +54,3 @@ $GLOBALS['TL_LANG']['tl_banner_category']['title']['1']                 = 'نا�
 $GLOBALS['TL_LANG']['tl_banner_category']['title_legend']               = 'دسته‌بندی و قالب بنر';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['0']                = 'تاریخ بازنگری';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['1']                = 'تاریخ و ساعت آخرین بازنگری';
-

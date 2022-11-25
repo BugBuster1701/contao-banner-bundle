@@ -32,4 +32,3 @@ $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['0'] = 'Limite al numero di click
 $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['1'] = 'Inserendo un valore, il banner non verrà visualizzato oltre il numero di click indicato. <br />Example:<br /><br /><pre> 100</pre><br />';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['9']['0'] = 'Identificativo HTTP_USER_AGENT';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['9']['1'] = 'Modificando nel proprio browser la stringa user agent è possibile evitare il conteggio da questo determinato computer. <br /> Istruzioni dettagliate, possono essere trovate nel Wiki.';
-

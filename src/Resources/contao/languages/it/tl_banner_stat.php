@@ -29,4 +29,3 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['select']       = 'Selezionare';
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']        = 'Visualizzazioni';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm'] = 'Vuoi realmente azzerare i contatori delle statistiche del banner (visualizzazioni e click)?';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text']    = 'Il contatore delle statistiche del banner sarà azzerato';
-

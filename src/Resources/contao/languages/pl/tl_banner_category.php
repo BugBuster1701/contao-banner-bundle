@@ -41,4 +41,3 @@ $GLOBALS['TL_LANG']['tl_banner_category']['title']['0']                 = 'Kateg
 $GLOBALS['TL_LANG']['tl_banner_category']['title']['1']                 = 'Wpisz nazwę kategorii';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['0']                = 'Data rewizji';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['1']                = 'Data i czas ostatniej rewizji';
-

@@ -21,4 +21,3 @@ $GLOBALS['TL_LANG']['tl_banner_category']['new']['0']                   = 'न�
 $GLOBALS['TL_LANG']['tl_banner_category']['new']['1']                   = 'नई श्रेणी बनाएँ';
 $GLOBALS['TL_LANG']['tl_banner_category']['show']['0']                  = 'श्रेणी का विवरण';
 $GLOBALS['TL_LANG']['tl_banner_category']['title']['0']                 = 'श्रेणी';
-

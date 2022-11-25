@@ -66,4 +66,3 @@ $GLOBALS['TL_LANG']['tl_banner_category']['title']['1']                   = 'В�
 $GLOBALS['TL_LANG']['tl_banner_category']['title_legend']                 = 'Категория и шаблон баннера';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['0']                  = 'Дата редакции';
 $GLOBALS['TL_LANG']['tl_banner_category']['tstamp']['1']                  = 'Дата и время последней редакции';
-

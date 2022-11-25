@@ -24,7 +24,6 @@ use BugBuster\Banner\BannerHelper;
  */
 class BannerText
 {
-
     protected $objBanners;
     protected $banner_cssID;
     protected $banner_class;
@@ -36,19 +35,16 @@ class BannerText
         $this->banner_class = $banner_class;
     }
 
-    public function generateTemplateData() 
+    public function generateTemplateData()
     {
         $banner_target = ($this->objBanners->banner_target == '1') ? '' : ' target="_blank"';
 
         // Banner Seite als Ziel?
-        if ($this->objBanners->banner_jumpTo > 0)
-        {
+        if ($this->objBanners->banner_jumpTo > 0) {
             $domain = \Environment::get('base');
             $objParent = \PageModel::findWithDetails($this->objBanners->banner_jumpTo);
-            if ($objParent !== null) // is null when page not exist anymore
-            {
-                if ($objParent->domain != '')
-                {
+            if ($objParent !== null) { // is null when page not exist anymore
+                if ($objParent->domain != '') {
                     $domain = (\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
                 }
                 //old $this->objBanners->banner_url = $domain . \Controller::generateFrontendUrl($objParent->row(), '', $objParent->language);
@@ -59,13 +55,12 @@ class BannerText
         // Kurz URL (nur Domain)
         $treffer = parse_url(BannerHelper::decodePunycode($this->objBanners->banner_url)); // #79
         $banner_url_kurz = $treffer['host'];
-        if (isset($treffer['port']))
-        {
+        if (isset($treffer['port'])) {
             $banner_url_kurz .= ':'.$treffer['port'];
         }
 
-        $arrBanners[] = array
-                        (
+        $arrBanners[] =
+                        [
                             'banner_key'     => 'bid',
                             'banner_wrap_id'    => $this->banner_cssID,
                             'banner_wrap_class' => $this->banner_class,
@@ -80,7 +75,7 @@ class BannerText
                             'banner_text'    => true,
                             'banner_video'   => false,
                             'banner_empty'   => false	// issues 733
-                        );
+                        ];
 
         return $arrBanners;
     }

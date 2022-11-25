@@ -26,13 +26,10 @@ class DcaBannerCategory extends \Backend
         $version_warning = '';
 
         $bpc = $GLOBALS['TL_LANG']['tl_banner_category']['banner_protected_catagory'];
-        if (!empty($arrRow['banner_protected']) && \strlen($arrRow['banner_groups']))
-        {
+        if (!empty($arrRow['banner_protected']) && \strlen($arrRow['banner_groups'])) {
             $label_2 = '<img height="16" width="14" alt="'.$bpc.'" title="'.$bpc.'" src="bundles/bugbusterbanner/default/protect_.gif">';
-            //$label_2 = " (".$bpc.")"; // ab Contao 3.1 fehlt das protect_.gif :-(
-        } 
-        else 
-        {
+        //$label_2 = " (".$bpc.")"; // ab Contao 3.1 fehlt das protect_.gif :-(
+        } else {
             $label_2 = '';
         }
 
@@ -46,8 +43,7 @@ class DcaBannerCategory extends \Backend
 
     public function fieldLabelCallback($dc)
     {
-        if (!$this->supportsWebp())
-        {
+        if (!$this->supportsWebp()) {
             $GLOBALS['TL_LANG']['tl_banner_category']['banner_default_image'][1] .= ' (' . $GLOBALS['TL_LANG']['tl_banner_category']['formatsWebpNotSupported'] .')';
         }
 
@@ -64,22 +60,18 @@ class DcaBannerCategory extends \Backend
         $imagine = \System::getContainer()->get('contao.image.imagine');
         $imagineclass = \get_class($imagine);
 
-        if ($imagineclass == "Imagine\\Imagick\\Imagine")
-        {
+        if ($imagineclass == "Imagine\\Imagick\\Imagine") {
             return \in_array('WEBP', \Imagick::queryFormats('WEBP'), true);
         }
 
-        if ($imagineclass == "Imagine\\Gmagick\\Imagine")
-        {
+        if ($imagineclass == "Imagine\\Gmagick\\Imagine") {
             return \in_array('WEBP', (new \Gmagick())->queryformats('WEBP'), true);
         }
 
-        if ($imagineclass == "Imagine\\Gd\\Imagine")
-        {
+        if ($imagineclass == "Imagine\\Gd\\Imagine") {
             return \function_exists('imagewebp');
         }
 
         return false;
     }
-
 }

@@ -36,4 +36,3 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['select']           = 'Prosím, vyberte';
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']            = 'Zobrazení';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm']     = 'Opravdu chcete vynulovat statistiky k banneru (zobrazení a kliknutí)?';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text']        = 'Resetovat počítadlo, statistika bude vynulována.';
-

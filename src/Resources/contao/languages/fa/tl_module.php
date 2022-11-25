@@ -17,4 +17,3 @@ $GLOBALS['TL_LANG']['tl_module']['banner_firstview']['0']  = 'اولین بنر 
 $GLOBALS['TL_LANG']['tl_module']['banner_hideempty']['0']  = 'پنهان کردن وقتی خالی است';
 $GLOBALS['TL_LANG']['tl_module']['banner_hideempty']['1']  = 'مخفی کردن ماژول (نمای بیرونی) زمانی که بنر فعالی یافت نمی‌شود.';
 $GLOBALS['TL_LANG']['tl_module']['banner_template']['0']   = 'قالب بنر';
-

@@ -12,3 +12,5 @@ composer.lock
 .vscode/
 #phpunit
 .phpunit.result.cache
+#php-cs-fixer
+.php-cs-fixer.cache

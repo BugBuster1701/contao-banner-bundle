@@ -22,4 +22,3 @@ $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_stop'] = 'हमेशा';
 $GLOBALS['TL_LANG']['tl_banner']['tl_be_page_not_found']   = 'पृष्ठ नहीं मिला';
 $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']              = 'हाँ';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']           = 'कृपया चुनें';
-

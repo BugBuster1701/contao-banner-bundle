@@ -21,4 +21,3 @@ $GLOBALS['TL_LANG']['XPL']['banner_help']['6']['0'] = 'مشاهده تا (تار
 $GLOBALS['TL_LANG']['XPL']['banner_help']['7']['0'] = 'محدود کردن تعداد بازدید';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['8']['0'] = 'محدود کردن تعداد کلیک‌ها';
 $GLOBALS['TL_LANG']['XPL']['banner_help']['9']['0'] = 'صافی دامنه';
-

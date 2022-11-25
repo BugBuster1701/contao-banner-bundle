@@ -13,4 +13,3 @@
 
 
 $GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner'] = 'कोई बैनर नहीं मिला और न ही पहले से कोई छवि है';
-

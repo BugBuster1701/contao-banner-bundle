@@ -86,4 +86,3 @@ $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']        = 'Interní obrázk
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern'] = 'Externí obrázkový banner';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']         = 'Interní textový banner';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']             = 'Prosím, vyberte';
-

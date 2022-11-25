@@ -34,57 +34,51 @@ class FrontendBanner extends \Frontend
      *
      * @var string
      */
-    private $_session   = array();
+    private $_session   = [];
 
-	/**
-	 * Initialize the object (do not remove)
-	 */
-	public function __construct()
-	{
-		parent::__construct();
+    /**
+     * Initialize the object (do not remove)
+     */
+    public function __construct()
+    {
+        parent::__construct();
 
-		// See #4099
-		if (!\defined('BE_USER_LOGGED_IN'))
-		{
-			\define('BE_USER_LOGGED_IN', false);
-		}
+        // See #4099
+        if (!\defined('BE_USER_LOGGED_IN')) {
+            \define('BE_USER_LOGGED_IN', false);
+        }
 
-		if (!\defined('FE_USER_LOGGED_IN'))
-		{
-			\define('FE_USER_LOGGED_IN', false);
-		}
+        if (!\defined('FE_USER_LOGGED_IN')) {
+            \define('FE_USER_LOGGED_IN', false);
+        }
 
-		$this->intBID    = 0;
-		$this->intDEFBID = 0;
-	}
+        $this->intBID    = 0;
+        $this->intDEFBID = 0;
+    }
 
-	/**
-	 * Run the controller
-	 *
-	 * @return Response
-	 */
-	public function run($strbid, $bid)
-	{
-	    if ($strbid == 'bid') 
-	    {
-	        $this->intBID = $bid;
-	    }
-	    else 
-	    {
-	        $this->intDEFBID = $bid;
-	    }
+    /**
+     * Run the controller
+     *
+     * @return Response
+     */
+    public function run($strbid, $bid)
+    {
+        if ($strbid == 'bid') {
+            $this->intBID = $bid;
+        } else {
+            $this->intDEFBID = $bid;
+        }
 
-	    $banner_category_id = $this->getBannerCategory($this->intBID);
-	    $objBannerHelper    = new BannerHelper();
-	    $objBannerHelper->setDebugSettings($banner_category_id);
+        $banner_category_id = $this->getBannerCategory($this->intBID);
+        $objBannerHelper    = new BannerHelper();
+        $objBannerHelper->setDebugSettings($banner_category_id);
 
-	    //Banner oder Kategorie Banner (Default Banner)
-	    if (0 < $this->intBID)
-	    {
-	        //normaler Banner
-	        $banner_not_viewed = false;
-	        // Check whether the Banner ID exists
-	        $objBanners = \Database::getInstance()
+        //Banner oder Kategorie Banner (Default Banner)
+        if (0 < $this->intBID) {
+            //normaler Banner
+            $banner_not_viewed = false;
+            // Check whether the Banner ID exists
+            $objBanners = \Database::getInstance()
                                     ->prepare("SELECT
                                                 tb.id
                                               , tb.banner_url
@@ -99,8 +93,7 @@ class FrontendBanner extends \Frontend
                                                 tb.id=?")
                                     ->execute($this->intBID);
 
-            if (!$objBanners->next())
-            {
+            if (!$objBanners->next()) {
                 $objBanners = \Database::getInstance()
                                         ->prepare("SELECT
                                                     tb.id
@@ -112,14 +105,11 @@ class FrontendBanner extends \Frontend
                                                     tb.id=?")
                                         ->execute($this->intBID);
 
-                if (!$objBanners->next())
-                {
+                if (!$objBanners->next()) {
                     $objResponse = new Response('Banner ID not found', 501);
 
                     return $objResponse;
-                }
-                else
-                {
+                } else {
                     $banner_not_viewed = true;
                 }
             }
@@ -129,19 +119,18 @@ class FrontendBanner extends \Frontend
                 && $BannerChecks->checkBot()       === false
                 && $BannerChecks->checkBE()        === false
                 && $this->getSetReClickBlocker()   === false
-                )
-            {
+            ) {
                 // keine User Agent Filterung, kein Bot, kein ReClick, kein BE Login
                 $banner_stat_update = true;
             }
-            $BannerChecks = null; unset($BannerChecks);
+            $BannerChecks = null;
+            unset($BannerChecks);
 
             //Zählung
             $this->countClicks($banner_stat_update, $banner_not_viewed, $objBanners);
 
             //Banner Ziel per Page?
-            if ($objBanners->banner_jumpTo >0)
-            {
+            if ($objBanners->banner_jumpTo >0) {
                 //url generieren
                 $objBannerNextPage = \Database::getInstance()
                                                 ->prepare("SELECT
@@ -154,20 +143,17 @@ class FrontendBanner extends \Frontend
                                                 ->limit(1)
                                                 ->execute($objBanners->banner_jumpTo);
 
-                if ($objBannerNextPage->numRows)
-                {
+                if ($objBannerNextPage->numRows) {
                     $objPage = \PageModel::findWithDetails($objBanners->banner_jumpTo);
                     // deprecated #8 $objBanners->banner_url = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc(), null, $objPage->rootLanguage);
                     $objBanners->banner_url = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objPage->rootLanguage);
                 }
             }
             $banner_redirect = $this->getRedirectType($this->intBID);
-	    }
-	    else
-	    {
-	        // Default Banner from Category
-	        // Check whether the Banner ID exists
-	        $objBanners = \Database::getInstance()
+        } else {
+            // Default Banner from Category
+            // Check whether the Banner ID exists
+            $objBanners = \Database::getInstance()
                                     ->prepare("SELECT
                                                     id
                                                   , banner_default_url AS banner_url
@@ -177,44 +163,40 @@ class FrontendBanner extends \Frontend
                                                     id=?")
                                     ->execute($this->intDEFBID);
 
-            if (!$objBanners->next())
-            {
+            if (!$objBanners->next()) {
                 $objResponse = new Response('Default Banner ID not found', 501);
 
                 return $objResponse;
             }
             $banner_redirect = '303';
-	    }
-	    $banner_url = $objBanners->banner_url;
-	    BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: '. $banner_url);
-	    // 301 Moved Permanently
-	    // 302 Found
-	    // 303 See Other
-	    // 307 Temporary Redirect (ab Contao 3.1)
-	    //$this->redirect($banner_url, $banner_redirect);
+        }
+        $banner_url = $objBanners->banner_url;
+        BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: '. $banner_url);
+        // 301 Moved Permanently
+        // 302 Found
+        // 303 See Other
+        // 307 Temporary Redirect (ab Contao 3.1)
+        //$this->redirect($banner_url, $banner_redirect);
 
-	    // Make the location an absolute URL
-	    if (!preg_match('@^https?://@i', $banner_url))
-	    {
-	        $banner_url = \Environment::get('base') . ltrim($banner_url, '/');
-	    }
+        // Make the location an absolute URL
+        if (!preg_match('@^https?://@i', $banner_url)) {
+            $banner_url = \Environment::get('base') . ltrim($banner_url, '/');
+        }
 
-	    $objResponse = new RedirectResponse($banner_url, $banner_redirect);
-	    $objResponse->setPrivate();
-	    $objResponse->setMaxAge(0);
-	    $objResponse->setSharedMaxAge(0);
-	    $objResponse->headers->addCacheControlDirective('must-revalidate', true);
-	    $objResponse->headers->addCacheControlDirective('no-store', true);
+        $objResponse = new RedirectResponse($banner_url, $banner_redirect);
+        $objResponse->setPrivate();
+        $objResponse->setMaxAge(0);
+        $objResponse->setSharedMaxAge(0);
+        $objResponse->headers->addCacheControlDirective('must-revalidate', true);
+        $objResponse->headers->addCacheControlDirective('no-store', true);
 
-	    return $objResponse;
+        return $objResponse;
     }
 
-    protected function countClicks($banner_stat_update, $banner_not_viewed, $objBanners) 
+    protected function countClicks($banner_stat_update, $banner_not_viewed, $objBanners)
     {
-        if ($banner_stat_update === true)
-        {
-            if ($banner_not_viewed === false)
-            {
+        if ($banner_stat_update === true) {
+            if ($banner_not_viewed === false) {
                 //Update
                 $tstamp = time();
                 $banner_clicks = $objBanners->banner_clicks + 1;
@@ -226,16 +208,14 @@ class FrontendBanner extends \Frontend
                                                    WHERE
                                                         id=?")
                                         ->execute($tstamp, $banner_clicks, $this->intBID);
-            }
-            else
-            {
+            } else {
                 //Insert
-                $arrSet = array
-                (
+                $arrSet =
+                [
                     'id'     => $this->intBID,
                     'tstamp' => time(),
                     'banner_clicks' => 1
-                );
+                ];
                 \Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
                                         ->set($arrSet)
                                         ->execute();
@@ -256,8 +236,7 @@ class FrontendBanner extends \Frontend
         // über CatID in tl_module.banner_categories die tl_module.banner_redirect
         // Schleife über alle zeilen, falls mehrere
         $CatID = $this->getBannerCategory($banner_id);
-        if (0 == $CatID)
-        {
+        if (0 == $CatID) {
             return '301'; // error, but the show must go on
         }
 
@@ -271,40 +250,28 @@ class FrontendBanner extends \Frontend
                                                      AND
                                                         banner_categories=?")
                                         ->execute('banner', $CatID);
-        if (0 == $objBRT->numRows)
-        {
+        if (0 == $objBRT->numRows) {
             return '301'; // error, but the show must go on
         }
-        $arrBRT = array();
-        while ($objBRT->next())
-        {
+        $arrBRT = [];
+        while ($objBRT->next()) {
             $arrBRT[] = ($objBRT->banner_redirect == 'temporary') ? '302' : '301';
         }
-        if (\count($arrBRT) == 1)
-        {
+        if (\count($arrBRT) == 1) {
             return $arrBRT[0];	// Nur ein Modul importiert, eindeutig
-        }
-        else
-        {
+        } else {
             // mindestens 2 FE Module mit derselben Kategorie, zaehlen
             $anz301=$anz302=0;
-            foreach ($arrBRT as $type)
-            {
-                if ($type=='301')
-                {
+            foreach ($arrBRT as $type) {
+                if ($type=='301') {
                     $anz301++;
-                }
-                else
-                {
+                } else {
                     $anz302++;
                 }
             }
-            if ($anz301 >= $anz302)
-            {		// 301 hat bei Gleichstand Vorrang
+            if ($anz301 >= $anz302) {		// 301 hat bei Gleichstand Vorrang
                 return '301';
-            }
-            else
-            {
+            } else {
                 return '302';
             }
         }
@@ -317,25 +284,22 @@ class FrontendBanner extends \Frontend
      */
     protected function getSetReClickBlocker()
     {
-	        //$ClientIP = bin2hex(sha1(\Environment::get('remoteAddr'),true)); // sha1 20 Zeichen, bin2hex 40 zeichen
-	        $BannerID = $this->intBID;
-	        if ($this->getReClickBlockerId($BannerID) === false)
-	        {
-	            // nichts geblockt, also blocken fürs den nächsten Aufruf
-	            $this->setReClickBlockerId($BannerID);
+        //$ClientIP = bin2hex(sha1(\Environment::get('remoteAddr'),true)); // sha1 20 Zeichen, bin2hex 40 zeichen
+        $BannerID = $this->intBID;
+        if ($this->getReClickBlockerId($BannerID) === false) {
+            // nichts geblockt, also blocken fürs den nächsten Aufruf
+            $this->setReClickBlockerId($BannerID);
 
-	            // kein ReClickBlocker block gefunden, Zaehlung erlaubt, nicht blocken
-	            BannerLog::writeLog(__METHOD__, __LINE__, ': False: Banner ID '.$BannerID.' Klick nicht geblockt');
+            // kein ReClickBlocker block gefunden, Zaehlung erlaubt, nicht blocken
+            BannerLog::writeLog(__METHOD__, __LINE__, ': False: Banner ID '.$BannerID.' Klick nicht geblockt');
 
-	            return false;
-	        }
-	        else
-	        {
-	            // Eintrag innerhalb der Blockzeit, blocken
-	            BannerLog::writeLog(__METHOD__, __LINE__, ': True: Banner ID '.$BannerID.' Klick geblockt');
+            return false;
+        } else {
+            // Eintrag innerhalb der Blockzeit, blocken
+            BannerLog::writeLog(__METHOD__, __LINE__, ': True: Banner ID '.$BannerID.' Klick geblockt');
 
-	            return true;
-	        }
+            return true;
+        }
     }
 
     protected function getBannerCategory($banner_id)
@@ -347,8 +311,7 @@ class FrontendBanner extends \Frontend
                                                      WHERE
                                                         id=?")
                                         ->execute($banner_id);
-        if (0 == $objCat->numRows)
-        {
+        if (0 == $objCat->numRows) {
             return 0; // error, but the show must go on
         }
         $objCat->next();
@@ -371,9 +334,11 @@ class FrontendBanner extends \Frontend
      */
     protected function setReClickBlockerId($banner_id=0)
     {
-        if ($banner_id==0) { return; }// keine Banner ID, nichts zu tun
+        if ($banner_id==0) {
+            return;
+        }// keine Banner ID, nichts zu tun
         //das können mehrere sein!, mergen!
-        $this->setSession('ReClickBlocker', array($banner_id => time()), true);
+        $this->setSession('ReClickBlocker', [$banner_id => time()], true);
 
         return;
     }
@@ -386,14 +351,11 @@ class FrontendBanner extends \Frontend
     protected function getReClickBlockerId($banner_id=0)
     {
         $this->getSession('ReClickBlocker');
-        if (\count($this->_session))
-        {
+        if (\count($this->_session)) {
             reset($this->_session);
-            foreach ($this->_session as $key => $val)
-            {
+            foreach ($this->_session as $key => $val) {
                 if ($key == $banner_id &&
-                    $this->removeReClickBlockerId($key, $val) === true)
-                {
+                    $this->removeReClickBlockerId($key, $val) === true) {
                     // Key ist noch gültig und es muss daher geblockt werden
                     //fuer debug log_message('getReClickBlockerId Banner ID:'.$key,'Banner.log');
                     return true;
@@ -415,30 +377,23 @@ class FrontendBanner extends \Frontend
         $BannerBlockTime = time() - 60*5;  // 5 Minuten, 0-5 min wird geblockt
         if (isset($GLOBALS['TL_CONFIG']['mod_banner_block_time'])
             && (int) ($GLOBALS['TL_CONFIG']['mod_banner_block_time'])>0
-            )
-        {
+        ) {
             $BannerBlockTime = time() - 60*1*(int) ($GLOBALS['TL_CONFIG']['mod_banner_block_time']);
         }
 
-        if ($tstmap >  $BannerBlockTime)
-        {
+        if ($tstmap >  $BannerBlockTime) {
             BannerLog::writeLog(__METHOD__, __LINE__, ': BannerBlockTime: '.date("Y-m-d H:i:s", $BannerBlockTime));
             BannerLog::writeLog(__METHOD__, __LINE__, ': BannerSessiTime: '.date("Y-m-d H:i:s", $tstmap));
 
             return true;
-        }
-        else
-        {
+        } else {
             //wenn mehrere dann nur den Teil, nicht die ganze Session
             unset($this->_session[$banner_id]);
             //wenn Anzahl Banner in Session nun 0 dann Session loeschen
-            if (\count($this->_session) == 0)
-            {
+            if (\count($this->_session) == 0) {
                 //komplett löschen
                 \Session::getInstance()->remove('ReClickBlocker');
-            }
-            else //sonst neu setzen
-            {
+            } else { //sonst neu setzen
                 //gekuerzte Session neu setzen
                 $this->setSession('ReClickBlocker', $this->_session, false);
             }
@@ -467,20 +422,15 @@ class FrontendBanner extends \Frontend
      */
     protected function setSession($session_name, $arrData, $merge = false)
     {
-        if ($merge)
-        {
+        if ($merge) {
             $this->_session = \Session::getInstance()->get($session_name);
 
             // numerische Schlüssel werden neu numeriert, daher
             // geht nicht: array_merge($this->_session, $arrData)
             $merge_array = (array) $this->_session + $arrData;
             \Session::getInstance()->set($session_name, $merge_array);
-        }
-        else
-        {
+        } else {
             \Session::getInstance()->set($session_name, $arrData);
         }
-
     }
-
 }
