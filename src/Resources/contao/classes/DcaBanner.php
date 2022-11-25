@@ -488,19 +488,22 @@ class DcaBanner extends \Contao\Backend
             StringUtil::deserialize($row['banner_playerSRC'], true),
             ['mp4', 'm4v', 'mov', 'wmv', 'webm', 'ogv']
         );
-        $return = '<ul>';
+        $filelist = '<ul>';
 
         while ($objFiles && $objFiles->next()) {
             $objFile = new File($objFiles->path);
-            $return .= '<li>' . Image::getHtml($objFile->icon, '', 'class="mime_icon"') . ' <span>' . $objFile->name . '</span> <span class="size">(' . $this->getReadableSize($objFile->size) . ')</span></li>';
+            $filelist .= '<li>' . Image::getHtml($objFile->icon, '', 'class="mime_icon"') . ' <span style="font-weight:normal;">' . $objFile->name . '</span> <span class="size" style="font-weight:normal;">(' . $this->getReadableSize($objFile->size) . ')</span></li>';
         }
 
-        $return .= '</ul>';
+        $filelist .= '</ul>';
 
         //Output
         $output = '<div class="mod_banner_be">
-            <div class="name"><br>'.$row['banner_name'].$return.'<br>
-                <span style="font-weight:normal;">'.nl2br($row['banner_comment']).'<br><br>'.$banner_url_text .(\strlen($banner_url)<60 ? $banner_url : substr($banner_url, 0, 31)."[...]".substr($banner_url, -21, 21)).'</span>
+            <div class="name video"><br>'.$GLOBALS['TL_LANG']['tl_banner']['banner_playerSRC']['0'].':
+                <br>'.$filelist.'
+                <br>'.$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0'] . ': <span style="font-weight:normal;">'.nl2br($row['banner_comment']).'</span>
+                <br>
+                <br>'.$banner_url_text . '<span style="font-weight:normal;">' . (\strlen($banner_url)<60 ? $banner_url : substr($banner_url, 0, 31)."[...]".substr($banner_url, -21, 21)).'</span>
             </div>
             <div class="right">
                 <div class="left">
@@ -528,6 +531,15 @@ class DcaBanner extends \Contao\Backend
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['tl_be_max_clicks'].'</div>
                     <div class="date_data">' . (empty($row['banner_clicks_until']) ? $GLOBALS['TL_LANG']['tl_banner']['tl_be_not_defined_max'] : $row['banner_clicks_until']) . '</div>
+                </div>
+                <div style="clear:both;"></div>
+                <div class="left">
+                    <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_playerStart']['0'].'</div>
+                    <div class="date_data">' . (int) $row['banner_playerStart']. '</div>
+                </div>
+                <div class="left">
+                    <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_playerStop']['0'].'</div>
+                    <div class="date_data">' . ( (int) $row['banner_playerStop'] == 0 ? '' : (int) $row['banner_playerStop']) . '</div>
                 </div>
                 <div style="clear:both;"></div>
             </div>
