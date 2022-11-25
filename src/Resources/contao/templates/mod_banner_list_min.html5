@@ -28,8 +28,8 @@
                 <?php endforeach; ?>
             </video>
             <?php if ($banner['banner_url']): ?></a><?php endif; ?>
-        <?php if ($banner['video_caption']): ?>
-            <figcaption class="caption"><?= $banner['video_caption'] ?></figcaption>
+		<?php if ($banner['banner_comment']): ?>
+            <figcaption class="banner_video_comment"><?= $banner['banner_comment'] ?></figcaption>
         <?php endif; ?>
     </figure>
 <?php endif; ?>
