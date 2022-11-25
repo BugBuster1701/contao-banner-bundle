@@ -13,13 +13,13 @@
 
 namespace BugBuster\Banner;
 
+use function array_filter;
 use Contao\Environment;
 use Contao\File;
 use Contao\FilesModel;
 use Contao\PageModel;
-use Contao\StringUtil;
 
-use function array_filter;
+use Contao\StringUtil;
 
 /**
  * Class BannerVideo

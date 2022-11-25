@@ -20,34 +20,26 @@ $GLOBALS['TL_DCA']['tl_banner_stat'] =
 [
 
     // Config
-    'config' =>
-    [
+    'config' => [
         'dataContainer'               => 'Table',
-        'sql' =>
-        [
-            'keys' =>
-            [
+        'sql' => [
+            'keys' => [
                 'id'    => 'primary'
             ]
         ],
     ],
     // Fields
-    'fields' =>
-    [
-        'id' =>
-        [
+    'fields' => [
+        'id' => [
                 'sql'           => "int(10) unsigned NOT NULL default '0'"
         ],
-        'tstamp' =>
-        [
+        'tstamp' => [
                 'sql'           => "int(10) unsigned NOT NULL default '0'"
         ],
-        'banner_views' =>
-        [
+        'banner_views' => [
                 'sql'           => "int(10) unsigned NOT NULL default '0'"
         ],
-        'banner_clicks' =>
-        [
+        'banner_clicks' => [
                 'sql'           => "int(10) unsigned NOT NULL default '0'"
         ],
     ]
