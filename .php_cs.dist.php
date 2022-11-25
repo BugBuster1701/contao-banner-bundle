@@ -3,7 +3,7 @@
 $header = <<<EOF
 This file is part of a BugBuster Contao Bundle
 
-@copyright  Glen Langer 2020 <http://contao.ninja>
+@copyright  Glen Langer 2022 <http://contao.ninja>
 @author     Glen Langer (BugBuster)
 @package    Contao Banner Bundle
 @license    LGPL-3.0-or-later
@@ -17,7 +17,8 @@ $finder = PhpCsFixer\Finder::create()
     ])
 ;
 
-return PhpCsFixer\Config::create()
+$config = new PhpCsFixer\Config();
+return $config
     ->setRules([
         '@Symfony' => true,
         '@Symfony:risky' => true,
