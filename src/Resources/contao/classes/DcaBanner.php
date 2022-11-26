@@ -416,7 +416,8 @@ class DcaBanner extends \Contao\Backend
         //Output
         $output = '<div class="mod_banner_be">
             <div class="name"><br>'.$row['banner_name'].'<br>
-                <span style="font-weight:normal;">'.nl2br($row['banner_comment']).'<br><br>'.$banner_url_text .(\strlen($banner_url)<60 ? $banner_url : substr($banner_url, 0, 31)."[...]".substr($banner_url, -21, 21)).'</span>
+                <span style="font-weight:normal;">'.nl2br($row['banner_comment']).'</span>
+                <br><br>'.$banner_url_text . '<span style="font-weight:normal;">' . (\strlen($banner_url)<60 ? $banner_url : substr($banner_url, 0, 31)."[...]".substr($banner_url, -21, 21)).'</span>
             </div>
             <div class="right">
                 <div class="left">
