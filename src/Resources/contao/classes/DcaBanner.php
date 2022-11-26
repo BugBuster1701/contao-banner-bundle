@@ -26,6 +26,7 @@ use Contao\File;
 use Contao\FilesModel;
 use Contao\Image;
 use Contao\StringUtil;
+use Imagine\Exception\RuntimeException;
 use Psr\Log\LogLevel;
 
 class DcaBanner extends \Contao\Backend
@@ -497,12 +498,44 @@ class DcaBanner extends \Contao\Backend
 
         $filelist .= '</ul>';
 
+        //Poster
+        $thumbnail = '';
+        if ($row['banner_posterSRC'] && ($objFileThumb = FilesModel::findByUuid($row['banner_posterSRC'])) !== null) 
+        {
+            try
+            {
+                $thumbnail = $GLOBALS['TL_LANG']['tl_banner']['banner_posterSRC']['0'] .':<br>';
+                $thumbnailPath = $objFileThumb->path;
+                $rootDir = \Contao\System::getContainer()->getParameter('kernel.project_dir');
+                $thumbnail .= Image::getHtml(
+                                            \Contao\System::getContainer()
+                                                ->get('contao.image.image_factory') //4.13 contao.image.factory
+                                                ->create($rootDir . '/' . $thumbnailPath, 
+                                                        (new \Contao\Image\ResizeConfiguration())
+                                                            ->setWidth(60)
+                                                            ->setHeight(60)
+                                                            ->setMode(\Contao\Image\ResizeConfiguration::MODE_BOX)
+                                                            ->setZoomLevel(100)
+                                                        )
+                                                ->getUrl($rootDir), 
+                                                'poster-image', 
+                                                'class="poster-image"'
+                                            );
+                $thumbnail .= '<br><br>';
+            }
+            catch (RuntimeException $e)
+            {
+                $thumbnail = '<br><p class="preview-image broken-image">Broken poster image!</p><br>';
+            }
+        }
+        
         //Output
         $output = '<div class="mod_banner_be">
-            <div class="name video"><br>'.$GLOBALS['TL_LANG']['tl_banner']['banner_playerSRC']['0'].':
+            <div class="name video">
+                ' . $thumbnail . '
+                '.$GLOBALS['TL_LANG']['tl_banner']['banner_playerSRC']['0'].':
                 <br>'.$filelist.'
                 <br>'.$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0'] . ': <span style="font-weight:normal;">'.nl2br($row['banner_comment']).'</span>
-                <br>
                 <br>'.$banner_url_text . '<span style="font-weight:normal;">' . (\strlen($banner_url)<60 ? $banner_url : substr($banner_url, 0, 31)."[...]".substr($banner_url, -21, 21)).'</span>
             </div>
             <div class="right">
@@ -512,7 +545,7 @@ class DcaBanner extends \Contao\Backend
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_type'][0].'</div>
-                    <div class="date_data">'.$GLOBALS['TL_LANG']['tl_banner_type']['banner_text'].'</div>
+                    <div class="date_data">'.$GLOBALS['TL_LANG']['tl_banner']['source_intern'].'</div>
                 </div>
                 <div style="clear:both;"></div>
                 <div class="left">
