@@ -264,7 +264,7 @@ class DcaBanner extends \Contao\Backend
                 </div>
                 <div style="clear:both;"></div>
             </div>
-            <div class="url">'.$banner_url_text . (\strlen($banner_url)<80 ? $banner_url : substr($banner_url, 0, 36)."[...]".substr($banner_url, -36, 36)).'</div>
+            <div class="url name">'.$banner_url_text . '<span style="font-weight:normal;">' . (\strlen($banner_url)<80 ? $banner_url : substr($banner_url, 0, 36)."[...]".substr($banner_url, -36, 36)).'</span></div>
         </div>';
 
         $key = $row['banner_published'] ? 'published' : 'unpublished';
@@ -375,7 +375,7 @@ class DcaBanner extends \Contao\Backend
                 </div>
                 <div style="clear:both;"></div>
             </div>
-            <div class="url">'.$banner_url_text . (\strlen($banner_url)<80 ? $banner_url : substr($banner_url, 0, 36)."[...]".substr($banner_url, -36, 36)).'</div>
+            <div class="url name">'.$banner_url_text . '<span style="font-weight:normal;">' . (\strlen($banner_url)<80 ? $banner_url : substr($banner_url, 0, 36)."[...]".substr($banner_url, -36, 36)).'</span></div>
         </div>';
 
         $key = $row['banner_published'] ? 'published' : 'unpublished';
