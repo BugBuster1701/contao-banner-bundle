@@ -28,7 +28,7 @@ use BugBuster\Banner\BannerLog;
  * @copyright  Glen Langer 2013..2017 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  */
-class BannerStatisticsHelper extends \BackendModule
+class BannerStatisticsHelper extends \Contao\BackendModule
 {
     /**
      * Banner intern
@@ -87,7 +87,7 @@ class BannerStatisticsHelper extends \BackendModule
      */
     protected function getCatID()
     {
-        $objBannerCatID = \Database::getInstance()->prepare("SELECT 
+        $objBannerCatID = \Contao\Database::getInstance()->prepare("SELECT 
                                                                 MIN(pid) AS ID 
                                                              FROM 
                                                                 tl_banner")
@@ -124,7 +124,7 @@ class BannerStatisticsHelper extends \BackendModule
         $arrBanners = [];
 
         if ($CatID == -1) { // all Categories
-            $objBanners = \Database::getInstance()
+            $objBanners = \Contao\Database::getInstance()
                             ->prepare("SELECT 
                                             tb.id
                                           , tb.banner_type
@@ -142,6 +142,7 @@ class BannerStatisticsHelper extends \BackendModule
                                           , tb.banner_views_until
                                           , tb.banner_clicks_until
                                           , tb.banner_playerSRC
+                                          , tb.banner_posterSRC
                                           , tbs.banner_views
                                           , tbs.banner_clicks
                                        FROM 
@@ -154,7 +155,7 @@ class BannerStatisticsHelper extends \BackendModule
                                           , tb.sorting")
                             ->execute();
         } else {
-            $objBanners = \Database::getInstance()
+            $objBanners = \Contao\Database::getInstance()
                             ->prepare("SELECT
                                             tb.id
                                           , tb.banner_type
@@ -172,6 +173,7 @@ class BannerStatisticsHelper extends \BackendModule
                                           , tb.banner_views_until
                                           , tb.banner_clicks_until
                                           , tb.banner_playerSRC
+                                          , tb.banner_posterSRC
                                           , tbs.banner_views
                                           , tbs.banner_clicks
                                        FROM
@@ -188,8 +190,26 @@ class BannerStatisticsHelper extends \BackendModule
         $intRows = $objBanners->numRows;
         if ($intRows > 0) {
             while ($objBanners->next()) {
-                $arrBanners[] = ['id'                  => $objBanners->id, 'banner_type'         => $objBanners->banner_type, 'banner_name'         => $objBanners->banner_name, 'banner_url'          => $objBanners->banner_url, 'banner_jumpTo'       => $objBanners->banner_jumpTo, 'banner_image'        => $objBanners->banner_image, 'banner_image_extern' => $objBanners->banner_image_extern, 'banner_weighting'    => $objBanners->banner_weighting, 'banner_start'        => $objBanners->banner_start, 'banner_stop'         => $objBanners->banner_stop, 'banner_published'    => $objBanners->banner_published, 'banner_until'        => $objBanners->banner_until, 'banner_comment'      => $objBanners->banner_comment, 'banner_views_until'  => $objBanners->banner_views_until, 'banner_clicks_until' => $objBanners->banner_clicks_until, 'banner_views'        => $objBanners->banner_views, 'banner_clicks'       => $objBanners->banner_clicks, 'banner_playerSRC' => $objBanners->banner_playerSRC
-                                     ];
+                $arrBanners[] = ['id'                   => $objBanners->id
+                                , 'banner_type'         => $objBanners->banner_type
+                                , 'banner_name'         => $objBanners->banner_name
+                                , 'banner_url'          => $objBanners->banner_url
+                                , 'banner_jumpTo'       => $objBanners->banner_jumpTo
+                                , 'banner_image'        => $objBanners->banner_image
+                                , 'banner_image_extern' => $objBanners->banner_image_extern
+                                , 'banner_weighting'    => $objBanners->banner_weighting
+                                , 'banner_start'        => $objBanners->banner_start
+                                , 'banner_stop'         => $objBanners->banner_stop
+                                , 'banner_published'    => $objBanners->banner_published
+                                , 'banner_until'        => $objBanners->banner_until
+                                , 'banner_comment'      => $objBanners->banner_comment
+                                , 'banner_views_until'  => $objBanners->banner_views_until
+                                , 'banner_clicks_until' => $objBanners->banner_clicks_until
+                                , 'banner_views'        => $objBanners->banner_views
+                                , 'banner_clicks'       => $objBanners->banner_clicks
+                                , 'banner_playerSRC'    => $objBanners->banner_playerSRC
+                                , 'banner_posterSRC'    => $objBanners->banner_posterSRC
+                                ];
             } // while
         }
 
@@ -206,7 +226,7 @@ class BannerStatisticsHelper extends \BackendModule
     protected function getBannerCategories($banner_number)
     {
         // Kat sammeln
-        $objBannerCat = \Database::getInstance()
+        $objBannerCat = \Contao\Database::getInstance()
                             ->prepare("SELECT 
                                             id 
                                           , title 
@@ -272,7 +292,7 @@ class BannerStatisticsHelper extends \BackendModule
     {
         $arrBannerCats = [];
 
-        $objBannerCat = \Database::getInstance()
+        $objBannerCat = \Contao\Database::getInstance()
                             ->prepare("SELECT
                                             `id`
                                           , `title`
@@ -315,7 +335,7 @@ class BannerStatisticsHelper extends \BackendModule
         //Banner Ziel per Page?
         if ($Banner['banner_jumpTo'] > 0) {
             //url generieren
-            $objBannerNextPage = \Database::getInstance()
+            $objBannerNextPage = \Contao\Database::getInstance()
                                     ->prepare("SELECT 
                                                     id
                                                   , alias 
@@ -327,7 +347,7 @@ class BannerStatisticsHelper extends \BackendModule
                                     ->execute($Banner['banner_jumpTo']);
             if ($objBannerNextPage->numRows) {
                 //old $Banner['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
-                $objParent = \PageModel::findWithDetails($Banner['banner_jumpTo']);
+                $objParent = \Contao\PageModel::findWithDetails($Banner['banner_jumpTo']);
                 $Banner['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
                 BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url jumpto: ' . $Banner['banner_url']);
             }
@@ -414,9 +434,9 @@ class BannerStatisticsHelper extends \BackendModule
     protected function setZero()
     {
         //Banner
-        $intBID = (int) \Input::post('zid', true);
+        $intBID = (int) \Contao\Input::post('zid', true);
         if ($intBID>0) {
-            \Database::getInstance()->prepare("UPDATE
+            \Contao\Database::getInstance()->prepare("UPDATE
                                                     tl_banner_stat
                                                SET
                                                     tstamp=?
@@ -429,9 +449,9 @@ class BannerStatisticsHelper extends \BackendModule
             return;
         }
         //Category
-        $intCatBID = (int) \Input::post('catzid', true);
+        $intCatBID = (int) \Contao\Input::post('catzid', true);
         if ($intCatBID>0) {
-            \Database::getInstance()->prepare("UPDATE
+            \Contao\Database::getInstance()->prepare("UPDATE
                                                     tl_banner_stat
                                                INNER JOIN
                                                     tl_banner
@@ -472,7 +492,7 @@ class BannerStatisticsHelper extends \BackendModule
         }
 
         //mit isMemberOf ermitteln, ob user Member einer der Cat Groups ist
-        foreach (\StringUtil::deserialize($banner_stat_groups) as $id => $groupid) {
+        foreach (\Contao\StringUtil::deserialize($banner_stat_groups) as $id => $groupid) {
             if (true === $this->User->isMemberOf($groupid)) {
                 //DEBUG log_message('Ich bin in der richtigen Gruppe '.$groupid, 'banner.log');
                 return true; // User is Member of banner_stat_group

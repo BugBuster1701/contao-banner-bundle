@@ -27,6 +27,7 @@ use Contao\File;
 use Contao\FilesModel;
 use Contao\Image;
 use Contao\StringUtil;
+use Imagine\Exception\RuntimeException;
 
 /**
  * Class ModuleBannerStatistics
@@ -56,15 +57,15 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
     public function __construct()
     {
         parent::__construct();
-        \System::loadLanguageFile('tl_banner_stat');
+        \Contao\System::loadLanguageFile('tl_banner_stat');
 
-        if ((int) \Input::get('id') == 0) {
-            $this->intCatID = (int) \Input::post('id'); //id for redirect on banner reset, category reset
+        if ((int) \Contao\Input::get('id') == 0) {
+            $this->intCatID = (int) \Contao\Input::post('id'); //id for redirect on banner reset, category reset
         } else {
-            $this->intCatID = (int) \Input::get('id'); //directly category link
+            $this->intCatID = (int) \Contao\Input::get('id'); //directly category link
         }
 
-        if (\Input::post('act', true)=='zero') { //action banner reset, category reset
+        if (\Contao\Input::post('act', true)=='zero') { //action banner reset, category reset
             $this->setZero();
         }
         //Get Debug Settings
@@ -151,8 +152,8 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->Template->header_views     = $GLOBALS['TL_LANG']['tl_banner_stat']['views'];
         $this->Template->banner_version   = $GLOBALS['TL_LANG']['tl_banner_stat']['modname'] . ' ' . BANNER_VERSION .'.'. BANNER_BUILD;
         $this->Template->banner_footer    = $GLOBALS['TL_LANG']['tl_banner_stat']['comment'] ?? '';
-        $this->Template->banner_base      = \Environment::get('base');
-        $this->Template->banner_base_be   = \Environment::get('base') . 'contao'; //TODO deprecated
+        $this->Template->banner_base      = \Contao\Environment::get('base');
+        $this->Template->banner_base_be   = \Contao\Environment::get('base') . 'contao'; //TODO deprecated
         $this->Template->theme            = $this->getTheme();
         $this->Template->theme0           = 'default';
 
@@ -194,7 +195,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->setBannerPublishedActive($Banner);
 
         $arrBannersStat['banner_id']    = $Banner['id'];
-        $arrBannersStat['banner_name']    = \StringUtil::specialchars(ampersand($Banner['banner_name']));
+        $arrBannersStat['banner_name']    = \Contao\StringUtil::specialchars(ampersand($Banner['banner_name']));
         $arrBannersStat['banner_comment']    = nl2br($Banner['banner_comment']);
         $arrBannersStat['banner_url_kurz']    = $banner_url_kurz;
         $arrBannersStat['banner_url']    = (\strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'], -24, 24));
@@ -208,6 +209,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $arrBannersStat['banner_pic']    = false; // Es ist kein Bild
         $arrBannersStat['banner_flash']    = false;
         $arrBannersStat['banner_text']    = true;   // Es ist ein Textbanner
+        $arrBannersStat['banner_video']   = false;
 
         return $arrBannersStat;
     }
@@ -238,32 +240,64 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
             StringUtil::deserialize($Banner['banner_playerSRC'], true),
             ['mp4', 'm4v', 'mov', 'wmv', 'webm', 'ogv']
         );
-        $return = '<ul>';
+        $filelist = '<ul>';
 
         while ($objFiles && $objFiles->next()) {
             $objFile = new File($objFiles->path);
-            $return .= '<li>' . Image::getHtml($objFile->icon, '', 'class="mime_icon"') . ' <span>' . $objFile->name . '</span> <span class="size">(' . $this->getReadableSize($objFile->size) . ')</span></li>';
+            $filelist .= '<li>' . Image::getHtml($objFile->icon, '', 'class="mime_icon"') . ' <span>' . $objFile->name . '</span> <span class="size">(' . $this->getReadableSize($objFile->size) . ')</span></li>';
         }
 
-        $return .= '</ul>';
+        $filelist .= '</ul>';
 
-        $arrBannersStat['banner_id']    = $Banner['id'];
-        $arrBannersStat['banner_name']    = \StringUtil::specialchars(ampersand($Banner['banner_name']));
-        $arrBannersStat['banner_comment']    = nl2br($Banner['banner_comment']);
-        $arrBannersStat['banner_url_kurz']    = $banner_url_kurz;
-        $arrBannersStat['banner_url']    = (\strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'], -24, 24));
-        $arrBannersStat['banner_prio']    = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
+        //Poster
+        $thumbnail = '';
+        if ($Banner['banner_posterSRC'] && ($objFileThumb = FilesModel::findByUuid($Banner['banner_posterSRC'])) !== null) 
+        {
+            try
+            {
+                $thumbnail = $GLOBALS['TL_LANG']['tl_banner_stat']['poster'] .':<br>';
+                $thumbnailPath = $objFileThumb->path;
+                $rootDir = \Contao\System::getContainer()->getParameter('kernel.project_dir');
+                $thumbnail .= Image::getHtml(
+                                \Contao\System::getContainer()
+                                    ->get('contao.image.image_factory') //4.13 contao.image.factory
+                                    ->create($rootDir . '/' . $thumbnailPath, 
+                                            (new \Contao\Image\ResizeConfiguration())
+                                                ->setWidth(60)
+                                                ->setHeight(60)
+                                                ->setMode(\Contao\Image\ResizeConfiguration::MODE_BOX)
+                                                ->setZoomLevel(100)
+                                            )
+                                    ->getUrl($rootDir), 
+                                    'poster-image', 
+                                    'class="poster-image"'
+                                );
+                $thumbnail .= '<br><br>';
+            }
+            catch (RuntimeException $e)
+            {
+                $thumbnail = '<br><p class="preview-image broken-image">Broken poster image!</p><br>';
+            }
+        }
+
+        $arrBannersStat['banner_id']       = $Banner['id'];
+        $arrBannersStat['banner_name']     = \Contao\StringUtil::specialchars(ampersand($Banner['banner_name']));
+        $arrBannersStat['banner_comment']  = nl2br($Banner['banner_comment']);
+        $arrBannersStat['banner_url_kurz'] = $banner_url_kurz;
+        $arrBannersStat['banner_url']      = (\strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'], -24, 24));
+        $arrBannersStat['banner_prio']     = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
         $arrBannersStat['banner_views']    = ($MaxViewsClicks[0]) ? $Banner['banner_views']  .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
-        $arrBannersStat['banner_clicks']    = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
-        $arrBannersStat['banner_active']    = $Banner['banner_active'];
-        $arrBannersStat['banner_pub_class']    = $Banner['banner_published_class'];
-        $arrBannersStat['banner_zero']    = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text'];
-        $arrBannersStat['banner_confirm']    = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm'];
-        $arrBannersStat['banner_pic']    = false; // Es ist kein Bild
+        $arrBannersStat['banner_clicks']   = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
+        $arrBannersStat['banner_active']   = $Banner['banner_active'];
+        $arrBannersStat['banner_pub_class'] = $Banner['banner_published_class'];
+        $arrBannersStat['banner_zero']     = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text'];
+        $arrBannersStat['banner_confirm']  = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm'];
+        $arrBannersStat['banner_pic']      = false; // Es ist kein Bild
         $arrBannersStat['banner_flash']    = false;
-        $arrBannersStat['banner_text']    = false;
-        $arrBannersStat['banner_video']   = true;
-        $arrBannersStat['banner_videos']  = $return;
+        $arrBannersStat['banner_text']     = false;
+        $arrBannersStat['banner_video']    = true;
+        $arrBannersStat['banner_videos']   = $GLOBALS['TL_LANG']['tl_banner_stat']['player_src'] . ':<br>' . $filelist;
+        $arrBannersStat['banner_poster']   = $thumbnail;
 
         return $arrBannersStat;
     }
@@ -288,7 +322,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79
         $Banner['banner_url'] = preg_replace('/^app_dev\.php\//', '', $Banner['banner_url']); // #22
         //Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
-        $objFile = \FilesModel::findByPk($Banner['banner_image']);
+        $objFile = \Contao\FilesModel::findByPk($Banner['banner_image']);
         //BannerImage Class
         $this->BannerImage = new BannerImage();
 
@@ -401,7 +435,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                     if ($oriSize || $arrImageSize[2] == 1) { // GIF
                         $Banner['banner_image'] = $this->urlEncode($objFile->path);
                     } else {
-                        $container = \System::getContainer();
+                        $container = \Contao\System::getContainer();
                         $rootDir = $container->getParameter('kernel.project_dir');
                         $Banner['banner_image'] = $container
                                                     ->get('contao.image.image_factory')
@@ -412,8 +446,8 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 
                 $arrBannersStat['banner_id']     = $Banner['id'];
                 $arrBannersStat['banner_style']     = 'padding-bottom: 4px;';
-                $arrBannersStat['banner_name']     = 'Test '.\StringUtil::specialchars(ampersand($Banner['banner_name']));
-                $arrBannersStat['banner_alt']     = \StringUtil::specialchars(ampersand($Banner['banner_name']));
+                $arrBannersStat['banner_name']     = 'Test '.\Contao\StringUtil::specialchars(ampersand($Banner['banner_name']));
+                $arrBannersStat['banner_alt']     = \Contao\StringUtil::specialchars(ampersand($Banner['banner_name']));
                 $arrBannersStat['banner_title']     = $Banner['banner_url'];
                 $arrBannersStat['banner_url']     = (\strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'], -24, 24));
                 $arrBannersStat['banner_image']     = $Banner['banner_image'];
@@ -429,6 +463,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                 $arrBannersStat['banner_pic']     = true; // Es ist ein Bild
                 $arrBannersStat['banner_flash']     = false;
                 $arrBannersStat['banner_text']     = false;
+                $arrBannersStat['banner_video']   = false;
                 break;
             default:
                 if (self::BANNER_TYPE_EXTERN == $strBannerType) {
@@ -440,6 +475,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                 $arrBannersStat['banner_pic']     = true;
                 $arrBannersStat['banner_flash']     = false;
                 $arrBannersStat['banner_text']     = false;
+                $arrBannersStat['banner_video']   = false;
                 $arrBannersStat['banner_prio']     = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
                 $arrBannersStat['banner_views']     = ($MaxViewsClicks[0]) ? $Banner['banner_views']  .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
                 $arrBannersStat['banner_clicks']     = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] .'<br>'.$GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
