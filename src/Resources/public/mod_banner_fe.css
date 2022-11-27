@@ -14,13 +14,14 @@
 	font-weight:bold;
 }
 
-.mod_banner .banner_image
+.mod_banner .banner_video_comment
 {
-	margin:10px auto 0px auto;
+	margin:0px 0px 10px 0px;
 	text-align:center;
+	font-weight:bold;
 }
 
-.mod_banner .banner_flash
+.mod_banner .banner_image
 {
 	margin:10px auto 0px auto;
 	text-align:center;
