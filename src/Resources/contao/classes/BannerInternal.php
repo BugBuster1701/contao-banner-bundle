@@ -1,10 +1,10 @@
 <?php
 /**
- * Extension for Contao Open Source CMS, Copyright (C) 2005-2020 Leo Feyer
+ * Extension for Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
  *
  * BannerInternal - Frontend Helper Class
  *
- * @copyright  Glen Langer 2017..2020 <http://contao.ninja>
+ * @copyright  Glen Langer 2017..2022 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @licence    LGPL
  * @filesource
@@ -23,7 +23,7 @@ use Contao\System;
 /**
  * Class BannerInternal
  *
- * @copyright  Glen Langer 2017..2020 <http://contao.ninja>
+ * @copyright  Glen Langer 2017..2022 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */

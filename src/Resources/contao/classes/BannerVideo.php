@@ -1,6 +1,6 @@
 <?php
 /**
- * Extension for Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
+ * Extension for Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
  *
  * BannerVideo - Frontend Helper Class
  *

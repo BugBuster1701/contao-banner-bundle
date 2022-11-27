@@ -1,13 +1,13 @@
 <?php
 
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2020 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
  *
  * Modul Banner Config - Backend
  *
  * This is the banner configuration file.
  *
- * @copyright	Glen Langer 2007..2020 <http://contao.ninja>
+ * @copyright	Glen Langer 2007..2022 <http://contao.ninja>
  * @author      Glen Langer (BugBuster)
  * @license     LGPL
  * @filesource

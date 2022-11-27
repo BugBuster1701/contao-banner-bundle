@@ -1,10 +1,10 @@
 <?php
 /**
- * Extension for Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
+ * Extension for Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
  *
  * BannerText - Frontend Helper Class
  *
- * @copyright  Glen Langer 2017 <http://contao.ninja>
+ * @copyright  Glen Langer 2022 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @licence    LGPL
  * @filesource
@@ -18,7 +18,7 @@ use BugBuster\Banner\BannerHelper;
 /**
  * Class BannerText
  *
- * @copyright  Glen Langer 2017 <http://contao.ninja>
+ * @copyright  Glen Langer 2022 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */

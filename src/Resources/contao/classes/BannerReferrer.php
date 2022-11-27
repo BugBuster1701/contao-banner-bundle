@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2017 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
  *
  * Modul Banner - FE Class BannerReferrer
  *
- * @copyright	Glen Langer 2007..2017 <http://contao.ninja>
+ * @copyright	Glen Langer 2007..2022 <http://contao.ninja>
  * @author      Glen Langer (BugBuster)
  * @license     LGPL
  * @filesource
@@ -22,7 +22,7 @@ use BugBuster\Banner\BannerLog;
 /**
  * Class BannerReferrer
  *
- * @copyright  Glen Langer 2007..2017
+ * @copyright  Glen Langer 2007..2022 <http://contao.ninja>
  * @author     Glen Langer
  * @license    LGPL
  */

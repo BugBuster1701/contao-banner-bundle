@@ -1,14 +1,13 @@
 <?php
 
 /**
- * Contao Open Source CMS, Copyright (C) 2005-2020 Leo Feyer
+ * Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
  *
  * Modul Banner - Backend DCA tl_banner
  *
  * This is the data container array for table tl_banner.
  *
- * PHP version 5
- * @copyright  Glen Langer 2007..2020
+ * @copyright  Glen Langer 2007..2022 <http://contao.ninja>
  * @author     Glen Langer
  * @license    LGPL
  */
