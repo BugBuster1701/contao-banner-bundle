@@ -263,8 +263,8 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                                     ->get('contao.image.image_factory') //4.13 contao.image.factory
                                     ->create($rootDir . '/' . $thumbnailPath, 
                                             (new \Contao\Image\ResizeConfiguration())
-                                                ->setWidth(60)
-                                                ->setHeight(60)
+                                                ->setWidth(120)
+                                                ->setHeight(120)
                                                 ->setMode(\Contao\Image\ResizeConfiguration::MODE_BOX)
                                                 ->setZoomLevel(100)
                                             )
