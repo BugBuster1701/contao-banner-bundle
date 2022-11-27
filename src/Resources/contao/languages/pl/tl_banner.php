@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2021-01-14T22:19:47+01:00
+ * last-updated: 2022-11-25T19:32:49+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                        = 'Wysoki priorytet';
@@ -18,7 +18,7 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found']     = 'Żadna kategoria
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['0'] = 'Ograniczenie ilości kliknięć';
 $GLOBALS['TL_LANG']['tl_banner']['banner_clicks_until']['1'] = 'Po wprowadzeniu limitu ilości kliknięć, aktualny baner nie będzie więcej wyświetlany po osiągnięciu tej ilości kliknięć.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_comment']['0']      = 'Komentarz banera';
-$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Komantarz jest na potrzeby tagu <em>title</em> w kodzie HTML.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_comment']['1']      = 'Komantarz jest na potrzeby tagu <em>title</em> w kodzie HTML. Dla bannera wideo: dodatkowo jako linia komentarza.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['0']        = 'Obrazek banera';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image']['1']        = 'Wybierz baner. (GIF,JPG,PNG,WEBP)';
 $GLOBALS['TL_LANG']['tl_banner']['banner_image_extern']['0'] = 'URL obrazka banera';
@@ -71,3 +71,4 @@ $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']                = 'tak';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']        = 'Wewnętrzny obrazek banera';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern'] = 'Zewnętrzny obrazek banera';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']             = 'Wybierz';
+

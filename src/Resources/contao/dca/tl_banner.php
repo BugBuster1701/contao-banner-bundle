@@ -89,7 +89,7 @@ $GLOBALS['TL_DCA']['tl_banner'] =
           'banner_image'                => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;banner_overwritemeta;{destination_legend},banner_url,banner_jumpTo,banner_target;{image_legend},banner_image,banner_imgSize;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
           'banner_image_extern'         => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;{destination_legend},banner_url,banner_target;{image_legend},banner_image_extern,banner_imgSize;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
           'banner_text'                 => 'banner_type;{title_legend},banner_name,banner_weighting;{comment_legend},banner_comment;{destination_legend},banner_url,banner_jumpTo,banner_target;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until',
-          'banner_video'                => 'banner_type;{title_legend},banner_name,banner_weighting;{video_source_legend},banner_playerSRC;{player_legend},banner_playerSize,banner_playerStart,banner_playerStop,banner_playerCaption;{poster_legend:hide},banner_posterSRC;{comment_legend},banner_comment;{destination_legend},banner_url,banner_jumpTo,banner_target;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until'
+          'banner_video'                => 'banner_type;{title_legend},banner_name,banner_weighting;{video_source_legend},banner_playerSRC;{player_legend},banner_playerSize,banner_playerStart,banner_playerStop;{poster_legend:hide},banner_posterSRC;{comment_legend},banner_comment;{destination_legend},banner_url,banner_jumpTo,banner_target;{filter_legend:hide},banner_domain;{expert_legend:hide},banner_cssid;{publish_legend},banner_published,banner_start,banner_stop,banner_until'
     ],
     // Subpalettes
     'subpalettes' => [
@@ -291,7 +291,7 @@ $GLOBALS['TL_DCA']['tl_banner'] =
         'banner_playerStart' => [
             'exclude'                 => true,
             'inputType'               => 'text',
-            'eval'                    => ['rgxp'=>'natural', 'nospace'=>true, 'tl_class'=>'w50'],
+            'eval'                    => ['rgxp'=>'natural', 'nospace'=>true, 'tl_class'=>'w50 clr'],
             'sql'                     => "int(10) unsigned NOT NULL default 0"
         ],
         'banner_playerStop' => [
@@ -299,12 +299,6 @@ $GLOBALS['TL_DCA']['tl_banner'] =
             'inputType'               => 'text',
             'eval'                    => ['rgxp'=>'natural', 'nospace'=>true, 'tl_class'=>'w50'],
             'sql'                     => "int(10) unsigned NOT NULL default 0"
-        ],
-        'banner_playerCaption' => [
-            'exclude'                 => true,
-            'inputType'               => 'text',
-            'eval'                    => ['tl_class'=>'w50'],
-            'sql'                     => "varchar(255) NOT NULL default ''"
         ],
     ]
 ];

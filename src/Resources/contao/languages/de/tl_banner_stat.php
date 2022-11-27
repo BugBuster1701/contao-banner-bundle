@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-17T00:16:24+02:00
+ * last-updated: 2022-11-25T01:13:25+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_stat']['NoURL']                  = 'Keine URL';
@@ -31,6 +31,8 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['name']                   = 'Name';
 $GLOBALS['TL_LANG']['tl_banner_stat']['number_active_inactive'] = 'Anzahl der aktiven / inaktiven Banner';
 $GLOBALS['TL_LANG']['tl_banner_stat']['number_views_clicks']    = 'Anzahl der Ansichten / Klicks';
 $GLOBALS['TL_LANG']['tl_banner_stat']['picture']                = 'Banner';
+$GLOBALS['TL_LANG']['tl_banner_stat']['player_src']             = 'Video Dateien';
+$GLOBALS['TL_LANG']['tl_banner_stat']['poster']                 = 'Vorschaubild';
 $GLOBALS['TL_LANG']['tl_banner_stat']['prio']['1']              = 'hoch';
 $GLOBALS['TL_LANG']['tl_banner_stat']['prio']['2']              = 'normal';
 $GLOBALS['TL_LANG']['tl_banner_stat']['prio']['3']              = 'gering';
@@ -41,3 +43,4 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['select']                 = 'Bitte auswäh
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']                  = 'Ansichten';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm']           = 'View- und Klickstatistik wirklich auf 0 setzen für diesen Werbebanner?';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text']              = 'Bannerstatistik auf 0 setzen für diesen Banner.';
+

@@ -46,10 +46,18 @@ class BannerVideo
     public function generateTemplateData()
     {
         $banner_target = ($this->objBanners->banner_target == '1') ? '' : ' target="_blank"';
+        $banner_comment = (string) ampersand(nl2br($this->objBanners->banner_comment));
 
         $this->adjustBannerUrl();
         $banner_url_kurz = $this->getShortBannerUrl();
-        $strCaption = $this->objBanners->banner_playerCaption;
+        
+        $strCaption = '';
+        $video_files = $this->fetchVideoFiles($strCaption); //hier wird $strCaption aus Meta gesetzt falls möglich
+        // Bannerkommentar hat Vorrang gegenüber Meta Caption, Meta Caption wenn Bannerkommentar leer ist
+        if (strlen($banner_comment) == 0) {
+            $banner_comment = $strCaption;    
+        }
+        
 
         return [
             [
@@ -61,14 +69,13 @@ class BannerVideo
                 'banner_url'        => $this->objBanners->banner_url,
                 'banner_url_kurz'   => $banner_url_kurz,
                 'banner_target'     => $banner_target,
-                'banner_comment'    => ampersand(nl2br($this->objBanners->banner_comment)),
+                'banner_comment'    => $banner_comment,
                 'banner_pic'        => false,
                 'banner_flash'      => false,
                 'banner_text'       => false,
                 'banner_empty'      => false,    // issues 733
                 'banner_video'      => true,
-                'video_files'       => $this->fetchVideoFiles($strCaption),
-                'video_caption'     => $strCaption,
+                'video_files'       => $video_files,
                 'video_poster'      => $this->getPoster(),
                 'video_size'        => $this->getVideoSize(),
                 'video_range'       => $this->getVideoRange(),

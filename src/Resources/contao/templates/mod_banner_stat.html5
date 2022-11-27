@@ -129,7 +129,7 @@
 		             width ="<?= $bannerstat['banner_width']; ?>"
 		             title ="<?= $bannerstat['banner_title']; ?>"
 		            >
-		        <br><?= $this->header_url .': '. $bannerstat['banner_url']; ?>
+		        <br><span style="font-weight: bold;"><?= $this->header_url .':</span> '. $bannerstat['banner_url']; ?>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;" class="tl_file_list">&nbsp;</td>
 		    <td style="padding-left: 2px; text-align: left;" class="tl_file_list">
@@ -208,7 +208,7 @@
 		<tr>
 		    <td style="padding-left: 2px; padding-bottom: 6px; padding-top: 6px;" class="tl_file_list">
 		        <br><?= $bannerstat['banner_comment']; ?>
-		        <br><br><?= $this->header_url .': '. $bannerstat['banner_url']; ?>
+		        <br><br><span style="font-weight: bold;"><?= $this->header_url .':</span> '. $bannerstat['banner_url']; ?>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;" class="tl_file_list">&nbsp;</td>
 		    <td style="padding-left: 2px; text-align: left;" class="tl_file_list">
@@ -286,9 +286,10 @@
 		</tr>
 		<tr>
 		    <td style="padding-left: 2px; padding-bottom: 6px; padding-top: 6px;" class="tl_file_list">
-		        <?= $bannerstat['banner_videos'] ?>
+				<?= $bannerstat['banner_poster'] ?>
+		        <br><?= $bannerstat['banner_videos'] ?>
 		        <br><?= $bannerstat['banner_comment']; ?>
-		        <br><br><?= $this->header_url .': '. $bannerstat['banner_url']; ?>
+		        <br><br><span style="font-weight: bold;"><?= $this->header_url .':</span> '. $bannerstat['banner_url']; ?>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;" class="tl_file_list">&nbsp;</td>
 		    <td style="padding-left: 2px; text-align: left;" class="tl_file_list">
