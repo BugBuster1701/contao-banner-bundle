@@ -255,7 +255,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         {
             try
             {
-                $thumbnail = $GLOBALS['TL_LANG']['tl_banner_stat']['poster'] .':<br>';
+                $thumbnail = '<span style="font-weight: bold;">' . $GLOBALS['TL_LANG']['tl_banner_stat']['poster'] .':</span><br>';
                 $thumbnailPath = $objFileThumb->path;
                 $rootDir = \Contao\System::getContainer()->getParameter('kernel.project_dir');
                 $thumbnail .= Image::getHtml(
@@ -272,7 +272,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                                     'poster-image', 
                                     'class="poster-image"'
                                 );
-                $thumbnail .= '<br><br>';
+                $thumbnail .= '<br>';
             }
             catch (RuntimeException $e)
             {
@@ -296,7 +296,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $arrBannersStat['banner_flash']    = false;
         $arrBannersStat['banner_text']     = false;
         $arrBannersStat['banner_video']    = true;
-        $arrBannersStat['banner_videos']   = $GLOBALS['TL_LANG']['tl_banner_stat']['player_src'] . ':<br>' . $filelist;
+        $arrBannersStat['banner_videos']   = '<span style="font-weight: bold;">' . $GLOBALS['TL_LANG']['tl_banner_stat']['player_src'] . ':</span><br>' . $filelist;
         $arrBannersStat['banner_poster']   = $thumbnail;
 
         return $arrBannersStat;
