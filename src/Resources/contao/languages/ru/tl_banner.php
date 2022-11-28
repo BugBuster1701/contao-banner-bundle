@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2022-11-25T19:32:49+01:00
+ * last-updated: 2022-11-25T19:48:40+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner']['1']                         = 'Высокий приоритет';
@@ -38,6 +38,20 @@ $GLOBALS['TL_LANG']['tl_banner']['banner_name']['1']          = 'Введите 
 $GLOBALS['TL_LANG']['tl_banner']['banner_number_of']          = 'Количество баннеров';
 $GLOBALS['TL_LANG']['tl_banner']['banner_overwriteMeta']['0'] = 'Перезаписать метаданными файла';
 $GLOBALS['TL_LANG']['tl_banner']['banner_overwriteMeta']['1'] = 'Перезаписать тег alt (Имя баннера) и тег заголовка (Комментарий баннера) метаданными из файлового менеджера.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerAspect']['0']  = 'Соотношение сторон';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerAspect']['1']  = 'Вы можете выбрать соотношение сторон видео, чтобы сделать его адаптивным.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerOptions']['0'] = 'Параметры плеера';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerOptions']['1'] = 'Здесь можно выбрать параметры плеера.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerSRC']['0']     = 'Видео файлы';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerSRC']['1']     = 'Вы можете добавить видеофайл или несколько файлов, если используете разные кодеки.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerSize']['0']    = 'Размер плеера';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerSize']['1']    = 'Ширина и высота медиаплеера в пикселях (наприм., 640x480).';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerStart']['0']   = 'Начать с сек';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerStart']['1']   = 'Начать воспроизведение видео через указанное количество секунд.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerStop']['0']    = 'Остановить с сек';
+$GLOBALS['TL_LANG']['tl_banner']['banner_playerStop']['1']    = 'Остановить воспроизведение видео через указанное количество секунд. Установите 0, для отключения.';
+$GLOBALS['TL_LANG']['tl_banner']['banner_posterSRC']['0']     = 'Изображение для предварительного просмотра';
+$GLOBALS['TL_LANG']['tl_banner']['banner_posterSRC']['1']     = 'Показывать это изображение вместо первого кадра видео перед воспроизведением.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_published']['0']     = 'Опубликовать';
 $GLOBALS['TL_LANG']['tl_banner']['banner_published']['1']     = 'Если не выбрать эту опцию, баннер не будет показан.';
 $GLOBALS['TL_LANG']['tl_banner']['banner_start']['0']         = 'Показывать с';
@@ -69,6 +83,8 @@ $GLOBALS['TL_LANG']['tl_banner']['filter_legend']             = 'Фильтра�
 $GLOBALS['TL_LANG']['tl_banner']['image_legend']              = 'Изображение баннера';
 $GLOBALS['TL_LANG']['tl_banner']['new']['0']                  = 'Новый баннер';
 $GLOBALS['TL_LANG']['tl_banner']['new']['1']                  = 'Добавить новый баннер';
+$GLOBALS['TL_LANG']['tl_banner']['player_legend']             = 'Настройки плеера';
+$GLOBALS['TL_LANG']['tl_banner']['poster_legend']             = 'Изображение для предварительного просмотра';
 $GLOBALS['TL_LANG']['tl_banner']['publish_legend']            = 'Настройки публикации';
 $GLOBALS['TL_LANG']['tl_banner']['show']['0']                 = 'Детали баннера';
 $GLOBALS['TL_LANG']['tl_banner']['show']['1']                 = 'Показать детали баннера ID %s';
@@ -92,8 +108,10 @@ $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']                 = 'да';
 $GLOBALS['TL_LANG']['tl_banner']['toggle']['0']               = 'Переключение видимости';
 $GLOBALS['TL_LANG']['tl_banner']['toggle']['1']               = 'Переключения видимости баннера ID %s';
 $GLOBALS['TL_LANG']['tl_banner']['using_meta_data']           = 'Использование метаданных файла';
+$GLOBALS['TL_LANG']['tl_banner']['video_source_legend']       = 'Источник';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']         = 'Внутреннее изображение баннера';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern']  = 'Внешнее изображение баннера';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']          = 'Текст баннера';
+$GLOBALS['TL_LANG']['tl_banner_type']['banner_video']         = 'Видео баннер';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']              = 'Выберите';
 

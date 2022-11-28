@@ -8,7 +8,7 @@
  *
  * @license http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  *
- * last-updated: 2017-09-17T00:16:23+02:00
+ * last-updated: 2022-11-25T01:13:25+01:00
  */
 
 $GLOBALS['TL_LANG']['tl_banner_stat']['NoURL']                  = 'Нет URL';
@@ -31,6 +31,8 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['name']                   = 'Назван�
 $GLOBALS['TL_LANG']['tl_banner_stat']['number_active_inactive'] = 'Количество активных / неактивных баннеров';
 $GLOBALS['TL_LANG']['tl_banner_stat']['number_views_clicks']    = 'Количество просмотров / нажатий';
 $GLOBALS['TL_LANG']['tl_banner_stat']['picture']                = 'Изображение';
+$GLOBALS['TL_LANG']['tl_banner_stat']['player_src']             = 'Видео файлы';
+$GLOBALS['TL_LANG']['tl_banner_stat']['poster']                 = 'Изображение для предварительного просмотра';
 $GLOBALS['TL_LANG']['tl_banner_stat']['prio']['1']              = 'высокий';
 $GLOBALS['TL_LANG']['tl_banner_stat']['prio']['2']              = 'нормальный';
 $GLOBALS['TL_LANG']['tl_banner_stat']['prio']['3']              = 'низкий';
@@ -41,3 +43,4 @@ $GLOBALS['TL_LANG']['tl_banner_stat']['select']                 = 'Выбери�
 $GLOBALS['TL_LANG']['tl_banner_stat']['views']                  = 'Просмотров';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm']           = 'Вы хотите сбросить счетчик статистики баннера (просмотры и нажатия)';
 $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text']              = 'Счетчик статистики баннера будет сброшен.';
+
