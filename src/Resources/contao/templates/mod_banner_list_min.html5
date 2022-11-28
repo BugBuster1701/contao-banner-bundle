@@ -27,10 +27,7 @@
                     <source type="<?= $file->mime ?>" src="<?= $file->path.$banner['video_range'] ?>">
                 <?php endforeach; ?>
             </video>
-            <?php if ($banner['banner_url']): ?></a><?php endif; ?>
-		<?php if ($banner['banner_comment']): ?>
-            <figcaption class="banner_video_comment"><?= $banner['banner_comment'] ?></figcaption>
-        <?php endif; ?>
+		<?php if ($banner['banner_url']): ?></a><?php endif; ?>
     </figure>
 <?php endif; ?>
 <?php if ($banner['banner_empty']) : ?>
