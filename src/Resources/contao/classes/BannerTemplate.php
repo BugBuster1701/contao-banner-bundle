@@ -30,11 +30,11 @@ class BannerTemplate
 
         // Banner Seite als Ziel?
         if ($objBanners->banner_jumpTo > 0) {
-            $domain = \Environment::get('base');
-            $objParent = \PageModel::findWithDetails($objBanners->banner_jumpTo);
+            $domain = \Contao\Environment::get('base');
+            $objParent = \Contao\PageModel::findWithDetails($objBanners->banner_jumpTo);
             if ($objParent !== null) { // is null when page not exist anymore
                 if ($objParent->domain != '') {
-                    $domain = (\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
+                    $domain = (\Contao\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
                 }
                 // old $objBanners->banner_url = $domain . \Controller::generateFrontendUrl($objParent->row(), '', $objParent->language);
                 $objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator($objParent->row(), null, $objParent->language);
@@ -61,12 +61,12 @@ class BannerTemplate
                 'banner_wrap_id'    => $banner_cssID,
                 'banner_wrap_class' => $banner_class,
                 'banner_id'      => $objBanners->id,
-                'banner_name'    => \StringUtil::specialchars(ampersand($objBanners->banner_name)),
+                'banner_name'    => \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($objBanners->banner_name)),
                 'banner_url'     => $objBanners->banner_url,
                 'banner_target'  => $banner_target,
-                'banner_comment' => \StringUtil::specialchars(ampersand($objBanners->banner_comment)),
-                'src'            => \StringUtil::specialchars(ampersand($FileSrc)), //specialchars(ampersand($this->urlEncode($FileSrc))),
-                'alt'            => \StringUtil::specialchars(ampersand($objBanners->banner_name)),
+                'banner_comment' => \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($objBanners->banner_comment)),
+                'src'            => \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($FileSrc)), //specialchars(\Contao\StringUtil::ampersand($this->urlEncode($FileSrc))),
+                'alt'            => \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($objBanners->banner_name)),
                 'size'           => $arrImageSize[3],
                 'banner_pic'     => true,
                 'banner_flash'   => false,

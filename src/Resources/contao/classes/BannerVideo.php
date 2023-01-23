@@ -46,7 +46,7 @@ class BannerVideo
     public function generateTemplateData()
     {
         $banner_target = ($this->objBanners->banner_target == '1') ? '' : ' target="_blank"';
-        $banner_comment = (string) ampersand(nl2br($this->objBanners->banner_comment));
+        $banner_comment = (string) StringUtil::ampersand(nl2br($this->objBanners->banner_comment));
 
         $this->adjustBannerUrl();
         $banner_url_kurz = $this->getShortBannerUrl();
@@ -64,7 +64,7 @@ class BannerVideo
                 'banner_wrap_id'    => $this->banner_cssID,
                 'banner_wrap_class' => $this->banner_class,
                 'banner_id'         => $this->objBanners->id,
-                'banner_name'       => StringUtil::specialchars(ampersand($this->objBanners->banner_name)),
+                'banner_name'       => StringUtil::specialchars(StringUtil::ampersand($this->objBanners->banner_name)),
                 'banner_url'        => $this->objBanners->banner_url,
                 'banner_url_kurz'   => $banner_url_kurz,
                 'banner_target'     => $banner_target,

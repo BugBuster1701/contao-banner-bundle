@@ -41,11 +41,11 @@ class BannerText
 
         // Banner Seite als Ziel?
         if ($this->objBanners->banner_jumpTo > 0) {
-            $domain = \Environment::get('base');
-            $objParent = \PageModel::findWithDetails($this->objBanners->banner_jumpTo);
+            $domain = \Contao\Environment::get('base');
+            $objParent = \Contao\PageModel::findWithDetails($this->objBanners->banner_jumpTo);
             if ($objParent !== null) { // is null when page not exist anymore
                 if ($objParent->domain != '') {
-                    $domain = (\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
+                    $domain = (\Contao\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
                 }
                 //old $this->objBanners->banner_url = $domain . \Controller::generateFrontendUrl($objParent->row(), '', $objParent->language);
                 $this->objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator($objParent->row(), null, $objParent->language);
@@ -65,11 +65,11 @@ class BannerText
                             'banner_wrap_id'    => $this->banner_cssID,
                             'banner_wrap_class' => $this->banner_class,
                             'banner_id'      => $this->objBanners->id,
-                            'banner_name'    => \StringUtil::specialchars(ampersand($this->objBanners->banner_name)),
+                            'banner_name'    => \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($this->objBanners->banner_name)),
                             'banner_url'     => $this->objBanners->banner_url,
                             'banner_url_kurz'=> $banner_url_kurz,
                             'banner_target'  => $banner_target,
-                            'banner_comment' => ampersand(nl2br($this->objBanners->banner_comment)),
+                            'banner_comment' => \Contao\StringUtil::ampersand(nl2br($this->objBanners->banner_comment)),
                             'banner_pic'     => false,
                             'banner_flash'   => false,
                             'banner_text'    => true,

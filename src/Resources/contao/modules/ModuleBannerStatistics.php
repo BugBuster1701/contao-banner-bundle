@@ -195,7 +195,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         $this->setBannerPublishedActive($Banner);
 
         $arrBannersStat['banner_id']    = $Banner['id'];
-        $arrBannersStat['banner_name']    = \Contao\StringUtil::specialchars(ampersand($Banner['banner_name']));
+        $arrBannersStat['banner_name']    = \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($Banner['banner_name']));
         $arrBannersStat['banner_comment']    = nl2br($Banner['banner_comment']);
         $arrBannersStat['banner_url_kurz']    = $banner_url_kurz;
         $arrBannersStat['banner_url']    = (\strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'], -24, 24));
@@ -278,7 +278,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
         }
 
         $arrBannersStat['banner_id']       = $Banner['id'];
-        $arrBannersStat['banner_name']     = \Contao\StringUtil::specialchars(ampersand($Banner['banner_name']));
+        $arrBannersStat['banner_name']     = \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($Banner['banner_name']));
         $arrBannersStat['banner_comment']  = nl2br($Banner['banner_comment']);
         $arrBannersStat['banner_url_kurz'] = $banner_url_kurz;
         $arrBannersStat['banner_url']      = (\strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'], -24, 24));
@@ -443,8 +443,8 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 
                 $arrBannersStat['banner_id']     = $Banner['id'];
                 $arrBannersStat['banner_style']     = 'padding-bottom: 4px;';
-                $arrBannersStat['banner_name']     = 'Test '.\Contao\StringUtil::specialchars(ampersand($Banner['banner_name']));
-                $arrBannersStat['banner_alt']     = \Contao\StringUtil::specialchars(ampersand($Banner['banner_name']));
+                $arrBannersStat['banner_name']     = 'Test '.\Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($Banner['banner_name']));
+                $arrBannersStat['banner_alt']     = \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($Banner['banner_name']));
                 $arrBannersStat['banner_title']     = $Banner['banner_url'];
                 $arrBannersStat['banner_url']     = (\strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28)."[...]".substr($Banner['banner_url'], -24, 24));
                 $arrBannersStat['banner_image']     = $Banner['banner_image'];

@@ -193,7 +193,7 @@ class DcaBanner extends \Contao\Backend
                 BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $row['banner_url']);
             }
         }
-        $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
+        $banner_url = \Contao\StringUtil::ampersand(BannerHelper::decodePunycode($row['banner_url']));
         $banner_url = preg_replace('/^app_dev\.php\//', '', $banner_url);
         $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
         BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $banner_url);
@@ -215,7 +215,7 @@ class DcaBanner extends \Contao\Backend
             case 18: // WEBP
                 $output = '<div class="mod_banner_be">
                     <div class="name">
-                        <img alt="'.\Contao\StringUtil::specialchars(ampersand($row['banner_name'])).'" src="'. $banner_image .'" height="'.$intHeight.'" width="'.$intWidth.'">
+                        <img alt="'.\Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($row['banner_name'])).'" src="'. $banner_image .'" height="'.$intHeight.'" width="'.$intWidth.'">
                     </div>';
                 break;
             default:
@@ -269,7 +269,7 @@ class DcaBanner extends \Contao\Backend
 
         $key = $row['banner_published'] ? 'published' : 'unpublished';
         $style = 'class="tl_label"';
-        $output_h = '<div class="cte_type ' . $key . '"><span ' . $style . '>' . \Contao\StringUtil::specialchars(ampersand($row['banner_name'])) . '</span></div>';
+        $output_h = '<div class="cte_type ' . $key . '"><span ' . $style . '>' . \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($row['banner_name'])) . '</span></div>';
 
         return $output_h . $output;
     }
@@ -316,7 +316,7 @@ class DcaBanner extends \Contao\Backend
                 BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $row['banner_url']);
             }
         }
-        $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
+        $banner_url = \Contao\StringUtil::ampersand(BannerHelper::decodePunycode($row['banner_url']));
         if (\strlen($banner_url)>0) {
             $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
         } else {
@@ -331,7 +331,7 @@ class DcaBanner extends \Contao\Backend
             case 18: // WEBP
                 $output = '<div class="mod_banner_be">
                     <div class="name">
-                        <img alt="'.\Contao\StringUtil::specialchars(ampersand($row['banner_name'])).'" src="'. $banner_image .'" height="'.$intHeight.'" width="'.$intWidth.'">
+                        <img alt="'.\Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($row['banner_name'])).'" src="'. $banner_image .'" height="'.$intHeight.'" width="'.$intWidth.'">
                     </div>';
                 break;
             default:
@@ -380,7 +380,7 @@ class DcaBanner extends \Contao\Backend
 
         $key = $row['banner_published'] ? 'published' : 'unpublished';
         $style = 'class="tl_label"';
-        $output_h = '<div class="cte_type ' . $key . '"><span ' . $style . '>' . \Contao\StringUtil::specialchars(ampersand($row['banner_name'])) . '</span></div>';
+        $output_h = '<div class="cte_type ' . $key . '"><span ' . $style . '>' . \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($row['banner_name'])) . '</span></div>';
 
         return $output_h . $output;
     }
@@ -407,7 +407,7 @@ class DcaBanner extends \Contao\Backend
             }
         }
 
-        $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
+        $banner_url = \Contao\StringUtil::ampersand(BannerHelper::decodePunycode($row['banner_url']));
         if (\strlen($banner_url)>0) {
             $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
         } else {
@@ -452,7 +452,7 @@ class DcaBanner extends \Contao\Backend
 
         $key = $row['banner_published'] ? 'published' : 'unpublished';
         $style = 'class="tl_label"';
-        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><span ' . $style . '>' . \Contao\StringUtil::specialchars(ampersand($row['banner_name'])) . '</span></div>';
+        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><span ' . $style . '>' . \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($row['banner_name'])) . '</span></div>';
 
         return $output_h . $output;
     }
@@ -479,7 +479,7 @@ class DcaBanner extends \Contao\Backend
             }
         }
 
-        $banner_url = ampersand(BannerHelper::decodePunycode($row['banner_url']));
+        $banner_url = \Contao\StringUtil::ampersand(BannerHelper::decodePunycode($row['banner_url']));
         if (\strlen($banner_url)>0) {
             $banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0].': ';
         } else {
@@ -578,7 +578,7 @@ class DcaBanner extends \Contao\Backend
 
         $key = $row['banner_published'] ? 'published' : 'unpublished';
         $style = 'class="tl_label"';
-        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><span ' . $style . '>' . \Contao\StringUtil::specialchars(ampersand($row['banner_name'])) . '</span></div>';
+        $output_h = '<div class="cte_type ' . $key . '" ' . $style . '><span ' . $style . '>' . \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($row['banner_name'])) . '</span></div>';
 
         return $output_h . $output;
     }
