@@ -13,8 +13,8 @@
  * @filesource
  */
 
-\define('BANNER_VERSION', '1.4');
-\define('BANNER_BUILD', '2');
+\define('BANNER_VERSION', '1.5');
+\define('BANNER_BUILD', '0');
 
 /**
  * -------------------------------------------------------------------------
