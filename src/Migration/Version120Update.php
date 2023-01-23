@@ -57,7 +57,7 @@ class Version120Update extends AbstractMigration
      */
     public function shouldRun(): bool
     {
-        $schemaManager = $this->connection->getSchemaManager();
+        $schemaManager = $this->connection->createSchemaManager();
 
         if (!$schemaManager->tablesExist(['tl_banner'])) {
             return false;
@@ -73,7 +73,7 @@ class Version120Update extends AbstractMigration
      */
     public function run(): MigrationResult
     {
-        $this->connection->query("
+        $this->connection->executeQuery("
             ALTER TABLE
                 tl_banner
             ADD
@@ -89,11 +89,11 @@ class Version120Update extends AbstractMigration
                 banner_name = '' AND banner_comment = ''
         ");
 
-        $stmt->execute();
+		$result = $stmt->executeQuery();
 
         return new MigrationResult(
             true,
-            'Overwrite Metadata '.$stmt->rowCount().' x activated. (Banner Bundle)'
+            'Overwrite Metadata '.$result->rowCount().' x activated. (Banner Bundle)'
         );
     }
 }
