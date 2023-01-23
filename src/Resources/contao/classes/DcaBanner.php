@@ -501,35 +501,32 @@ class DcaBanner extends \Contao\Backend
 
         //Poster
         $thumbnail = '';
-        if ($row['banner_posterSRC'] && ($objFileThumb = FilesModel::findByUuid($row['banner_posterSRC'])) !== null) 
-        {
-            try
-            {
+        if ($row['banner_posterSRC'] && ($objFileThumb = FilesModel::findByUuid($row['banner_posterSRC'])) !== null) {
+            try {
                 $thumbnail = $GLOBALS['TL_LANG']['tl_banner']['banner_posterSRC']['0'] .':<br>';
                 $thumbnailPath = $objFileThumb->path;
                 $rootDir = \Contao\System::getContainer()->getParameter('kernel.project_dir');
                 $thumbnail .= Image::getHtml(
-                                            \Contao\System::getContainer()
-                                                ->get('contao.image.image_factory') //4.13 contao.image.factory
-                                                ->create($rootDir . '/' . $thumbnailPath, 
-                                                        (new \Contao\Image\ResizeConfiguration())
-                                                            ->setWidth(120)
-                                                            ->setHeight(120)
-                                                            ->setMode(\Contao\Image\ResizeConfiguration::MODE_BOX)
-                                                            ->setZoomLevel(100)
-                                                        )
-                                                ->getUrl($rootDir), 
-                                                'poster-image', 
-                                                'class="poster-image"'
-                                            );
+                    \Contao\System::getContainer()
+                        ->get('contao.image.image_factory') //4.13 contao.image.factory
+                        ->create(
+                            $rootDir . '/' . $thumbnailPath,
+                            (new \Contao\Image\ResizeConfiguration())
+                                ->setWidth(120)
+                                ->setHeight(120)
+                                ->setMode(\Contao\Image\ResizeConfiguration::MODE_BOX)
+                                ->setZoomLevel(100)
+                        )
+                        ->getUrl($rootDir),
+                    'poster-image',
+                    'class="poster-image"'
+                );
                 $thumbnail .= '<br><br>';
-            }
-            catch (RuntimeException $e)
-            {
+            } catch (RuntimeException $e) {
                 $thumbnail = '<br><p class="preview-image broken-image">Broken poster image!</p><br>';
             }
         }
-        
+
         //Output
         $output = '<div class="mod_banner_be">
             <div class="name video">
@@ -573,7 +570,7 @@ class DcaBanner extends \Contao\Backend
                 </div>
                 <div class="left">
                     <div class="date_head">'.$GLOBALS['TL_LANG']['tl_banner']['banner_playerStop']['0'].'</div>
-                    <div class="date_data">' . ( (int) $row['banner_playerStop'] == 0 ? '' : (int) $row['banner_playerStop']) . '</div>
+                    <div class="date_data">' . ((int) $row['banner_playerStop'] == 0 ? '' : (int) $row['banner_playerStop']) . '</div>
                 </div>
                 <div style="clear:both;"></div>
             </div>

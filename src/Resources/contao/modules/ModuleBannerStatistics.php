@@ -251,31 +251,28 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 
         //Poster
         $thumbnail = '';
-        if ($Banner['banner_posterSRC'] && ($objFileThumb = FilesModel::findByUuid($Banner['banner_posterSRC'])) !== null) 
-        {
-            try
-            {
+        if ($Banner['banner_posterSRC'] && ($objFileThumb = FilesModel::findByUuid($Banner['banner_posterSRC'])) !== null) {
+            try {
                 $thumbnail = '<span style="font-weight: bold;">' . $GLOBALS['TL_LANG']['tl_banner_stat']['poster'] .':</span><br>';
                 $thumbnailPath = $objFileThumb->path;
                 $rootDir = \Contao\System::getContainer()->getParameter('kernel.project_dir');
                 $thumbnail .= Image::getHtml(
-                                \Contao\System::getContainer()
-                                    ->get('contao.image.image_factory') //4.13 contao.image.factory
-                                    ->create($rootDir . '/' . $thumbnailPath, 
-                                            (new \Contao\Image\ResizeConfiguration())
-                                                ->setWidth(120)
-                                                ->setHeight(120)
-                                                ->setMode(\Contao\Image\ResizeConfiguration::MODE_BOX)
-                                                ->setZoomLevel(100)
-                                            )
-                                    ->getUrl($rootDir), 
-                                    'poster-image', 
-                                    'class="poster-image"'
-                                );
+                    \Contao\System::getContainer()
+                        ->get('contao.image.image_factory') //4.13 contao.image.factory
+                        ->create(
+                            $rootDir . '/' . $thumbnailPath,
+                            (new \Contao\Image\ResizeConfiguration())
+                                ->setWidth(120)
+                                ->setHeight(120)
+                                ->setMode(\Contao\Image\ResizeConfiguration::MODE_BOX)
+                                ->setZoomLevel(100)
+                        )
+                        ->getUrl($rootDir),
+                    'poster-image',
+                    'class="poster-image"'
+                );
                 $thumbnail .= '<br>';
-            }
-            catch (RuntimeException $e)
-            {
+            } catch (RuntimeException $e) {
                 $thumbnail = '<br><p class="preview-image broken-image">Broken poster image!</p><br>';
             }
         }

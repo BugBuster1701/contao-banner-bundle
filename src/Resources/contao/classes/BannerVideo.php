@@ -50,14 +50,13 @@ class BannerVideo
 
         $this->adjustBannerUrl();
         $banner_url_kurz = $this->getShortBannerUrl();
-        
+
         $strCaption = '';
         $video_files = $this->fetchVideoFiles($strCaption); //hier wird $strCaption aus Meta gesetzt falls möglich
         // Bannerkommentar hat Vorrang gegenüber Meta Caption, Meta Caption wenn Bannerkommentar leer ist
-        if (strlen($banner_comment) == 0) {
-            $banner_comment = $strCaption;    
+        if (\strlen($banner_comment) == 0) {
+            $banner_comment = $strCaption;
         }
-        
 
         return [
             [

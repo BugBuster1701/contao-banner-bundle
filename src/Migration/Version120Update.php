@@ -89,7 +89,7 @@ class Version120Update extends AbstractMigration
                 banner_name = '' AND banner_comment = ''
         ");
 
-		$result = $stmt->executeQuery();
+        $result = $stmt->executeQuery();
 
         return new MigrationResult(
             true,
