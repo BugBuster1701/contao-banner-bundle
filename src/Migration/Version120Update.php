@@ -86,7 +86,7 @@ class Version120Update extends AbstractMigration
             SET
                 banner_overwritemeta = '1'
             WHERE
-                banner_name = '' AND banner_comment = ''
+                banner_name = '' AND ( banner_comment = '' OR banner_comment is NULL )
         ");
 
         $result = $stmt->executeQuery();
