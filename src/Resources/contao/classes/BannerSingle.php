@@ -29,7 +29,7 @@ use Contao\FrontendTemplate;
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
-class BannerSingle extends \Frontend
+class BannerSingle extends \Contao\Frontend
 {
     /**
      * Banner intern
@@ -88,7 +88,7 @@ class BannerSingle extends \Frontend
             if (($this->banner_template != $this->strTemplate)
               && ($this->banner_template != '')) {
                 $this->strTemplate = $this->banner_template;
-                $this->Template = new \FrontendTemplate($this->strTemplate);
+                $this->Template = new FrontendTemplate($this->strTemplate);
             }
 
             $banner_default_target = ($this->arrCategoryValues['banner_default_target'] == '1') ? '' : ' target="_blank"';
@@ -112,7 +112,7 @@ class BannerSingle extends \Frontend
                 'height' => $arrImageSize[1],
                 'srcset' => $this->urlEncode($this->arrCategoryValues['banner_default_image'])
             ];
-            $picture['alt']   = \StringUtil::specialchars(ampersand($this->arrCategoryValues['banner_default_name']));
+            $picture['alt']   = \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($this->arrCategoryValues['banner_default_name']));
             $picture['title'] = '';
 
             BannerLog::writeLog(__METHOD__, __LINE__, 'Fake Picture: '. print_r($picture, true));
@@ -128,12 +128,12 @@ class BannerSingle extends \Frontend
                                     'banner_wrap_id'    => $banner_cssID,
                                     'banner_wrap_class' => $banner_class,
                                     'banner_id'      => $this->arrCategoryValues['id'],
-                                    'banner_name'    => \StringUtil::specialchars(ampersand($this->arrCategoryValues['banner_default_name'])),
+                                    'banner_name'    => \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($this->arrCategoryValues['banner_default_name'])),
                                     'banner_url'     => $this->arrCategoryValues['banner_default_url'],
                                     'banner_target'  => $banner_default_target,
-                                    'banner_comment' => \StringUtil::specialchars(ampersand($this->arrCategoryValues['banner_default_name'])),
+                                    'banner_comment' => \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($this->arrCategoryValues['banner_default_name'])),
                                     'src'            => $this->urlEncode($this->arrCategoryValues['banner_default_image']),
-                                    'alt'            => \StringUtil::specialchars(ampersand($this->arrCategoryValues['banner_default_name'])),
+                                    'alt'            => \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($this->arrCategoryValues['banner_default_name'])),
                                     'size'     		 => '',
                                     'banner_pic'     => true,
                                     'banner_flash'   => false,
@@ -158,7 +158,7 @@ class BannerSingle extends \Frontend
                             'banner_wrap_id'    => $banner_cssID,
                             'banner_wrap_class' => $banner_class,
                             'banner_id'   => 0,
-                            'banner_name' => \StringUtil::specialchars(ampersand($NoBannerFound)),
+                            'banner_name' => \Contao\StringUtil::specialchars(\Contao\StringUtil::ampersand($NoBannerFound)),
                             'banner_url'  => '',
                             'banner_target'  => '',
                             'banner_comment' => '',
@@ -177,7 +177,7 @@ class BannerSingle extends \Frontend
             // auf Leer umschalten
             $this->strTemplate='mod_banner_empty';
             $this->Template->arrCategoryValues = $this->arrCategoryValues; // #7 / #176 (Banner)
-            $this->Template = new \FrontendTemplate($this->strTemplate);
+            $this->Template = new FrontendTemplate($this->strTemplate);
             BannerLog::writeLog(__METHOD__, __LINE__, 'Kein BannerDefault, umschalten auf leeres Template');
         }
         $this->Template->banners = $arrResults;
@@ -202,7 +202,7 @@ class BannerSingle extends \Frontend
         //seltsamerweise kommt reference Fehler bei Kombination in einer Anweisung, daher getrennt
         $banner_keys = array_keys($this->arrAllBannersBasic);
         $banner_id   = array_shift($banner_keys);
-        $objBanners  = \Database::getInstance()
+        $objBanners  = \Contao\Database::getInstance()
                             ->prepare(
                                 "SELECT
                             	            TLB.*
@@ -222,7 +222,7 @@ class BannerSingle extends \Frontend
             $banner_cssID   = '';
             $banner_class   = '';
             $banner_classes = '';
-            $_cssID = \StringUtil::deserialize($objBanners->banner_cssid);
+            $_cssID = \Contao\StringUtil::deserialize($objBanners->banner_cssid);
             if (\is_array($_cssID)) {
                 if ($_cssID[0] != '') {
                     $banner_cssID   = ' id="banner_'.$_cssID[0].'"';
@@ -251,7 +251,7 @@ class BannerSingle extends \Frontend
                         && ($this->banner_template != '')
                     ) {
                         $this->strTemplate = $this->banner_template;
-                        $this->Template = new \FrontendTemplate($this->strTemplate);
+                        $this->Template = new FrontendTemplate($this->strTemplate);
                     }
                     $this->setStatViewUpdate($arrBanners, $module_id, $objBanners->banner_useragent);
                     $this->Template->banners = $arrBanners;
@@ -275,7 +275,7 @@ class BannerSingle extends \Frontend
                         && ($this->banner_template != '')
                     ) {
                         $this->strTemplate = $this->banner_template;
-                        $this->Template = new \FrontendTemplate($this->strTemplate);
+                        $this->Template = new FrontendTemplate($this->strTemplate);
                     }
                     $this->setStatViewUpdate($arrBanners, $module_id, $objBanners->banner_useragent);
                     $this->Template->banners = $arrBanners;
@@ -299,7 +299,7 @@ class BannerSingle extends \Frontend
                  && ($this->banner_template != '')
                 ) {
                     $this->strTemplate = $this->banner_template;
-                    $this->Template = new \FrontendTemplate($this->strTemplate);
+                    $this->Template = new FrontendTemplate($this->strTemplate);
                 }
                 $arrResults[] = $arrBanners[0];
                 $this->Template->banners = $arrResults;
@@ -372,7 +372,7 @@ class BannerSingle extends \Frontend
         //Random Blocker setzen
         $objBannerLogic->setRandomBlockerId($banner_id, $module_id);
 
-        $objBanners  = \Database::getInstance()
+        $objBanners  = \Contao\Database::getInstance()
                             ->prepare(
                                 "SELECT
                             	            TLB.*
@@ -392,7 +392,7 @@ class BannerSingle extends \Frontend
             $banner_cssID   = '';
             $banner_class   = '';
             $banner_classes = '';
-            $_cssID = \StringUtil::deserialize($objBanners->banner_cssid);
+            $_cssID = \Contao\StringUtil::deserialize($objBanners->banner_cssid);
             if (\is_array($_cssID)) {
                 if ($_cssID[0] != '') {
                     $banner_cssID   = ' id="banner_'.$_cssID[0].'"';
@@ -421,7 +421,7 @@ class BannerSingle extends \Frontend
                         && ($this->banner_template != '')
                     ) {
                         $this->strTemplate = $this->banner_template;
-                        $this->Template = new \FrontendTemplate($this->strTemplate);
+                        $this->Template = new FrontendTemplate($this->strTemplate);
                     }
                     $this->setStatViewUpdate($arrBanners, $module_id, $objBanners->banner_useragent);
                     $this->Template->banners = $arrBanners;
@@ -445,7 +445,7 @@ class BannerSingle extends \Frontend
                         && ($this->banner_template != '')
                     ) {
                         $this->strTemplate = $this->banner_template;
-                        $this->Template = new \FrontendTemplate($this->strTemplate);
+                        $this->Template = new FrontendTemplate($this->strTemplate);
                     }
                     $this->setStatViewUpdate($arrBanners, $module_id, $objBanners->banner_useragent);
                     $this->Template->banners = $arrBanners;
@@ -468,7 +468,7 @@ class BannerSingle extends \Frontend
                  && ($this->banner_template != '')
                 ) {
                     $this->strTemplate = $this->banner_template;
-                    $this->Template = new \FrontendTemplate($this->strTemplate);
+                    $this->Template = new FrontendTemplate($this->strTemplate);
                 }
                 $arrResults[] = $arrBanners[0];
                 $this->Template->banners = $arrResults;

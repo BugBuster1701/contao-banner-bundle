@@ -71,4 +71,3 @@ $GLOBALS['TL_LANG']['tl_banner']['tl_be_yes']                = 'tak';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']        = 'Wewnętrzny obrazek banera';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern'] = 'Zewnętrzny obrazek banera';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']             = 'Wybierz';
-

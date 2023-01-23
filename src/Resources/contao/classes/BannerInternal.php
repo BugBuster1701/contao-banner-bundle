@@ -106,10 +106,10 @@ class BannerInternal
             //fake the Picture::create
             $picture['img']   =
             [
-                'src'    => StringUtil::specialchars(ampersand($FileSrc)),
+                'src'    => StringUtil::specialchars(\Contao\StringUtil::ampersand($FileSrc)),
                 'width'  => $arrImageSizenNew[0],
                 'height' => $arrImageSizenNew[1],
-                'srcset' => StringUtil::specialchars(ampersand($FileSrc))
+                'srcset' => StringUtil::specialchars(\Contao\StringUtil::ampersand($FileSrc))
             ];
             $arrMeta = $this->getBannerMetaData($this->objBanners, $objFile);
             $picture['alt']   = $arrMeta['alt'];
@@ -185,8 +185,8 @@ class BannerInternal
     {
         $arrMeta = [];
         if ($objBanners->banner_overwritemeta != '1') {
-            $arrMeta['alt']   = StringUtil::specialchars(ampersand($objBanners->banner_name));
-            $arrMeta['title'] = StringUtil::specialchars(ampersand($objBanners->banner_comment));
+            $arrMeta['alt']   = StringUtil::specialchars(\Contao\StringUtil::ampersand($objBanners->banner_name));
+            $arrMeta['title'] = StringUtil::specialchars(\Contao\StringUtil::ampersand($objBanners->banner_comment));
 
             return $arrMeta;
         }
@@ -202,10 +202,10 @@ class BannerInternal
             }
         }
         if (empty($arrMeta['alt'])) {
-            $arrMeta['alt']   = StringUtil::specialchars(ampersand($objBanners->banner_name));
+            $arrMeta['alt']   = StringUtil::specialchars(\Contao\StringUtil::ampersand($objBanners->banner_name));
         }
         if (empty($arrMeta['title'])) {
-            $arrMeta['title']   = StringUtil::specialchars(ampersand($objBanners->banner_comment));
+            $arrMeta['title']   = StringUtil::specialchars(\Contao\StringUtil::ampersand($objBanners->banner_comment));
         }
 
         return $arrMeta;

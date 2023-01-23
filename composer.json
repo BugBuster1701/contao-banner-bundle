@@ -25,8 +25,8 @@
 		"forum":"https://community.contao.org/de/forumdisplay.php?24-banner"
 	},
 	"require":{
-		"php": "^7.2 || ^8.0",
-		"contao/core-bundle": "~4.9",
+		"php": "^8.0",
+		"contao/core-bundle": "~4.13",
 		"bugbuster/contao-botdetection-bundle":">=1.7.0,<2"
 	},
 	"require-dev": {

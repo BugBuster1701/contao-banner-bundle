@@ -79,4 +79,3 @@ $GLOBALS['TL_LANG']['tl_banner_type']['banner_image']        = 'Intern banner-bi
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern'] = 'Extern banner-bild';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']         = 'Text-banner';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']             = 'Välj';
-

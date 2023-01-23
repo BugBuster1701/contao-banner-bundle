@@ -94,13 +94,13 @@ class BannerExternal
         //fake the Picture::create
         $picture['img']   =
         [
-            'src'    => StringUtil::specialchars(ampersand($FileSrc)),
+            'src'    => StringUtil::specialchars(\Contao\StringUtil::ampersand($FileSrc)),
             'width'  => $arrImageSizenNew[0],
             'height' => $arrImageSizenNew[1],
-            'srcset' => StringUtil::specialchars(ampersand($FileSrc))
+            'srcset' => StringUtil::specialchars(\Contao\StringUtil::ampersand($FileSrc))
         ];
-        $picture['alt']   = StringUtil::specialchars(ampersand($this->objBanners->banner_name));
-        $picture['title'] = StringUtil::specialchars(ampersand($this->objBanners->banner_comment));
+        $picture['alt']   = StringUtil::specialchars(\Contao\StringUtil::ampersand($this->objBanners->banner_name));
+        $picture['title'] = StringUtil::specialchars(\Contao\StringUtil::ampersand($this->objBanners->banner_comment));
 
         $arrImageSize[0] = $arrImageSizenNew[0];
         $arrImageSize[1] = $arrImageSizenNew[1];

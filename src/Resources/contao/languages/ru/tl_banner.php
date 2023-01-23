@@ -114,4 +114,3 @@ $GLOBALS['TL_LANG']['tl_banner_type']['banner_image_extern']  = 'Внешнее 
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_text']          = 'Текст баннера';
 $GLOBALS['TL_LANG']['tl_banner_type']['banner_video']         = 'Видео баннер';
 $GLOBALS['TL_LANG']['tl_banner_type']['default']              = 'Выберите';
-

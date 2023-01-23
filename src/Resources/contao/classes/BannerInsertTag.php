@@ -67,7 +67,7 @@ class BannerInsertTag extends BannerHelper
      */
     public function replaceInsertTagsBanner($strTag)
     {
-        $arrTag = \StringUtil::trimsplit('::', $strTag);
+        $arrTag = \Contao\StringUtil::trimsplit('::', $strTag);
         if ($arrTag[0] != 'banner_module') {
             if ($arrTag[0] != 'cache_banner_module') {
                 return false; // nicht für uns
@@ -127,7 +127,7 @@ class BannerInsertTag extends BannerHelper
     protected function getModuleData($moduleId)
     {
         $this->module_id = $moduleId; //for RandomBlocker Session
-        $objBannerModule = \Database::getInstance()->prepare("SELECT 
+        $objBannerModule = \Contao\Database::getInstance()->prepare("SELECT 
                                                                     banner_hideempty,
                                                         	        banner_firstview,
                                                         	        banner_categories,
@@ -176,11 +176,11 @@ class BannerInsertTag extends BannerHelper
             // Eingeloggter FE Nutzer darf nichts sehen, falsche Gruppe
             // auf Leer umschalten
             $this->strTemplate='mod_banner_empty';
-            $this->Template = new \FrontendTemplate($this->strTemplate);
+            $this->Template = new \Contao\FrontendTemplate($this->strTemplate);
 
             return $this->Template->parse();
         }
-        $this->Template = new \FrontendTemplate($this->strTemplate);
+        $this->Template = new \Contao\FrontendTemplate($this->strTemplate);
 
         if ($this->statusAllBannersBasic === false) {
             //keine Banner vorhanden in der Kategorie
@@ -260,7 +260,7 @@ class BannerInsertTag extends BannerHelper
         //Modul direkt im Layout
         if ('mod_' == $this->typePrefix) {
             //CSS-ID/Klasse
-            $_cssID = \StringUtil::deserialize($this->cssID);
+            $_cssID = \Contao\StringUtil::deserialize($this->cssID);
             $this->Template->cssID = '';
             $this->Template->class = 'mod_banner';
             if ($_cssID[0] != '') {
@@ -272,7 +272,7 @@ class BannerInsertTag extends BannerHelper
 
             //Abstand davor und dahinter, wenn vorhanden
             if (!empty($this->space)) {
-                $_style = \StringUtil::deserialize($this->space);
+                $_style = \Contao\StringUtil::deserialize($this->space);
                 if ("" != $_style[0]) {
                     $this->Template->style .= 'margin-top:'.$_style[0].'px; ';
                 }
@@ -291,7 +291,7 @@ class BannerInsertTag extends BannerHelper
             $this->Template->style = $this->article_style;
         }
         //headline
-        $_headline = \StringUtil::deserialize($this->headline);
+        $_headline = \Contao\StringUtil::deserialize($this->headline);
         if ("" != $_headline['value']) {
             $this->Template->hl       = $_headline['unit'];
             $this->Template->headline = $_headline['value'];
