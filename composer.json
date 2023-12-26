@@ -1,6 +1,6 @@
 {
 	"name":"bugbuster/contao-banner-bundle",
-	"description":"Contao 4 bundle, a banner advertisement module for Contao CMS",
+	"description":"Contao 5 bundle, a banner advertisement module for Contao CMS",
 	"keywords":["contao","bundle","counter","banner","advertisement"],
 	"type":"contao-bundle",
 	"homepage":"http://contao.ninja",
@@ -21,17 +21,18 @@
 	"support":{
 		"issues":"https://github.com/BugBuster1701/contao-banner-bundle/issues",
 		"source":"https://github.com/BugBuster1701/contao-banner-bundle",
-		"wiki":"http://de.contaowiki.org/Banner",
+		"docs":"https://docs.contao.ninja/de/banner.html",
 		"forum":"https://community.contao.org/de/forumdisplay.php?24-banner"
 	},
 	"require":{
-		"php": "^8.0",
-		"contao/core-bundle": "~4.13",
-		"bugbuster/contao-botdetection-bundle":">=1.7.0,<2"
+		"php": "^8.1",
+		"contao/core-bundle": "^5.2",
+		"bugbuster/contao-botdetection-bundle":"^1.9",
+		"symfony/framework-bundle": "^6.4",
+		"symfony/http-kernel": "^6.4"
 	},
 	"require-dev": {
 			"contao/manager-plugin": "^2.0",
-			"friendsofphp/php-cs-fixer": "^3.0",
 			"phpunit/phpunit": "^8.5 || ^9.3"
 	},
 	"conflict": {
@@ -52,23 +53,13 @@
 		]
 	},
 	"extra":{
-		"contao":{
-			"transifex": {
-				"project": "contao-banner-bundle",
-				"prefix": "master-",
-				"languages_cto": "src/Resources/contao/languages",
-				"languages_tx": ".tx"
-			}
-		},
-		"branch-alias": {
-			"dev-develop": "1.4.x-dev"
-		},
 		"contao-manager-plugin": "BugBuster\\BannerBundle\\ContaoManager\\Plugin"
 	},
 	"config": {
 		"allow-plugins": {
 			"contao-components/installer": true,
-			"contao/manager-plugin": true
+			"contao/manager-plugin": true,
+			"php-http/discovery": true
 		}
 	}
 }
