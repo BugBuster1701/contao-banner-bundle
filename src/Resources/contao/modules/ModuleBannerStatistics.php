@@ -258,7 +258,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                 $rootDir = \Contao\System::getContainer()->getParameter('kernel.project_dir');
                 $thumbnail .= Image::getHtml(
                     \Contao\System::getContainer()
-                        ->get('contao.image.image_factory') //4.13 contao.image.factory
+                        ->get('contao.image.factory') //4.13 contao.image.factory
                         ->create(
                             $rootDir . '/' . $thumbnailPath,
                             (new \Contao\Image\ResizeConfiguration())
@@ -435,7 +435,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
                         $container = \Contao\System::getContainer();
                         $rootDir = $container->getParameter('kernel.project_dir');
                         $Banner['banner_image'] = $container
-                                                    ->get('contao.image.image_factory')
+                                                    ->get('contao.image.factory')
                                                     ->create($rootDir.'/' . $objFile->path, [$intWidth, $intHeight, 'proportional'])
                                                     ->getUrl($rootDir);
                     }

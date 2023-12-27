@@ -124,7 +124,7 @@ class BannerInternal
             $rootDir   = $container->getParameter('kernel.project_dir');
             $staticUrl = $container->get('contao.assets.files_context')->getStaticUrl();
             $FileSrc = $container
-                        ->get('contao.image.image_factory')
+                        ->get('contao.image.factory')
                         ->create($rootDir.'/' . $objFile->path, [$arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]])
                         ->getUrl($rootDir);
 
