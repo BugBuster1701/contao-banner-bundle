@@ -11,10 +11,6 @@
  * @license    LGPL-3.0-or-later
  */
 
-/**
- * Run in a custom namespace, so the class can be replaced
- */
-
 namespace BugBuster\BannerStatistics;
 
 use BugBuster\Banner\BannerHelper;
@@ -33,8 +29,6 @@ use Imagine\Exception\RuntimeException;
 
 /**
  * Class ModuleBannerStatistics
- *
- * @copyright  Glen Langer 2015..2022 <http://contao.ninja>
  */
 class ModuleBannerStatistics extends BannerStatisticsHelper
 {

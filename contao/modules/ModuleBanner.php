@@ -25,9 +25,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class ModuleBanner
- *
- * @copyright  Glen Langer 2007..2022 <http://contao.ninja>
- * @license    LGPL
  */
 class ModuleBanner extends Module
 {
