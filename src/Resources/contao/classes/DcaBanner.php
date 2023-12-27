@@ -176,7 +176,7 @@ class DcaBanner extends \Contao\Backend
                     $container = \Contao\System::getContainer();
                     $rootDir = $container->getParameter('kernel.project_dir');
                     $banner_image = $container
-                                        ->get('contao.image.image_factory')
+                                        ->get('contao.image.factory')
                                         ->create($rootDir.'/'.$objFile->path, [$intWidth, $intHeight, 'proportional'])
                                         ->getUrl($rootDir);
                 }
@@ -513,7 +513,7 @@ class DcaBanner extends \Contao\Backend
                 $rootDir = \Contao\System::getContainer()->getParameter('kernel.project_dir');
                 $thumbnail .= Image::getHtml(
                     \Contao\System::getContainer()
-                        ->get('contao.image.image_factory') //4.13 contao.image.factory
+                        ->get('contao.image.factory') //4.13 contao.image.factory
                         ->create(
                             $rootDir . '/' . $thumbnailPath,
                             (new \Contao\Image\ResizeConfiguration())
@@ -614,14 +614,15 @@ class DcaBanner extends \Contao\Backend
 			return '';
 		}
 
-        $href .= '&amp;tid='.$row['id'];//.'&amp;state='. ($row['banner_published'] ? '' : 1);
+        $href .= '&amp;id='.$row['id'];//.'&amp;state='. ($row['banner_published'] ? '' : 1);
 
         if (!$row['banner_published']) {
             $icon = 'invisible.svg';
         }
         $titleDisabled = (is_array($GLOBALS['TL_DCA']['tl_banner']['list']['operations']['toggle']['label']) && isset($GLOBALS['TL_DCA']['tl_banner']['list']['operations']['toggle']['label'][2])) ? sprintf($GLOBALS['TL_DCA']['tl_banner']['list']['operations']['toggle']['label'][2], $row['id']) : $title;
-        //return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['banner_published'] ? 1 : 0) . '"').'</a> ';
-        return '<a href="' . $this->addToUrl($href) . '" title="' . StringUtil::specialchars($row['banner_published'] ? $title : $titleDisabled) . '" data-title="' . StringUtil::specialchars($title) . '" data-title-disabled="' . StringUtil::specialchars($titleDisabled) . '" onclick="Backend.getScrollOffset();return AjaxRequest.toggleField(this,true)">' . Image::getHtml($icon, $label, 'data-icon="visible.svg" data-icon-disabled="invisible.svg" data-state="' . ($row['banner_published'] ? 1 : 0) . '"') . '</a> ';
+
+        //return '<a href="' . $this->addToUrl($href) . '" title="' . StringUtil::specialchars($row['banner_published'] ? $title : $titleDisabled) . '" data-title="' . StringUtil::specialchars($title) . '" data-title-disabled="' . StringUtil::specialchars($titleDisabled) . '" onclick="Backend.getScrollOffset();return AjaxRequest.toggleField(this,true)">' . Image::getHtml($icon, $label, 'data-icon="visible.svg" data-icon-disabled="invisible.svg" data-state="' . ($row['banner_published'] ? 1 : 0) . '"') . '</a> ';
+        return '<a href="' . $this->addToUrl($href) . '" title="' . StringUtil::specialchars($row['banner_published'] ? $title : $titleDisabled) . '" data-title="' . StringUtil::specialchars($title) . '" data-title-disabled="' . StringUtil::specialchars($titleDisabled) . '" >' . Image::getHtml($icon, $label, 'data-icon="visible.svg" data-icon-disabled="invisible.svg" data-state="' . ($row['banner_published'] ? 1 : 0) . '"') . '</a> ';
     }
 
     /**

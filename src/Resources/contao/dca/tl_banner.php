@@ -69,8 +69,9 @@ $GLOBALS['TL_DCA']['tl_banner'] =
             ],
             'toggle' => [
                 'label'               => &$GLOBALS['TL_LANG']['tl_banner']['toggle'],
+                'href'                => 'act=toggle&amp;field=banner_published',
                 'icon'                => 'visible.svg',
-                'attributes'          => 'onclick="Backend.getScrollOffset(); return AjaxRequest.toggleVisibility(this, %s);"',
+                // 'attributes'          => 'onclick="Backend.getScrollOffset(); return AjaxRequest.toggleVisibility(this, %s);"',
                 'button_callback'     => ['BugBuster\Banner\DcaBanner', 'toggleIcon']
             ],
             'show' => [
@@ -204,11 +205,12 @@ $GLOBALS['TL_DCA']['tl_banner'] =
             'eval'                    => ['mandatory'=>false, 'preserveTags'=>true, 'helpwizard'=>true]
         ],
         'banner_published' => [
-            'exclude'                 => true,
+            //'exclude'                 => true,
             'label'                   => &$GLOBALS['TL_LANG']['tl_banner']['banner_published'],
             'filter'                  => true,
             'sql'                     => "char(1) NOT NULL default ''",
-            'inputType'               => 'checkbox'
+            'inputType'               => 'checkbox',
+            'toggle'                  => true
         ],
         'banner_start' => [
             'exclude'                 => true,
