@@ -1,15 +1,14 @@
 <?php
 
-/**
- * Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
+/*
+ * This file is part of a BugBuster Contao Bundle.
  *
- * Contao Module "Banner" - DCA Helper Class DcaModuleBanner
- *
- * @copyright  Glen Langer 2012..2022 <http://contao.ninja>
+ * @copyright  Glen Langer 2023 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @license    LGPL
- * @filesource
- * @see	       https://github.com/BugBuster1701/contao-banner-bundle
+ * @package    Contao Banner Bundle
+ * @link       https://github.com/BugBuster1701/contao-banner-bundle
+ *
+ * @license    LGPL-3.0-or-later
  */
 
 /**
@@ -18,16 +17,17 @@
 
 namespace BugBuster\Banner;
 
+use Contao\Backend;
+
 /**
  * DCA Helper Class DcaModuleBanner
  *
  * @copyright  Glen Langer 2012..2022 <http://contao.ninja>
- * @author     Glen Langer (BugBuster)
  */
-class DcaModuleBanner extends \Contao\Backend
+class DcaModuleBanner extends Backend
 {
-    public function getBannerTemplates()
-    {
-        return $this->getTemplateGroup('mod_banner_list_');
-    }
+	public function getBannerTemplates()
+	{
+		return $this->getTemplateGroup('mod_banner_list_');
+	}
 }

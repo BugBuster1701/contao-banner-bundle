@@ -1,45 +1,45 @@
 <?php
 
-/**
- * Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
+/*
+ * This file is part of a BugBuster Contao Bundle.
  *
- * Modul Banner - Backend DCA tl_banner_stat
+ * @copyright  Glen Langer 2023 <http://contao.ninja>
+ * @author     Glen Langer (BugBuster)
+ * @package    Contao Banner Bundle
+ * @link       https://github.com/BugBuster1701/contao-banner-bundle
  *
- * This is the data container array for table tl_banner_stat.
- *
- * @copyright  Glen Langer 2007..2022 <http://contao.ninja>
- * @author     Glen Langer
- * @license    LGPL
+ * @license    LGPL-3.0-or-later
  */
 
-/**
+use Contao\DC_Table;
+
+/*
  * Table tl_banner_stat
  */
 $GLOBALS['TL_DCA']['tl_banner_stat'] =
-[
-
-    // Config
-    'config' => [
-        'dataContainer'               => Contao\DC_Table::class,
-        'sql' => [
-            'keys' => [
-                'id'    => 'primary'
-            ]
-        ],
-    ],
-    // Fields
-    'fields' => [
-        'id' => [
-                'sql'           => "int(10) unsigned NOT NULL default '0'"
-        ],
-        'tstamp' => [
-                'sql'           => "int(10) unsigned NOT NULL default '0'"
-        ],
-        'banner_views' => [
-                'sql'           => "int(10) unsigned NOT NULL default '0'"
-        ],
-        'banner_clicks' => [
-                'sql'           => "int(10) unsigned NOT NULL default '0'"
-        ],
-    ]
-];
+array(
+	// Config
+	'config' => array(
+		'dataContainer'               => DC_Table::class,
+		'sql' => array(
+			'keys' => array(
+				'id'    => 'primary'
+			)
+		),
+	),
+	// Fields
+	'fields' => array(
+		'id' => array(
+			'sql'           => "int(10) unsigned NOT NULL default '0'"
+		),
+		'tstamp' => array(
+			'sql'           => "int(10) unsigned NOT NULL default '0'"
+		),
+		'banner_views' => array(
+			'sql'           => "int(10) unsigned NOT NULL default '0'"
+		),
+		'banner_clicks' => array(
+			'sql'           => "int(10) unsigned NOT NULL default '0'"
+		),
+	)
+);

@@ -1,210 +1,226 @@
 <?php
-/**
- * Extension for Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
+
+/*
+ * This file is part of a BugBuster Contao Bundle.
  *
- * BannerVideo - Frontend Helper Class
- *
- * @copyright  Glen Langer 2022 <http://contao.ninja>
+ * @copyright  Glen Langer 2023 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @licence    LGPL
- * @filesource
- * @see	       https://github.com/BugBuster1701/contao-banner-bundle
+ * @package    Contao Banner Bundle
+ * @link       https://github.com/BugBuster1701/contao-banner-bundle
+ *
+ * @license    LGPL-3.0-or-later
  */
 
 namespace BugBuster\Banner;
 
-use function array_filter;
 use Contao\Environment;
 use Contao\File;
 use Contao\FilesModel;
 use Contao\PageModel;
-
 use Contao\StringUtil;
 
 /**
  * Class BannerVideo
  *
  * @copyright  Glen Langer 2022 <http://contao.ninja>
- * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
 class BannerVideo
 {
-    public const BANNER_TYPE_VIDEO = 'banner_video';
+	public const BANNER_TYPE_VIDEO = 'banner_video';
 
-    protected $objBanners;
-    protected $banner_cssID;
-    protected $banner_class;
+	protected $objBanners;
 
-    public function __construct($objBanners, $banner_cssID, $banner_class)
-    {
-        $this->objBanners   = $objBanners;
-        $this->banner_cssID = $banner_cssID;
-        $this->banner_class = $banner_class;
-    }
+	protected $banner_cssID;
 
-    public function generateTemplateData()
-    {
-        $banner_target = ($this->objBanners->banner_target == '1') ? '' : ' target="_blank"';
-        $banner_comment = (string) StringUtil::ampersand(nl2br($this->objBanners->banner_comment));
+	protected $banner_class;
 
-        $this->adjustBannerUrl();
-        $banner_url_kurz = $this->getShortBannerUrl();
+	public function __construct($objBanners, $banner_cssID, $banner_class)
+	{
+		$this->objBanners   = $objBanners;
+		$this->banner_cssID = $banner_cssID;
+		$this->banner_class = $banner_class;
+	}
 
-        $strCaption = '';
-        $video_files = $this->fetchVideoFiles($strCaption); //hier wird $strCaption aus Meta gesetzt falls möglich
-        // Bannerkommentar hat Vorrang gegenüber Meta Caption, Meta Caption wenn Bannerkommentar leer ist
-        if (\strlen($banner_comment) == 0) {
-            $banner_comment = $strCaption;
-        }
+	public function generateTemplateData()
+	{
+		$banner_target = ($this->objBanners->banner_target == '1') ? '' : ' target="_blank"';
+		$banner_comment = (string) StringUtil::ampersand(nl2br($this->objBanners->banner_comment));
 
-        return [
-            [
-                'banner_key'        => 'bid',
-                'banner_wrap_id'    => $this->banner_cssID,
-                'banner_wrap_class' => $this->banner_class,
-                'banner_id'         => $this->objBanners->id,
-                'banner_name'       => StringUtil::specialchars(StringUtil::ampersand($this->objBanners->banner_name)),
-                'banner_url'        => $this->objBanners->banner_url,
-                'banner_url_kurz'   => $banner_url_kurz,
-                'banner_target'     => $banner_target,
-                'banner_comment'    => $banner_comment,
-                'banner_pic'        => false,
-                'banner_flash'      => false,
-                'banner_text'       => false,
-                'banner_empty'      => false,    // issues 733
-                'banner_video'      => true,
-                'video_files'       => $video_files,
-                'video_poster'      => $this->getPoster(),
-                'video_size'        => $this->getVideoSize(),
-                'video_range'       => $this->getVideoRange(),
-            ],
-        ];
-    }
+		$this->adjustBannerUrl();
+		$banner_url_kurz = $this->getShortBannerUrl();
 
-    /**
-     * @return void
-     */
-    private function adjustBannerUrl(): void
-    {
-        // Banner Seite als Ziel?
-        if ($this->objBanners->banner_jumpTo > 0) {
-            $domain = Environment::get('base');
-            $objParent = PageModel::findWithDetails($this->objBanners->banner_jumpTo);
-            if ($objParent !== null) { // is null when page not exist anymore
-                if ($objParent->domain != '') {
-                    //$domain = (Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
-                    $domain = (Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . '/';
-                }
-                $this->objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator(
-                    $objParent->row(),
-                    null,
-                    $objParent->language
-                );
-            }
-        }
-    }
+		$strCaption = '';
+		$video_files = $this->fetchVideoFiles($strCaption); // hier wird $strCaption aus Meta gesetzt falls möglich
+		// Bannerkommentar hat Vorrang gegenüber Meta Caption, Meta Caption wenn Bannerkommentar leer ist
+		if (\strlen($banner_comment) == 0)
+		{
+			$banner_comment = $strCaption;
+		}
 
-    /**
-     * @return mixed|string
-     */
-    private function getShortBannerUrl()
-    {
-        // Kurz URL (nur Domain)
-        $treffer         = parse_url(BannerHelper::decodePunycode($this->objBanners->banner_url)); // #79
-        $banner_url_kurz = $treffer['host'];
-        if (isset($treffer['port'])) {
-            $banner_url_kurz .= ':' . $treffer['port'];
-        }
+		return array(
+			array(
+				'banner_key'        => 'bid',
+				'banner_wrap_id'    => $this->banner_cssID,
+				'banner_wrap_class' => $this->banner_class,
+				'banner_id'         => $this->objBanners->id,
+				'banner_name'       => StringUtil::specialchars(StringUtil::ampersand($this->objBanners->banner_name)),
+				'banner_url'        => $this->objBanners->banner_url,
+				'banner_url_kurz'   => $banner_url_kurz,
+				'banner_target'     => $banner_target,
+				'banner_comment'    => $banner_comment,
+				'banner_pic'        => false,
+				'banner_flash'      => false,
+				'banner_text'       => false,
+				'banner_empty'      => false,    // issues 733
+				'banner_video'      => true,
+				'video_files'       => $video_files,
+				'video_poster'      => $this->getPoster(),
+				'video_size'        => $this->getVideoSize(),
+				'video_range'       => $this->getVideoRange(),
+			),
+		);
+	}
 
-        return $banner_url_kurz;
-    }
+	private function adjustBannerUrl(): void
+	{
+		// Banner Seite als Ziel?
+		if ($this->objBanners->banner_jumpTo > 0)
+		{
+			$domain = Environment::get('base');
+			$objParent = PageModel::findWithDetails($this->objBanners->banner_jumpTo);
+			if ($objParent !== null) // is null when page not exist anymore
+			{
+				if ($objParent->domain != '')
+				{
+					// $domain = (Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
+					$domain = (Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . '/';
+				}
+				$this->objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator(
+					$objParent->row(),
+					null,
+					$objParent->language
+				);
+			}
+		}
+	}
 
-    /** @return list<File> */
-    private function fetchVideoFiles(&$strCaption): array
-    {
-        global $objPage;
+	/**
+	 * @return mixed|string
+	 */
+	private function getShortBannerUrl()
+	{
+		// Kurz URL (nur Domain)
+		$treffer         = parse_url(BannerHelper::decodePunycode($this->objBanners->banner_url)); // #79
+		$banner_url_kurz = $treffer['host'];
+		if (isset($treffer['port']))
+		{
+			$banner_url_kurz .= ':' . $treffer['port'];
+		}
 
-        if (!$this->objBanners->banner_playerSRC) {
-            return [];
-        }
+		return $banner_url_kurz;
+	}
 
-        $source = StringUtil::deserialize($this->objBanners->banner_playerSRC);
-        if (empty($source) || !\is_array($source)) {
-            return [];
-        }
+	/**
+	 * @return list<File>
+	 */
+	private function fetchVideoFiles(&$strCaption): array
+	{
+		global $objPage;
 
-        $objFiles = FilesModel::findMultipleByUuidsAndExtensions($source, ['mp4', 'm4v', 'mov', 'wmv', 'webm', 'ogv']);
-        if ($objFiles === null) {
-            return [];
-        }
+		if (!$this->objBanners->banner_playerSRC)
+		{
+			return array();
+		}
 
-        $arrFiles = ['webm' => null, 'mp4' => null, 'm4v' => null, 'mov' => null, 'wmv' => null, 'ogv' => null];
+		$source = StringUtil::deserialize($this->objBanners->banner_playerSRC);
+		if (empty($source) || !\is_array($source))
+		{
+			return array();
+		}
 
-        // Convert the language to a locale (see #5678)
-        $strLanguage = str_replace('-', '_', $objPage->language);
+		$objFiles = FilesModel::findMultipleByUuidsAndExtensions($source, array('mp4', 'm4v', 'mov', 'wmv', 'webm', 'ogv'));
+		if ($objFiles === null)
+		{
+			return array();
+		}
 
-        // Pass File objects to the template
-        foreach ($objFiles as $objFileModel) {
-            /** @var FilesModel $objFileModel */
-            $objMeta = $objFileModel->getMetadata($strLanguage);
-            $strTitle = null;
+		$arrFiles = array('webm' => null, 'mp4' => null, 'm4v' => null, 'mov' => null, 'wmv' => null, 'ogv' => null);
 
-            if (null !== $objMeta) {
-                $strTitle = $objMeta->getTitle();
+		// Convert the language to a locale (see #5678)
+		$strLanguage = str_replace('-', '_', $objPage->language);
 
-                if (empty($strCaption)) {
-                    $strCaption = $objMeta->getCaption();
-                }
-            }
+		// Pass File objects to the template
+		foreach ($objFiles as $objFileModel)
+		{
+			/** @var FilesModel $objFileModel */
+			$objMeta = $objFileModel->getMetadata($strLanguage);
+			$strTitle = null;
 
-            $objFile = new File($objFileModel->path);
-            $objFile->title = StringUtil::specialchars($strTitle ?: $objFile->name);
+			if (null !== $objMeta)
+			{
+				$strTitle = $objMeta->getTitle();
 
-            $arrFiles[$objFile->extension] = $objFile;
-        }
+				if (empty($strCaption))
+				{
+					$strCaption = $objMeta->getCaption();
+				}
+			}
 
-        return array_values(array_filter($arrFiles));
-    }
+			$objFile = new File($objFileModel->path);
+			$objFile->title = StringUtil::specialchars($strTitle ?: $objFile->name);
 
-    /** @return string|bool */
-    private function getPoster()
-    {
-        // Optional poster
-        if ($this->objBanners->banner_posterSRC && ($objFile = FilesModel::findByUuid($this->objBanners->banner_posterSRC)) !== null) {
-            return $objFile->path;
-        }
+			$arrFiles[$objFile->extension] = $objFile;
+		}
 
-        return false;
-    }
+		return array_values(\array_filter($arrFiles));
+	}
 
-    private function getVideoSize(): string
-    {
-        $size = StringUtil::deserialize($this->objBanners->banner_playerSize);
+	/**
+	 * @return string|bool
+	 */
+	private function getPoster()
+	{
+		// Optional poster
+		if ($this->objBanners->banner_posterSRC && ($objFile = FilesModel::findByUuid($this->objBanners->banner_posterSRC)) !== null)
+		{
+			return $objFile->path;
+		}
 
-        if (\is_array($size) && !empty($size[0]) && !empty($size[1])) {
-            return ' width="' . $size[0] . '" height="' . $size[1] . '"';
-        }
+		return false;
+	}
 
-        return '';
-    }
+	private function getVideoSize(): string
+	{
+		$size = StringUtil::deserialize($this->objBanners->banner_playerSize);
 
-    private function getVideoRange(): ?string
-    {
-        if ($this->objBanners->banner_playerStart || $this->objBanners->banner_playerStop) {
-            $range = '#t=';
+		if (\is_array($size) && !empty($size[0]) && !empty($size[1]))
+		{
+			return ' width="' . $size[0] . '" height="' . $size[1] . '"';
+		}
 
-            if ($this->objBanners->banner_playerStart) {
-                $range .= $this->objBanners->banner_playerStart;
-            }
+		return '';
+	}
 
-            if ($this->objBanners->banner_playerStop) {
-                $range .= ',' . $this->objBanners->banner_playerStop;
-            }
+	private function getVideoRange(): ?string
+	{
+		if ($this->objBanners->banner_playerStart || $this->objBanners->banner_playerStop)
+		{
+			$range = '#t=';
 
-            return $range;
-        }
+			if ($this->objBanners->banner_playerStart)
+			{
+				$range .= $this->objBanners->banner_playerStart;
+			}
 
-        return null;
-    }
+			if ($this->objBanners->banner_playerStop)
+			{
+				$range .= ',' . $this->objBanners->banner_playerStop;
+			}
+
+			return $range;
+		}
+
+		return null;
+	}
 }

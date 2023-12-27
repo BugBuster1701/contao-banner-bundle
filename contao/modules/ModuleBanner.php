@@ -1,15 +1,14 @@
 <?php
 
-/**
- * Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
+/*
+ * This file is part of a BugBuster Contao Bundle.
  *
- * Modul Banner - Frontend , only Insert Tag
- *
- * @copyright  Glen Langer 2007..2022 <http://contao.ninja>
+ * @copyright  Glen Langer 2023 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @license    LGPL
- * @filesource
- * @see        https://github.com/BugBuster1701/contao-banner-bundle
+ * @package    Contao Banner Bundle
+ * @link       https://github.com/BugBuster1701/contao-banner-bundle
+ *
+ * @license    LGPL-3.0-or-later
  */
 
 /**
@@ -18,6 +17,9 @@
 
 namespace BugBuster\Banner;
 
+use Contao\BackendTemplate;
+use Contao\Module;
+use Contao\StringUtil;
 use Contao\System;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -25,44 +27,44 @@ use Symfony\Component\HttpFoundation\Request;
  * Class ModuleBanner
  *
  * @copyright  Glen Langer 2007..2022 <http://contao.ninja>
- * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
-class ModuleBanner extends \Contao\Module
+class ModuleBanner extends Module
 {
-    /**
-     * Template
-     * @var string
-     */
-    protected $strTemplate = 'mod_banner_tag';
+	/**
+	 * Template
+	 * @var string
+	 */
+	protected $strTemplate = 'mod_banner_tag';
 
-    /**
-     * Display a wildcard in the back end
-     * @return string
-     */
-    public function generate()
-    {
-        if (System::getContainer()->get('contao.routing.scope_matcher')
-                    ->isBackendRequest(System::getContainer()->get('request_stack')
-                    ->getCurrentRequest() ?? Request::create(''))) 
-        {
-            $objTemplate = new \Contao\BackendTemplate('be_wildcard');
-            $objTemplate->wildcard = '### BANNER MODUL ###';
-            $objTemplate->title = $this->headline;
-            $objTemplate->id = $this->id;
-            $objTemplate->link = $this->name;
-            $objTemplate->href = \Contao\StringUtil::specialcharsUrl(System::getContainer()->get('router')->generate('contao_backend', array('do'=>'themes', 'table'=>'tl_module', 'act'=>'edit', 'id'=>$this->id)));
+	/**
+	 * Display a wildcard in the back end
+	 * @return string
+	 */
+	public function generate()
+	{
+		if (
+			System::getContainer()->get('contao.routing.scope_matcher')
+					->isBackendRequest(System::getContainer()->get('request_stack')
+					->getCurrentRequest() ?? Request::create(''))
+		) {
+			$objTemplate = new BackendTemplate('be_wildcard');
+			$objTemplate->wildcard = '### BANNER MODUL ###';
+			$objTemplate->title = $this->headline;
+			$objTemplate->id = $this->id;
+			$objTemplate->link = $this->name;
+			$objTemplate->href = StringUtil::specialcharsUrl(System::getContainer()->get('router')->generate('contao_backend', array('do'=>'themes', 'table'=>'tl_module', 'act'=>'edit', 'id'=>$this->id)));
 
-            return $objTemplate->parse();
-        }
+			return $objTemplate->parse();
+		}
 
-        return parent::generate();
-    }
+		return parent::generate();
+	}
 
-    protected function compile()
-    {
-        $this->Template->banner_module_id    = $this->id;
-        $this->Template->banner_outputFormat = $GLOBALS['objPage']->outputFormat;
-        $this->Template->banner_templatepfad = $GLOBALS['objPage']->templateGroup;
-    }
+	protected function compile()
+	{
+		$this->Template->banner_module_id    = $this->id;
+		$this->Template->banner_outputFormat = $GLOBALS['objPage']->outputFormat;
+		$this->Template->banner_templatepfad = $GLOBALS['objPage']->templateGroup;
+	}
 }

@@ -1,16 +1,14 @@
 <?php
 
-/**
- * Contao Open Source CMS, Copyright (C) 2005-2022 Leo Feyer
+/*
+ * This file is part of a BugBuster Contao Bundle.
  *
- * Module BannerStatistics
- * Helper class
- *
- * @copyright  Glen Langer 2013..2022 <http://contao.ninja>
+ * @copyright  Glen Langer 2023 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
- * @license    LGPL
- * @filesource
- * @see        https://github.com/BugBuster1701/contao-banner-bundle
+ * @package    Contao Banner Bundle
+ * @link       https://github.com/BugBuster1701/contao-banner-bundle
+ *
+ * @license    LGPL-3.0-or-later
  */
 
 /**
@@ -21,115 +19,121 @@ namespace BugBuster\BannerStatistics;
 
 use BugBuster\Banner\BannerHelper;
 use BugBuster\Banner\BannerLog;
+use Contao\BackendModule;
+use Contao\BackendUser;
+use Contao\Database;
+use Contao\Input;
+use Contao\PageModel;
+use Contao\StringUtil;
 use Contao\User;
 
 /**
  * Class BotStatisticsHelper
  *
  * @copyright  Glen Langer 2013..2022 <http://contao.ninja>
- * @author     Glen Langer (BugBuster)
  */
-class BannerStatisticsHelper extends \Contao\BackendModule
+class BannerStatisticsHelper extends BackendModule
 {
-    /**
-     * Banner intern
-     * @var string
-     */
-    public const BANNER_TYPE_INTERN = 'banner_image';
+	/**
+	 * Banner intern
+	 */
+	public const BANNER_TYPE_INTERN = 'banner_image';
 
-    /**
-     * Banner extern
-     * @var string
-     */
-    public const BANNER_TYPE_EXTERN = 'banner_image_extern';
+	/**
+	 * Banner extern
+	 */
+	public const BANNER_TYPE_EXTERN = 'banner_image_extern';
 
-    /**
-     * Banner text
-     * @var string
-     */
-    public const BANNER_TYPE_TEXT   = 'banner_text';
+	/**
+	 * Banner text
+	 */
+	public const BANNER_TYPE_TEXT   = 'banner_text';
 
-    /**
-     * Current object instance
-     * @var object
-     */
-    protected static $instance;
+	/**
+	 * Current object instance
+	 * @var object
+	 */
+	protected static $instance;
 
-    protected User $User;
+	protected User $User;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        //$this->import('BackendUser', 'User');
-        $this->User = \Contao\BackendUser::getInstance();
-        parent::__construct();
-    }
+	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+		// $this->import('BackendUser', 'User');
+		$this->User = BackendUser::getInstance();
+		parent::__construct();
+	}
 
-    protected function compile()
-    {
-    }
-    /**
-     * Return the current object instance (Singleton)
-     * @return BannerStatisticsHelper
-     */
-    public static function getInstance()
-    {
-        if (self::$instance === null) {
-            self::$instance = new self();
-        }
+	protected function compile()
+	{
+	}
 
-        return self::$instance;
-    }
+	/**
+	 * Return the current object instance (Singleton)
+	 * @return BannerStatisticsHelper
+	 */
+	public static function getInstance()
+	{
+		if (self::$instance === null)
+		{
+			self::$instance = new self();
+		}
 
-    /**
-     * Get min category id
-     *
-     * @deprecated  why? TODO
-     * @return number CatID    0|min(pid)
-     */
-    protected function getCatID()
-    {
-        $objBannerCatID = \Contao\Database::getInstance()->prepare("SELECT 
-                                                                MIN(pid) AS ID 
-                                                             FROM 
+		return self::$instance;
+	}
+
+	/**
+	 * Get min category id
+	 *
+	 * @deprecated  why? TODO
+	 * @return number CatID    0|min(pid)
+	 */
+	protected function getCatID()
+	{
+		$objBannerCatID = Database::getInstance()->prepare("SELECT
+                                                                MIN(pid) AS ID
+                                                             FROM
                                                                 tl_banner")
-                                                  ->execute();
-        $objBannerCatID->next();
-        if ($objBannerCatID->ID === null) {
-            return 0;
-        } else {
-            return $objBannerCatID->ID;
-        }
-    }
+												  ->execute();
+		$objBannerCatID->next();
+		if ($objBannerCatID->ID === null)
+		{
+			return 0;
+		}
 
-    /**
-     * Get first category id by arrCategories
-     *
-     * @param  array  $arrBannerCategories
-     * @return number CatID
-     */
-    protected function getCatIdByCategories($arrBannerCategories)
-    {
-        $arrFirstCat = array_shift($arrBannerCategories);
+		return $objBannerCatID->ID;
+	}
 
-        return $arrFirstCat['id'];
-    }
+	/**
+	 * Get first category id by arrCategories
+	 *
+	 * @param  array  $arrBannerCategories
+	 * @return number CatID
+	 */
+	protected function getCatIdByCategories($arrBannerCategories)
+	{
+		$arrFirstCat = array_shift($arrBannerCategories);
 
-    /**
-     * Get banners by category id
-     *
-     * @param  integer $CatID
-     * @return array   $arrBanners
-     */
-    protected function getBannersByCatID($CatID = 0)
-    {
-        $arrBanners = [];
+		return $arrFirstCat['id'];
+	}
 
-        if ($CatID == -1) { // all Categories
-            $objBanners = \Contao\Database::getInstance()
-                            ->prepare("SELECT 
+	/**
+	 * Get banners by category id
+	 *
+	 * @param  integer $CatID
+	 * @return array
+	 */
+	protected function getBannersByCatID($CatID = 0)
+	{
+		$arrBanners = array();
+
+		if ($CatID == -1) // all Categories
+		{
+			$objBanners = Database::getInstance()
+								->prepare("SELECT
                                             tb.id
                                           , tb.banner_type
                                           , tb.banner_name
@@ -149,18 +153,20 @@ class BannerStatisticsHelper extends \Contao\BackendModule
                                           , tb.banner_posterSRC
                                           , tbs.banner_views
                                           , tbs.banner_clicks
-                                       FROM 
+                                       FROM
                                             tl_banner tb
                                           , tl_banner_stat tbs
-                                       WHERE 
+                                       WHERE
                                             tb.id=tbs.id
-                                       ORDER BY 
+                                       ORDER BY
                                             tb.pid
                                           , tb.sorting")
-                            ->execute();
-        } else {
-            $objBanners = \Contao\Database::getInstance()
-                            ->prepare("SELECT
+								->execute();
+		}
+		else
+		{
+			$objBanners = Database::getInstance()
+							->prepare("SELECT
                                             tb.id
                                           , tb.banner_type
                                           , tb.banner_name
@@ -189,115 +195,105 @@ class BannerStatisticsHelper extends \Contao\BackendModule
                                             tb.pid =?
                                        ORDER BY
                                             tb.sorting")
-                            ->execute($CatID);
-        }
-        $intRows = $objBanners->numRows;
-        if ($intRows > 0) {
-            while ($objBanners->next()) {
-                $arrBanners[] = ['id'                   => $objBanners->id
-                                , 'banner_type'         => $objBanners->banner_type
-                                , 'banner_name'         => $objBanners->banner_name
-                                , 'banner_url'          => $objBanners->banner_url
-                                , 'banner_jumpTo'       => $objBanners->banner_jumpTo
-                                , 'banner_image'        => $objBanners->banner_image
-                                , 'banner_image_extern' => $objBanners->banner_image_extern
-                                , 'banner_weighting'    => $objBanners->banner_weighting
-                                , 'banner_start'        => $objBanners->banner_start
-                                , 'banner_stop'         => $objBanners->banner_stop
-                                , 'banner_published'    => $objBanners->banner_published
-                                , 'banner_until'        => $objBanners->banner_until
-                                , 'banner_comment'      => $objBanners->banner_comment
-                                , 'banner_views_until'  => $objBanners->banner_views_until
-                                , 'banner_clicks_until' => $objBanners->banner_clicks_until
-                                , 'banner_views'        => $objBanners->banner_views
-                                , 'banner_clicks'       => $objBanners->banner_clicks
-                                , 'banner_playerSRC'    => $objBanners->banner_playerSRC
-                                , 'banner_posterSRC'    => $objBanners->banner_posterSRC
-                                ];
-            } // while
-        }
+							->execute($CatID);
+		}
+		$intRows = $objBanners->numRows;
+		if ($intRows > 0)
+		{
+			while ($objBanners->next())
+			{
+				$arrBanners[] = array('id'                   => $objBanners->id, 'banner_type'         => $objBanners->banner_type, 'banner_name'         => $objBanners->banner_name, 'banner_url'          => $objBanners->banner_url, 'banner_jumpTo'       => $objBanners->banner_jumpTo, 'banner_image'        => $objBanners->banner_image, 'banner_image_extern' => $objBanners->banner_image_extern, 'banner_weighting'    => $objBanners->banner_weighting, 'banner_start'        => $objBanners->banner_start, 'banner_stop'         => $objBanners->banner_stop, 'banner_published'    => $objBanners->banner_published, 'banner_until'        => $objBanners->banner_until, 'banner_comment'      => $objBanners->banner_comment, 'banner_views_until'  => $objBanners->banner_views_until, 'banner_clicks_until' => $objBanners->banner_clicks_until, 'banner_views'        => $objBanners->banner_views, 'banner_clicks'       => $objBanners->banner_clicks, 'banner_playerSRC'    => $objBanners->banner_playerSRC, 'banner_posterSRC'    => $objBanners->banner_posterSRC
+				);
+			} // while
+		}
 
-        return $arrBanners;
-    } // getBannersByCatID
+		return $arrBanners;
+	} // getBannersByCatID
 
-    /**
-     * Get banner categories
-     *
-     * @deprecated  why? TODO
-     * @param  integer $banner_number
-     * @return array   $arrBannerCats
-     */
-    protected function getBannerCategories($banner_number)
-    {
-        // Kat sammeln
-        $objBannerCat = \Contao\Database::getInstance()
-                            ->prepare("SELECT 
-                                            id 
-                                          , title 
-                                       FROM 
-                                            tl_banner_category 
-                                        WHERE 
-                                            id 
-                                        IN 
-                                            (SELECT 
+	/**
+	 * Get banner categories
+	 *
+	 * @deprecated  why? TODO
+	 * @param  integer $banner_number
+	 * @return array
+	 */
+	protected function getBannerCategories($banner_number)
+	{
+		// Kat sammeln
+		$objBannerCat = Database::getInstance()
+							->prepare("SELECT
+                                            id
+                                          , title
+                                       FROM
+                                            tl_banner_category
+                                        WHERE
+                                            id
+                                        IN
+                                            (SELECT
                                                  pid
                                              FROM
                                                  tl_banner
                                              LEFT JOIN
-                                                 tl_banner_category 
-                                             ON 
+                                                 tl_banner_category
+                                             ON
                                                  tl_banner.pid = tl_banner_category.id
-                                             GROUP BY 
+                                             GROUP BY
                                                  tl_banner.pid
                                              )
-                                        ORDER BY 
+                                        ORDER BY
                                             title")
-                            ->execute();
+							->execute();
 
-        if ($objBannerCat->numRows > 0) {
-            if ($banner_number == 0) { // gewählte Kategorie hat keine Banner, es gibt aber weitere Kategorien
-                $arrBannerCats[] =
-                [
-                    'id'    => '0',
-                    'title' => $GLOBALS['TL_LANG']['tl_banner_stat']['select']
-                ];
-                $this->intCatID = 0; // template soll nichts anzeigen
-            }
-            $arrBannerCats[] =
-            [
-                'id'    => '-1',
-                'title' => $GLOBALS['TL_LANG']['tl_banner_stat']['allkat']
-            ];
-            while ($objBannerCat->next()) {
-                $arrBannerCats[] =
-                [
-                    'id'    => $objBannerCat->id,
-                    'title' => $objBannerCat->title
-                ];
-            }
-        } else { // es gibt keine Kategorie mit Banner
-            $arrBannerCats[] =
-            [
-                'id'    => '0',
-                'title' => '---------'
-            ];
-        }
+		if ($objBannerCat->numRows > 0)
+		{
+			if ($banner_number == 0) // gewählte Kategorie hat keine Banner, es gibt aber weitere Kategorien
+			{
+				$arrBannerCats[] =
+					array(
+						'id'    => '0',
+						'title' => $GLOBALS['TL_LANG']['tl_banner_stat']['select']
+					);
+				$this->intCatID = 0; // template soll nichts anzeigen
+			}
+			$arrBannerCats[] =
+			array(
+				'id'    => '-1',
+				'title' => $GLOBALS['TL_LANG']['tl_banner_stat']['allkat']
+			);
 
-        return $arrBannerCats;
-    } // getBannerCategories
+			while ($objBannerCat->next())
+			{
+				$arrBannerCats[] =
+				array(
+					'id'    => $objBannerCat->id,
+					'title' => $objBannerCat->title
+				);
+			}
+		}
+		else // es gibt keine Kategorie mit Banner
+		{
+			$arrBannerCats[] =
+				array(
+					'id'    => '0',
+					'title' => '---------'
+				);
+		}
 
-    /**
-     * Get banner categories by usergroups
-     *
-     * @param  array $Usergroups
-     * @return array
-     */
-    protected function getBannerCategoriesByUsergroups()
-    {
-        $arrBannerCats = [];
+		return $arrBannerCats;
+	} // getBannerCategories
 
-        $objBannerCat = \Contao\Database::getInstance()
-                            ->prepare("SELECT
+	/**
+	 * Get banner categories by usergroups
+	 *
+	 * @param  array $Usergroups
+	 * @return array
+	 */
+	protected function getBannerCategoriesByUsergroups()
+	{
+		$arrBannerCats = array();
+
+		$objBannerCat = Database::getInstance()
+							->prepare("SELECT
                                             `id`
                                           , `title`
                                           , `banner_stat_protected`
@@ -305,142 +301,159 @@ class BannerStatisticsHelper extends \Contao\BackendModule
                                        FROM
                                             tl_banner_category
                                         WHERE 1
-                                        ORDER BY 
+                                        ORDER BY
                                             title
                                         ")
-                            ->execute();
-        while ($objBannerCat->next()) {
-            if (true === $this->isUserInBannerStatGroups(
-                $objBannerCat->banner_stat_groups,
-                (bool) $objBannerCat->banner_stat_protected
-            )) {
-                $arrBannerCats[] =
-                [
-                    'id'    => $objBannerCat->id,
-                    'title' => $objBannerCat->title
-                ];
-            }
-        }
+							->execute();
 
-        if (0 == \count($arrBannerCats)) {
-            $arrBannerCats[] = ['id' => '0', 'title' => '---------'];
-        }
+		while ($objBannerCat->next())
+		{
+			if (
+				true === $this->isUserInBannerStatGroups(
+					$objBannerCat->banner_stat_groups,
+					(bool) $objBannerCat->banner_stat_protected
+				)
+			) {
+				$arrBannerCats[] =
+				array(
+					'id'    => $objBannerCat->id,
+					'title' => $objBannerCat->title
+				);
+			}
+		}
 
-        return $arrBannerCats;
-    }
+		if (0 == \count($arrBannerCats))
+		{
+			$arrBannerCats[] = array('id' => '0', 'title' => '---------');
+		}
 
-    /**
-     * Set banner_url
-     *
-     * @param referenz $Banner
-     */
-    protected function setBannerURL(&$Banner)
-    {
-        //Banner Ziel per Page?
-        if ($Banner['banner_jumpTo'] > 0) {
-            //url generieren
-            $objBannerNextPage = \Contao\Database::getInstance()
-                                    ->prepare("SELECT 
+		return $arrBannerCats;
+	}
+
+	/**
+	 * Set banner_url
+	 *
+	 * @param referenz $Banner
+	 */
+	protected function setBannerURL(&$Banner)
+	{
+		// Banner Ziel per Page?
+		if ($Banner['banner_jumpTo'] > 0)
+		{
+			// url generieren
+			$objBannerNextPage = Database::getInstance()
+									->prepare("SELECT
                                                     id
-                                                  , alias 
-                                               FROM 
-                                                    tl_page 
-                                               WHERE 
+                                                  , alias
+                                               FROM
+                                                    tl_page
+                                               WHERE
                                                     id=?")
-                                    ->limit(1)
-                                    ->execute($Banner['banner_jumpTo']);
-            if ($objBannerNextPage->numRows) {
-                //old $Banner['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
-                $objParent = \Contao\PageModel::findWithDetails($Banner['banner_jumpTo']);
-                $Banner['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
-                BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url jumpto: ' . $Banner['banner_url']);
-            }
-        }
-        if (empty($Banner['banner_url'])) {
-            $Banner['banner_url'] = $GLOBALS['TL_LANG']['tl_banner_stat']['NoURL'];
-            if ($Banner['banner_clicks'] == 0) {
-                $Banner['banner_clicks'] = '--';
-            }
-        }
-        BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $Banner['banner_url']);
-    }
+									->limit(1)
+									->execute($Banner['banner_jumpTo']);
+			if ($objBannerNextPage->numRows)
+			{
+				// old $Banner['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
+				$objParent = PageModel::findWithDetails($Banner['banner_jumpTo']);
+				$Banner['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
+				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url jumpto: ' . $Banner['banner_url']);
+			}
+		}
+		if (empty($Banner['banner_url']))
+		{
+			$Banner['banner_url'] = $GLOBALS['TL_LANG']['tl_banner_stat']['NoURL'];
+			if ($Banner['banner_clicks'] == 0)
+			{
+				$Banner['banner_clicks'] = '--';
+			}
+		}
+		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $Banner['banner_url']);
+	}
 
-    /**
-     * Set banner_published
-     *
-     * @param referenz $Banner
-     */
-    protected function setBannerPublishedActive(&$Banner)
-    {
-        if (($Banner['banner_published'] == 1)
-           &&  (empty($Banner['banner_start']) || $Banner['banner_start'] <= time())
-           &&  (empty($Banner['banner_stop'])  || $Banner['banner_stop']   > time())
-        ) {
-            $Banner['banner_active'] = '<span class="banner_stat_yes">'.$GLOBALS['TL_LANG']['tl_banner_stat']['pub_yes'].'</span>';
-            $Banner['banner_published_class'] = 'published';
+	/**
+	 * Set banner_published
+	 *
+	 * @param referenz $Banner
+	 */
+	protected function setBannerPublishedActive(&$Banner)
+	{
+		if (
+			($Banner['banner_published'] == 1)
+		   &&  (empty($Banner['banner_start']) || $Banner['banner_start'] <= time())
+		   &&  (empty($Banner['banner_stop'])  || $Banner['banner_stop']   > time())
+		) {
+			$Banner['banner_active'] = '<span class="banner_stat_yes">' . $GLOBALS['TL_LANG']['tl_banner_stat']['pub_yes'] . '</span>';
+			$Banner['banner_published_class'] = 'published';
 
-            if ($Banner['banner_until'] == 1
-             && $Banner['banner_views_until'] != ''
-             && $Banner['banner_views'] >= $Banner['banner_views_until']
-            ) {
-                //max views erreicht
-                $Banner['banner_active'] = '<span class="banner_stat_no">'.$GLOBALS['TL_LANG']['tl_banner_stat']['pub_no'].'</span>';
-                $Banner['banner_published_class'] = 'unpublished';
-            }
+			if (
+				$Banner['banner_until'] == 1
+			 && $Banner['banner_views_until'] != ''
+			 && $Banner['banner_views'] >= $Banner['banner_views_until']
+			) {
+				// max views erreicht
+				$Banner['banner_active'] = '<span class="banner_stat_no">' . $GLOBALS['TL_LANG']['tl_banner_stat']['pub_no'] . '</span>';
+				$Banner['banner_published_class'] = 'unpublished';
+			}
 
-            if ($Banner['banner_until'] == 1
-             && $Banner['banner_clicks_until'] !=''
-             && $Banner['banner_clicks'] >= $Banner['banner_clicks_until']
-            ) {
-                //max clicks erreicht
-                $Banner['banner_active'] = '<span class="banner_stat_no">'.$GLOBALS['TL_LANG']['tl_banner_stat']['pub_no'].'</span>';
-                $Banner['banner_published_class'] = 'unpublished';
-            }
-        } else {
-            $Banner['banner_active'] = '<span class="banner_stat_no">'.$GLOBALS['TL_LANG']['tl_banner_stat']['pub_no'].'</span>';
-            $Banner['banner_published_class'] = 'unpublished';
-        }
-    }
+			if (
+				$Banner['banner_until'] == 1
+			 && $Banner['banner_clicks_until'] !=''
+			 && $Banner['banner_clicks'] >= $Banner['banner_clicks_until']
+			) {
+				// max clicks erreicht
+				$Banner['banner_active'] = '<span class="banner_stat_no">' . $GLOBALS['TL_LANG']['tl_banner_stat']['pub_no'] . '</span>';
+				$Banner['banner_published_class'] = 'unpublished';
+			}
+		}
+		else
+		{
+			$Banner['banner_active'] = '<span class="banner_stat_no">' . $GLOBALS['TL_LANG']['tl_banner_stat']['pub_no'] . '</span>';
+			$Banner['banner_published_class'] = 'unpublished';
+		}
+	}
 
-    /**
-     * Get status of maxviews and maxclicks
-     *
-     * @param  array $Banner
-     * @return array array(bool $intMaxViews, bool $intMaxClicks)
-     */
-    protected function getMaxViewsClicksStatus(&$Banner)
-    {
-        $intMaxViews = false;
-        $intMaxClicks= false;
+	/**
+	 * Get status of maxviews and maxclicks
+	 *
+	 * @param  array $Banner
+	 * @return array array(bool $intMaxViews, bool $intMaxClicks)
+	 */
+	protected function getMaxViewsClicksStatus(&$Banner)
+	{
+		$intMaxViews = false;
+		$intMaxClicks= false;
 
-        if ($Banner['banner_until'] == 1
-         && $Banner['banner_views_until'] != ''
-         && $Banner['banner_views'] >= $Banner['banner_views_until']
-        ) {
-            //max views erreicht
-            $intMaxViews =  true;
-        }
+		if (
+			$Banner['banner_until'] == 1
+		 && $Banner['banner_views_until'] != ''
+		 && $Banner['banner_views'] >= $Banner['banner_views_until']
+		) {
+			// max views erreicht
+			$intMaxViews =  true;
+		}
 
-        if ($Banner['banner_until'] == 1
-         && $Banner['banner_clicks_until'] !=''
-         && $Banner['banner_clicks'] >= $Banner['banner_clicks_until']
-        ) {
-            //max clicks erreicht
-            $intMaxClicks = true;
-        }
+		if (
+			$Banner['banner_until'] == 1
+		 && $Banner['banner_clicks_until'] !=''
+		 && $Banner['banner_clicks'] >= $Banner['banner_clicks_until']
+		) {
+			// max clicks erreicht
+			$intMaxClicks = true;
+		}
 
-        return [$intMaxViews, $intMaxClicks];
-    }
+		return array($intMaxViews, $intMaxClicks);
+	}
 
-    /**
-     * Statistic, set on zero
-     */
-    protected function setZero()
-    {
-        //Banner
-        $intBID = (int) \Contao\Input::post('zid', true);
-        if ($intBID>0) {
-            \Contao\Database::getInstance()->prepare("UPDATE
+	/**
+	 * Statistic, set on zero
+	 */
+	protected function setZero()
+	{
+		// Banner
+		$intBID = (int) Input::post('zid', true);
+		if ($intBID>0)
+		{
+			Database::getInstance()->prepare("UPDATE
                                                     tl_banner_stat
                                                SET
                                                     tstamp=?
@@ -448,14 +461,15 @@ class BannerStatisticsHelper extends \Contao\BackendModule
                                                   , banner_clicks=0
                                                WHERE
                                                     id=?")
-                                    ->execute(time(), $intBID);
+									->execute(time(), $intBID);
 
-            return;
-        }
-        //Category
-        $intCatBID = (int) \Contao\Input::post('catzid', true);
-        if ($intCatBID>0) {
-            \Contao\Database::getInstance()->prepare("UPDATE
+			return;
+		}
+		// Category
+		$intCatBID = (int) Input::post('catzid', true);
+		if ($intCatBID>0)
+		{
+			Database::getInstance()->prepare("UPDATE
                                                     tl_banner_stat
                                                INNER JOIN
                                                     tl_banner
@@ -466,43 +480,47 @@ class BannerStatisticsHelper extends \Contao\BackendModule
                                                   , banner_clicks=0
                                                WHERE
                                                     pid=?")
-                                    ->execute(time(), $intCatBID);
-        }
+									->execute(time(), $intCatBID);
+		}
+	}
 
-        return;
-    }
+	/**
+	 * Check if User member of group in banner statistik groups
+	 *
+	 * @param  string $banner_stat_groups DB Field "banner_stat_groups", serialized array
+	 * @return bool   true / false
+	 */
+	protected function isUserInBannerStatGroups($banner_stat_groups, $banner_stat_protected)
+	{
+		if (true === $this->User->isAdmin)
+		{
+			// DEBUG log_message('Ich bin Admin', 'banner.log');
+			return true; // Admin darf immer
+		}
+		// wenn  Schutz nicht aktiviert ist, darf jeder
+		if (false === $banner_stat_protected)
+		{
+			// Debug log_message('Schutz nicht aktiviert', 'banner.log');
+			return true;
+		}
+		// Schutz aktiviert, Einschränkungen vorhanden?
+		if (0 == \strlen($banner_stat_groups))
+		{
+			// DEBUG log_message('banner_stat_groups ist leer', 'banner.log');
+			return false; // nicht gefiltert, also darf keiner außer Admin
+		}
 
-    /**
-     * Check if User member of group in banner statistik groups
-     *
-     * @param   string  DB Field "banner_stat_groups", serialized array
-     * @return bool true / false
-     */
-    protected function isUserInBannerStatGroups($banner_stat_groups, $banner_stat_protected)
-    {
-        if (true === $this->User->isAdmin) {
-            //DEBUG log_message('Ich bin Admin', 'banner.log');
-            return true; // Admin darf immer
-        }
-        //wenn  Schutz nicht aktiviert ist, darf jeder
-        if (false === $banner_stat_protected) {
-            //Debug log_message('Schutz nicht aktiviert', 'banner.log');
-            return true;
-        }
-        //Schutz aktiviert, Einschränkungen vorhanden?
-        if (0 == \strlen($banner_stat_groups)) {
-            //DEBUG log_message('banner_stat_groups ist leer', 'banner.log');
-            return false; //nicht gefiltert, also darf keiner außer Admin
-        }
+		// mit isMemberOf ermitteln, ob user Member einer der Cat Groups ist
+		foreach (StringUtil::deserialize($banner_stat_groups) as $id => $groupid)
+		{
+			if (true === $this->User->isMemberOf($groupid))
+			{
+				// DEBUG log_message('Ich bin in der richtigen Gruppe '.$groupid, 'banner.log');
+				return true; // User is Member of banner_stat_group
+			}
+		}
 
-        //mit isMemberOf ermitteln, ob user Member einer der Cat Groups ist
-        foreach (\Contao\StringUtil::deserialize($banner_stat_groups) as $id => $groupid) {
-            if (true === $this->User->isMemberOf($groupid)) {
-                //DEBUG log_message('Ich bin in der richtigen Gruppe '.$groupid, 'banner.log');
-                return true; // User is Member of banner_stat_group
-            }
-        }
-        //Debug log_message('Ich bin in der falschen Gruppe', 'banner.log');
-        return false;
-    }
+		// Debug log_message('Ich bin in der falschen Gruppe', 'banner.log');
+		return false;
+	}
 } // class
