@@ -20,7 +20,7 @@ $GLOBALS['TL_DCA']['tl_banner'] =
 
     // Config
     'config' => [
-        'dataContainer'               => 'Table',
+        'dataContainer'               => Contao\DC_Table::class,
         'ptable'                      => 'tl_banner_category',
         'enableVersioning'            => true,
         'sql' => [
@@ -189,7 +189,7 @@ $GLOBALS['TL_DCA']['tl_banner'] =
             'inputType'               => 'imageSize',
             //'options'                 => System::getContainer()->get('contao.image.image_sizes')->getAllOptions(),
             'options_callback' => function () {
-                return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+                return \Contao\System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(\Contao\BackendUser::getInstance());
             },
             'reference'               => &$GLOBALS['TL_LANG']['MSC'],
             'sql'                     => "varchar(255) NOT NULL default ''",

@@ -29,6 +29,19 @@ class BannerLogic
 
     public $statusRandomBlocker = false;
     public $statusBannerFirstView;
+    public $statusFirstViewBlocker;
+
+    protected $container;
+
+    protected $request;
+
+    protected $BannerReferrer;
+    
+    public function __construct()
+    {
+        $this->container = \Contao\System::getContainer();
+        $this->request = $this->container->get('request_stack')->getCurrentRequest();
+    }
 
     /**
      * Get weighting for single banner
@@ -91,11 +104,11 @@ class BannerLogic
      * Get session
      *
      * @param  string $session_name e.g.: 'RandomBlocker'
-     * @return void
+     * @return mixed
      */
     public function getSession($session_name)
     {
-        $this->_session = (array) \Session::getInstance()->get($session_name);
+        $this->_session = $this->request->getSession()->get($session_name);
 
         return $this->_session;
     }
@@ -110,15 +123,26 @@ class BannerLogic
     public function setSession($session_name, $arrData, $merge = false)
     {
         if ($merge) {
-            $this->_session = \Session::getInstance()->get($session_name);
+            $this->_session = $this->request->getSession()->get($session_name);
 
             // numerische Schlüssel werden neu numeriert, daher
             // geht nicht: array_merge($this->_session, $arrData)
             $merge_array = (array) $this->_session + $arrData;
-            \Session::getInstance()->set($session_name, $merge_array);
+            $this->request->getSession()->set($session_name, $merge_array);
         } else {
-            \Session::getInstance()->set($session_name, $arrData);
+            $this->request->getSession()->set($session_name, $arrData);
         }
+    }
+
+    /**
+     * Remove Session Key
+     *
+     * @param string $session_name
+     * @return void
+     */
+    public function removeSessionKey($session_name)
+    {
+        $this->request->getSession()->remove($session_name);
     }
 
     /**
@@ -227,7 +251,8 @@ class BannerLogic
         if ($tstmap >  $FirstViewBlockTime) {
             return true;
         } else {
-            \Session::getInstance()->remove($key);
+            $this->removeSessionKey($key);
+            //$this->request->getSession()->remove($key);
         }
 
         return false;

@@ -24,7 +24,7 @@ use BugBuster\Banner\BannerLog;
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
-class BannerMultiple extends \Frontend
+class BannerMultiple extends \Contao\Frontend
 {
     /**
      * Banner intern
@@ -60,7 +60,7 @@ class BannerMultiple extends \Frontend
         $this->arrAllBannersBasic = $arrAllBannersBasic;
 
         // Static URLs Controller::setStaticUrls
-        $this->setStaticUrls();
+        //$this->setStaticUrls(); gibt es nicht mehr in 5.0 (TL_ASSETS_URL, TL_FILES_URL wurde da definiert)
     }
 
     public function getMultiBanner($module_id)
@@ -111,7 +111,7 @@ class BannerMultiple extends \Frontend
         //Schleife
         foreach ($this->arrAllBannersBasic as $banner_id => $banner_weigth) {
             unset($banner_weigth);
-            $objBanners  = \Database::getInstance()
+            $objBanners  = \Contao\Database::getInstance()
                                 ->prepare(
                                     "SELECT
                                                 TLB.*
@@ -132,7 +132,7 @@ class BannerMultiple extends \Frontend
                 $banner_cssID   = '';
                 $banner_class   = '';
                 $banner_classes = '';
-                $_cssID = \StringUtil::deserialize($objBanners->banner_cssid);
+                $_cssID = \Contao\StringUtil::deserialize($objBanners->banner_cssid);
                 if (\is_array($_cssID)) {
                     if ($_cssID[0] != '') {
                         $banner_cssID   = ' id="banner_'.$_cssID[0].'"';
@@ -220,7 +220,7 @@ class BannerMultiple extends \Frontend
          && ($this->banner_template != '')
         ) {
             $this->strTemplate = $this->banner_template;
-            $this->Template = new \FrontendTemplate($this->strTemplate);
+            $this->Template = new \Contao\FrontendTemplate($this->strTemplate);
         }
 
         //falls $arrImageSize = false  und kein Text Banner ist es ein leeres array

@@ -34,7 +34,8 @@ class BannerTemplate
             $objParent = \Contao\PageModel::findWithDetails($objBanners->banner_jumpTo);
             if ($objParent !== null) { // is null when page not exist anymore
                 if ($objParent->domain != '') {
-                    $domain = (\Contao\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
+                    //$domain = (\Contao\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
+                    $domain = (\Contao\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . '/';
                 }
                 // old $objBanners->banner_url = $domain . \Controller::generateFrontendUrl($objParent->row(), '', $objParent->language);
                 $objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator($objParent->row(), null, $objParent->language);

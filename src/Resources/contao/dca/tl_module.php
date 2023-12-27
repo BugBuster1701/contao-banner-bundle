@@ -15,7 +15,7 @@
 /**
  * Load tl_page language definitions
  */
-\System::loadLanguageFile('tl_page');  //wegen banner_redirect
+\Contao\System::loadLanguageFile('tl_page');  //wegen banner_redirect
 
 /**
  * Add a palette to tl_module

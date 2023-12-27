@@ -45,7 +45,8 @@ class BannerText
             $objParent = \Contao\PageModel::findWithDetails($this->objBanners->banner_jumpTo);
             if ($objParent !== null) { // is null when page not exist anymore
                 if ($objParent->domain != '') {
-                    $domain = (\Contao\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
+                    //$domain = (\Contao\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
+                    $domain = (\Contao\Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . '/';
                 }
                 //old $this->objBanners->banner_url = $domain . \Controller::generateFrontendUrl($objParent->row(), '', $objParent->language);
                 $this->objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator($objParent->row(), null, $objParent->language);

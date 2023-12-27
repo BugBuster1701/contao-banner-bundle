@@ -19,6 +19,7 @@
 namespace BugBuster\Banner;
 
 use BugBuster\Banner\BannerLog;
+use Symfony\Component\HttpClient\HttpClient;
 
 /**
  * Class BannerImage
@@ -27,7 +28,7 @@ use BugBuster\Banner\BannerLog;
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
-class BannerImage extends \System
+class BannerImage extends \Contao\System
 {
     /**
      * Current version of the class.
@@ -107,7 +108,8 @@ class BannerImage extends \System
         $arrImageSize = false;
 
         try {
-            $arrImageSize = getimagesize(TL_ROOT . '/' . $BannerImage);
+            $rootDir = \Contao\System::getContainer()->getParameter('kernel.project_dir');
+            $arrImageSize = getimagesize($rootDir . '/' . $BannerImage);
         } catch (\Exception $e) {
             $arrImageSize = false;
         }
@@ -128,15 +130,20 @@ class BannerImage extends \System
         $token = md5(uniqid(rand(), true));
         $tmpImage = 'system/tmp/mod_banner_fe_'.$token.'.tmp';
 
-        $objRequest = new \Request();
-        $objRequest->redirect = true; // #75: Unterstützung der redirects für externe Affiliat Banner
-        $objRequest->rlimit = 5;      // #75: Unterstützung der redirects für externe Affiliat Banner
-        $objRequest->send(html_entity_decode($BannerImage, ENT_NOQUOTES, 'UTF-8'));
+        // $objRequest = new \Contao\Request(); // TODO entfernt!
+        // $objRequest->redirect = true; // #75: Unterstützung der redirects für externe Affiliat Banner
+        // $objRequest->rlimit = 5;      // #75: Unterstützung der redirects für externe Affiliat Banner
+        // $objRequest->send(html_entity_decode($BannerImage, ENT_NOQUOTES, 'UTF-8'));
+
+        $client = HttpClient::create([
+                                'max_redirects' => 5,
+                            ]);
 
         //old: Test auf chunked, nicht noetig solange Contao bei HTTP/1.0 bleibt
         try {
-            $objFile = new \File($tmpImage);
-            $objFile->write($objRequest->response);
+            $objFile = new \Contao\File($tmpImage);
+            //$objFile->write($objRequest->response);
+            $objFile->write($client->request('GET', html_entity_decode($BannerImage, ENT_NOQUOTES, 'UTF-8')));
             $objFile->close();
         }
         // Temp directory not writeable
@@ -149,8 +156,8 @@ class BannerImage extends \System
 
             return false;
         }
-        $objRequest=null;
-        unset($objRequest);
+        $client=null;
+        unset($client);
         $arrImageSize = $this->getImageSizeInternal($tmpImage);
 
         $objFile->delete();

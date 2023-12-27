@@ -18,7 +18,7 @@ use BugBuster\BotDetection\ModuleBotDetection;
 use Contao\CoreBundle\Monolog\ContaoContext;
 use Psr\Log\LogLevel;
 
-class BannerChecks extends \Frontend
+class BannerChecks extends \Contao\Frontend
 {
     /**
      * Spider Bot Check
@@ -34,16 +34,16 @@ class BannerChecks extends \Frontend
             return false; //Bot Suche abgeschaltet ueber localconfig.php
         }
 
-        $bundles = array_keys(\System::getContainer()->getParameter('kernel.bundles')); // old \ModuleLoader::getActive()
+        $bundles = array_keys(\Contao\System::getContainer()->getParameter('kernel.bundles')); // old \ModuleLoader::getActive()
 
         if (!\in_array('BugBusterBotdetectionBundle', $bundles)) {
             //BugBusterBotdetectionBundle Modul fehlt, Abbruch
-            \System::getContainer()
+            \Contao\System::getContainer()
                         ->get('monolog.logger.contao')
                         ->log(
                             LogLevel::ERROR,
                             'contao-botdetection-bundle extension required for extension: Banner!',
-                            ['contao' => new ContaoContext('BannerChecks checkBot ', TL_ERROR)]
+                            ['contao' => new ContaoContext('BannerChecks checkBot ', ContaoContext::ERROR)]
                         );
             BannerLog::writeLog(__METHOD__, __LINE__, print_r($bundles, true));
 
@@ -65,13 +65,13 @@ class BannerChecks extends \Frontend
      */
     public function checkUserAgent()
     {
-        if (\Environment::get('httpUserAgent')) {
-            $UserAgent = trim(\Environment::get('httpUserAgent'));
+        if (\Contao\Environment::get('httpUserAgent')) {
+            $UserAgent = trim(\Contao\Environment::get('httpUserAgent'));
         } else {
             return false; // Ohne Absender keine Suche
         }
 
-        $objUserAgent = \Database::getInstance()->prepare("SELECT
+        $objUserAgent = \Contao\Database::getInstance()->prepare("SELECT
                                                                 `banner_useragent`
                                                            FROM
                                                                 `tl_module`
@@ -115,7 +115,7 @@ class BannerChecks extends \Frontend
      */
     public function checkBE()
     {
-        $objTokenChecker = \System::getContainer()->get('contao.security.token_checker');
+        $objTokenChecker = \Contao\System::getContainer()->get('contao.security.token_checker');
         if ($objTokenChecker->hasBackendUser()) {
             BannerLog::writeLog(__METHOD__, __LINE__, ': True');
 

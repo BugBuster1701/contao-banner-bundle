@@ -93,7 +93,8 @@ class BannerVideo
             $objParent = PageModel::findWithDetails($this->objBanners->banner_jumpTo);
             if ($objParent !== null) { // is null when page not exist anymore
                 if ($objParent->domain != '') {
-                    $domain = (Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
+                    //$domain = (Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
+                    $domain = (Environment::get('ssl') ? 'https://' : 'http://') . $objParent->domain . '/';
                 }
                 $this->objBanners->banner_url = $domain . BannerHelper::frontendUrlGenerator(
                     $objParent->row(),

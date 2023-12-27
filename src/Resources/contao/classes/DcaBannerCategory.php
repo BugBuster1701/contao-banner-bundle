@@ -18,7 +18,7 @@
 
 namespace BugBuster\Banner;
 
-class DcaBannerCategory extends \Backend
+class DcaBannerCategory extends \Contao\Backend
 {
     public function labelCallback($arrRow)
     {
@@ -57,7 +57,7 @@ class DcaBannerCategory extends \Backend
      */
     private function supportsWebp()
     {
-        $imagine = \System::getContainer()->get('contao.image.imagine');
+        $imagine = \Contao\System::getContainer()->get('contao.image.imagine');
         $imagineclass = \get_class($imagine);
 
         if ($imagineclass == "Imagine\\Imagick\\Imagine") {

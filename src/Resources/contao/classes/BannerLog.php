@@ -36,7 +36,7 @@ class BannerLog
         if ($method == '## START ##') {
             if (!isset($GLOBALS['banner']['debug']['first'])) {
                 if ((bool) ($GLOBALS['banner']['debug']['all'] ?? false)) {
-                    $arrUniqid = \StringUtil::trimsplit('.', uniqid('c0n7a0', true));
+                    $arrUniqid = \Contao\StringUtil::trimsplit('.', uniqid('c0n7a0', true));
                     $GLOBALS['banner']['debug']['first'] = $arrUniqid[1];
                     self::logMessage(sprintf('[%s] [%s] [%s] %s', $GLOBALS['banner']['debug']['first'], $method, $line, $value), 'banner_debug');
 
@@ -53,8 +53,8 @@ class BannerLog
             }
         }
 
-        $arrNamespace = \StringUtil::trimsplit('::', $method);
-        $arrClass =  \StringUtil::trimsplit('\\', $arrNamespace[0]);
+        $arrNamespace = \Contao\StringUtil::trimsplit('::', $method);
+        $arrClass =  \Contao\StringUtil::trimsplit('\\', $arrNamespace[0]);
         $vclass = $arrClass[2]; // class that will write the log
 
         if (\is_array($value)) {
@@ -82,12 +82,13 @@ class BannerLog
 
         $strLogsDir = null;
 
-        if (($container = \System::getContainer()) !== null) {
+        if (($container = \Contao\System::getContainer()) !== null) {
             $strLogsDir = $container->getParameter('kernel.logs_dir');
         }
 
         if (!$strLogsDir) {
-            $strLogsDir = TL_ROOT . '/var/logs';
+            $rootDir = \Contao\System::getContainer()->getParameter('kernel.project_dir');
+            $strLogsDir = $rootDir . '/var/logs';
         }
 
         error_log(sprintf("[%s] %s\n", date('d-M-Y H:i:s'), $strMessage), 3, $strLogsDir . '/' . $strLog);
@@ -102,8 +103,8 @@ class BannerLog
      */
     public static function log($strText, $strFunction, $strCategory)
     {
-        $level = TL_ERROR === $strCategory ? LogLevel::ERROR : LogLevel::INFO;
-        $logger = \System::getContainer()->get('monolog.logger.contao');
+        $level = ContaoContext::ERROR === $strCategory ? LogLevel::ERROR : LogLevel::INFO;
+        $logger = \Contao\System::getContainer()->get('monolog.logger.contao');
 
         $logger->log($level, $strText, ['contao' => new ContaoContext($strFunction, $strCategory)]);
     }

@@ -29,7 +29,8 @@
 		"contao/core-bundle": "^5.2",
 		"bugbuster/contao-botdetection-bundle":"^1.9",
 		"symfony/framework-bundle": "^6.4",
-		"symfony/http-kernel": "^6.4"
+		"symfony/http-kernel": "^6.4",
+		"symfony/http-client": "^6.4"
 	},
 	"require-dev": {
 			"contao/manager-plugin": "^2.0",

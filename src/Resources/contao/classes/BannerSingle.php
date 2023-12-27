@@ -65,7 +65,7 @@ class BannerSingle extends \Contao\Frontend
         $this->arrAllBannersBasic = $arrAllBannersBasic;
 
         // Static URLs Controller::setStaticUrls
-        $this->setStaticUrls();
+        //$this->setStaticUrls(); gibt es nicht mehr in 5.0 (TL_ASSETS_URL, TL_FILES_URL wurde da definiert)
     }
 
     /**

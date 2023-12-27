@@ -22,6 +22,7 @@ use BugBuster\Banner\BannerHelper;
 use BugBuster\Banner\BannerLog;
 use BugBuster\Banner\BannerLogic;
 use BugBuster\Banner\BannerSingle;
+use Contao\CoreBundle\Monolog\ContaoContext;
 
 /**
  * Class BannerInsertTag
@@ -49,7 +50,6 @@ class BannerInsertTag extends BannerHelper
     protected $banner_template   = '';
     protected $banner_redirect   = '';
     protected $banner_useragent  = '';
-    protected $Template          = '';
     protected $cssID             = ''; //serialisiertes Array
     protected $headline          = ''; //serialisiertes Array, unit und value
     protected $article_class     = ''; // mod_banner artikelcssclass
@@ -58,6 +58,7 @@ class BannerInsertTag extends BannerHelper
     protected $outputFormat      = 'html5';
     protected $templatepfad      = 'templates';
     protected $module_id          = 0;
+    protected $Template;
 
     /**
      * replaceInsertTagsBanner
@@ -78,13 +79,13 @@ class BannerInsertTag extends BannerHelper
             $retModuleData = $this->getModuleData($arrTag[1]);
             if (false === $retModuleData) {
                 //kein Banner Modul mit dieser ID
-                BannerLog::log('No banner module with this id "'.$arrTag[1].'"', 'ModuleBannerTag replaceInsertTagsBanner', TL_ERROR);
+                BannerLog::log('No banner module with this id "'.$arrTag[1].'"', 'ModuleBannerTag replaceInsertTagsBanner', ContaoContext::ERROR);
 
                 return false;
             }
         } else {
             //keine Banner Modul ID
-            BannerLog::log('Missing parameter (1): banner module id', 'ModuleBannerTag replaceInsertTagsBanner', TL_ERROR);
+            BannerLog::log('Missing parameter (1): banner module id', 'ModuleBannerTag replaceInsertTagsBanner', ContaoContext::ERROR);
 
             return false;
         }
@@ -167,7 +168,7 @@ class BannerInsertTag extends BannerHelper
     {
         //DEBUG log_message('generateBanner banner_categories:'.$this->banner_categories,'Banner.log');
         if ($this->bannerHelperInit() === false) {
-            BannerLog::log('Problem in bannerHelperInit', 'ModuleBannerTag generateBanner', TL_ERROR);
+            BannerLog::log('Problem in bannerHelperInit', 'ModuleBannerTag generateBanner', ContaoContext::ERROR);
 
             return false;
         }

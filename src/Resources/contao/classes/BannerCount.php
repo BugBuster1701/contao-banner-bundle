@@ -21,6 +21,7 @@ namespace BugBuster\Banner;
 use BugBuster\Banner\BannerLog;
 use BugBuster\Banner\BannerLogic;
 use BugBuster\BotDetection\ModuleBotDetection;
+use Contao\CoreBundle\Monolog\ContaoContext;
 
 /**
  * Class BannerCount
@@ -29,7 +30,7 @@ use BugBuster\BotDetection\ModuleBotDetection;
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
-class BannerCount extends \System
+class BannerCount extends \Contao\System
 {
     /**
      * Banner Data, for BannerStatViewUpdate
@@ -50,6 +51,7 @@ class BannerCount extends \System
         $this->module_id        = $module_id;
 
         parent::__construct();
+
     }
 
     /**
@@ -104,12 +106,12 @@ class BannerCount extends \System
                 'tstamp' => time(),
                 'banner_views' => 1
         ];
-        $objInsert = \Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
+        $objInsert = \Contao\Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
                                             ->set($arrSet)
                                             ->execute();
         if ($objInsert->insertId == 0) {
             //Zählung, Update
-            \Database::getInstance()->prepare("UPDATE
+            \Contao\Database::getInstance()->prepare("UPDATE
                             	                `tl_banner_stat`
                             	                SET
                             	                `tstamp`=?
@@ -186,7 +188,11 @@ class BannerCount extends \System
             //wenn Anzahl Banner in Session nun 0 dann Session loeschen
             if (\count($session) == 0) {
                 //komplett löschen
-                \Session::getInstance()->remove('StatViewUpdateBlocker'.$this->module_id);
+                $objBannerLogic = new BannerLogic();
+                $objBannerLogic->removeSessionKey('StatViewUpdateBlocker'.$this->module_id);
+                $objBannerLogic = null;
+                unset($objBannerLogic);
+                //\Contao\Session::getInstance()->remove('StatViewUpdateBlocker'.$this->module_id);
             } else { //sonst neu setzen
                 //gekuerzte Session neu setzen
                 $objBannerLogic = new BannerLogic();
@@ -211,10 +217,10 @@ class BannerCount extends \System
             return false; //Bot Suche abgeschaltet ueber localconfig.php
         }
 
-        $bundles = array_keys(\System::getContainer()->getParameter('kernel.bundles')); // old \ModuleLoader::getActive()
+        $bundles = array_keys(\Contao\System::getContainer()->getParameter('kernel.bundles')); // old \ModuleLoader::getActive()
         if (!\in_array('BugBusterBotdetectionBundle', $bundles)) {
             //botdetection Modul fehlt, Abbruch
-            BannerLog::log('contao-botdetection-bundle extension required for extension: contao-banner-bundle!', 'BannerCount::bannerCheckBot', TL_ERROR);
+            BannerLog::log('contao-botdetection-bundle extension required for extension: contao-banner-bundle!', 'BannerCount::bannerCheckBot', ContaoContext::ERROR);
 
             return false;
         }
@@ -234,8 +240,8 @@ class BannerCount extends \System
      */
     protected function checkUserAgent()
     {
-        if (\Environment::get('httpUserAgent')) {
-            $UserAgent = trim(\Environment::get('httpUserAgent'));
+        if (\Contao\Environment::get('httpUserAgent')) {
+            $UserAgent = trim(\Contao\Environment::get('httpUserAgent'));
         } else {
             return false; // Ohne Absender keine Suche
         }

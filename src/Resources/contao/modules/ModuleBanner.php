@@ -18,6 +18,9 @@
 
 namespace BugBuster\Banner;
 
+use Contao\System;
+use Symfony\Component\HttpFoundation\Request;
+
 /**
  * Class ModuleBanner
  *
@@ -25,7 +28,7 @@ namespace BugBuster\Banner;
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
-class ModuleBanner extends \Module
+class ModuleBanner extends \Contao\Module
 {
     /**
      * Template
@@ -39,13 +42,16 @@ class ModuleBanner extends \Module
      */
     public function generate()
     {
-        if (TL_MODE == 'BE') {
-            $objTemplate = new \BackendTemplate('be_wildcard');
+        if (System::getContainer()->get('contao.routing.scope_matcher')
+                    ->isBackendRequest(System::getContainer()->get('request_stack')
+                    ->getCurrentRequest() ?? Request::create(''))) 
+        {
+            $objTemplate = new \Contao\BackendTemplate('be_wildcard');
             $objTemplate->wildcard = '### BANNER MODUL ###';
             $objTemplate->title = $this->headline;
             $objTemplate->id = $this->id;
             $objTemplate->link = $this->name;
-            $objTemplate->href = 'contao/main.php?do=themes&amp;table=tl_module&amp;act=edit&amp;id=' . $this->id;
+            $objTemplate->href = \Contao\StringUtil::specialcharsUrl(System::getContainer()->get('router')->generate('contao_backend', array('do'=>'themes', 'table'=>'tl_module', 'act'=>'edit', 'id'=>$this->id)));
 
             return $objTemplate->parse();
         }

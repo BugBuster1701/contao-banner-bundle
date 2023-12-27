@@ -13,7 +13,10 @@
  * @filesource
  */
 
-\define('BANNER_VERSION', '1.5');
+use Contao\System;
+use Symfony\Component\HttpFoundation\Request;
+
+\define('BANNER_VERSION', '1.6');
 \define('BANNER_BUILD', '0');
 
 /**
@@ -52,6 +55,9 @@ $GLOBALS['TL_HOOKS']['replaceInsertTags'][] = ['BugBuster\Banner\BannerInsertTag
 /**
  * CSS
  */
-if (\defined('TL_MODE') && TL_MODE == 'BE') {
+if (System::getContainer()->get('contao.routing.scope_matcher')
+	->isBackendRequest(System::getContainer()->get('request_stack')
+	->getCurrentRequest() ?? Request::create('')))
+{
     $GLOBALS['TL_CSS'][] = 'bundles/bugbusterbanner/backend.css';
 }

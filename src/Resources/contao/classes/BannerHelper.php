@@ -23,7 +23,7 @@ use BugBuster\Banner\BannerLog;
  * @author     Glen Langer (BugBuster)
  * @license    LGPL
  */
-class BannerHelper extends \Frontend
+class BannerHelper extends \Contao\Frontend
 {
     /**
      * Banner intern
@@ -163,7 +163,7 @@ class BannerHelper extends \Frontend
 
             return false;
         }
-        $objBannerCategory = \Database::getInstance()->prepare("SELECT 
+        $objBannerCategory = \Contao\Database::getInstance()->prepare("SELECT 
                                                                     * 
                                                                 FROM  
                                                                     tl_banner_category 
@@ -176,9 +176,9 @@ class BannerHelper extends \Frontend
 
             return false;
         }
-        $arrGroup = \StringUtil::deserialize($objBannerCategory->banner_groups);
+        $arrGroup = \Contao\StringUtil::deserialize($objBannerCategory->banner_groups);
         //Pfad+Dateiname holen ueber UUID (findByPk leitet um auf findByUuid)
-        $objFile = \FilesModel::findByPk($objBannerCategory->banner_default_image);
+        $objFile = \Contao\FilesModel::findByPk($objBannerCategory->banner_default_image);
         $this->arrCategoryValues = [
                                         'id'                    => $objBannerCategory->id,
                                         'banner_default'		=> $objBannerCategory->banner_default,
@@ -237,7 +237,7 @@ class BannerHelper extends \Frontend
             return false;
         }
         //Domain Name ermitteln
-        $http_host = \Environment::get('host');
+        $http_host = \Contao\Environment::get('host');
         //aktueller Zeitstempel
         $intTime = time();
 
@@ -246,7 +246,7 @@ class BannerHelper extends \Frontend
         //mit Beachtung der Domain
         //sortiert nach "sorting"
         //nur Basic Felder `id`, `banner_weighting`
-        $objBanners = \Database::getInstance()
+        $objBanners = \Contao\Database::getInstance()
                         ->prepare(
                             "SELECT 
                                         TLB.`id`, TLB.`banner_weighting`
@@ -301,7 +301,7 @@ class BannerHelper extends \Frontend
 
         $GLOBALS['banner']['debug']['all'] = false;
 
-        $objBanner = \Database::getInstance()
+        $objBanner = \Contao\Database::getInstance()
                     ->prepare("SELECT
                                     banner_expert_debug_all
                                 FROM
@@ -329,7 +329,7 @@ class BannerHelper extends \Frontend
      */
     public static function frontendUrlGenerator($arrRow, $strParams=null, $strForceLang=null)
     {
-        $objTargetTo = \PageModel::findPublishedById($arrRow['id']);
+        $objTargetTo = \Contao\PageModel::findPublishedById($arrRow['id']);
 
         if ($objTargetTo === null) {
             return '';
@@ -352,6 +352,6 @@ class BannerHelper extends \Frontend
             return $strUrl;
         }
 
-        return \Idna::decodeUrl($strUrl);
+        return \Contao\Idna::decodeUrl($strUrl);
     }
 } // class

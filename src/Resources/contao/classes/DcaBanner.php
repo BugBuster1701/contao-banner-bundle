@@ -628,7 +628,7 @@ class DcaBanner extends \Contao\Backend
                 ->log(
                     LogLevel::ERROR,
                     'Not enough permissions to publish/unpublish Banner ID "'.$intId.'"',
-                    ['contao' => new ContaoContext('tl_banner toggleVisibility', TL_ERROR)]
+                    ['contao' => new ContaoContext('tl_banner toggleVisibility', ContaoContext::ERROR)]
                 );
 
             $this->redirect('contao/main.php?act=error');

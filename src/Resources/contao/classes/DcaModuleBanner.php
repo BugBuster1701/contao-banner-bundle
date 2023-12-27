@@ -24,7 +24,7 @@ namespace BugBuster\Banner;
  * @copyright  Glen Langer 2012..2022 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  */
-class DcaModuleBanner extends \Backend
+class DcaModuleBanner extends \Contao\Backend
 {
     public function getBannerTemplates()
     {

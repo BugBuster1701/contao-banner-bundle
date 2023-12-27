@@ -19,6 +19,7 @@ use Contao\FilesModel;
 use Contao\ImageSizeModel;
 use Contao\StringUtil;
 use Contao\System;
+use Contao\CoreBundle\Monolog\ContaoContext;
 
 /**
  * Class BannerInternal
@@ -61,7 +62,7 @@ class BannerInternal
         //Falls Datei gelöscht wurde, Abbruch
         if (false === $arrImageSize) {
             $arrImageSize[2] = 0;
-            BannerLog::log('Banner Image with ID "'.$this->objBanners->id.'" not found', __METHOD__ .':'. __LINE__, TL_ERROR);
+            BannerLog::log('Banner Image with ID "'.$this->objBanners->id.'" not found', __METHOD__ .':'. __LINE__, ContaoContext::ERROR);
 
             $objReturn = new \stdClass();
             $objReturn->FileSrc = null;

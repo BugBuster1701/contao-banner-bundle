@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Response;
  *
  * @author     Glen Langer (BugBuster)
  */
-class FrontendBanner extends \Frontend
+class FrontendBanner extends \Contao\Frontend
 {
     /**
      * Banner ID
@@ -31,10 +31,8 @@ class FrontendBanner extends \Frontend
 
     /**
      * Session
-     *
-     * @var string
      */
-    private $_session   = [];
+    private $_session;
 
     /**
      * Initialize the object (do not remove)
@@ -78,7 +76,7 @@ class FrontendBanner extends \Frontend
             //normaler Banner
             $banner_not_viewed = false;
             // Check whether the Banner ID exists
-            $objBanners = \Database::getInstance()
+            $objBanners = \Contao\Database::getInstance()
                                     ->prepare("SELECT
                                                 tb.id
                                               , tb.banner_url
@@ -94,7 +92,7 @@ class FrontendBanner extends \Frontend
                                     ->execute($this->intBID);
 
             if (!$objBanners->next()) {
-                $objBanners = \Database::getInstance()
+                $objBanners = \Contao\Database::getInstance()
                                         ->prepare("SELECT
                                                     tb.id
                                                   , tb.banner_url
@@ -132,7 +130,7 @@ class FrontendBanner extends \Frontend
             //Banner Ziel per Page?
             if ($objBanners->banner_jumpTo >0) {
                 //url generieren
-                $objBannerNextPage = \Database::getInstance()
+                $objBannerNextPage = \Contao\Database::getInstance()
                                                 ->prepare("SELECT
                                                                 id
                                                               , alias
@@ -144,7 +142,7 @@ class FrontendBanner extends \Frontend
                                                 ->execute($objBanners->banner_jumpTo);
 
                 if ($objBannerNextPage->numRows) {
-                    $objPage = \PageModel::findWithDetails($objBanners->banner_jumpTo);
+                    $objPage = \Contao\PageModel::findWithDetails($objBanners->banner_jumpTo);
                     // deprecated #8 $objBanners->banner_url = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc(), null, $objPage->rootLanguage);
                     $objBanners->banner_url = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objPage->rootLanguage);
                 }
@@ -153,7 +151,7 @@ class FrontendBanner extends \Frontend
         } else {
             // Default Banner from Category
             // Check whether the Banner ID exists
-            $objBanners = \Database::getInstance()
+            $objBanners = \Contao\Database::getInstance()
                                     ->prepare("SELECT
                                                     id
                                                   , banner_default_url AS banner_url
@@ -180,7 +178,7 @@ class FrontendBanner extends \Frontend
 
         // Make the location an absolute URL
         if (!preg_match('@^https?://@i', $banner_url)) {
-            $banner_url = \Environment::get('base') . ltrim($banner_url, '/');
+            $banner_url = \Contao\Environment::get('base') . ltrim($banner_url, '/');
         }
 
         $objResponse = new RedirectResponse($banner_url, $banner_redirect);
@@ -200,7 +198,7 @@ class FrontendBanner extends \Frontend
                 //Update
                 $tstamp = time();
                 $banner_clicks = $objBanners->banner_clicks + 1;
-                \Database::getInstance()->prepare("UPDATE
+                \Contao\Database::getInstance()->prepare("UPDATE
                                                         tl_banner_stat
                                                    SET
                                                         tstamp=?
@@ -216,7 +214,7 @@ class FrontendBanner extends \Frontend
                     'tstamp' => time(),
                     'banner_clicks' => 1
                 ];
-                \Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
+                \Contao\Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
                                         ->set($arrSet)
                                         ->execute();
             }
@@ -240,7 +238,7 @@ class FrontendBanner extends \Frontend
             return '301'; // error, but the show must go on
         }
 
-        $objBRT = \Database::getInstance()->prepare("SELECT
+        $objBRT = \Contao\Database::getInstance()->prepare("SELECT
                                                         `banner_categories`
                                                        ,`banner_redirect`
                                                      FROM
@@ -304,7 +302,7 @@ class FrontendBanner extends \Frontend
 
     protected function getBannerCategory($banner_id)
     {
-        $objCat = \Database::getInstance()->prepare("SELECT
+        $objCat = \Contao\Database::getInstance()->prepare("SELECT
                                                         pid as CatID
                                                      FROM
                                                         `tl_banner`
@@ -392,7 +390,11 @@ class FrontendBanner extends \Frontend
             //wenn Anzahl Banner in Session nun 0 dann Session loeschen
             if (\count($this->_session) == 0) {
                 //komplett löschen
-                \Session::getInstance()->remove('ReClickBlocker');
+                $objBannerLogic = new BannerLogic();
+                $objBannerLogic->removeSessionKey('ReClickBlocker');
+                $objBannerLogic = null;
+                unset($objBannerLogic);
+                //\Session::getInstance()->remove('ReClickBlocker');
             } else { //sonst neu setzen
                 //gekuerzte Session neu setzen
                 $this->setSession('ReClickBlocker', $this->_session, false);
@@ -410,7 +412,10 @@ class FrontendBanner extends \Frontend
      */
     protected function getSession($session_name)
     {
-        $this->_session = (array) \Session::getInstance()->get($session_name);
+        $objBannerLogic = new BannerLogic();
+        $this->_session = (array) $objBannerLogic->getSession($session_name);
+        $objBannerLogic = null;
+        unset($objBannerLogic);
     }
 
     /**
@@ -422,15 +427,19 @@ class FrontendBanner extends \Frontend
      */
     protected function setSession($session_name, $arrData, $merge = false)
     {
-        if ($merge) {
-            $this->_session = \Session::getInstance()->get($session_name);
+        $objBannerLogic = new BannerLogic();
+        $objBannerLogic->setSession($session_name, $arrData, $merge);
+        // if ($merge) {
+        //     $this->_session = $this->getSession($session_name);
 
-            // numerische Schlüssel werden neu numeriert, daher
-            // geht nicht: array_merge($this->_session, $arrData)
-            $merge_array = (array) $this->_session + $arrData;
-            \Session::getInstance()->set($session_name, $merge_array);
-        } else {
-            \Session::getInstance()->set($session_name, $arrData);
-        }
+        //     // numerische Schlüssel werden neu numeriert, daher
+        //     // geht nicht: array_merge($this->_session, $arrData)
+        //     $merge_array = (array) $this->_session + $arrData;
+        //     \Session::getInstance()->set($session_name, $merge_array);
+        // } else {
+        //     \Session::getInstance()->set($session_name, $arrData);
+        // }
+        $objBannerLogic = null;
+        unset($objBannerLogic);
     }
 }

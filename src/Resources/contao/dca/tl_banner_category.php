@@ -20,7 +20,7 @@ $GLOBALS['TL_DCA']['tl_banner_category'] =
 
     // Config
     'config' => [
-        'dataContainer'               => 'Table',
+        'dataContainer'               => Contao\DC_Table::class,
         'ctable'                      => ['tl_banner'],
         'switchToEdit'                => true,
         'enableVersioning'            => true,
