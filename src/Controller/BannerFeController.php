@@ -19,13 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * Handles the Banner front end routes.
- *
- * @copyright  Glen Langer 2019 <http://contao.ninja>
- *
- * @Route("/bbfebanner", defaults={"_scope" = "frontend", "_token_check" = false})
- */
+#[Route('/bbfebanner', defaults: ['_scope' => 'frontend', '_token_check' => false])]
 class BannerFeController extends AbstractController
 {
     /**
@@ -33,8 +27,8 @@ class BannerFeController extends AbstractController
      *
      * @return Response
      *
-     * @Route("/banclicks/{strbid}/{bid}", name="bugbuster_banner_frontend_clicks", requirements={"bid"="\d+"})
      */
+    #[Route('/banclicks/{strbid}/{bid}', name: 'bugbuster_dlstats_export', requirements: ['bid' => '\d+'])]
     public function banclicksAction($strbid = '', $bid = 0)
     {
         if ('bid' !== $strbid && 'defbid' !== $strbid) {
