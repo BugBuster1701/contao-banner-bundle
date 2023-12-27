@@ -25,9 +25,6 @@ use Contao\System;
 
 /**
  * Class BannerHelper
- *
- * @copyright  Glen Langer 2007..2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerHelper extends Frontend
 {

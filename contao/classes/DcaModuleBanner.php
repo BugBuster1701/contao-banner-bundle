@@ -20,9 +20,7 @@ namespace BugBuster\Banner;
 use Contao\Backend;
 
 /**
- * DCA Helper Class DcaModuleBanner
- *
- * @copyright  Glen Langer 2012..2022 <http://contao.ninja>
+ * Class DcaModuleBanner, DCA Helper
  */
 class DcaModuleBanner extends Backend
 {

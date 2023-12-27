@@ -21,6 +21,9 @@ use Contao\Frontend;
 use Contao\System;
 use Psr\Log\LogLevel;
 
+/**
+ * Class BannerChecks
+ */
 class BannerChecks extends Frontend
 {
 	/**

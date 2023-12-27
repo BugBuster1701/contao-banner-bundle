@@ -17,6 +17,9 @@ use Contao\Environment;
 use Contao\PageModel;
 use Contao\StringUtil;
 
+/**
+ * Class BannerTemplate
+ */
 class BannerTemplate
 {
 	public static function generateTemplateData($arrImageSize, $FileSrc, $picture, $objBanners, $banner_cssID, $banner_class)

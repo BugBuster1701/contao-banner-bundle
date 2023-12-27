@@ -23,9 +23,6 @@ use Symfony\Component\HttpClient\HttpClient;
 
 /**
  * Class BannerImage
- *
- * @copyright  Glen Langer 2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerImage extends System
 {
@@ -128,11 +125,6 @@ class BannerImage extends System
 	{
 		$token = md5(uniqid(random_int(0, getrandmax()), true));
 		$tmpImage = 'system/tmp/mod_banner_fe_' . $token . '.tmp';
-
-		// $objRequest = new \Contao\Request(); // TODO entfernt!
-		// $objRequest->redirect = true; // #75: Unterstützung der redirects für externe Affiliat Banner
-		// $objRequest->rlimit = 5;      // #75: Unterstützung der redirects für externe Affiliat Banner
-		// $objRequest->send(html_entity_decode($BannerImage, ENT_NOQUOTES, 'UTF-8'));
 
 		$client = HttpClient::create(array(
 			'max_redirects' => 5,

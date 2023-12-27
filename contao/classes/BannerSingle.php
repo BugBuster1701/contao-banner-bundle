@@ -20,9 +20,6 @@ use Contao\StringUtil;
 
 /**
  * Class BannerSingle
- *
- * @copyright  Glen Langer 2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerSingle extends Frontend
 {

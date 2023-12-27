@@ -19,9 +19,6 @@ namespace BugBuster\Banner;
 
 /**
  * Class BannerReferrer
- *
- * @copyright  Glen Langer 2007..2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerReferrer
 {

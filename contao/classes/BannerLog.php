@@ -20,9 +20,6 @@ use Psr\Log\LogLevel;
 
 /**
  * Class BannerLog
- *
- * @copyright  Glen Langer 2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerLog
 {

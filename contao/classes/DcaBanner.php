@@ -32,6 +32,9 @@ use Contao\User;
 use Contao\Validator;
 use Imagine\Exception\RuntimeException;
 
+/**
+ * Class DcaBanner, DCA Helper
+ */
 class DcaBanner extends Backend
 {
 	/**

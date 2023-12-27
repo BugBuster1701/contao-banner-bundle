@@ -25,9 +25,6 @@ use Contao\System;
 
 /**
  * Class BannerCount
- *
- * @copyright  Glen Langer 2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerCount extends System
 {

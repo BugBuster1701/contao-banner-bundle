@@ -20,9 +20,6 @@ use Contao\StringUtil;
 
 /**
  * Class BannerMultiple
- *
- * @copyright  Glen Langer 2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerMultiple extends Frontend
 {
@@ -60,9 +57,6 @@ class BannerMultiple extends Frontend
 		$this->strTemplate        = $strTemplate;
 		$this->Template           = $objTemplate;
 		$this->arrAllBannersBasic = $arrAllBannersBasic;
-
-		// Static URLs Controller::setStaticUrls
-		// $this->setStaticUrls(); gibt es nicht mehr in 5.0 (TL_ASSETS_URL, TL_FILES_URL wurde da definiert)
 	}
 
 	public function getMultiBanner($module_id)

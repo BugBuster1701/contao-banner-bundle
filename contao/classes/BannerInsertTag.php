@@ -24,9 +24,6 @@ use Contao\StringUtil;
 
 /**
  * Class BannerInsertTag
- *
- * @copyright  Glen Langer 2007..2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerInsertTag extends BannerHelper
 {

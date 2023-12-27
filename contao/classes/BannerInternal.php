@@ -23,9 +23,6 @@ use Contao\System;
 
 /**
  * Class BannerInternal
- *
- * @copyright  Glen Langer 2017..2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerInternal
 {

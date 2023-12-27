@@ -20,6 +20,9 @@ namespace BugBuster\Banner;
 use Contao\Backend;
 use Contao\System;
 
+/**
+ * Class DcaBannerCategory, DCA Helper
+ */
 class DcaBannerCategory extends Backend
 {
 	public function labelCallback($arrRow)

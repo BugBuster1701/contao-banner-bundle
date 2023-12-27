@@ -21,9 +21,6 @@ use Contao\StringUtil;
 
 /**
  * Class BannerVideo
- *
- * @copyright  Glen Langer 2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerVideo
 {

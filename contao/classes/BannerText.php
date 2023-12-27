@@ -19,9 +19,6 @@ use Contao\StringUtil;
 
 /**
  * Class BannerText
- *
- * @copyright  Glen Langer 2022 <http://contao.ninja>
- * @license    LGPL
  */
 class BannerText
 {

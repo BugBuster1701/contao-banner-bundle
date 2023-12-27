@@ -29,8 +29,6 @@ use Contao\User;
 
 /**
  * Class BotStatisticsHelper
- *
- * @copyright  Glen Langer 2013..2022 <http://contao.ninja>
  */
 class BannerStatisticsHelper extends BackendModule
 {
