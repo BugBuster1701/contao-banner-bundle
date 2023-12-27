@@ -1,27 +1,27 @@
 <!-- indexer::stop -->
-<aside id="<?= $this->bmid; ?>" title="banner_<?= $this->bmid; ?>" class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<aside id="<?= $this->bmid; ?>" title="banner_<?= $this->bmid; ?>" class="<?= $this->class; ?> block"<?= $this->cssID; ?><?php if ($this->style): ?> style="<?= $this->style; ?>"<?php endif; ?>>
 <?php foreach ($this->banners as $banner): ?>
 <?php if ($banner['banner_pic']) : ?>
-	<figure class="banner_wrap<?php echo $banner['banner_wrap_class']; ?>"<?php echo $banner['banner_wrap_id']; ?> itemscope itemtype="http://schema.org/ImageObject">
-	    <div class="banner_image" id="banner_<?php echo $banner['banner_id']; ?>">
-	        <?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>/<?php echo $banner['banner_key'].'/'.$banner['banner_id']; ?>" <?php echo $banner['banner_target']; ?> title="<?php echo $banner['banner_comment']; ?>" itemprop="contentUrl"><?php endif; ?>
+	<figure class="banner_wrap<?= $banner['banner_wrap_class']; ?>"<?= $banner['banner_wrap_id']; ?> itemscope itemtype="http://schema.org/ImageObject">
+	    <div class="banner_image" id="banner_<?= $banner['banner_id']; ?>">
+	        <?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>/<?= $banner['banner_key'].'/'.$banner['banner_id']; ?>" <?= $banner['banner_target']; ?> title="<?= $banner['banner_comment']; ?>" itemprop="contentUrl"><?php endif; ?>
 	        <?php $this->insert('picture_default', $banner['picture']) ?>
 	        <?php if ($banner['banner_url']): ?></a><?php endif; ?>
 	    </div>
 	</figure>
 <?php endif; ?>
 <?php if ($banner['banner_text']) : ?>
-	<figure class="banner_wrap<?php echo $banner['banner_wrap_class']; ?>"<?php echo $banner['banner_wrap_id']; ?>>
-	    <div class="banner_text" id="banner_<?php echo $banner['banner_id']; ?>">
-	    	<div class="banner_text_name"><?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>/<?php echo $banner['banner_key'].'/'.$banner['banner_id']; ?>" <?php echo $banner['banner_target']; ?> title="<?php echo $banner['banner_name']; ?>" ><?php endif; ?><?php echo $banner['banner_name']; ?><?php if ($banner['banner_url']): ?></a><?php endif; ?></div>
-	    	<div class="banner_text_comment"><?php echo $banner['banner_comment']; ?></div>
-	        <?php if ($banner['banner_url']): ?><div class="banner_text_url"><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>/<?php echo $banner['banner_key'].'/'.$banner['banner_id']; ?>" <?php echo $banner['banner_target']; ?> title="<?php echo $banner['banner_name']; ?>" ><?php echo $banner['banner_url_kurz']; ?></a></div><?php endif; ?>
+	<figure class="banner_wrap<?= $banner['banner_wrap_class']; ?>"<?= $banner['banner_wrap_id']; ?>>
+	    <div class="banner_text" id="banner_<?= $banner['banner_id']; ?>">
+	    	<div class="banner_text_name"><?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>/<?= $banner['banner_key'].'/'.$banner['banner_id']; ?>" <?= $banner['banner_target']; ?> title="<?= $banner['banner_name']; ?>" ><?php endif; ?><?= $banner['banner_name']; ?><?php if ($banner['banner_url']): ?></a><?php endif; ?></div>
+	    	<div class="banner_text_comment"><?= $banner['banner_comment']; ?></div>
+	        <?php if ($banner['banner_url']): ?><div class="banner_text_url"><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>/<?= $banner['banner_key'].'/'.$banner['banner_id']; ?>" <?= $banner['banner_target']; ?> title="<?= $banner['banner_name']; ?>" ><?= $banner['banner_url_kurz']; ?></a></div><?php endif; ?>
 	    </div>
 	</figure>
 <?php endif; ?>
 <?php if ($banner['banner_video']) : ?>
-    <figure class="banner_wrap<?php echo $banner['banner_wrap_class']; ?> video_container"<?php echo $banner['banner_wrap_id']; ?>>
-        <?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>/<?php echo $banner['banner_key'].'/'.$banner['banner_id']; ?>" <?php echo $banner['banner_target']; ?> title="<?php echo $banner['banner_comment']; ?>"><?php endif; ?>
+    <figure class="banner_wrap<?= $banner['banner_wrap_class']; ?> video_container"<?= $banner['banner_wrap_id']; ?>>
+        <?php if ($banner['banner_url']): ?><a href="<?= $this->route('bugbuster_banner_frontend_clicks') ?>/<?= $banner['banner_key'].'/'.$banner['banner_id']; ?>" <?= $banner['banner_target']; ?> title="<?= $banner['banner_comment']; ?>"><?php endif; ?>
             <video<?= $banner['video_size'] ?><?php if ($banner['video_poster']): ?> poster="<?= $banner['video_poster'] ?>"<?php endif; ?> preload="auto" autoplay="" loop="" playsinline="" muted="" disablepictureinpicture="">
                 <?php foreach ($banner['video_files'] as $file): ?>
                     <source type="<?= $file->mime ?>" src="<?= $file->path.$banner['video_range'] ?>">
@@ -32,7 +32,7 @@
 <?php endif; ?>
 <?php if ($banner['banner_empty']) : ?>
 	<div class="banner_empty">
-	<!-- <?php echo $banner['banner_name']; ?> -->
+	<!-- <?= $banner['banner_name']; ?> -->
 	</div>
 <?php endif; ?>
 <?php endforeach; ?>
