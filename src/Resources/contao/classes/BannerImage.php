@@ -138,12 +138,18 @@ class BannerImage extends \Contao\System
         $client = HttpClient::create([
                                 'max_redirects' => 5,
                             ]);
+        $response = $client->request('GET', html_entity_decode($BannerImage, ENT_NOQUOTES, 'UTF-8'));
+        $statusCode = $response->getStatusCode();
+        if (200 !== $statusCode) {
+            return false;
+        }
 
         //old: Test auf chunked, nicht noetig solange Contao bei HTTP/1.0 bleibt
         try {
             $objFile = new \Contao\File($tmpImage);
+            
             //$objFile->write($objRequest->response);
-            $objFile->write($client->request('GET', html_entity_decode($BannerImage, ENT_NOQUOTES, 'UTF-8')));
+            $objFile->write($response->getContent());
             $objFile->close();
         }
         // Temp directory not writeable
