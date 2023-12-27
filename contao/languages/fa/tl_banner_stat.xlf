@@ -1,0 +1,158 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-27T17:49:45+01:00" original="tl_banner_stat" source-language="en" target-language="fa">
+    <body>
+      <trans-unit id="tl_banner_stat.NoURL">
+        
+        <source>No URL</source>
+        <target>بدون نشانی وب</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.Prio">
+        
+        <source>Priority</source>
+        <target>اولویت</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.URL">
+        
+        <source>Target URL</source>
+        <target>نشانی وب مقصد</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.active">
+        
+        <source>Active</source>
+        <target>فعال</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.allkat">
+        
+        <source>All categories</source>
+        <target>همه دسته‌بندی‌ها</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero">
+        
+        <source>Statistic</source>
+        <target>آمار</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_button">
+        
+        <source>Reset all banners</source>
+        <target>از نو کردن همه بنرها</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_confirm">
+        
+        <source>Do you really want to reset all banner statistic counters (views and clicks) in this category?</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_text">
+        
+        <source>All banner statistic counters will be reset to zero in this category.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.click_through_rate">
+        
+        <source>Click-Through-Rate</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.clicks">
+        
+        <source>Clicks</source>
+        <target>کلیک‌ها</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.id">
+        
+        <source>ID</source>
+        <target>شناسه</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.kat">
+        
+        <source>Category</source>
+        <target>دسته‌بندی</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.max_yes">
+        
+        <source>(Maximum)</source>
+        <target>(بیشینه)</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.modname">
+        
+        <source>Banner Bundle</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.name">
+        
+        <source>Name</source>
+        <target>نام</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.number_active_inactive">
+        
+        <source>Number of active / inactive banners</source>
+        <target>تعداد بنرهای فعال/غیرفعال</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.number_views_clicks">
+        
+        <source>Number of views / clicks</source>
+        <target>تعداد نمایش / کلیک</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.picture">
+        
+        <source>Banner</source>
+        <target>بنر</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.1">
+        
+        <source>high</source>
+        <target>بالا</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.2">
+        
+        <source>normal</source>
+        <target>عادی</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.3">
+        
+        <source>low</source>
+        <target>پایین</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.pub_no">
+        
+        <source>no</source>
+        <target>خیر</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.pub_yes">
+        
+        <source>yes</source>
+        <target>بلی</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.read_error">
+        
+        <source>Banner file not found or read error!</source>
+        <target>پرونده بنر یافت نشد و یا خطای خواندن رخ داد!</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.select">
+        
+        <source>Please select</source>
+        <target>انتخاب کنید</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.views">
+        
+        <source>Views</source>
+        <target>مشاهده‌ها</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.zero_confirm">
+        
+        <source>Do you really want to reset the banner statistic counters (views and clicks)?</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.zero_text">
+        
+        <source>The banner statistic counter will be reset to zero.</source>
+        <target>شمارنده آمار بنر به صفر تنظیم خواهد شد.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.banner_zero">
+        
+        <source>Reset</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.player_src">
+        
+        <source>Video files</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.poster">
+        
+        <source>Preview image</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

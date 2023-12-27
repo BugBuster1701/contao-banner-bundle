@@ -1,0 +1,164 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-27T17:49:45+01:00" original="tl_banner_stat" source-language="en" target-language="fr">
+    <body>
+      <trans-unit id="tl_banner_stat.NoURL">
+        
+        <source>No URL</source>
+        <target>Sans URL</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.Prio">
+        
+        <source>Priority</source>
+        <target>Priorité</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.URL">
+        
+        <source>Target URL</source>
+        <target>URL cible</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.active">
+        
+        <source>Active</source>
+        <target>Active</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.allkat">
+        
+        <source>All categories</source>
+        <target>Toutes les catégorie</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero">
+        
+        <source>Statistic</source>
+        <target>Statistiques</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_button">
+        
+        <source>Reset all banners</source>
+        <target>Réinitialiser toutes les bannières</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_confirm">
+        
+        <source>Do you really want to reset all banner statistic counters (views and clicks) in this category?</source>
+        <target>Souhaitez-vous vraiment réinitialiser les compteurs des statistiques de toutes les  bannières de la catégorie (vues et clics)?</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_text">
+        
+        <source>All banner statistic counters will be reset to zero in this category.</source>
+        <target>Les compteurs des statistiques des bannières de la catégorie seront réinitialisé à zéro.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.click_through_rate">
+        
+        <source>Click-Through-Rate</source>
+        <target>Taux de clics</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.clicks">
+        
+        <source>Clicks</source>
+        <target>Clics</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.id">
+        
+        <source>ID</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.kat">
+        
+        <source>Category</source>
+        <target>Catégorie</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.max_yes">
+        
+        <source>(Maximum)</source>
+        <target>(Maximum)</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.modname">
+        
+        <source>Banner Bundle</source>
+        <target>Lot de bannières</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.name">
+        
+        <source>Name</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.number_active_inactive">
+        
+        <source>Number of active / inactive banners</source>
+        <target>Nombre de bannières actives / inactives</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.number_views_clicks">
+        
+        <source>Number of views / clicks</source>
+        <target>Nombre de vues / clics</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.picture">
+        
+        <source>Banner</source>
+        <target>Bannière</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.1">
+        
+        <source>high</source>
+        <target>haut</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.2">
+        
+        <source>normal</source>
+        <target>normal</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.3">
+        
+        <source>low</source>
+        <target>bas</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.pub_no">
+        
+        <source>no</source>
+        <target>non</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.pub_yes">
+        
+        <source>yes</source>
+        <target>oui</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.read_error">
+        
+        <source>Banner file not found or read error!</source>
+        <target>Fichier bannière non trouvé ou erreur de lecture!</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.select">
+        
+        <source>Please select</source>
+        <target>Veuillez sélectionner</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.views">
+        
+        <source>Views</source>
+        <target>Vues</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.zero_confirm">
+        
+        <source>Do you really want to reset the banner statistic counters (views and clicks)?</source>
+        <target>Souhaitez-vous vraiment réinitialiser le compteur des statistiques de la bannière (vues et clics)?</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.zero_text">
+        
+        <source>The banner statistic counter will be reset to zero.</source>
+        <target>Le compteur des statistiques de la bannière sera réinitialisé à zéro.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.banner_zero">
+        
+        <source>Reset</source>
+        <target>Réinitialiser</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.player_src">
+        
+        <source>Video files</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.poster">
+        
+        <source>Preview image</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

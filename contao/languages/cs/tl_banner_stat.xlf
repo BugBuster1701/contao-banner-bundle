@@ -1,0 +1,159 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-27T17:49:45+01:00" original="tl_banner_stat" source-language="en" target-language="cs">
+    <body>
+      <trans-unit id="tl_banner_stat.NoURL">
+        
+        <source>No URL</source>
+        <target>Není URL</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.Prio">
+        
+        <source>Priority</source>
+        <target>Priorita</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.URL">
+        
+        <source>Target URL</source>
+        <target>Cílové URL</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.active">
+        
+        <source>Active</source>
+        <target>Aktivní</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.allkat">
+        
+        <source>All categories</source>
+        <target>Všechny kategorie</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero">
+        
+        <source>Statistic</source>
+        <target>Statistika</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_button">
+        
+        <source>Reset all banners</source>
+        <target>Reset všech bannerů</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_confirm">
+        
+        <source>Do you really want to reset all banner statistic counters (views and clicks) in this category?</source>
+        <target>Opravdu chcete vynulovat statistiky všech banneru v této kategorii?</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_text">
+        
+        <source>All banner statistic counters will be reset to zero in this category.</source>
+        <target>Statistiky všech banneru v této kategorii budou vynulovány.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.click_through_rate">
+        
+        <source>Click-Through-Rate</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.clicks">
+        
+        <source>Clicks</source>
+        <target>Kliknutí</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.id">
+        
+        <source>ID</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.kat">
+        
+        <source>Category</source>
+        <target>Kategorie</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.max_yes">
+        
+        <source>(Maximum)</source>
+        <target>(Maximum)</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.modname">
+        
+        <source>Banner Bundle</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.name">
+        
+        <source>Name</source>
+        <target>Jméno</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.number_active_inactive">
+        
+        <source>Number of active / inactive banners</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.number_views_clicks">
+        
+        <source>Number of views / clicks</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.picture">
+        
+        <source>Banner</source>
+        <target>Banner</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.1">
+        
+        <source>high</source>
+        <target>vysoký</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.2">
+        
+        <source>normal</source>
+        <target>normální</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.3">
+        
+        <source>low</source>
+        <target>nízký</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.pub_no">
+        
+        <source>no</source>
+        <target>ne</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.pub_yes">
+        
+        <source>yes</source>
+        <target>ano</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.read_error">
+        
+        <source>Banner file not found or read error!</source>
+        <target>Banner nebyl nalezen nebo chyba čtení!</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.select">
+        
+        <source>Please select</source>
+        <target>Prosím, vyberte</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.views">
+        
+        <source>Views</source>
+        <target>Zobrazení</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.zero_confirm">
+        
+        <source>Do you really want to reset the banner statistic counters (views and clicks)?</source>
+        <target>Opravdu chcete vynulovat statistiky k banneru (zobrazení a kliknutí)?</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.zero_text">
+        
+        <source>The banner statistic counter will be reset to zero.</source>
+        <target>Resetovat počítadlo, statistika bude vynulována.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.banner_zero">
+        
+        <source>Reset</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.player_src">
+        
+        <source>Video files</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.poster">
+        
+        <source>Preview image</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

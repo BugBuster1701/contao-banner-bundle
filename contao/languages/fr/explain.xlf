@@ -1,0 +1,106 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T01:12:54+01:00" original="explain" source-language="en" target-language="fr">
+    <body>
+      <trans-unit id="XPL.banner_help.0.0">
+        
+        <source>Banner Name</source>
+        <target>Nom de la bannière</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.0.1">
+        
+        <source>The banner name is shown in the banners overview and in the provided template below the banner image.&lt;br&gt;&lt;br&gt;At text banners is it the banner title and linked with the destination URL.</source>
+        <target>Le nom de la bannière apparaît dans la présentation de celle-ci et dans le modèle fournie en dessous de l'image de la bannière.&lt;br /&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.1.0">
+        
+        <source>Banner URL</source>
+        <target>URL de la bannière</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.1.1">
+        
+        <source>The URL of the destination with click on the banner image.&lt;br&gt;The banner URL must start with http://, e.g.: http://www.contao.org&lt;br&gt;Using no URL, the banner image is shown without a link.&lt;br&gt;At text banners is the domain shown as a short form and linked with the destination URL.</source>
+        <target>L'URL de destination du clic sur la bannière image.&lt;br /&gt;L'URL de la bannière doit commencer par http://,ex:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;  http://www.typolight.org &lt;/pre&gt;&lt;br/&gt;Sans URL, l'image apparaît sans lien.&lt;br /&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.2.0">
+        
+        <source>Banner Weighting</source>
+        <target>Priorité de la bannière</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.2.1">
+        
+        <source>A banner with an higher weight value, is shown more frequently than a banner with a lower value.</source>
+        <target>Une bannière ayant un poids plus important, apparaît plus souvent qu'une bannière ayant un poids moins important.&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.3.0">
+        
+        <source>Banner File</source>
+        <target>Bannière Image</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.3.1">
+        
+        <source>An image file can be selected here as banner from the file system.</source>
+        <target>Un fichier image peut être sélectionné ici comme bannière depuis l'arborescence des fichiers.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.4.0">
+        
+        <source>Banner Comment</source>
+        <target>Commentaire de la bannière</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.4.1">
+        
+        <source>Comment is used for title tag in the HTML source code, and will be shown, when moving the mouse over the banner image. At text banners is this the text line.</source>
+        <target>Les commentaires sont utilisés pour la balise du titre dans le code HTML source, et apparaîtra quand la souris survolera la bannière image.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.5.0">
+        
+        <source>Show from (Date &amp; Time)</source>
+        <target>Publier à partir de (Date &amp; Heure)</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.5.1">
+        
+        <source>By entering a date and time value (with datepicker), the current banner will not be shown on the website before this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 20:15</source>
+        <target>En saisissant une date et une heure (avec le sélecteur de date), cette bannière n'apparaîtra pas sur le site avant ce moment. L'heure peut être changé manuellement.&lt;br /&gt;Ex:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt; 24.12.2007 20:15&lt;/pre&gt;&lt;br/&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.6.0">
+        
+        <source>Show until (Date &amp; Time)</source>
+        <target>Publier jusqu'au (Date &amp; Heure)</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.6.1">
+        
+        <source>By entering a date and time value (with datepicker) the current banner will not be shown on the website after this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 23:59</source>
+        <target>En saisissant une date et une heure (avec le sélecteur de date), cette bannière n'apparaîtra pas sur le site après ce moment. L'heure peut être changé manuellement.&lt;br /&gt;Ex:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt; 24.12.2007 23:59&lt;/pre&gt;&lt;br/&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.7.0">
+        
+        <source>Limiting the number of Views</source>
+        <target>Limiter le nombre de vues</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.7.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of views. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 1000</source>
+        <target>En saisissant un nombre, cette bannière n'apparaîtra plus une fois qu'elle aura été vu le nombre de fois que vous saisissez.&lt;br /&gt;Cette option &quot;Limiter le nombre de vues&quot; doit rester active.&lt;br /&gt;Ex:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;1000&lt;/pre&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.8.0">
+        
+        <source>Limiting the number of Clicks</source>
+        <target>Limiter le nombre de clics</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.8.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of clicks. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 100</source>
+        <target>En saisissant un nombre, cette bannière n'apparaîtra plus une fois qu'elle aura été cliquée le nombre de fois que vous saisissez.&lt;br /&gt;Cette option &quot;Limiter le nombre de clics&quot; doit rester active.&lt;br /&gt;Ex:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;100&lt;/pre&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.9.0">
+        
+        <source>Filter Domain</source>
+        <target>identificateur HTTP_USER_AGENT</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.9.1">
+        
+        <source>If you enter a domain name, this banner is used only for this domain. If you leave the field empty, this banner is used for all domains.&lt;br&gt;Example: yourdomain.com&lt;br&gt;The banner will be displayed, if matches the domain. But also in partial match starting from the right. So also with access via sub.yourdomain.com . An entry in &quot;Site structure&quot; - &quot;Domain Name&quot; is not required for the filtering.</source>
+        <target>En saisissant une chaîne de caractère unique correspondant à votre identification utilisateur, vous éviterez de comptabiliser vos propres requêtes.&lt;br /&gt;Des explications détaillées sont trouvable dans le Wiki.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

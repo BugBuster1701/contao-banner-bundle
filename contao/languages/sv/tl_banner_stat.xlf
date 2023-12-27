@@ -1,0 +1,152 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-27T17:49:45+01:00" original="tl_banner_stat" source-language="en" target-language="sv">
+    <body>
+      <trans-unit id="tl_banner_stat.NoURL">
+        
+        <source>No URL</source>
+        <target>Ingen URL</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.Prio">
+        
+        <source>Priority</source>
+        <target>Prioritet</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.URL">
+        
+        <source>Target URL</source>
+        <target>Mål-URL</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.active">
+        
+        <source>Active</source>
+        <target>Aktiv</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.allkat">
+        
+        <source>All categories</source>
+        <target>Alla kategorier</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero">
+        
+        <source>Statistic</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_button">
+        
+        <source>Reset all banners</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_confirm">
+        
+        <source>Do you really want to reset all banner statistic counters (views and clicks) in this category?</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_text">
+        
+        <source>All banner statistic counters will be reset to zero in this category.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.click_through_rate">
+        
+        <source>Click-Through-Rate</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.clicks">
+        
+        <source>Clicks</source>
+        <target>Klick</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.id">
+        
+        <source>ID</source>
+        <target>ID</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.kat">
+        
+        <source>Category</source>
+        <target>Kategori</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.max_yes">
+        
+        <source>(Maximum)</source>
+        <target>(Maximum)</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.modname">
+        
+        <source>Banner Bundle</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.name">
+        
+        <source>Name</source>
+        <target>Namn</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.number_active_inactive">
+        
+        <source>Number of active / inactive banners</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.number_views_clicks">
+        
+        <source>Number of views / clicks</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.picture">
+        
+        <source>Banner</source>
+        <target>Banner</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.1">
+        
+        <source>high</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.2">
+        
+        <source>normal</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.3">
+        
+        <source>low</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.pub_no">
+        
+        <source>no</source>
+        <target>nej</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.pub_yes">
+        
+        <source>yes</source>
+        <target>ja</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.read_error">
+        
+        <source>Banner file not found or read error!</source>
+        <target>Banner-filen kunde inte hittas eller läsfel!</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.select">
+        
+        <source>Please select</source>
+        <target>Vänligen välj</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.views">
+        
+        <source>Views</source>
+        <target>Visningar</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.zero_confirm">
+        
+        <source>Do you really want to reset the banner statistic counters (views and clicks)?</source>
+        <target>Vill du verkligen återställa banner-statistiken (visningar och klick)?</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.zero_text">
+        
+        <source>The banner statistic counter will be reset to zero.</source>
+        <target>Statistikräknaren för bannern återställs till noll.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.banner_zero">
+        
+        <source>Reset</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.player_src">
+        
+        <source>Video files</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.poster">
+        
+        <source>Preview image</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

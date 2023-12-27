@@ -1,0 +1,30 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T01:13:25+01:00" original="modules" source-language="en" target-language="en">
+    <body>
+      <trans-unit id="FMD.banner.0">
+        
+        <source>Banner</source>
+      </trans-unit>
+      <trans-unit id="FMD.banner.1">
+        
+        <source>Show a Banner</source>
+      </trans-unit>
+      <trans-unit id="MOD.banner.0">
+        
+        <source>Banner</source>
+      </trans-unit>
+      <trans-unit id="MOD.banner.1">
+        
+        <source>A little banner advertisement module.</source>
+      </trans-unit>
+      <trans-unit id="MOD.bannerstat.0">
+        
+        <source>Banner Statistics</source>
+      </trans-unit>
+      <trans-unit id="MOD.bannerstat.1">
+        
+        <source>Statistics from banner module.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

@@ -1,0 +1,152 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-27T17:49:45+01:00" original="tl_banner_stat" source-language="en" target-language="hi">
+    <body>
+      <trans-unit id="tl_banner_stat.NoURL">
+        
+        <source>No URL</source>
+        <target>कोई यूआरएल नहीं</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.Prio">
+        
+        <source>Priority</source>
+        <target>प्राथमिकता</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.URL">
+        
+        <source>Target URL</source>
+        <target>यूआरएल पर निशाना</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.active">
+        
+        <source>Active</source>
+        <target>सक्रिय</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.allkat">
+        
+        <source>All categories</source>
+        <target>सभी श्रेणी</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero">
+        
+        <source>Statistic</source>
+        <target>आंकड़ा</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_button">
+        
+        <source>Reset all banners</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_confirm">
+        
+        <source>Do you really want to reset all banner statistic counters (views and clicks) in this category?</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.cat_zero_text">
+        
+        <source>All banner statistic counters will be reset to zero in this category.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.click_through_rate">
+        
+        <source>Click-Through-Rate</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.clicks">
+        
+        <source>Clicks</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.id">
+        
+        <source>ID</source>
+        <target>आईडी</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.kat">
+        
+        <source>Category</source>
+        <target>श्रेणी</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.max_yes">
+        
+        <source>(Maximum)</source>
+        <target>(अधिकतम)</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.modname">
+        
+        <source>Banner Bundle</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.name">
+        
+        <source>Name</source>
+        <target>नाम</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.number_active_inactive">
+        
+        <source>Number of active / inactive banners</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.number_views_clicks">
+        
+        <source>Number of views / clicks</source>
+        <target>दिखने की संख्या / क्लिक</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.picture">
+        
+        <source>Banner</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.1">
+        
+        <source>high</source>
+        <target>उच्च</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.2">
+        
+        <source>normal</source>
+        <target>सामान्य</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.prio.3">
+        
+        <source>low</source>
+        <target>निम्न</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.pub_no">
+        
+        <source>no</source>
+        <target>नहीं</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.pub_yes">
+        
+        <source>yes</source>
+        <target>हाँ</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.read_error">
+        
+        <source>Banner file not found or read error!</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.select">
+        
+        <source>Please select</source>
+        <target>कृपया चुनें</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.views">
+        
+        <source>Views</source>
+        <target>दिखा</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.zero_confirm">
+        
+        <source>Do you really want to reset the banner statistic counters (views and clicks)?</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.zero_text">
+        
+        <source>The banner statistic counter will be reset to zero.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.banner_zero">
+        
+        <source>Reset</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.player_src">
+        
+        <source>Video files</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_stat.poster">
+        
+        <source>Preview image</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

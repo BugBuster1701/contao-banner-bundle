@@ -1,0 +1,11 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T01:13:25+01:00" original="default" source-language="en" target-language="fa">
+    <body>
+      <trans-unit id="MSC.tl_banner.noBanner">
+        
+        <source>No banner found and no banner default image</source>
+        <target>بنری یافت نشد و تصویر پیش‌فرض بنر وجود ندارد</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
