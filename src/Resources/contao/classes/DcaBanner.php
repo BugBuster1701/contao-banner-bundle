@@ -291,7 +291,7 @@ class DcaBanner extends \Contao\Backend
 
         //resize if necessary
         $arrImageSizeNew = [];
-        switch ($arrImageSize[2]) {
+        switch ($arrImageSize[2] ?? false) {
             case 1: // GIF
             case 2: // JPG
             case 3: // PNG
@@ -329,7 +329,7 @@ class DcaBanner extends \Contao\Backend
         }
 
         //Output
-        switch ($arrImageSize[2]) {
+        switch ($arrImageSize[2] ?? false) {
             case 1: // GIF
             case 2: // JPG
             case 3: // PNG

@@ -47,8 +47,7 @@ class BannerFeController extends AbstractController
             return new Response('Invalid Default Banner ID ('.$bid.')', 501);
         }
 
-        //$this->container->get('contao.framework')->initialize();
-        $this->get('contao.framework')->initialize();
+        $this->container->get('contao.framework')->initialize();
 
         $controller = new FrontendBanner();
 
