@@ -21,6 +21,7 @@ namespace BugBuster\BannerStatistics;
 
 use BugBuster\Banner\BannerHelper;
 use BugBuster\Banner\BannerLog;
+use Contao\User;
 
 /**
  * Class BotStatisticsHelper
@@ -54,12 +55,15 @@ class BannerStatisticsHelper extends \Contao\BackendModule
      */
     protected static $instance;
 
+    protected User $User;
+
     /**
      * Constructor
      */
     public function __construct()
     {
-        $this->import('BackendUser', 'User');
+        //$this->import('BackendUser', 'User');
+        $this->User = \Contao\BackendUser::getInstance();
         parent::__construct();
     }
 

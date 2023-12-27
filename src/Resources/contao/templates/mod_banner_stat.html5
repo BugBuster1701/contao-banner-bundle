@@ -8,8 +8,8 @@
 		<div class="tl_submit_panel tl_subpanel" style="text-align: left;">
 			<input class="tl_img_submit banner_filter" 
 					type="image" 
-					value="<?= \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
-					title="<?= \StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
+					value="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
+					title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>" 
 					src="system/themes/<?= $this->theme; ?>/icons/sync.svg" 
 					width="16" 
 					height="16"
