@@ -205,12 +205,14 @@ class BannerHelper extends \Contao\Frontend
      */
     protected function checkSetUserFrontendLogin()
     {
-        if (FE_USER_LOGGED_IN) {
-            $this->import('FrontendUser', 'User');
+        $hasFrontendUser = \Contao\System::getContainer()->get('contao.security.token_checker')->hasFrontendUser();
+        if ($hasFrontendUser) {
+            //$this->import('FrontendUser', 'User');
+            $user = \Contao\FrontendUser::getInstance();
 
             if ($this->arrCategoryValues['banner_protected'] == 1
               && $this->arrCategoryValues['banner_group']      > 0) {
-                if ($this->User->isMemberOf($this->arrCategoryValues['banner_group']) === false) {
+                if ($user->isMemberOf($this->arrCategoryValues['banner_group']) === false) {
                     $this->statusBannerFrontendGroupView = false;
 
                     return false;
