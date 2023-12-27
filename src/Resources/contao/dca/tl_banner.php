@@ -187,13 +187,13 @@ $GLOBALS['TL_DCA']['tl_banner'] =
             'label'                   => &$GLOBALS['TL_LANG']['tl_banner']['banner_imgSize'],
             'exclude'                 => true,
             'inputType'               => 'imageSize',
-            //'options'                 => System::getContainer()->get('contao.image.image_sizes')->getAllOptions(),
             'options_callback' => function () {
-                return \Contao\System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(\Contao\BackendUser::getInstance());
+                return \Contao\System::getContainer()->get('contao.image.sizes')->getOptionsForUser(\Contao\BackendUser::getInstance());
             },
+            //'options'                 =>  array('contao.listener.image_size_options', '__invoke'), // will nicht so wie in contao/calendar-bundle/contao/dca/tl_calendar_feed.php
+            //'options'                 => \Contao\System::getContainer()->get('contao.listener.image_size_options')->__invoke(), //geht auch aber unschön
             'reference'               => &$GLOBALS['TL_LANG']['MSC'],
             'sql'                     => "varchar(255) NOT NULL default ''",
-            //'eval'                    => array('rgxp'=>'digit', 'nospace'=>true)
             'eval'                    => ['rgxp'=>'natural', 'includeBlankOption'=>true, 'nospace'=>true]
         ],
         'banner_comment' => [
