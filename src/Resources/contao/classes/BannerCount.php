@@ -245,7 +245,7 @@ class BannerCount extends \Contao\System
         } else {
             return false; // Ohne Absender keine Suche
         }
-        $arrUserAgents = explode(",", $this->banner_useragent);
+        $arrUserAgents = explode(",", $this->banner_useragent ?? '');
         if (\strlen(trim($arrUserAgents[0])) == 0) {
             return false; // keine Angaben im Modul
         }
