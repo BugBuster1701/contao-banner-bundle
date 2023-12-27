@@ -148,7 +148,7 @@ class BannerCount extends \Contao\System
     protected function getStatViewUpdateBlockerId($banner_id=0)
     {
         $objBannerLogic = new BannerLogic();
-        $session = $objBannerLogic->getSession('StatViewUpdateBlocker'.$this->module_id);
+        $session = (array) $objBannerLogic->getSession('StatViewUpdateBlocker'.$this->module_id);
         if (\count($session)) {
             reset($session);
             foreach ($session as $key => $val) {

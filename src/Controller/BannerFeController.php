@@ -19,16 +19,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/bbfebanner', defaults: ['_scope' => 'frontend', '_token_check' => false])]
+/**
+ * @Route("/bbfebanner", defaults={"_scope" = "frontend", "_token_check" = false})
+ */
+//#[Route('/bbfebanner', defaults: ['_scope' => 'frontend', '_token_check' => false])]
 class BannerFeController extends AbstractController
 {
     /**
      * Renders the alerts content.
      *
      * @return Response
-     *
+     * @Route("/banclicks/{strbid}/{bid}", name="bugbuster_banner_frontend_clicks", requirements={"bid"="\d+"})
      */
-    #[Route('/banclicks/{strbid}/{bid}', name: 'bugbuster_dlstats_export', requirements: ['bid' => '\d+'])]
+    //#[Route('/banclicks/{strbid}/{bid}', name: 'bugbuster_dlstats_export', requirements: ['bid' => '\d+'])]
     public function banclicksAction($strbid = '', $bid = 0)
     {
         if ('bid' !== $strbid && 'defbid' !== $strbid) {

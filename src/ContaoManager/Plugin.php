@@ -14,6 +14,7 @@ declare(strict_types=1);
 
 namespace BugBuster\BannerBundle\ContaoManager;
 
+use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
@@ -33,8 +34,7 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface
     {
         return [
             BundleConfig::create('BugBuster\BannerBundle\BugBusterBannerBundle')
-                ->setLoadAfter(['BugBuster\BotdetectionBundle\BugBusterBotdetectionBundle'])
-                ->setReplace(['banner']),
+                ->setLoadAfter([ContaoCoreBundle::class, 'BugBuster\BotdetectionBundle\BugBusterBotdetectionBundle']),
         ];
     }
 
@@ -44,8 +44,10 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface
     public function getRouteCollection(LoaderResolverInterface $resolver, KernelInterface $kernel)
     {
         return $resolver
-            ->resolve(__DIR__.'/../Resources/config/routing.yml')
-            ->load(__DIR__.'/../Resources/config/routing.yml')
+            // ->resolve(__DIR__.'/../Resources/config/routing.yml')
+            // ->load(__DIR__.'/../Resources/config/routing.yml')
+            ->resolve(__DIR__.'/../../config/routes.yml')
+            ->load(__DIR__.'/../../config/routes.yml')
         ;
     }
 }

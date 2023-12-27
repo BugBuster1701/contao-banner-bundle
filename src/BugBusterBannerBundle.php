@@ -14,11 +14,17 @@ declare(strict_types=1);
 
 namespace BugBuster\BannerBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+//use BugBuster\BannerBundle\DependencyInjection\BugBusterBannerExtension;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
+//use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 
 /**
  * Configures the Contao Banner bundle.
  */
-class BugBusterBannerBundle extends Bundle
+class BugBusterBannerBundle extends AbstractBundle
 {
+    // public function getContainerExtension(): ?ExtensionInterface
+    // {
+    //     return new BugBusterBannerExtension();
+    // }
 }
