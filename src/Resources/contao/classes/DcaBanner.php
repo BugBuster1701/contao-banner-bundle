@@ -26,6 +26,8 @@ use Contao\File;
 use Contao\FilesModel;
 use Contao\Image;
 use Contao\StringUtil;
+use Contao\User;
+use Contao\CoreBundle\Security\ContaoCorePermissions;
 use Imagine\Exception\RuntimeException;
 use Psr\Log\LogLevel;
 
@@ -51,6 +53,8 @@ class DcaBanner extends \Contao\Backend
 
     protected $BannerImage;
 
+    protected User $User;
+
     /**
      * Import the back end user object
      * and the BannerImage object
@@ -58,7 +62,8 @@ class DcaBanner extends \Contao\Backend
     public function __construct()
     {
         parent::__construct();
-        $this->import('BackendUser', 'User');
+        //$this->import('BackendUser', 'User');
+        $this->User = \Contao\BackendUser::getInstance();
         $this->BannerImage = new BannerImage();
     }
 
@@ -595,23 +600,28 @@ class DcaBanner extends \Contao\Backend
      */
     public function toggleIcon($row, $href, $label, $title, $icon, $attributes)
     {
-        if (\strlen(\Contao\Input::get('tid'))) {
-            $this->toggleVisibility(\Contao\Input::get('tid'), (\Contao\Input::get('state') == 1));
-            $this->redirect($this->getReferer());
-        }
+        // if (\strlen(\Contao\Input::get('tid'))) {
+        //     $this->toggleVisibility(\Contao\Input::get('tid'), (\Contao\Input::get('state') == 1));
+        //     $this->redirect($this->getReferer());
+        // }
 
         // Check permissions AFTER checking the tid, so hacking attempts are logged
-        if (!$this->User->isAdmin && !$this->User->hasAccess('tl_banner::banner_published', 'alexf')) {
-            return '';
-        }
+        // if (!$this->User->isAdmin && !$this->User->hasAccess('tl_banner::banner_published', 'alexf')) {
+        //     return '';
+        // }
+        if (!\Contao\System::getContainer()->get('security.helper')->isGranted(ContaoCorePermissions::USER_CAN_EDIT_FIELD_OF_TABLE, 'tl_banner::banner_published'))
+		{
+			return '';
+		}
 
-        $href .= '&amp;tid='.$row['id'].'&amp;state='. ($row['banner_published'] ? '' : 1);
+        $href .= '&amp;tid='.$row['id'];//.'&amp;state='. ($row['banner_published'] ? '' : 1);
 
         if (!$row['banner_published']) {
             $icon = 'invisible.svg';
         }
-
-        return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['banner_published'] ? 1 : 0) . '"').'</a> ';
+        $titleDisabled = (is_array($GLOBALS['TL_DCA']['tl_banner']['list']['operations']['toggle']['label']) && isset($GLOBALS['TL_DCA']['tl_banner']['list']['operations']['toggle']['label'][2])) ? sprintf($GLOBALS['TL_DCA']['tl_banner']['list']['operations']['toggle']['label'][2], $row['id']) : $title;
+        //return '<a href="'.$this->addToUrl($href).'" title="'.StringUtil::specialchars($title).'"'.$attributes.'>'.Image::getHtml($icon, $label, 'data-state="' . ($row['banner_published'] ? 1 : 0) . '"').'</a> ';
+        return '<a href="' . $this->addToUrl($href) . '" title="' . StringUtil::specialchars($row['banner_published'] ? $title : $titleDisabled) . '" data-title="' . StringUtil::specialchars($title) . '" data-title-disabled="' . StringUtil::specialchars($titleDisabled) . '" onclick="Backend.getScrollOffset();return AjaxRequest.toggleField(this,true)">' . Image::getHtml($icon, $label, 'data-icon="visible.svg" data-icon-disabled="invisible.svg" data-state="' . ($row['banner_published'] ? 1 : 0) . '"') . '</a> ';
     }
 
     /**
@@ -619,30 +629,30 @@ class DcaBanner extends \Contao\Backend
      * @param integer
      * @param boolean
      */
-    public function toggleVisibility($intId, $blnVisible)
-    {
-        // Check permissions to publish
-        if (!$this->User->isAdmin && !$this->User->hasAccess('tl_banner::banner_published', 'alexf')) {
-            \Contao\System::getContainer()
-                ->get('monolog.logger.contao')
-                ->log(
-                    LogLevel::ERROR,
-                    'Not enough permissions to publish/unpublish Banner ID "'.$intId.'"',
-                    ['contao' => new ContaoContext('tl_banner toggleVisibility', ContaoContext::ERROR)]
-                );
+    // public function toggleVisibility($intId, $blnVisible)
+    // {
+    //     // Check permissions to publish
+    //     if (!$this->User->isAdmin && !$this->User->hasAccess('tl_banner::banner_published', 'alexf')) {
+    //         \Contao\System::getContainer()
+    //             ->get('monolog.logger.contao')
+    //             ->log(
+    //                 LogLevel::ERROR,
+    //                 'Not enough permissions to publish/unpublish Banner ID "'.$intId.'"',
+    //                 ['contao' => new ContaoContext('tl_banner toggleVisibility', ContaoContext::ERROR)]
+    //             );
 
-            $this->redirect('contao/main.php?act=error');
-        }
+    //         $this->redirect('contao/main.php?act=error');
+    //     }
 
-        // Update database
-        \Contao\Database::getInstance()->prepare("UPDATE 
-                                                tl_banner 
-                                           SET 
-                                                banner_published='" . ($blnVisible ? 1 : '') . "' 
-                                           WHERE 
-                                                id=?")
-                                ->execute($intId);
-    }
+    //     // Update database
+    //     \Contao\Database::getInstance()->prepare("UPDATE 
+    //                                             tl_banner 
+    //                                        SET 
+    //                                             banner_published='" . ($blnVisible ? 1 : '') . "' 
+    //                                        WHERE 
+    //                                             id=?")
+    //                             ->execute($intId);
+    // }
 
     public function fieldLabelCallback($dc)
     {
