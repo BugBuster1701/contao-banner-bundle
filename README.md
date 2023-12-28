@@ -1,4 +1,4 @@
-# Contao 4 Banner Bundle
+# Contao 5 Banner Bundle
 
 [![Latest Stable Version](https://poser.pugx.org/bugbuster/contao-banner-bundle/v/stable.svg)](https://packagist.org/packages/bugbuster/contao-banner-bundle)
 [![Total Downloads](https://poser.pugx.org/bugbuster/contao-banner-bundle/downloads.svg)](https://packagist.org/packages/bugbuster/contao-banner-bundle)
@@ -9,7 +9,7 @@
 
 
 ## About
-Contao 4 Banner Advertisement Extension
+Contao 5 Banner Advertisement Extension
 
 
 ## Installation
@@ -17,13 +17,6 @@ Contao 4 Banner Advertisement Extension
 Installation Guide (EN): [INSTALLATION_EN.md](INSTALLATION_EN.md)
 
 Installationsanleitung (DE): [INSTALLATION_DE.md](INSTALLATION_DE.md)
-
-
-## Upgrade von Contao 3 nach 4
-
-Upgrade Tutorial (EN): [UPGRADE_EN.md](UPGRADE_EN.md)
-
-Upgrade Hinweise (DE): [UPGRADE_DE.md](UPGRADE_DE.md)
 
 
 ## User guide
