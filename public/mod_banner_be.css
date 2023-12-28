@@ -1,6 +1,7 @@
 .mod_banner_be {
 	font-size: 0.9em;
 	min-height: 20px;
+    display: flow-root;
 }
 .mod_banner_be .name {
 	float: left;
