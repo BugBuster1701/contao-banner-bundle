@@ -1,10 +1,9 @@
 
 <div class="clear"></div>
-<?php defined('REQUEST_TOKEN') || define('REQUEST_TOKEN', 'c0n740'); ?>
 <div class="tl_panel cf">
     <!-- Categorie Row //-->
 	<form	method="post" class="info" id="banner_statistik" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
-		<input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN; ?>">
+		<input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
 		<div class="tl_submit_panel tl_subpanel" style="text-align: left;">
 			<input class="tl_img_submit banner_filter"
 					type="image"
@@ -35,7 +34,7 @@
     <form	method="post" class="info" id="banner_cat_reset" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
 		<div class="tl_search tl_subpanel">
 			<strong><?= $this->bannercatzero; ?>:&nbsp;</strong>
-			<input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN; ?>">
+			<input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
 			<input type="hidden" name="act" value="zero">
 			<input type="hidden" name="id" value="<?= $this->bannercatid; ?>">
 			<input type="hidden" name="catzid" value="<?= $this->bannercatid; ?>">
@@ -110,7 +109,7 @@
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;">
 		        <form method="post" class="info" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
-		            <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN; ?>">
+		            <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
 		            <input type="hidden" name="act" value="zero">
 		            <input type="hidden" name="zid" value="<?= $bannerstat['banner_id']; ?>">
 		            <input type="hidden" name="id" value="<?= $this->bannercatid; ?>">
@@ -198,7 +197,7 @@
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;">
 		        <form method="post" class="info" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
-		            <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN; ?>">
+		            <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
 		            <input type="hidden" name="act" value="zero">
 		            <input type="hidden" name="zid" value="<?= $bannerstat['banner_id']; ?>">
 		            <input type="hidden" name="id" value="<?= $this->bannercatid; ?>">
@@ -280,7 +279,7 @@
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;">
 		        <form method="post" class="info" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
-		            <input type="hidden" name="REQUEST_TOKEN" value="<?= REQUEST_TOKEN; ?>">
+		            <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
 		            <input type="hidden" name="act" value="zero">
 		            <input type="hidden" name="zid" value="<?= $bannerstat['banner_id']; ?>">
 		            <input type="hidden" name="id" value="<?= $this->bannercatid; ?>">

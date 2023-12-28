@@ -167,6 +167,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 		$this->Template->banner_base_be   = Environment::get('base') . 'contao'; // TODO deprecated
 		$this->Template->theme            = $this->getTheme();
 		$this->Template->theme0           = 'default';
+		$this->Template->requestToken     = System::getContainer()->get('contao.csrf.token_manager')->getDefaultTokenValue();
 
 		$this->Template->bannercats    = $arrBannerCategories;
 		$this->Template->bannercatid   = $this->intCatID;
