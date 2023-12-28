@@ -33,8 +33,7 @@ class DcaBannerCategory extends Backend
 		$bpc = $GLOBALS['TL_LANG']['tl_banner_category']['banner_protected_catagory'];
 		if (!empty($arrRow['banner_protected']) && \strlen($arrRow['banner_groups']))
 		{
-			$label_2 = '<img height="16" width="14" alt="' . $bpc . '" title="' . $bpc . '" src="bundles/bugbusterbanner/default/protect_.gif">';
-		// $label_2 = " (".$bpc.")"; // ab Contao 3.1 fehlt das protect_.gif :-(
+			$label_2 = '<img height="16" width="14" alt="' . $bpc . '" title="' . $bpc . '" src="system/themes/flexible/icons/protected.svg">';
 		}
 		else
 		{
