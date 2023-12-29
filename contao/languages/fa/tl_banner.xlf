@@ -4,36 +4,43 @@
       <trans-unit id="tl_banner.1">
         
         <source>Highest priority</source>
+        
         <target>اولویت بالا</target>
       </trans-unit>
       <trans-unit id="tl_banner.2">
         
         <source>Normal priority</source>
+        
         <target>اولویت عادی</target>
       </trans-unit>
       <trans-unit id="tl_banner.3">
         
         <source>Lowest priority</source>
+        
         <target>اولویت پایین</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_active">
         
         <source>published</source>
+        
         <target>منتشر شده</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_inactive">
         
         <source>not published</source>
+        
         <target>منتشر نشده</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_cat_not_found">
         
         <source>No category selected in banner modul.</source>
+        
         <target>دسته‌بندی‌ای در ماژول بنر انتخاب نشده است.</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_clicks_until.0">
         
         <source>Limiting the number of Clicks</source>
+        
         <target>محدود کردن تعداد کلیک</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_clicks_until.1">
@@ -43,16 +50,19 @@
       <trans-unit id="tl_banner.banner_comment.0">
         
         <source>Banner Comment</source>
+        
         <target>متن بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_comment.1">
         
         <source>Comment is for title tag. For text banner: text line. For video banners: additionally as comment line.</source>
+        
         <target>نظر برای برچسب عنوان است. برای بنر متنی: خط متن.</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_cssid.0">
         
         <source>CSS ID/class</source>
+        
         <target>شناسه/کلاس سی‌اس‌اس</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_cssid.1">
@@ -62,6 +72,7 @@
       <trans-unit id="tl_banner.banner_domain.0">
         
         <source>Filter Domain</source>
+        
         <target>صافی دامنه</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_domain.1">
@@ -71,26 +82,31 @@
       <trans-unit id="tl_banner.banner_image.0">
         
         <source>Banner Image</source>
+        
         <target>تصویر بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_image.1">
         
-        <source>Please select the banner.(GIF,JPG,PNG,WEBP)</source>
-        <target>لطفا بنر را انتخاب کنید. (GIF,JPG,PNG,WEBP)</target>
+        <source>Please select the banner.(GIF,JPG,PNG,WEBP,AVIF)</source>
+        
+        <target>بنر را انتخاب کنید. (GIF,JPG,PNG,WEBP,AVIF)</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_image_extern.0">
         
         <source>Banner Image URL</source>
+        
         <target>نشانی وب تصویر بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_image_extern.1">
         
         <source>External banner image URL: http://... </source>
+        
         <target>نشانی وب تصویر بنر خارجی: http://...</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_imgSize.0">
         
         <source>Banner width and height</source>
+        
         <target>عرض و ارتفاع بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_imgSize.1">
@@ -100,6 +116,7 @@
       <trans-unit id="tl_banner.banner_jumpTo.0">
         
         <source>Banner target page</source>
+        
         <target>صفحه مقصد بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_jumpTo.1">
@@ -109,11 +126,13 @@
       <trans-unit id="tl_banner.banner_name.0">
         
         <source>Banner Name</source>
+        
         <target>نام بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_name.1">
         
         <source>Please enter the banner name. For text banner: title.</source>
+        
         <target>نام بنر را وارد نماید. برای بنر متنی: عنوان.</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_number_of">
@@ -123,6 +142,7 @@
       <trans-unit id="tl_banner.banner_published.0">
         
         <source>Published</source>
+        
         <target>منتشر شده</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_published.1">
@@ -132,6 +152,7 @@
       <trans-unit id="tl_banner.banner_start.0">
         
         <source>Show from</source>
+        
         <target>نمایش از</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_start.1">
@@ -141,6 +162,7 @@
       <trans-unit id="tl_banner.banner_stop.0">
         
         <source>Show until</source>
+        
         <target>نمایش تا</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_stop.1">
@@ -150,6 +172,7 @@
       <trans-unit id="tl_banner.banner_target.0">
         
         <source>Internal Link</source>
+        
         <target>پیوند داخلی</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_target.1">
@@ -159,6 +182,7 @@
       <trans-unit id="tl_banner.banner_type.0">
         
         <source>Banner Source</source>
+        
         <target>منبع بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_type.1">
@@ -168,6 +192,7 @@
       <trans-unit id="tl_banner.banner_until.0">
         
         <source>Limiting the number of Views and Clicks</source>
+        
         <target>محدود کردن تعداد بازدید و کلیک</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_until.1">
@@ -177,6 +202,7 @@
       <trans-unit id="tl_banner.banner_url.0">
         
         <source>Banner target URL</source>
+        
         <target>نشانی وب مقصد بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_url.1">
@@ -186,6 +212,7 @@
       <trans-unit id="tl_banner.banner_views_until.0">
         
         <source>Limiting the number of Views</source>
+        
         <target>محدود کردن تعداد بازدید</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_views_until.1">
@@ -195,206 +222,247 @@
       <trans-unit id="tl_banner.banner_weighting.0">
         
         <source>Banner Weighting</source>
+        
         <target>توزین بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_weighting.1">
         
         <source>Please select the priority.</source>
+        
         <target>اولیت را انتخاب کنید</target>
       </trans-unit>
       <trans-unit id="tl_banner.comment_legend">
         
         <source>Comment</source>
+        
         <target>دیدگاه</target>
       </trans-unit>
       <trans-unit id="tl_banner.copy.0">
         
         <source>Copy Banner</source>
+        
         <target>رونوشت بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.copy.1">
         
         <source>Copy banner ID %s</source>
+        
         <target>رونوشت بنر شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner.delete.0">
         
         <source>Delete Banner</source>
+        
         <target>حذف بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.delete.1">
         
         <source>Delete banner ID %s</source>
+        
         <target>حذف بنر شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner.destination_legend">
         
         <source>Banner targets</source>
+        
         <target>مقصدهای بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.edit.0">
         
         <source>Edit Banner</source>
+        
         <target>ویرایش بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.edit.1">
         
         <source>Edit banner ID %s</source>
+        
         <target>ویرایش بنر شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner.expert_legend">
         
         <source>Expert settings</source>
+        
         <target>تنظیمات پیشرفته</target>
       </trans-unit>
       <trans-unit id="tl_banner.filter_legend">
         
         <source>Filtering</source>
+        
         <target>صافی کردن</target>
       </trans-unit>
       <trans-unit id="tl_banner.image_legend">
         
         <source>Banner image</source>
+        
         <target>تصویر بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.new.0">
         
         <source>New Banner</source>
+        
         <target>بنر جدید</target>
       </trans-unit>
       <trans-unit id="tl_banner.new.1">
         
         <source>Add a new banner</source>
+        
         <target>افزودن بنر جدید</target>
       </trans-unit>
       <trans-unit id="tl_banner.publish_legend">
         
         <source>Publish settings</source>
+        
         <target>تنظیمات انتشار</target>
       </trans-unit>
       <trans-unit id="tl_banner.show.0">
         
         <source>Banner Details</source>
+        
         <target>جزئیات بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner.show.1">
         
         <source>Show details of Banner ID %s</source>
+        
         <target>جزئیات بنر شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner.source_extern">
         
         <source>external</source>
+        
         <target>خارجی</target>
       </trans-unit>
       <trans-unit id="tl_banner.source_fallback">
         
         <source>Image-Fallback</source>
+        
         <target>تصویر یدکی</target>
       </trans-unit>
       <trans-unit id="tl_banner.source_fallback_no">
         
         <source>Image-Fallback not found.</source>
+        
         <target>تصویر یدکی یافت نشد.</target>
       </trans-unit>
       <trans-unit id="tl_banner.source_intern">
         
         <source>internal</source>
+        
         <target>داخلی</target>
       </trans-unit>
       <trans-unit id="tl_banner.title_legend">
         
         <source>Name and weighting</source>
+        
         <target>نام و توزین</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_max_clicks">
         
         <source>max. Clicks</source>
+        
         <target>بیشترین کلیک</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_max_views">
         
         <source>max. Views</source>
+        
         <target>بیشترین مشاهده</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_no">
         
         <source>no</source>
+        
         <target>نه</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_not_defined">
         
         <source>not defined.</source>
+        
         <target>تعریف نشده.</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_not_defined_max">
         
         <source>unlimited</source>
+        
         <target>نامتناهی</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_not_defined_start">
         
         <source>immediately</source>
+        
         <target>فوری</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_not_defined_stop">
         
         <source>always</source>
+        
         <target>همیشه</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_page_not_found">
         
         <source>Page not found</source>
+        
         <target>صفحه یافت نشد</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_read_error">
         
         <source>Banner file not found or read error!</source>
+        
         <target>پرونده بنر یافت نشد یا خطای خواندن رخ داد</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_start">
         
         <source>Show from</source>
+        
         <target>نمایش از</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_stop">
         
         <source>Show until</source>
+        
         <target>نمایش تا</target>
       </trans-unit>
       <trans-unit id="tl_banner.tl_be_yes">
         
         <source>yes</source>
+        
         <target>بلی</target>
       </trans-unit>
       <trans-unit id="tl_banner.toggle.0">
         
         <source>Toggle visibility</source>
+        
         <target>تعویض مشاهده‌پذیری</target>
       </trans-unit>
       <trans-unit id="tl_banner.toggle.1">
         
         <source>Toggle the visibility of banner ID %s</source>
+        
         <target>تعویض مشاهده‌پذیری بنر شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_type.banner_image">
         
         <source>Internal banner image</source>
+        
         <target>بنر تصویری داخلی</target>
       </trans-unit>
       <trans-unit id="tl_banner_type.banner_image_extern">
         
         <source>External banner image</source>
+        
         <target>بنر تصویری خارجی</target>
       </trans-unit>
       <trans-unit id="tl_banner_type.banner_text">
         
         <source>Text banner</source>
+        
         <target>بنر متنی</target>
       </trans-unit>
       <trans-unit id="tl_banner_type.default">
         
         <source>Please select</source>
+        
         <target>لطفا انتخاب کنید</target>
       </trans-unit>
       <trans-unit id="tl_banner.banner_overwriteMeta.0">

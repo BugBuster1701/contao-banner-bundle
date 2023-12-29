@@ -4,41 +4,49 @@
       <trans-unit id="tl_banner_category.banner_default.0">
         
         <source>Default banner image</source>
+        
         <target>Domyślny obrazek banera</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default.1">
         
         <source>This banner will be shown, when no active banners are found. This selection takes priority over modul definition &quot;Hide when empty&quot;.</source>
+        
         <target>Domyślny obrazek banera będzie wyświetlany, kiedy moduł nie znajdzie aktywnych banerów.&lt;br /&gt;Te ustawienie zastępuje opcję &quot;Ukryj kiedy pusty&quot;.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_image.0">
         
         <source>Banner default image</source>
+        
         <target>Domyślny obrazek banera</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_image.1">
         
-        <source>Please select the banner.(GIF,JPG,PNG,WEBP)</source>
-        <target>Wybierz obrazek banera. (GIF,JPG,PNG,WEBP)</target>
+        <source>Please select the banner.(GIF,JPG,PNG,WEBP,AVIF)</source>
+        
+        <target>Wybierz obrazek banera. (GIF,JPG,PNG,WEBP,AVIF)</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_name.0">
         
         <source>Banner Name</source>
+        
         <target>Nazwa banera</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_name.1">
         
         <source>Name is for title tag too.</source>
+        
         <target>Nazwa banera jest równiez wykozystywana jako tag title w kodzie HTML.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_target.0">
         
         <source>Internal Link</source>
+        
         <target>Wewnętrzny odnośnik</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_target.1">
         
         <source>If you choose this option, the banner target opens in the same browser window.</source>
+        
         <target>Jeśli zaznaczysz tę opcję, docelowy URL banera otworzy się w tym samym oknie przeglądarki.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_url.0">
@@ -52,11 +60,13 @@
       <trans-unit id="tl_banner_category.banner_groups.0">
         
         <source>Allowed member groups</source>
+        
         <target>Dopuść grupy członków</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_groups.1">
         
         <source>Here you can choose which groups will be allowed to see the banners of this category.</source>
+        
         <target>Tu możesz wybrać, które grupy członków będą mogły oglądać banery z tej kategorii.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_limit.0">
@@ -78,16 +88,19 @@
       <trans-unit id="tl_banner_category.banner_protected.0">
         
         <source>Protect category</source>
+        
         <target>Kategoria chroniona</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_protected.1">
         
         <source>Show banner of this category to certain member groups only.</source>
+        
         <target>Pokaż banery z tej kategorii tylko dla konkretnej grupy członków.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_protected_catagory">
         
         <source>Protected category</source>
+        
         <target>Kategoria chroniona</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_random.0">
@@ -101,11 +114,13 @@
       <trans-unit id="tl_banner_category.copy.0">
         
         <source>Copy category</source>
+        
         <target>Kopiuj kategorię</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.copy.1">
         
         <source>Copy category ID %s</source>
+        
         <target>Kopiuj kategorię ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.default_legend">
@@ -115,26 +130,31 @@
       <trans-unit id="tl_banner_category.delete.0">
         
         <source>Delete category</source>
+        
         <target>Usuń kategorię</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.delete.1">
         
         <source>Delete category ID %s</source>
+        
         <target>Usuń kategorię ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.deleteConfirm">
         
         <source>Deleting a category will also delete all its Banners! Do you really want to delete category ID %s?</source>
+        
         <target>Usunięcie kategorii spowoduje usunięcie również banerów w niej zawartych! Czy na pewno chcesz usunąć kategorię ID %s?</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.edit.0">
         
         <source>Edit category</source>
+        
         <target>Edytuj kategorię</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.edit.1">
         
         <source>Edit category ID %s</source>
+        
         <target>Edytuj kategorię ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.editheader.0">
@@ -148,11 +168,13 @@
       <trans-unit id="tl_banner_category.new.0">
         
         <source>New category</source>
+        
         <target>Nowa kategoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.new.1">
         
         <source>Create a new category</source>
+        
         <target>Utwórz nową kategorię</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.number_legend">
@@ -166,31 +188,37 @@
       <trans-unit id="tl_banner_category.show.0">
         
         <source>Category details</source>
+        
         <target>Szczegóły kategorii</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.show.1">
         
         <source>Show details of category ID %s</source>
+        
         <target>Pokaż szczegóły kategorii ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.stat.0">
         
         <source>Categorie statistics</source>
+        
         <target>Statystyki kategorii</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.stat.1">
         
         <source>Show categorie statistics of category ID %s</source>
+        
         <target>Pokaż statystyki kategorii ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title.0">
         
         <source>Category</source>
+        
         <target>Kategoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title.1">
         
         <source>Please enter the name of the category.</source>
+        
         <target>Wpisz nazwę kategorii</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title_legend">
@@ -200,11 +228,13 @@
       <trans-unit id="tl_banner_category.tstamp.0">
         
         <source>Revision date</source>
+        
         <target>Data rewizji</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.tstamp.1">
         
         <source>Date and time of latest revision</source>
+        
         <target>Data i czas ostatniej rewizji</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.protected_stat_legend">

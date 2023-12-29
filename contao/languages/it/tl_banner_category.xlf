@@ -4,61 +4,73 @@
       <trans-unit id="tl_banner_category.banner_default.0">
         
         <source>Default banner image</source>
+        
         <target>Immagine default banner</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default.1">
         
         <source>This banner will be shown, when no active banners are found. This selection takes priority over modul definition &quot;Hide when empty&quot;.</source>
+        
         <target>Questo banner sarà mostrato in assenza di banner attivi. &lt;br /&gt; Questa selezione ha la priorità sulla definizione modulo &quot;Nascondi quando vuota&quot;.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_image.0">
         
         <source>Banner default image</source>
+        
         <target>Immagine di default banner</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_image.1">
         
-        <source>Please select the banner.(GIF,JPG,PNG,WEBP)</source>
-        <target>Selezionare il banner. (GIF,JPG,PNG,WEBP)</target>
+        <source>Please select the banner.(GIF,JPG,PNG,WEBP,AVIF)</source>
+        
+        <target>Selezionare il banner. (GIF,JPG,PNG,WEBP,AVIF)</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_name.0">
         
         <source>Banner Name</source>
+        
         <target>Nome banner</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_name.1">
         
         <source>Name is for title tag too.</source>
+        
         <target>Il nome sarà utilizzato per il tag title</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_target.0">
         
         <source>Internal Link</source>
+        
         <target>Link interno</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_target.1">
         
         <source>If you choose this option, the banner target opens in the same browser window.</source>
+        
         <target>Se viene selezionata questa opzione, la destinazione del banner sarà visualizzata all'interno dello stesso browser.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_url.0">
         
         <source>Banner target URL</source>
+        
         <target>URL destinazione banner</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_url.1">
         
         <source>Please enter the banner target URL: http://... </source>
+        
         <target>Inserire l'URL di destinazione del banner</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_groups.0">
         
         <source>Allowed member groups</source>
+        
         <target>Gruppi abilitati</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_groups.1">
         
         <source>Here you can choose which groups will be allowed to see the banners of this category.</source>
+        
         <target>Selezionare i grippi alla quale abilitare la visualizzazione di questa categoria di banner.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_limit.0">
@@ -72,76 +84,91 @@
       <trans-unit id="tl_banner_category.banner_numbers.0">
         
         <source>Show all banners</source>
+        
         <target>Visualizza tutti i banner</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_numbers.1">
         
         <source>If you choose this option, all active banners will be shown in frontend. You can limit the number below.</source>
+        
         <target>Se questa opzione è selezionata, tutti i banner attivi verranno mostrati.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_protected.0">
         
         <source>Protect category</source>
+        
         <target>Protezione accesso</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_protected.1">
         
         <source>Show banner of this category to certain member groups only.</source>
+        
         <target>Visualizza i banner di questa categoria solo ai menbri di questi gruppi.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_protected_catagory">
         
         <source>Protected category</source>
+        
         <target>Accesso categoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_random.0">
         
         <source>Random order</source>
+        
         <target>Ordine casuale</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_random.1">
         
         <source>If you choose this option, the banners will be shown in a random order.</source>
+        
         <target>Selezionando questa opzione, i banner saranno mostrati in ordine casuale.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.copy.0">
         
         <source>Copy category</source>
+        
         <target>Copia categoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.copy.1">
         
         <source>Copy category ID %s</source>
+        
         <target>Copia categoria ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.default_legend">
         
         <source>Details for default banner</source>
+        
         <target>Dettagli banner di default</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.delete.0">
         
         <source>Delete category</source>
+        
         <target>Elimina categoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.delete.1">
         
         <source>Delete category ID %s</source>
+        
         <target>Elimina categoria ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.deleteConfirm">
         
         <source>Deleting a category will also delete all its Banners! Do you really want to delete category ID %s?</source>
+        
         <target>Eliminando la categoria verranno eliminati anche tutti i banner associati. Vuoi realmente liminare la categoria ID %s?</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.edit.0">
         
         <source>Edit category</source>
+        
         <target>Modifica categoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.edit.1">
         
         <source>Edit category ID %s</source>
+        
         <target>Modifica categoria ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.editheader.0">
@@ -155,66 +182,79 @@
       <trans-unit id="tl_banner_category.new.0">
         
         <source>New category</source>
+        
         <target>Nuova categoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.new.1">
         
         <source>Create a new category</source>
+        
         <target>Crea una nuova categoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.number_legend">
         
         <source>Number of banners</source>
+        
         <target>Numero di banner</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.protected_legend">
         
         <source>Access protection</source>
+        
         <target>Protezione accesso</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.show.0">
         
         <source>Category details</source>
+        
         <target>Dettagli categoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.show.1">
         
         <source>Show details of category ID %s</source>
+        
         <target>Mostra i dettagli della categoria ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.stat.0">
         
         <source>Categorie statistics</source>
+        
         <target>Statistiche categoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.stat.1">
         
         <source>Show categorie statistics of category ID %s</source>
+        
         <target>Mostra i dettagli della categoria ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title.0">
         
         <source>Category</source>
+        
         <target>Categoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title.1">
         
         <source>Please enter the name of the category.</source>
+        
         <target>Indicare il nome della categoria</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title_legend">
         
         <source>Category and Banner Template</source>
+        
         <target>Categoria e template banner</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.tstamp.0">
         
         <source>Revision date</source>
+        
         <target>Data revisione</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.tstamp.1">
         
         <source>Date and time of latest revision</source>
+        
         <target>Data ultima modifica</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.protected_stat_legend">

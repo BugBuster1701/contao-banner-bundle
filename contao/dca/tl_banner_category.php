@@ -147,7 +147,7 @@ array(
 			'inputType'               => 'fileTree',
 			// 'sql'                     => "varchar(255) NOT NULL default ''",
 			'sql'                     => "binary(16) NULL",
-			'eval'                    => array('mandatory'=>true, 'files'=>true, 'filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'jpg,jpe,jpeg,gif,png,webp', 'maxlength'=>255, 'helpwizard'=>false, 'tl_class'=>'clr'),
+			'eval'                    => array('mandatory'=>true, 'files'=>true, 'filesOnly'=>true, 'fieldType'=>'radio', 'extensions'=>'jpg,jpe,jpeg,gif,png,webp,avif', 'maxlength'=>255, 'helpwizard'=>false, 'tl_class'=>'clr'),
 			'xlabel' => array(
 				array('BugBuster\Banner\DcaBannerCategory', 'fieldLabelCallback')
 			)

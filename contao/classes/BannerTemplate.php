@@ -60,13 +60,14 @@ class BannerTemplate
 		// 4 = SWF, 13 = SWC (zip-like swf file)
 		// 5 = PSD, 6 = BMP, 7 = TIFF(intel byte order), 8 = TIFF(motorola byte order)
 		// 9 = JPC, 10 = JP2, 11 = JPX, 12 = JB2, 13 = SWC, 14 = IFF
-		// 18 = WEBP
+		// 18 = WEBP, 19 = AVIF
 		switch ($arrImageSize[2])
 		{
 			case 1:// GIF
 			case 2:// JPG
 			case 3:// PNG
 			case 18: // WEBP
+			case 19: // AVIF
 				$arrBanners[] =
 				array(
 					'banner_key'     => 'bid',

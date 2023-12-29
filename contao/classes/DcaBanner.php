@@ -178,6 +178,7 @@ class DcaBanner extends Backend
 			case 2: // JPG/JPEG
 			case 3: // PNG
 			case 18: // WEBP
+			case 19: // AVIF
 				$arrImageSizeNew = $this->BannerImage->getCheckBannerImageSize($arrImageSize, 250, 200);
 				$intWidth  = $arrImageSizeNew[0];
 				$intHeight = $arrImageSizeNew[1];
@@ -238,6 +239,7 @@ class DcaBanner extends Backend
 			case 2: // JPG / JPEG
 			case 3: // PNG
 			case 18: // WEBP
+			case 19: // AVIF
 				$output = '<div class="mod_banner_be">
                     <div class="name">
                         <img alt="' . StringUtil::specialchars(StringUtil::ampersand($row['banner_name'])) . '" src="' . $banner_image . '" height="' . $intHeight . '" width="' . $intWidth . '">
@@ -319,6 +321,7 @@ class DcaBanner extends Backend
 			case 2: // JPG
 			case 3: // PNG
 			case 18: // WEBP
+			case 19: // AVIF
 				$arrImageSizeNew = $this->BannerImage->getCheckBannerImageSize($arrImageSize, 250, 200);
 				$intWidth  = $arrImageSizeNew[0];
 				$intHeight = $arrImageSizeNew[1];
@@ -363,6 +366,7 @@ class DcaBanner extends Backend
 			case 2: // JPG
 			case 3: // PNG
 			case 18: // WEBP
+			case 19: // AVIF
 				$output = '<div class="mod_banner_be">
                     <div class="name">
                         <img alt="' . StringUtil::specialchars(StringUtil::ampersand($row['banner_name'])) . '" src="' . $banner_image . '" height="' . $intHeight . '" width="' . $intWidth . '">

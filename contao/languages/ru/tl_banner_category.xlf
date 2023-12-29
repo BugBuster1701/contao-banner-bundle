@@ -4,276 +4,331 @@
       <trans-unit id="tl_banner_category.banner_default.0">
         
         <source>Default banner image</source>
+        
         <target>Изображение баннера по умолчанию</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default.1">
         
         <source>This banner will be shown, when no active banners are found. This selection takes priority over modul definition &quot;Hide when empty&quot;.</source>
+        
         <target>Этот баннер будет показан, если не будут найдены активные баннеры.&lt;br /&gt;Выбор этой опции имеет приоритет над опцией &quot;Скрыть модуль если пусто&quot;.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_image.0">
         
         <source>Banner default image</source>
+        
         <target>Изображение баннера по умолчанию</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_image.1">
         
-        <source>Please select the banner.(GIF,JPG,PNG,WEBP)</source>
-        <target>Выберите баннер. (GIF, JPG, PNG, WEBP)</target>
+        <source>Please select the banner.(GIF,JPG,PNG,WEBP,AVIF)</source>
+        
+        <target>Выберите баннер. (GIF, JPG, PNG, WEBP, AVIF)</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_name.0">
         
         <source>Banner Name</source>
+        
         <target>Название баннера</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_name.1">
         
         <source>Name is for title tag too.</source>
+        
         <target>Название для тега заголовка.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_target.0">
         
         <source>Internal Link</source>
+        
         <target>Внутренняя ссылка</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_target.1">
         
         <source>If you choose this option, the banner target opens in the same browser window.</source>
+        
         <target>Если выбрать эту опцию, ссылка баннера откроется в том же окне браузера.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_url.0">
         
         <source>Banner target URL</source>
+        
         <target>Целевой URL баннера</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_url.1">
         
         <source>Please enter the banner target URL: http://... </source>
+        
         <target>Введите целевой URL баннера: http://...</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_groups.0">
         
         <source>Allowed member groups</source>
+        
         <target>Разрешено участникам групп</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_groups.1">
         
         <source>Here you can choose which groups will be allowed to see the banners of this category.</source>
+        
         <target>Вы сможете выбрать какие группы будут иметь возможность видеть баннеры этой категории.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_limit.0">
         
         <source>Limiting the number of banners.</source>
+        
         <target>Ограничить количество баннеров.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_limit.1">
         
         <source>0: show all banners (default), otherwise maximum number of banners that will be shown.</source>
+        
         <target>0: показать все баннеры (по умолчанию), в противном случае максимальное количество баннеров, которые будут показаны.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_numbers.0">
         
         <source>Show all banners</source>
+        
         <target>Показать все баннеры</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_numbers.1">
         
         <source>If you choose this option, all active banners will be shown in frontend. You can limit the number below.</source>
+        
         <target>Если выбрать эту опцию, все активные баннеры будут показаны в интерфейсе.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_protected.0">
         
         <source>Protect category</source>
+        
         <target>Защита категории</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_protected.1">
         
         <source>Show banner of this category to certain member groups only.</source>
+        
         <target>Показывать банер этой категории только определенным участникам группы.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_protected_catagory">
         
         <source>Protected category</source>
+        
         <target>Защищенная категория</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_random.0">
         
         <source>Random order</source>
+        
         <target>Случайный порядок</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_random.1">
         
         <source>If you choose this option, the banners will be shown in a random order.</source>
+        
         <target>Если выбрать эту опцию, баннеры будут показаны в случайном порядке.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.copy.0">
         
         <source>Copy category</source>
+        
         <target>Копировать категорию</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.copy.1">
         
         <source>Copy category ID %s</source>
+        
         <target>Копировать категорию ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.default_legend">
         
         <source>Details for default banner</source>
+        
         <target>Детали баннера по умолчанию</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.delete.0">
         
         <source>Delete category</source>
+        
         <target>Удалить категорию</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.delete.1">
         
         <source>Delete category ID %s</source>
+        
         <target>Удалить категорию ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.deleteConfirm">
         
         <source>Deleting a category will also delete all its Banners! Do you really want to delete category ID %s?</source>
+        
         <target>Удаление категории также удалит все свои баннеры! Вы хотите удалить категорию ID %s?</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.edit.0">
         
         <source>Edit category</source>
+        
         <target>Редактировать категорию</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.edit.1">
         
         <source>Edit category ID %s</source>
+        
         <target>Редактировать категорию ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.editheader.0">
         
         <source>Edit category settings</source>
+        
         <target>Редактировать параметры категории</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.editheader.1">
         
         <source>Edit the settings of category ID %s</source>
+        
         <target>Редактировать параметры категории ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.new.0">
         
         <source>New category</source>
+        
         <target>Новая категория</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.new.1">
         
         <source>Create a new category</source>
+        
         <target>Создание новой категории</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.number_legend">
         
         <source>Number of banners</source>
+        
         <target>Количество баннеров</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.protected_legend">
         
         <source>Access protection</source>
+        
         <target>Защита доступа</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.show.0">
         
         <source>Category details</source>
+        
         <target>Детали категории</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.show.1">
         
         <source>Show details of category ID %s</source>
+        
         <target>Показать детали категории ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.stat.0">
         
         <source>Categorie statistics</source>
+        
         <target>Статистика категории</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.stat.1">
         
         <source>Show categorie statistics of category ID %s</source>
+        
         <target>Показать статистику категории ID %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title.0">
         
         <source>Category</source>
+        
         <target>Категория</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title.1">
         
         <source>Please enter the name of the category.</source>
+        
         <target>Введите название категории.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title_legend">
         
         <source>Category and Banner Template</source>
+        
         <target>Категория и шаблон баннера</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.tstamp.0">
         
         <source>Revision date</source>
+        
         <target>Дата редакции</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.tstamp.1">
         
         <source>Date and time of latest revision</source>
+        
         <target>Дата и время последней редакции</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.protected_stat_legend">
         
         <source>Access protection for the statistic</source>
+        
         <target>Защита доступа к статистике</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_stat_protected.0">
         
         <source>Protect the statistic</source>
+        
         <target>Защитить статистику</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_stat_protected.1">
         
         <source>Show the banner statistic for this category to certain user groups only.</source>
+        
         <target>Показать баннер статистики для этой категории определенным группам пользователей.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_stat_groups.0">
         
         <source>Allowed user groups</source>
+        
         <target>Разрешенные группы пользователей</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_stat_groups.1">
         
         <source>Here you can choose which groups will be allowed to see the banner statistic of this category.</source>
+        
         <target>Вы можете выбрать, каким группам будет разрешено видеть баннер статистики этой категории.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_stat_admins.0">
         
         <source>Administrators</source>
+        
         <target>Администраторы</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_stat_admins.1">
         
         <source>Administrators have unlimited access to all banner statistics.</source>
+        
         <target>Администраторы имеют неограниченный доступ ко всем баннерам статистики.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_expert_debug_all.0">
         
         <source>Debug mode for all &quot;Banner&quot; classes</source>
+        
         <target>Режим отладки для всех классов &quot;Баннер&quot;</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_expert_debug_all.1">
         
         <source>With activation, write debug information to the log file (&lt;em&gt;system/logs/prod-Y-M-D-banner_debug.log&lt;/em&gt;)</source>
+        
         <target>Записывать отладочную информацию в файл журнала (&lt;em&gt;system/logs/prod-Y-M-D-banner_debug.log&lt;/em&gt;)</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_expert_legend">
         
         <source>Expert settings</source>
+        
         <target>Экспертные настройки</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.formatsWebpNotSupported">
         
         <source>WEBP is not supported on your server.</source>
+        
         <target>WEBP не поддерживается на сервере.</target>
       </trans-unit>
     </body>

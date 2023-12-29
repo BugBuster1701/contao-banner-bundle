@@ -4,6 +4,7 @@
       <trans-unit id="tl_banner_category.banner_default.0">
         
         <source>Default banner image</source>
+        
         <target>تصویر بنر پیش‌فرض</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default.1">
@@ -13,26 +14,31 @@
       <trans-unit id="tl_banner_category.banner_default_image.0">
         
         <source>Banner default image</source>
+        
         <target>تصویر پیش‌فرض بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_image.1">
         
-        <source>Please select the banner.(GIF,JPG,PNG,WEBP)</source>
-        <target>بنر را انتخاب کنید. (GIF,JPG,PNG,WEBP)</target>
+        <source>Please select the banner.(GIF,JPG,PNG,WEBP,AVIF)</source>
+        
+        <target>بنر را انتخاب کنید. (GIF,JPG,PNG,WEBP,AVIF)</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_name.0">
         
         <source>Banner Name</source>
+        
         <target>نام بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_name.1">
         
         <source>Name is for title tag too.</source>
+        
         <target>نام برای برچسب عنوان نیز می‌باشد.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_target.0">
         
         <source>Internal Link</source>
+        
         <target>پیوند داخلی</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_target.1">
@@ -42,16 +48,19 @@
       <trans-unit id="tl_banner_category.banner_default_url.0">
         
         <source>Banner target URL</source>
+        
         <target>نشانی وب مقصد بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_url.1">
         
         <source>Please enter the banner target URL: http://... </source>
+        
         <target>نشانی وب مقصد بنر را وارد کنید: http://...</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_groups.0">
         
         <source>Allowed member groups</source>
+        
         <target>گروه‌های اعضای مجاز</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_groups.1">
@@ -61,6 +70,7 @@
       <trans-unit id="tl_banner_category.banner_limit.0">
         
         <source>Limiting the number of banners.</source>
+        
         <target>محدود کردن تعداد بنرها.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_limit.1">
@@ -70,6 +80,7 @@
       <trans-unit id="tl_banner_category.banner_numbers.0">
         
         <source>Show all banners</source>
+        
         <target>نمایش همه بنرها</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_numbers.1">
@@ -79,21 +90,25 @@
       <trans-unit id="tl_banner_category.banner_protected.0">
         
         <source>Protect category</source>
+        
         <target>حفاظت دسته</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_protected.1">
         
         <source>Show banner of this category to certain member groups only.</source>
+        
         <target>نمایش بنر این دسته‌بندی فقط برای  گروه‌های اعضاء مشخص.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_protected_catagory">
         
         <source>Protected category</source>
+        
         <target>دسته حفاظت شده</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_random.0">
         
         <source>Random order</source>
+        
         <target>ترتیب تصافی</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_random.1">
@@ -103,26 +118,31 @@
       <trans-unit id="tl_banner_category.copy.0">
         
         <source>Copy category</source>
+        
         <target>رونوشت دسته‌بندی</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.copy.1">
         
         <source>Copy category ID %s</source>
+        
         <target>رونوشت دسته‌بندی شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.default_legend">
         
         <source>Details for default banner</source>
+        
         <target>جزئیات بنر پیش‌فرض</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.delete.0">
         
         <source>Delete category</source>
+        
         <target>حذف دسته‌بندی</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.delete.1">
         
         <source>Delete category ID %s</source>
+        
         <target>حذف دسته‌بندی شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.deleteConfirm">
@@ -132,96 +152,115 @@
       <trans-unit id="tl_banner_category.edit.0">
         
         <source>Edit category</source>
+        
         <target>ویرایش دسته</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.edit.1">
         
         <source>Edit category ID %s</source>
+        
         <target>ویرایش دسته‌بندی شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.editheader.0">
         
         <source>Edit category settings</source>
+        
         <target>ویرایش تنظیمات دسته‌بندی</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.editheader.1">
         
         <source>Edit the settings of category ID %s</source>
+        
         <target>ویرایش تنظیمات دسته‌بندی شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.new.0">
         
         <source>New category</source>
+        
         <target>دسته‌بندی جدید</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.new.1">
         
         <source>Create a new category</source>
+        
         <target>ایجاد دسته جدید</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.number_legend">
         
         <source>Number of banners</source>
+        
         <target>تعداد بنرها</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.protected_legend">
         
         <source>Access protection</source>
+        
         <target>حفاظت دسترسی</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.show.0">
         
         <source>Category details</source>
+        
         <target>جزئیات دسته‌بندی</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.show.1">
         
         <source>Show details of category ID %s</source>
+        
         <target>نمایش جزئیات دسته‌بندی شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.stat.0">
         
         <source>Categorie statistics</source>
+        
         <target>آمار دسته‌بندی</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.stat.1">
         
         <source>Show categorie statistics of category ID %s</source>
+        
         <target>نمایش آمار دسته‌بندی شناسه %s</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title.0">
         
         <source>Category</source>
+        
         <target>دسته‌بندی</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title.1">
         
         <source>Please enter the name of the category.</source>
+        
         <target>نام دسته‌بندی را وارد کنید</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.title_legend">
         
         <source>Category and Banner Template</source>
+        
         <target>دسته‌بندی و قالب بنر</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.tstamp.0">
         
         <source>Revision date</source>
+        
         <target>تاریخ بازنگری</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.tstamp.1">
         
         <source>Date and time of latest revision</source>
+        
         <target>تاریخ و ساعت آخرین بازنگری</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.protected_stat_legend">
         
         <source>Access protection for the statistic</source>
+        
         <target>حفاظت دسترسی برای آمار</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_stat_protected.0">
         
         <source>Protect the statistic</source>
+        
         <target>محافظت از آمار</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_stat_protected.1">
@@ -231,6 +270,7 @@
       <trans-unit id="tl_banner_category.banner_stat_groups.0">
         
         <source>Allowed user groups</source>
+        
         <target>گروه‌های کاربری مجاز</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_stat_groups.1">
@@ -240,11 +280,13 @@
       <trans-unit id="tl_banner_category.banner_stat_admins.0">
         
         <source>Administrators</source>
+        
         <target>مدیرها</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_stat_admins.1">
         
         <source>Administrators have unlimited access to all banner statistics.</source>
+        
         <target>مدیرها دسترسی نامحدود به همه آمار بنرها دارند.</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_expert_debug_all.0">
@@ -258,6 +300,7 @@
       <trans-unit id="tl_banner_category.banner_expert_legend">
         
         <source>Expert settings</source>
+        
         <target>تنظیمات پیشرفته</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.formatsWebpNotSupported">

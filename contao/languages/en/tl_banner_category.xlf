@@ -15,7 +15,7 @@
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_image.1">
         
-        <source>Please select the banner.(GIF,JPG,PNG,WEBP)</source>
+        <source>Please select the banner.(GIF,JPG,PNG,WEBP,AVIF)</source>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_default_name.0">
         
