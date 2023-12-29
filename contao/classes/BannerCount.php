@@ -159,7 +159,7 @@ class BannerCount extends System
 					&& true === $this->removeStatViewUpdateBlockerId($key, $val, $session)
 				) {
 					// Key ist noch gültig und es muss daher geblockt werden
-					// DEBUG log_message('getStatViewUpdateBlockerId Banner ID:'.$key,'Banner.log');
+					BannerLog::writeLog(__METHOD__, __LINE__, 'Key noch gültig, Blocking für Banner ID: ' . $banner_id);
 					return true;
 				}
 			}
@@ -221,6 +221,7 @@ class BannerCount extends System
 		  && (int) $GLOBALS['TL_CONFIG']['mod_banner_bot_check'] == 0
 		) {
 			// DEBUG log_message('bannerCheckBot abgeschaltet','Banner.log');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'bannerCheckBot abgeschaltet');
 			return false; // Bot Suche abgeschaltet ueber localconfig.php
 		}
 
@@ -238,10 +239,12 @@ class BannerCount extends System
 		if ($ModuleBotDetection->checkBotAllTests())
 		{
 			// DEBUG log_message('bannerCheckBot True','Banner.log');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'bannerCheckBot True');
 			return true;
 		}
 
 		// DEBUG log_message('bannerCheckBot False','Banner.log');
+		BannerLog::writeLog(__METHOD__, __LINE__, 'bannerCheckBot False');
 		return false;
 	} // bannerCheckBot
 
@@ -268,6 +271,7 @@ class BannerCount extends System
 		$CheckUserAgent = str_replace($arrUserAgents, '#', $UserAgent);
 		if ($UserAgent != $CheckUserAgent)   // es wurde ersetzt also was gefunden
 		{// DEBUG log_message('CheckUserAgent Filterung; Treffer!','Banner.log');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Filterung: Treffer!');
 			return true;
 		}
 

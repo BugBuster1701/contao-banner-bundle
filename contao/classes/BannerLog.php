@@ -13,10 +13,10 @@
 
 namespace BugBuster\Banner;
 
-use Contao\CoreBundle\Monolog\ContaoContext;
+//use Contao\CoreBundle\Monolog\ContaoContext;
 use Contao\StringUtil;
 use Contao\System;
-use Psr\Log\LogLevel;
+//use Psr\Log\LogLevel;
 
 /**
  * Class BannerLog
@@ -39,7 +39,9 @@ class BannerLog
 				{
 					$arrUniqid = StringUtil::trimsplit('.', uniqid('c0n7a0', true));
 					$GLOBALS['banner']['debug']['first'] = $arrUniqid[1];
-					self::logMessage(sprintf('[%s] [%s] [%s] %s', $GLOBALS['banner']['debug']['first'], $method, $line, $value), 'banner_debug');
+					//self::logMessage(sprintf('[%s] [%s] [%s] %s', $GLOBALS['banner']['debug']['first'], $method, $line, $value), 'banner_debug');
+					\BugBuster\Banner\Bannerlog::logMessage('## First');
+					self::logMonolog($GLOBALS['banner']['debug']['first'], false, '', $method.' '.$line.' '.$value);
 
 					return;
 				}
@@ -51,19 +53,22 @@ class BannerLog
 		}
 		if (false === (bool) ($GLOBALS['banner']['debug']['all'] ?? false))
 		{
+			//self::logMonolog($GLOBALS['banner']['debug']['first'], false, '', $method.' '.$line.' KEIN LOG AKTIVIERT');
 			return; // kein Log aktiviert
 		}
 
 		$arrNamespace = StringUtil::trimsplit('::', $method);
 		$arrClass =  StringUtil::trimsplit('\\', $arrNamespace[0]);
-		$vclass = $arrClass[2]; // class that will write the log
+		//$vclass = $arrClass[2]; // class that will write the log
+		$vclass = $arrClass[\count($arrClass)-1]; // class that will write the log
 
 		if (\is_array($value))
 		{
 			$value = print_r($value, true);
 		}
 
-		self::logMessage(sprintf('[%s] [%s] [%s] %s', $GLOBALS['banner']['debug']['first'], $vclass . '::' . $arrNamespace[1], $line, $value), 'banner_debug');
+		//self::logMessage(sprintf('[%s] [%s] [%s] %s', $GLOBALS['banner']['debug']['first'], $vclass . '::' . $arrNamespace[1], $line, $value), 'banner_debug');
+		self::logMonolog($GLOBALS['banner']['debug']['first'], $vclass . '::' . $arrNamespace[1], $line, $value);
 	}
 
 	/**
@@ -100,6 +105,42 @@ class BannerLog
 	}
 
 	/**
+	 * Wrapper for Monolog
+	 *
+	 * @param string $strMessage
+	 * @param string $strLog
+	 */
+	public static function logMonolog($uuid, $class, $line, $message)
+	{
+		$strMessage = sprintf("%s %s\n", $uuid, $message);
+
+		// $strLog = 'prod-' . date('Y-m-d') . '.log';
+		// if (($container = System::getContainer()) !== null)
+		// {
+		// 	$strLogsDir = $container->getParameter('kernel.logs_dir');
+		// }
+
+		// if (!$strLogsDir)
+		// {
+		// 	$rootDir = System::getContainer()->getParameter('kernel.project_dir');
+		// 	$strLogsDir = $rootDir . '/var/logs';
+		// }
+		// $logger = new \Monolog\Logger('banner');
+		// $logger->pushHandler(new \Monolog\Handler\StreamHandler($strLogsDir . '/' . $strLog, \Monolog\Logger::DEBUG));
+		// if (false !== $class) {
+		// 	$logger->debug($strMessage,["class" => $class.'::'.$line]);
+		// } else {
+		// 	$logger->debug($strMessage);
+		// }
+		// $logger = null;
+		// unset($logger);
+		//$userActionsLogger = System::getContainer()->get('monolog.logger.banner');
+		//self::logMessage('logMonolog ## mess: '.$strMessage.' ## class: '.print_r($class,true).' ## line: '. (int)$line);
+		$userActionsLogger = System::getContainer()->get('bug_buster_banner.logger');
+		$userActionsLogger->logMonologLog($strMessage, $class, (int) $line, 'debug');
+	}
+
+	/**
 	 * Add a log entry to the database
 	 *
 	 * @param string $strText     The log message
@@ -108,9 +149,7 @@ class BannerLog
 	 */
 	public static function log($strText, $strFunction, $strCategory)
 	{
-		$level = ContaoContext::ERROR === $strCategory ? LogLevel::ERROR : LogLevel::INFO;
-		$logger = System::getContainer()->get('monolog.logger.contao');
-
-		$logger->log($level, $strText, array('contao' => new ContaoContext($strFunction, $strCategory)));
+		$userActionsLogger = System::getContainer()->get('bug_buster_banner.logger');
+		$userActionsLogger->logSystemLog($strText, $strFunction, $strCategory);
 	}
 }

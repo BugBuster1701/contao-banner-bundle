@@ -1,0 +1,8 @@
+monolog:
+    handlers:
+        banner:
+            type:  rotating_file
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            channels: [banner]
+            #formatter: monolog.formatter.banner
+            formatter: monolog.formatter.line

@@ -56,6 +56,7 @@ class BannerExternal
 		{
 			$arrImageSize[2] = 0;
 			BannerLog::log('Banner Image with ID "' . $this->objBanners->id . '" not found', __METHOD__ . ':' . __LINE__, ContaoContext::ERROR);
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Banner Image with ID "' . $this->objBanners->id . '" not found');
 
 			$objReturn = new \stdClass();
 			$objReturn->FileSrc = null;

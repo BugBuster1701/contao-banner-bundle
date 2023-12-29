@@ -1,5 +1,6 @@
 services:
     _defaults:
+        autowire: true
         autoconfigure: true
         public: false
 
@@ -14,3 +15,20 @@ services:
             - '@database_connection'
         tags:
             - { name: contao.migration, priority: 0 }
+
+    # bug_buster_banner.logger:
+    #     class: "BugBuster\\BannerBundle\\Classes\\BannerLogger"
+    BugBuster\BannerBundle\Classes\BannerLogger:
+        public: true
+        arguments: 
+            - '@service_container'
+            - '@logger'
+            - '@monolog.logger.contao'
+        tags:
+            - 
+                name: monolog.logger
+                channel: banner
+
+    bug_buster_banner.logger:
+        alias: BugBuster\BannerBundle\Classes\BannerLogger
+        public: true

@@ -22,6 +22,7 @@ use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Routing\RoutingPluginInterface;
+use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -44,5 +45,16 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface
             ->resolve(__DIR__.'/../../config/routes.yaml')
             ->load(__DIR__.'/../../config/routes.yaml')
         ;
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig): void
+    {
+        // $loader->load(__DIR__ . '/../../config/parameters.yaml');
+        //$loader->load(__DIR__.'/../../config/controller.yaml');
+        $loader->load(__DIR__.'/../../config/config.yaml');
+        // $loader->load(__DIR__ . '/../../config/listener.yaml');
     }
 }

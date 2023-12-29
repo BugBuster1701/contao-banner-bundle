@@ -162,7 +162,7 @@ class BannerHelper extends Frontend
 		// $this->banner_categories is now an ID, but the name is backward compatible
 		if (!isset($this->banner_categories) || !is_numeric($this->banner_categories))
 		{
-			BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'ModulBanner Compile', 'ERROR');
+			BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'BannerHelper getSetCategoryValues', 'ERROR');
 			$this->arrCategoryValues = false;
 
 			return false;
@@ -176,7 +176,7 @@ class BannerHelper extends Frontend
 													 ->execute($this->banner_categories);
 		if ($objBannerCategory->numRows == 0)
 		{
-			BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'ModulBanner Compile', 'ERROR');
+			BannerLog::log($GLOBALS['TL_LANG']['tl_banner']['banner_cat_not_found'], 'BannerHelper getSetCategoryValues', 'ERROR');
 			$this->arrCategoryValues = false;
 
 			return false;
@@ -205,7 +205,7 @@ class BannerHelper extends Frontend
 	/**
 	 * BannerHelper::checkSetUserFrontendLogin
 	 *
-	 * Check if FE User loggen in and banner category is protected
+	 * Check if FE User logged in and banner category is protected
 	 *
 	 * @return boolean true = View allowed | false = View not allowed
 	 */
@@ -224,11 +224,13 @@ class BannerHelper extends Frontend
 				if ($user->isMemberOf($this->arrCategoryValues['banner_group']) === false)
 				{
 					$this->statusBannerFrontendGroupView = false;
+					BannerLog::writeLog(__METHOD__, __LINE__, 'Logged in and group member false');
 
 					return false;
 				}
 			}
 		}
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Logged in and group member true');
 
 		return true;
 	}
