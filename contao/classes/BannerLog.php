@@ -13,10 +13,8 @@
 
 namespace BugBuster\Banner;
 
-//use Contao\CoreBundle\Monolog\ContaoContext;
 use Contao\StringUtil;
 use Contao\System;
-//use Psr\Log\LogLevel;
 
 /**
  * Class BannerLog
@@ -39,8 +37,6 @@ class BannerLog
 				{
 					$arrUniqid = StringUtil::trimsplit('.', uniqid('c0n7a0', true));
 					$GLOBALS['banner']['debug']['first'] = $arrUniqid[1];
-					//self::logMessage(sprintf('[%s] [%s] [%s] %s', $GLOBALS['banner']['debug']['first'], $method, $line, $value), 'banner_debug');
-					\BugBuster\Banner\Bannerlog::logMessage('## First');
 					self::logMonolog($GLOBALS['banner']['debug']['first'], false, '', $method.' '.$line.' '.$value);
 
 					return;
@@ -67,7 +63,6 @@ class BannerLog
 			$value = print_r($value, true);
 		}
 
-		//self::logMessage(sprintf('[%s] [%s] [%s] %s', $GLOBALS['banner']['debug']['first'], $vclass . '::' . $arrNamespace[1], $line, $value), 'banner_debug');
 		self::logMonolog($GLOBALS['banner']['debug']['first'], $vclass . '::' . $arrNamespace[1], $line, $value);
 	}
 
@@ -113,35 +108,12 @@ class BannerLog
 	public static function logMonolog($uuid, $class, $line, $message)
 	{
 		$strMessage = sprintf("%s %s\n", $uuid, $message);
-
-		// $strLog = 'prod-' . date('Y-m-d') . '.log';
-		// if (($container = System::getContainer()) !== null)
-		// {
-		// 	$strLogsDir = $container->getParameter('kernel.logs_dir');
-		// }
-
-		// if (!$strLogsDir)
-		// {
-		// 	$rootDir = System::getContainer()->getParameter('kernel.project_dir');
-		// 	$strLogsDir = $rootDir . '/var/logs';
-		// }
-		// $logger = new \Monolog\Logger('banner');
-		// $logger->pushHandler(new \Monolog\Handler\StreamHandler($strLogsDir . '/' . $strLog, \Monolog\Logger::DEBUG));
-		// if (false !== $class) {
-		// 	$logger->debug($strMessage,["class" => $class.'::'.$line]);
-		// } else {
-		// 	$logger->debug($strMessage);
-		// }
-		// $logger = null;
-		// unset($logger);
-		//$userActionsLogger = System::getContainer()->get('monolog.logger.banner');
-		//self::logMessage('logMonolog ## mess: '.$strMessage.' ## class: '.print_r($class,true).' ## line: '. (int)$line);
 		$userActionsLogger = System::getContainer()->get('bug_buster_banner.logger');
 		$userActionsLogger->logMonologLog($strMessage, $class, (int) $line, 'debug');
 	}
 
 	/**
-	 * Add a log entry to the database
+	 * Add a log entry to the database via Monolog
 	 *
 	 * @param string $strText     The log message
 	 * @param string $strFunction The function name

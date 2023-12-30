@@ -19,6 +19,7 @@ namespace BugBuster\BannerBundle\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
+use Contao\ManagerPlugin\Config\ConfigPluginInterface;
 use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Routing\RoutingPluginInterface;
@@ -29,10 +30,11 @@ use Symfony\Component\HttpKernel\KernelInterface;
 /**
  * Plugin for the Contao Manager.
  */
-class Plugin implements BundlePluginInterface, RoutingPluginInterface
+class Plugin implements BundlePluginInterface, RoutingPluginInterface, ConfigPluginInterface
 {
     public function getBundles(ParserInterface $parser)
     {
+        // braucht BundlePluginInterface
         return [
             BundleConfig::create('BugBuster\BannerBundle\BugBusterBannerBundle')
                 ->setLoadAfter([ContaoCoreBundle::class, 'BugBuster\BotdetectionBundle\BugBusterBotdetectionBundle']),
@@ -41,6 +43,7 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface
 
     public function getRouteCollection(LoaderResolverInterface $resolver, KernelInterface $kernel)
     {
+        // braucht RoutingPluginInterface
         return $resolver
             ->resolve(__DIR__.'/../../config/routes.yaml')
             ->load(__DIR__.'/../../config/routes.yaml')
@@ -49,12 +52,13 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface
 
     /**
      * @throws \Exception
+     * 
      */
     public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig): void
     {
-        // $loader->load(__DIR__ . '/../../config/parameters.yaml');
-        //$loader->load(__DIR__.'/../../config/controller.yaml');
-        $loader->load(__DIR__.'/../../config/config.yaml');
-        // $loader->load(__DIR__ . '/../../config/listener.yaml');
+        // braucht ConfigPluginInterface
+        $loader->load(__DIR__.'/../../config/services.yaml');
+        // braucht ConfigPluginInterface
+        $loader->load(__DIR__.'/../../config/monolog.yaml');
     }
 }

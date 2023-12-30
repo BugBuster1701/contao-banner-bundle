@@ -32,7 +32,6 @@ class BannerLogger
 
     }
 
-
     /**
      * Add a log entry to contao system log.
      *
@@ -44,7 +43,6 @@ class BannerLogger
     {
         $level = (ContaoContext::ERROR === $category ? LogLevel::ERROR : LogLevel::INFO);
 
-        //$this->container->get('monolog.logger.contao')->log($level, $message, [
         $this->contaologger->log($level, $message, [
             'contao' => new ContaoContext($method, $category),
         ]);
@@ -60,14 +58,10 @@ class BannerLogger
      */
     public function logMonologLog(string $message, string $class, int $line, string $level = 'debug'): void
     {
-        //\BugBuster\Banner\Bannerlog::logMessage('logMonologLog ## mess: '.$message.' ## class: '.(int)$class.' ## line: '. (int)$line);
-
 		if (false != $class) {
 			$this->bannerLogger->$level($message,["class" => $class.'::'.$line]);
-            //\BugBuster\Banner\Bannerlog::logMessage('## 3');
 		} else {
 			$this->bannerLogger->$level($message,[]);
-            \BugBuster\Banner\Bannerlog::logMessage('## 4 '.$message);
 		}
     }
 }
