@@ -310,12 +310,12 @@ class FrontendBanner extends Frontend
 			$this->setReClickBlockerId($BannerID);
 
 			// kein ReClickBlocker block gefunden, Zaehlung erlaubt, nicht blocken
-			BannerLog::writeLog(__METHOD__, __LINE__, ': False: Banner ID ' . $BannerID . ' Klick nicht geblockt');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'ReClickBlocker: False: Banner ID ' . $BannerID . ' Klick nicht geblockt');
 
 			return false;
 		}
 		// Eintrag innerhalb der Blockzeit, blocken
-		BannerLog::writeLog(__METHOD__, __LINE__, ': True: Banner ID ' . $BannerID . ' Klick geblockt');
+		BannerLog::writeLog(__METHOD__, __LINE__, 'ReClickBlocker: True: Banner ID ' . $BannerID . ' Klick geblockt');
 
 		return true;
 	}
@@ -407,8 +407,8 @@ class FrontendBanner extends Frontend
 
 		if ($tstmap >  $BannerBlockTime)
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, ': BannerBlockTime: ' . date("Y-m-d H:i:s", $BannerBlockTime));
-			BannerLog::writeLog(__METHOD__, __LINE__, ': BannerSessiTime: ' . date("Y-m-d H:i:s", $tstmap));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Blocked: BannerBlockTime: ' . date("Y-m-d H:i:s", $BannerBlockTime));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Blocked: BannerSessiTime: ' . date("Y-m-d H:i:s", $tstmap));
 
 			return true;
 		}

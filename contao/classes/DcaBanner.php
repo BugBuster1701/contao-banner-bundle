@@ -76,7 +76,7 @@ class DcaBanner extends Backend
 		// Get Debug Settings
 		$objBannerHelper = new BannerHelper();
 		$objBannerHelper->setDebugSettings($add['id']);
-		BannerLog::writeLog(__METHOD__, __LINE__, '###');
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Set Debug Settings');
 		$catId = $add['id'];
 		unset($add['id']); // delete the helper
 

@@ -36,7 +36,7 @@ class BannerChecks extends Frontend
 			isset($GLOBALS['TL_CONFIG']['mod_banner_bot_check'])
 			&& (int) $GLOBALS['TL_CONFIG']['mod_banner_bot_check'] == 0
 		) {
-			BannerLog::writeLog(__METHOD__, __LINE__, ': False: Bot Suche abgeschaltet ueber localconfig.php');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Bot Check: False: Bot Suche abgeschaltet ueber localconfig.php');
 
 			return false; // Bot Suche abgeschaltet ueber localconfig.php
 		}
@@ -53,18 +53,18 @@ class BannerChecks extends Frontend
 							'contao-botdetection-bundle extension required for extension: Banner!',
 							array('contao' => new ContaoContext('BannerChecks checkBot ', ContaoContext::ERROR))
 						);
-			BannerLog::writeLog(__METHOD__, __LINE__, print_r($bundles, true));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Botdetection fehlt, installierte Bundles: '. print_r($bundles, true));
 
 			return false;
 		}
 		$ModuleBotDetection = new ModuleBotDetection();
 		if ($ModuleBotDetection->checkBotAllTests())
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, ': True');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'checkBotAllTests: True');
 
 			return true;
 		}
-		BannerLog::writeLog(__METHOD__, __LINE__, ': False');
+		BannerLog::writeLog(__METHOD__, __LINE__, 'checkBotAllTests: False');
 
 		return false;
 	} // checkBot
@@ -93,7 +93,7 @@ class BannerChecks extends Frontend
 												->execute('');
 		if (!$objUserAgent->next())
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, ': False: keine Angaben im Modul!');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'User Agent: False: keine Angaben im Modul!');
 
 			return false; // keine Angaben im Modul
 		}
@@ -107,7 +107,7 @@ class BannerChecks extends Frontend
 		$CheckUserAgent=str_replace($arrUserAgents, '#', $UserAgent);
 		if ($UserAgent != $CheckUserAgent)   // es wurde ersetzt also was gefunden
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, ': True: Treffer!');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'User Agent: True: Treffer!');
 
 			return true;
 		}
@@ -131,12 +131,12 @@ class BannerChecks extends Frontend
 		$objTokenChecker = System::getContainer()->get('contao.security.token_checker');
 		if ($objTokenChecker->hasBackendUser())
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, ': True');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Backend User: True');
 
 			return true;
 		}
 
-		BannerLog::writeLog(__METHOD__, __LINE__, ': False');
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Backend User: False');
 
 		return false;
 	} // CheckBE
