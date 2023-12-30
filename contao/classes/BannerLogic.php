@@ -185,7 +185,7 @@ class BannerLogic
 	public function getRandomBlockerId($module_id)
 	{
 		$this->getSession('RandomBlocker' . $module_id);
-		if (\count($this->_session))
+		if (\count($this->_session ?? []))
 		{
 			$key   = key($this->_session);
 			$value = current($this->_session);
@@ -229,7 +229,7 @@ class BannerLogic
 	public function getFirstViewBlockerId($module_id)
 	{
 		$this->getSession('FirstViewBlocker' . $module_id);
-		if (\count($this->_session))
+		if (\count($this->_session ?? []))
 		{
 			// each deprecated in PHP 7.2, daher
 			$key    = key($this->_session);

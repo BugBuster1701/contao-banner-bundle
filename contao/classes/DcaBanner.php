@@ -63,7 +63,7 @@ class DcaBanner extends Backend
 	public function __construct()
 	{
 		parent::__construct();
-		// $this->import('BackendUser', 'User');
+
 		$this->User = BackendUser::getInstance();
 		$this->BannerImage = new BannerImage();
 	}
@@ -674,36 +674,6 @@ class DcaBanner extends Backend
 		// return '<a href="' . $this->addToUrl($href) . '" title="' . StringUtil::specialchars($row['banner_published'] ? $title : $titleDisabled) . '" data-title="' . StringUtil::specialchars($title) . '" data-title-disabled="' . StringUtil::specialchars($titleDisabled) . '" onclick="Backend.getScrollOffset();return AjaxRequest.toggleField(this,true)">' . Image::getHtml($icon, $label, 'data-icon="visible.svg" data-icon-disabled="invisible.svg" data-state="' . ($row['banner_published'] ? 1 : 0) . '"') . '</a> ';
 		return '<a href="' . $this->addToUrl($href) . '" title="' . StringUtil::specialchars($row['banner_published'] ? $title : $titleDisabled) . '" data-title="' . StringUtil::specialchars($title) . '" data-title-disabled="' . StringUtil::specialchars($titleDisabled) . '" >' . Image::getHtml($icon, $label, 'data-icon="visible.svg" data-icon-disabled="invisible.svg" data-state="' . ($row['banner_published'] ? 1 : 0) . '"') . '</a> ';
 	}
-
-	/**
-	 * Disable/enable banner
-	 * @param integer $dc
-	 * @param boolean
-	 */
-	// public function toggleVisibility($intId, $blnVisible)
-	// {
-	//     // Check permissions to publish
-	//     if (!$this->User->isAdmin && !$this->User->hasAccess('tl_banner::banner_published', 'alexf')) {
-	//         \Contao\System::getContainer()
-	//             ->get('monolog.logger.contao')
-	//             ->log(
-	//                 LogLevel::ERROR,
-	//                 'Not enough permissions to publish/unpublish Banner ID "'.$intId.'"',
-	//                 ['contao' => new ContaoContext('tl_banner toggleVisibility', ContaoContext::ERROR)]
-	//             );
-
-	//         $this->redirect('contao/main.php?act=error');
-	//     }
-
-	//     // Update database
-	//     \Contao\Database::getInstance()->prepare("UPDATE
-	//                                             tl_banner
-	//                                        SET
-	//                                             banner_published='" . ($blnVisible ? 1 : '') . "'
-	//                                        WHERE
-	//                                             id=?")
-	//                             ->execute($intId);
-	// }
 
 	public function fieldLabelCallback($dc)
 	{

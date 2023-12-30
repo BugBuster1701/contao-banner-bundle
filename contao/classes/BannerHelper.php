@@ -158,7 +158,6 @@ class BannerHelper extends Frontend
 	 */
 	protected function getSetCategoryValues()
 	{
-		// DEBUG log_message('getSetCategoryValues banner_categories:'.$this->banner_categories,'Banner.log');
 		// $this->banner_categories is now an ID, but the name is backward compatible
 		if (!isset($this->banner_categories) || !is_numeric($this->banner_categories))
 		{
@@ -198,7 +197,6 @@ class BannerHelper extends Frontend
 			'banner_group'			=> $arrGroup[0] ?? 0
 		);
 
-		// DEBUG log_message('getSetCategoryValues arrCategoryValues:'.print_r($this->arrCategoryValues,true),'Banner.log');
 		return true;
 	}
 
@@ -214,7 +212,6 @@ class BannerHelper extends Frontend
 		$hasFrontendUser = System::getContainer()->get('contao.security.token_checker')->hasFrontendUser();
 		if ($hasFrontendUser)
 		{
-			// $this->import('FrontendUser', 'User');
 			$user = FrontendUser::getInstance();
 
 			if (
@@ -302,7 +299,6 @@ class BannerHelper extends Frontend
 			$this->arrAllBannersBasic[$objBanners->id] = $objBanners->banner_weighting;
 		}
 
-		// DEBUG log_message('getSetAllBannerForCategory arrAllBannersBasic:'.print_r($this->arrAllBannersBasic,true),'Banner.log');
 		return (bool) $this->arrAllBannersBasic; // false bei leerem array, sonst true
 	}
 

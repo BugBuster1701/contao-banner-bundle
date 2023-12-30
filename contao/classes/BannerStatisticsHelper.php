@@ -492,19 +492,16 @@ class BannerStatisticsHelper extends BackendModule
 	{
 		if (true === $this->User->isAdmin)
 		{
-			// DEBUG log_message('Ich bin Admin', 'banner.log');
 			return true; // Admin darf immer
 		}
 		// wenn  Schutz nicht aktiviert ist, darf jeder
 		if (false === $banner_stat_protected)
 		{
-			// Debug log_message('Schutz nicht aktiviert', 'banner.log');
 			return true;
 		}
 		// Schutz aktiviert, Einschränkungen vorhanden?
 		if (0 == \strlen($banner_stat_groups))
 		{
-			// DEBUG log_message('banner_stat_groups ist leer', 'banner.log');
 			return false; // nicht gefiltert, also darf keiner außer Admin
 		}
 
@@ -513,12 +510,10 @@ class BannerStatisticsHelper extends BackendModule
 		{
 			if (true === $this->User->isMemberOf($groupid))
 			{
-				// DEBUG log_message('Ich bin in der richtigen Gruppe '.$groupid, 'banner.log');
 				return true; // User is Member of banner_stat_group
 			}
 		}
 
-		// Debug log_message('Ich bin in der falschen Gruppe', 'banner.log');
 		return false;
 	}
 } // class
