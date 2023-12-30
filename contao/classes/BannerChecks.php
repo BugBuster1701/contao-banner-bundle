@@ -93,13 +93,15 @@ class BannerChecks extends Frontend
 												->execute('');
 		if (!$objUserAgent->next())
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Check User Agent: False: No information in the module!');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Check User Agent: False: No information in the module');
 
 			return false; // keine Angaben im Modul
 		}
 		$arrUserAgents = explode(",", $objUserAgent->banner_useragent);
 		if (\strlen(trim($arrUserAgents[0])) == 0)
 		{
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Check User Agent: False: No information in the module');
+
 			return false; // keine Angaben im Modul
 		}
 		array_walk($arrUserAgents, array('self', 'bannerclickTrimArrayValue'));  // trim der array values
