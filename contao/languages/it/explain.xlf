@@ -4,101 +4,121 @@
       <trans-unit id="XPL.banner_help.0.0">
         
         <source>Banner Name</source>
+        
         <target>Nome banner</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.0.1">
         
         <source>The banner name is shown in the banners overview and in the provided template below the banner image.&lt;br&gt;&lt;br&gt;At text banners is it the banner title and linked with the destination URL.</source>
+        
         <target>Il nome del banner viene visualizzato nel riepilogo e nel template di default sotto l'immagine banner. &lt;br /&gt;&lt;br /&gt;Nei banner di testo è il titolo del banner ed il collegamento con l'URL di destinazione.</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.1.0">
         
         <source>Banner URL</source>
+        
         <target>Url banner</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.1.1">
         
-        <source>The URL of the destination with click on the banner image.&lt;br&gt;The banner URL must start with http://, e.g.: http://www.contao.org&lt;br&gt;Using no URL, the banner image is shown without a link.&lt;br&gt;At text banners is the domain shown as a short form and linked with the destination URL.</source>
-        <target>L'URL di destinazione quando si clicca sull'immagine del banner. &lt;br /&gt; L'URL deve iniziare con http://, ad esempio: &lt;br /&gt; &lt;br /&gt; &lt;pre&gt; http://www.typolight.org &lt; / pre&gt; &lt;br/&gt; Se non si utilizza un URL, l'immagine del banner viene visualizzata senza un link. &lt;br /&gt; &lt;br /&gt;Nei banner di testo è il dominio mostrato e il collegamento con l'URL di destinazione.</target>
+        <source>The URL of the destination with click on the banner image.&lt;br&gt;The banner URL must start with http(s)://, e.g.: https://www.contao.org&lt;br&gt;Using no URL, the banner image is shown without a link.&lt;br&gt;At text banners is the domain shown as a short form and linked with the destination URL.</source>
+        
+        <target>L'URL di destinazione quando si clicca sull'immagine del banner. &lt;br /&gt; L'URL deve iniziare con http(s)://, ad esempio: &lt;br /&gt; &lt;br /&gt; &lt;pre&gt; https://www.contao.org &lt;/pre&gt; &lt;br/&gt; Se non si utilizza un URL, l'immagine del banner viene visualizzata senza un link. &lt;br /&gt; &lt;br /&gt;Nei banner di testo è il dominio mostrato e il collegamento con l'URL di destinazione.</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.2.0">
         
         <source>Banner Weighting</source>
+        
         <target>Importanza banner</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.2.1">
         
         <source>A banner with an higher weight value, is shown more frequently than a banner with a lower value.</source>
+        
         <target>Un banner con una importanza maggiore, è mostrato più spesso di un banner con un valore inferiore. &lt;br /&gt;</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.3.0">
         
         <source>Banner File</source>
+        
         <target>Immagine banner</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.3.1">
         
         <source>An image file can be selected here as banner from the file system.</source>
+        
         <target>Selezionare un immagine come banner all'interno del proprio file system</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.4.0">
         
         <source>Banner Comment</source>
+        
         <target>Commento banner</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.4.1">
         
         <source>Comment is used for title tag in the HTML source code, and will be shown, when moving the mouse over the banner image. At text banners is this the text line.</source>
+        
         <target>Il commento è utilizzato per il tag titolo nel codice sorgente HTML, sarà visualizzato indicato quando si sposta il mouse sopra l'immagine del banner. &lt;br /&gt; &lt;br /&gt; Nei banner di testo è presente come riga di testo.</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.5.0">
         
         <source>Show from (Date &amp; Time)</source>
+        
         <target>Visualizza dal (data e ora)</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.5.1">
         
         <source>By entering a date and time value (with datepicker), the current banner will not be shown on the website before this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 20:15</source>
+        
         <target>Inserendo un valore di data e ora, il banner attuale non verrà mostrato sul sito web prima di questo momento. Il valore sull'ora deve essere modificato manualmente. &lt;br/&gt; Esempio: &lt;br/&gt; &lt;br/&gt; &lt;pre&gt; 24/11/2007 20:15 &lt;pre /&gt;&lt;br /&gt;</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.6.0">
         
         <source>Show until (Date &amp; Time)</source>
+        
         <target>Visualizza fino al (data e ora)</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.6.1">
         
         <source>By entering a date and time value (with datepicker) the current banner will not be shown on the website after this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 23:59</source>
+        
         <target>Inserendo un valore di data e ora, il banner attuale verrà mostrato sul sito web fino a quel momento . Il valore sull'ora deve essere modificato manualmente. &lt;br/&gt; Esempio: &lt;br/&gt; &lt;br/&gt; &lt;pre&gt; 24/11/2007 20:15 &lt;pre /&gt;&lt;br /&gt;</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.7.0">
         
         <source>Limiting the number of Views</source>
+        
         <target>Limite al numero di visualizzazioni</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.7.1">
         
         <source>By entering a number, the current banner is no longer displayed after this number of views. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 1000</source>
+        
         <target>Inserendo un valore, il banner verrà visualizzato al massimo il numero di volte indicato. &lt;br /&gt;Example:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt; 1000&lt;/pre&gt;&lt;br /&gt;</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.8.0">
         
         <source>Limiting the number of Clicks</source>
+        
         <target>Limite al numero di click</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.8.1">
         
         <source>By entering a number, the current banner is no longer displayed after this number of clicks. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 100</source>
+        
         <target>Inserendo un valore, il banner non verrà visualizzato oltre il numero di click indicato. &lt;br /&gt;Example:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt; 100&lt;/pre&gt;&lt;br /&gt;</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.9.0">
         
         <source>Filter Domain</source>
+        
         <target>Identificativo HTTP_USER_AGENT</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.9.1">
         
         <source>If you enter a domain name, this banner is used only for this domain. If you leave the field empty, this banner is used for all domains.&lt;br&gt;Example: yourdomain.com&lt;br&gt;The banner will be displayed, if matches the domain. But also in partial match starting from the right. So also with access via sub.yourdomain.com . An entry in &quot;Site structure&quot; - &quot;Domain Name&quot; is not required for the filtering.</source>
+        
         <target>Modificando nel proprio browser la stringa user agent è possibile evitare il conteggio da questo determinato computer. &lt;br /&gt; Istruzioni dettagliate, possono essere trovate nel Wiki.</target>
       </trans-unit>
     </body>

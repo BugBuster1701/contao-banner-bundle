@@ -4,101 +4,121 @@
       <trans-unit id="XPL.banner_help.0.0">
         
         <source>Banner Name</source>
+        
         <target>Banner-namn</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.0.1">
         
         <source>The banner name is shown in the banners overview and in the provided template below the banner image.&lt;br&gt;&lt;br&gt;At text banners is it the banner title and linked with the destination URL.</source>
+        
         <target>Banner-namnet visas i banner-översikten och under banner-bilden om den bifogade mallen (template) används.&lt;br /&gt;&lt;br /&gt;För text-banners används banner-namnet som titel vilken länkas mot mål-URLen.</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.1.0">
         
         <source>Banner URL</source>
+        
         <target>Banner-URL</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.1.1">
         
-        <source>The URL of the destination with click on the banner image.&lt;br&gt;The banner URL must start with http://, e.g.: http://www.contao.org&lt;br&gt;Using no URL, the banner image is shown without a link.&lt;br&gt;At text banners is the domain shown as a short form and linked with the destination URL.</source>
-        <target>Mål-URL för klick på banner-bilden.&lt;br /&gt;URLen måste börja med http://, t.ex.:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;http://www.typolight.org &lt;/pre&gt;&lt;br/&gt;Om ingen URL anges visas bannern utan länkning.&lt;br /&gt;&lt;br /&gt;För text-banners visas domänen i förkortat format samt länkas till mål-URLen.</target>
+        <source>The URL of the destination with click on the banner image.&lt;br&gt;The banner URL must start with http(s)://, e.g.: https://www.contao.org&lt;br&gt;Using no URL, the banner image is shown without a link.&lt;br&gt;At text banners is the domain shown as a short form and linked with the destination URL.</source>
+        
+        <target>Mål-URL för klick på banner-bilden.&lt;br /&gt;URLen måste börja med http(s)://, t.ex.:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;https://www.contao.org &lt;/pre&gt;&lt;br/&gt;Om ingen URL anges visas bannern utan länkning.&lt;br /&gt;&lt;br /&gt;För text-banners visas domänen i förkortat format samt länkas till mål-URLen.</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.2.0">
         
         <source>Banner Weighting</source>
+        
         <target>Banner-viktning</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.2.1">
         
         <source>A banner with an higher weight value, is shown more frequently than a banner with a lower value.</source>
+        
         <target>En banner med högre viktningsvärde visas mer frekvent än en banner med ett lägre värde.</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.3.0">
         
         <source>Banner File</source>
+        
         <target>Banner-bild</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.3.1">
         
         <source>An image file can be selected here as banner from the file system.</source>
+        
         <target>En banner-bild kan väljas från filbiblioteket.</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.4.0">
         
         <source>Banner Comment</source>
+        
         <target>Banner-kommentar</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.4.1">
         
         <source>Comment is used for title tag in the HTML source code, and will be shown, when moving the mouse over the banner image. At text banners is this the text line.</source>
+        
         <target>Kommentaren används till titel-tagget i HTML-källkoden och visas när besökaren för muspekaren över banner-bilden.&lt;br /&gt;&lt;br /&gt;För text-banners är detta själva banner-texten.</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.5.0">
         
         <source>Show from (Date &amp; Time)</source>
+        
         <target>Visa från (Datum &amp; Tid)</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.5.1">
         
         <source>By entering a date and time value (with datepicker), the current banner will not be shown on the website before this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 20:15</source>
+        
         <target>Genom att ange ett datum och en tid så visas inte bannern före den satta tidpunkten. Tiden anges manuellt. &lt;br/&gt;Exempel:&lt;br/&gt;&lt;br/&gt;&lt;pre&gt; 2007-12-24 20:15 &lt;/pre&gt;&lt;br /&gt;</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.6.0">
         
         <source>Show until (Date &amp; Time)</source>
+        
         <target>Visa till (Datum &amp; Tid)</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.6.1">
         
         <source>By entering a date and time value (with datepicker) the current banner will not be shown on the website after this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 23:59</source>
+        
         <target>Genom att ange ett datum och en tid så visas inte bannern efter den satta tidpunkten. Tiden anges manuellt. &lt;br/&gt;Exempel:&lt;br/&gt;&lt;br/&gt;&lt;pre&gt; 2007-12-24 23:59 &lt;/pre&gt;&lt;br /&gt;</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.7.0">
         
         <source>Limiting the number of Views</source>
+        
         <target>Begränsa antalet visningar</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.7.1">
         
         <source>By entering a number, the current banner is no longer displayed after this number of views. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 1000</source>
+        
         <target>Genom att ange ett värde så begränsas antalet visningar av bannern till detta antal.&lt;br /&gt;Valet &quot;Begränsa antalet Visningar och Klick&quot; måste vara aktiverat.&lt;br /&gt;Exempel:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt; 1000&lt;/pre&gt;&lt;br /&gt;</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.8.0">
         
         <source>Limiting the number of Clicks</source>
+        
         <target>Begränsa antalet klick</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.8.1">
         
         <source>By entering a number, the current banner is no longer displayed after this number of clicks. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 100</source>
+        
         <target>Genom att ange ett värde så begränsas antalet klick på bannern till detta antal.&lt;br /&gt;Valet &quot;Begränsa antalet Visningar och Klick&quot; måste vara aktiverat.&lt;br /&gt;Exempel:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt; 100&lt;/pre&gt;&lt;br /&gt;</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.9.0">
         
         <source>Filter Domain</source>
+        
         <target>HTTP_USER_AGENT-identifiering</target>
       </trans-unit>
       <trans-unit id="XPL.banner_help.9.1">
         
         <source>If you enter a domain name, this banner is used only for this domain. If you leave the field empty, this banner is used for all domains.&lt;br&gt;Example: yourdomain.com&lt;br&gt;The banner will be displayed, if matches the domain. But also in partial match starting from the right. So also with access via sub.yourdomain.com . An entry in &quot;Site structure&quot; - &quot;Domain Name&quot; is not required for the filtering.</source>
+        
         <target>Genom att ändra User Agent med en unik textsträng i din webbläsare samt fylla i detta fält kan du undvika att dina egna visningar och klick räknas.&lt;br /&gt;Detaljerad instruktion finns i Wikin.</target>
       </trans-unit>
     </body>

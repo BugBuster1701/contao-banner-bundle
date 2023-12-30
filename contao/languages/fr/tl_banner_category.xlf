@@ -315,9 +315,9 @@
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_expert_debug_all.1">
         
-        <source>With activation, write debug information to the log file (&lt;em&gt;system/logs/prod-Y-M-D-banner_debug.log&lt;/em&gt;)</source>
+        <source>With activation, write debug information to the log file (&lt;em&gt;var/logs/prod|dev-Y-M-D.log&lt;/em&gt;)</source>
         
-        <target>Avec l'activation, écrivez les informations de débogage dans le fichier journal (&lt;em&gt;system/logs/prod-Y-M-D-banner_debug.log&lt;/em&gt;).</target>
+        <target>Avec l'activation, écrivez les informations de débogage dans le fichier journal (&lt;em&gt;var/logs/prod|dev-Y-M-D.log&lt;/em&gt;).</target>
       </trans-unit>
       <trans-unit id="tl_banner_category.banner_expert_legend">
         

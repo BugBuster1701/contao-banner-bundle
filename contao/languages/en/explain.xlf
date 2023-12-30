@@ -15,7 +15,7 @@
       </trans-unit>
       <trans-unit id="XPL.banner_help.1.1">
         
-        <source>The URL of the destination with click on the banner image.&lt;br&gt;The banner URL must start with http://, e.g.: http://www.contao.org&lt;br&gt;Using no URL, the banner image is shown without a link.&lt;br&gt;At text banners is the domain shown as a short form and linked with the destination URL.</source>
+        <source>The URL of the destination with click on the banner image.&lt;br&gt;The banner URL must start with http(s)://, e.g.: https://www.contao.org&lt;br&gt;Using no URL, the banner image is shown without a link.&lt;br&gt;At text banners is the domain shown as a short form and linked with the destination URL.</source>
       </trans-unit>
       <trans-unit id="XPL.banner_help.2.0">
         
