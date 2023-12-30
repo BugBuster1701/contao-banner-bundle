@@ -140,4 +140,19 @@ class BannerChecks extends Frontend
 
 		return false;
 	} // CheckBE
+
+	/**
+	 * Check Debug Modus
+	 *
+	 * @return bool
+	 */
+	public function checkDebug()
+	{
+		$container = System::getContainer();
+		$debug = $container->getParameter('kernel.debug');
+		
+		BannerLog::writeLog(__METHOD__, __LINE__, 'checkDebug: ', $debug ? 'true' : 'false');
+
+		return $debug;
+	}
 }

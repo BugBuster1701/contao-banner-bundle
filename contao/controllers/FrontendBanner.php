@@ -113,15 +113,16 @@ class FrontendBanner extends Frontend
 				$banner_not_viewed = true;
 			}
 			$BannerChecks = new BannerChecks();
-			$banner_stat_update = false;
+			$banner_stat_update = true;
 			if (
-				$BannerChecks->checkUserAgent() === false
-				&& $BannerChecks->checkBot()       === false
-				&& $BannerChecks->checkBE()        === false
-				&& $this->getSetReClickBlocker()   === false
+				$BannerChecks->checkBot()       === true
+				|| $BannerChecks->checkBE()        === true
+				|| $BannerChecks->checkDebug()     === true
+				|| $this->getSetReClickBlocker()   === true
+				|| $BannerChecks->checkUserAgent() === true
 			) {
 				// keine User Agent Filterung, kein Bot, kein ReClick, kein BE Login
-				$banner_stat_update = true;
+				$banner_stat_update = false;
 			}
 			$BannerChecks = null;
 			unset($BannerChecks);

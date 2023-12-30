@@ -74,6 +74,12 @@ class BannerCount extends System
 
 			return; // Backend Login
 		}
+		if ($BannerChecks->checkDebug() === true)
+		{
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Debug Modus is active, is not counted');
+
+			return; // Debug Modus is active
+		}
 		$BannerChecks = null;
 		unset($BannerChecks);
 
