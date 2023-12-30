@@ -354,7 +354,7 @@ class BannerStatisticsHelper extends BackendModule
 				// old $Banner['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
 				$objParent = PageModel::findWithDetails($Banner['banner_jumpTo']);
 				$Banner['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
-				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url jumpto: ' . $Banner['banner_url']);
+				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url jumpto: ' , $Banner['banner_url']);
 			}
 		}
 		if (empty($Banner['banner_url']))
@@ -365,7 +365,7 @@ class BannerStatisticsHelper extends BackendModule
 				$Banner['banner_clicks'] = '--';
 			}
 		}
-		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $Banner['banner_url']);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' , $Banner['banner_url']);
 	}
 
 	/**

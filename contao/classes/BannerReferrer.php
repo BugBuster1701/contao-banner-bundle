@@ -58,7 +58,7 @@ class BannerReferrer
 		) {
 			$this->detect();
 		}
-		BannerLog::writeLog(__METHOD__, __LINE__, 'Referrer_DNS: ' . print_r($this->_referrer_DNS, true));
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Referrer_DNS: ' , $this->_referrer_DNS);
 	}
 
 	/**

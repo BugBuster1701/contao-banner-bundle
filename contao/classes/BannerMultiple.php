@@ -71,7 +71,7 @@ class BannerMultiple extends Frontend
 
 		reset($this->arrAllBannersBasic); // sicher ist sicher
 
-		BannerLog::writeLog(__METHOD__, __LINE__, 'arrAllBannersBasic: ' . print_r($this->arrAllBannersBasic, true));
+		BannerLog::writeLog(__METHOD__, __LINE__, 'arrAllBannersBasic: ' , $this->arrAllBannersBasic);
 		// RandomBlocker entfernen falls möglich und nötig
 
 		// einer muss mindestens übrig bleiben
@@ -95,7 +95,7 @@ class BannerMultiple extends Frontend
 		if ($this->arrCategoryValues['banner_random'] == 1)
 		{
 			$this->shuffleAssoc($this->arrAllBannersBasic);
-			BannerLog::writeLog(__METHOD__, __LINE__, 'arrAllBannersBasic shuffled: ' . print_r($this->arrAllBannersBasic, true));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'arrAllBannersBasic shuffled: ' , $this->arrAllBannersBasic);
 		}
 
 		// wenn limit gesetzt, array arrAllBannersBasic dezimieren

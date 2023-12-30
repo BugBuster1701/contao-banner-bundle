@@ -110,7 +110,7 @@ class BannerImage extends System
 			$arrImageSize = false;
 		}
 
-		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: ' . print_r($arrImageSize, true));
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: ' , $arrImageSize);
 
 		return $arrImageSize;
 	}
@@ -167,7 +167,7 @@ class BannerImage extends System
 		$objFile = null;
 		unset($objFile);
 
-		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: ' . print_r($arrImageSize, true));
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: ' , $arrImageSize);
 
 		return $arrImageSize;
 	}

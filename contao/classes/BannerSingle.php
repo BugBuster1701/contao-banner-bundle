@@ -109,7 +109,7 @@ class BannerSingle extends Frontend
 			$picture['alt']   = StringUtil::specialchars(StringUtil::ampersand($this->arrCategoryValues['banner_default_name']));
 			$picture['title'] = '';
 
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Fake Picture: ' . print_r($picture, true));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Fake Picture: ' , $picture);
 
 			switch ($arrImageSize[2])
 			{
@@ -175,7 +175,7 @@ class BannerSingle extends Frontend
 			$this->strTemplate='mod_banner_empty';
 			$this->Template->arrCategoryValues = $this->arrCategoryValues; // #7 / #176 (Banner)
 			$this->Template = new FrontendTemplate($this->strTemplate);
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Kein BannerDefault, umschalten auf leeres Template');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'No BannerDefault, switch to empty template');
 		}
 		$this->Template->banners = $arrResults;
 		$this->Template->bmid = "bmid" . $module_id;

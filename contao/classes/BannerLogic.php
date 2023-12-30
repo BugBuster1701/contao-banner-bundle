@@ -171,7 +171,7 @@ class BannerLogic
 
 		$this->statusRandomBlocker = true;
 		$this->setSession('RandomBlocker' . $module_id, array($BannerID => time()));
-		BannerLog::writeLog(__METHOD__, __LINE__, 'setRandomBlockerId BannerID:' . $BannerID);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'setRandomBlockerId BannerID: ' , $BannerID);
 	}
 
 	/**
@@ -191,7 +191,7 @@ class BannerLogic
 			$value = current($this->_session);
 			unset($value);
 			reset($this->_session);
-			BannerLog::writeLog(__METHOD__, __LINE__, 'getRandomBlockerId BannerID:' . $key);
+			BannerLog::writeLog(__METHOD__, __LINE__, 'getRandomBlockerId BannerID:' , $key);
 
 			// DEBUG log_message('getRandomBlockerId BannerID:'.$key,'Banner.log');
 			return $key;

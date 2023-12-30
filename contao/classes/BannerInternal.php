@@ -78,7 +78,7 @@ class BannerInternal
 		{
 			$predefined = true;
 			$imageSize = ImageSizeModel::findByPk((int) $arrNewSizeValues[2]);
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Predefined dimensions: ' . print_r($imageSize, true));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Predefined dimensions: ' , $imageSize);
 
 			if ($imageSize === null)
 			{
@@ -93,7 +93,7 @@ class BannerInternal
 				$arrNewSizeValues[2] = $imageSize->resizeMode;
 			}
 		}
-		BannerLog::writeLog(__METHOD__, __LINE__, 'NewSizeValues: ' . print_r($arrNewSizeValues, true));
+		BannerLog::writeLog(__METHOD__, __LINE__, 'NewSizeValues: ' , $arrNewSizeValues);
 
 		// Banner Neue Größe ermitteln, return array $Width,$Height,$oriSize
 		$arrImageSizenNew = $this->BannerImage->getBannerImageSizeNew($arrImageSize[0], $arrImageSize[1], $arrNewSizeValues[0], $arrNewSizeValues[1]);
@@ -120,7 +120,7 @@ class BannerInternal
 			$picture['alt']   = $arrMeta['alt'];
 			$picture['title'] = $arrMeta['title'];
 
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Orisize Picture: ' . print_r($picture, true));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Orisize Picture: ' , $picture);
 		}
 		else
 		{
@@ -134,7 +134,7 @@ class BannerInternal
 						->create($rootDir . '/' . $objFile->path, array($arrImageSizenNew[0], $arrImageSizenNew[1], $arrNewSizeValues[2]))
 						->getUrl($rootDir);
 
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Image: ' . print_r($FileSrc, true));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Image: ' , $FileSrc);
 
 			$picture = $container->get('contao.image.picture_factory');
 			if ($predefined)
@@ -156,7 +156,7 @@ class BannerInternal
 			$picture['alt']   = $arrMeta['alt'];
 			$picture['title'] = $arrMeta['title'];
 
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Picture: ' . print_r($picture, true));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Resize Picture: ' , $picture);
 
 			$arrImageSize[0] = $arrImageSizenNew[0];
 			$arrImageSize[1] = $arrImageSizenNew[1];
@@ -211,7 +211,7 @@ class BannerInternal
 			if ($objPage->rootFallbackLanguage !== null)
 			{
 				$arrMeta =  Frontend::getMetaData($objFile->meta, $objPage->rootFallbackLanguage);
-				BannerLog::writeLog(__METHOD__, __LINE__, 'BannerMetaData rootFallback: ' . print_r($arrMeta, true));
+				BannerLog::writeLog(__METHOD__, __LINE__, 'BannerMetaData rootFallback: ' , $arrMeta);
 			}
 		}
 		if (empty($arrMeta['alt']))

@@ -176,7 +176,7 @@ class FrontendBanner extends Frontend
 			$banner_redirect = '303';
 		}
 		$banner_url = $objBanners->banner_url;
-		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' . $banner_url);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' , $banner_url);
 		// 301 Moved Permanently
 		// 302 Found
 		// 303 See Other
@@ -310,12 +310,12 @@ class FrontendBanner extends Frontend
 			$this->setReClickBlockerId($BannerID);
 
 			// kein ReClickBlocker block gefunden, Zaehlung erlaubt, nicht blocken
-			BannerLog::writeLog(__METHOD__, __LINE__, 'ReClickBlocker: False: Banner ID ' . $BannerID . ' Klick nicht geblockt');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'ReClickBlocker: False: Banner ID ' . $BannerID . ' Click not blocked');
 
 			return false;
 		}
 		// Eintrag innerhalb der Blockzeit, blocken
-		BannerLog::writeLog(__METHOD__, __LINE__, 'ReClickBlocker: True: Banner ID ' . $BannerID . ' Klick geblockt');
+		BannerLog::writeLog(__METHOD__, __LINE__, 'ReClickBlocker: True: Banner ID ' . $BannerID . ' Click not blocked');
 
 		return true;
 	}
@@ -407,8 +407,8 @@ class FrontendBanner extends Frontend
 
 		if ($tstmap >  $BannerBlockTime)
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Blocked: BannerBlockTime: ' . date("Y-m-d H:i:s", $BannerBlockTime));
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Blocked: BannerSessiTime: ' . date("Y-m-d H:i:s", $tstmap));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Blocked: BannerBlockTime: ' , date("Y-m-d H:i:s", $BannerBlockTime));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Blocked: BannerSessiTime: ' , date("Y-m-d H:i:s", $tstmap));
 
 			return true;
 		}

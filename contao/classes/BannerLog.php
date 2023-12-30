@@ -26,9 +26,15 @@ class BannerLog
 	 *
 	 * @param string  $method
 	 * @param integer $line
+	 * @param string  $text
+	 * @param array|string $value
 	 */
-	public static function writeLog($method, $line, $value)
+	public static function writeLog($method, $line, $text, $value = '')
 	{
+		if (\is_array($value))
+		{
+			$value = '.'.json_encode($value, JSON_FORCE_OBJECT); // . Prefix, sonst Anzeige Bold im CM
+		}
 		if ($method == '## START ##')
 		{
 			if (!isset($GLOBALS['banner']['debug']['first']))
@@ -37,7 +43,7 @@ class BannerLog
 				{
 					$arrUniqid = StringUtil::trimsplit('.', uniqid('c0n7a0', true));
 					$GLOBALS['banner']['debug']['first'] = $arrUniqid[1];
-					self::logMonolog($GLOBALS['banner']['debug']['first'], false, '', $method.' '.$line.' '.$value);
+					self::logMonolog($GLOBALS['banner']['debug']['first'], false, '', $method.' '.$line.' '.$text.$value);
 
 					return;
 				}
@@ -58,12 +64,7 @@ class BannerLog
 		//$vclass = $arrClass[2]; // class that will write the log
 		$vclass = $arrClass[\count($arrClass)-1]; // class that will write the log
 
-		if (\is_array($value))
-		{
-			$value = print_r($value, true);
-		}
-
-		self::logMonolog($GLOBALS['banner']['debug']['first'], $vclass . '::' . $arrNamespace[1], $line, $value);
+		self::logMonolog($GLOBALS['banner']['debug']['first'], $vclass . '::' . $arrNamespace[1], $line, $text . $value);
 	}
 
 	/**

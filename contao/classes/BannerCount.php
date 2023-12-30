@@ -56,13 +56,13 @@ class BannerCount extends System
 	{
 		if ($this->bannerCheckBot() === true)
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Bot gefunden, wird nicht gezaehlt');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Bot found, is not counted');
 
 			return; // Bot gefunden, wird nicht gezaehlt
 		}
 		if ($this->checkUserAgent() === true)
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, 'User Agent Filterung, wird nicht gezaehlt');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Filtering of user agents, is not counted');
 
 			return; // User Agent Filterung
 		}
@@ -70,7 +70,7 @@ class BannerCount extends System
 		$BannerChecks = new BannerChecks();
 		if ($BannerChecks->checkBE() === true)
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Backend Login, wird nicht gezaehlt');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Backend Login, is not counted');
 
 			return; // Backend Login
 		}
@@ -82,7 +82,7 @@ class BannerCount extends System
 		$BannerID = $lastBanner['banner_id'];
 		if ($BannerID == 0) // kein Banner, nichts zu tun
 		{
-			BannerLog::writeLog(__METHOD__, __LINE__, 'kein Banner, nichts zu tun');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'No banner, nothing to do');
 
 			return;
 		}
@@ -90,12 +90,12 @@ class BannerCount extends System
 		if ($this->getStatViewUpdateBlockerId($BannerID, $this->module_id) === true)
 		{
 			// Eintrag innerhalb der Blockzeit
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Eintrag innerhalb der Blockzeit, wird nicht gezaehlt');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Entry within the block time, is not counted');
 
 			return; // blocken, nicht zählen, raus hier
 		}
 		// nichts geblockt, also blocken für den nächsten Aufruf
-		BannerLog::writeLog(__METHOD__, __LINE__, 'blocken fuer den naechsten Aufruf');
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Block for the next request', '');
 		$this->setStatViewUpdateBlockerId($BannerID, $this->module_id);
 
 		// Zählung, Insert
@@ -120,7 +120,7 @@ class BannerCount extends System
                             	                `id`=?")
 									->execute(time(), $BannerID);
 		}
-		BannerLog::writeLog(__METHOD__, __LINE__, 'Zaehlung erfolgt fuer Banner ID: ' . $BannerID);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Counting is done for Banner ID: ' , $BannerID);
 	}// BannerStatViewUpdate()
 
 	/**
@@ -159,7 +159,7 @@ class BannerCount extends System
 					&& true === $this->removeStatViewUpdateBlockerId($key, $val, $session)
 				) {
 					// Key ist noch gültig und es muss daher geblockt werden
-					BannerLog::writeLog(__METHOD__, __LINE__, 'Key noch gültig, Blocking für Banner ID: ' . $banner_id);
+					BannerLog::writeLog(__METHOD__, __LINE__, 'Key still valid, blocking for banner ID: ' , $banner_id);
 					return true;
 				}
 			}
@@ -221,7 +221,7 @@ class BannerCount extends System
 		  && (int) $GLOBALS['TL_CONFIG']['mod_banner_bot_check'] == 0
 		) {
 			// DEBUG log_message('bannerCheckBot abgeschaltet','Banner.log');
-			BannerLog::writeLog(__METHOD__, __LINE__, 'bannerCheckBot abgeschaltet');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'bannerCheckBot switched off');
 			return false; // Bot Suche abgeschaltet ueber localconfig.php
 		}
 
@@ -271,7 +271,7 @@ class BannerCount extends System
 		$CheckUserAgent = str_replace($arrUserAgents, '#', $UserAgent);
 		if ($UserAgent != $CheckUserAgent)   // es wurde ersetzt also was gefunden
 		{// DEBUG log_message('CheckUserAgent Filterung; Treffer!','Banner.log');
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Filterung: Treffer!');
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Filtering of user agents: Match!');
 			return true;
 		}
 

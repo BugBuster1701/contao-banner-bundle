@@ -73,7 +73,7 @@ class BannerExternal
 		{
 			/** @var ImageSizeModel $imagesize */
 			$imageSize = ImageSizeModel::findByPk((int) $arrNewSizeValues[2]);
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Predefined dimensions: ' . print_r($imageSize, true));
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Predefined dimensions: ' , $imageSize);
 
 			if ($imageSize === null)
 			{
