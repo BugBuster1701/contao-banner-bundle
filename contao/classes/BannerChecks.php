@@ -152,7 +152,7 @@ class BannerChecks extends Frontend
 	{
 		$container = System::getContainer();
 		$debug = $container->getParameter('kernel.debug');
-		
+
 		BannerLog::writeLog(__METHOD__, __LINE__, 'checkDebug: ', $debug ? 'true' : 'false');
 
 		return $debug;

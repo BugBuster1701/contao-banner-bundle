@@ -110,7 +110,7 @@ class BannerImage extends System
 			$arrImageSize = false;
 		}
 
-		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: ' , $arrImageSize);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: ', $arrImageSize);
 
 		return $arrImageSize;
 	}
@@ -167,7 +167,7 @@ class BannerImage extends System
 		$objFile = null;
 		unset($objFile);
 
-		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: ' , $arrImageSize);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: ', $arrImageSize);
 
 		return $arrImageSize;
 	}
@@ -243,7 +243,7 @@ class BannerImage extends System
 				$oriSize   = true; // Merkmal fuer Bilder ohne Umrechnung
 			}
 		}
-		else 	// Hoehe >= Breite, ggf. Hoehe verkleinern
+		else // Hoehe >= Breite, ggf. Hoehe verkleinern
 		{
 			if ($arrImageSize[1] > $maxWidth) // Hoehe > max Breite = Portrait ||
 			{// pruefen ob bei neuer Hoehe die Breite zu klein wird

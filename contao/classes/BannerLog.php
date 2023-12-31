@@ -24,16 +24,16 @@ class BannerLog
 	/**
 	 * Write in log file, if debug is enabled
 	 *
-	 * @param string  $method
-	 * @param integer $line
-	 * @param string  $text
+	 * @param string       $method
+	 * @param integer      $line
+	 * @param string       $text
 	 * @param array|string $value
 	 */
 	public static function writeLog($method, $line, $text, $value = '')
 	{
 		if (\is_array($value))
 		{
-			$value = '.'.json_encode($value, JSON_FORCE_OBJECT); // . Prefix, sonst Anzeige Bold im CM
+			$value = '.' . json_encode($value, JSON_FORCE_OBJECT); // . Prefix, sonst Anzeige Bold im CM
 		}
 		if ($method == '## START ##')
 		{
@@ -43,7 +43,7 @@ class BannerLog
 				{
 					$arrUniqid = StringUtil::trimsplit('.', uniqid('c0n7a0', true));
 					$GLOBALS['banner']['debug']['first'] = $arrUniqid[1];
-					self::logMonolog($GLOBALS['banner']['debug']['first'], false, '', $method.' '.$line.' '.$text.$value);
+					self::logMonolog($GLOBALS['banner']['debug']['first'], false, '', $method . ' ' . $line . ' ' . $text . $value);
 
 					return;
 				}
@@ -55,13 +55,13 @@ class BannerLog
 		}
 		if (false === (bool) ($GLOBALS['banner']['debug']['all'] ?? false))
 		{
-			//self::logMonolog($GLOBALS['banner']['debug']['first'], false, '', $method.' '.$line.' KEIN LOG AKTIVIERT');
+			// self::logMonolog($GLOBALS['banner']['debug']['first'], false, '', $method.' '.$line.' KEIN LOG AKTIVIERT');
 			return; // kein Log aktiviert
 		}
 
 		$arrNamespace = StringUtil::trimsplit('::', $method);
 		$arrClass =  StringUtil::trimsplit('\\', $arrNamespace[0]);
-		//$vclass = $arrClass[2]; // class that will write the log
+		// $vclass = $arrClass[2]; // class that will write the log
 		$vclass = $arrClass[\count($arrClass)-1]; // class that will write the log
 
 		self::logMonolog($GLOBALS['banner']['debug']['first'], $vclass . '::' . $arrNamespace[1], $line, $text . $value);
@@ -103,8 +103,8 @@ class BannerLog
 	/**
 	 * Wrapper for Monolog
 	 *
-	 * @param string $strMessage
-	 * @param string $strLog
+	 * @param string $uuid
+	 * @param string $class
 	 */
 	public static function logMonolog($uuid, $class, $line, $message)
 	{

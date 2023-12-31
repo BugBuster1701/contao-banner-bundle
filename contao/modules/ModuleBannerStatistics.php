@@ -195,9 +195,9 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 		$arrBannersStat = array();
 		// Kurz URL (nur Domain)
 		$this->setBannerURL($Banner);
-		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' , $Banner['banner_url']);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ', $Banner['banner_url']);
 		$Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79
-		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url punydecode: ' , $Banner['banner_url']);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url punydecode: ', $Banner['banner_url']);
 		$treffer = parse_url($Banner['banner_url']);
 		$banner_url_kurz = $treffer['host'] ?? '';
 		if (isset($treffer['port']))
@@ -238,9 +238,9 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 		$arrBannersStat = array();
 		// Kurz URL (nur Domain)
 		$this->setBannerURL($Banner);
-		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' , $Banner['banner_url']);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ', $Banner['banner_url']);
 		$Banner['banner_url'] = BannerHelper::decodePunycode($Banner['banner_url']); // #79
-		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url punydecode: ' , $Banner['banner_url']);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url punydecode: ', $Banner['banner_url']);
 		$treffer = parse_url($Banner['banner_url']);
 		$banner_url_kurz = $treffer['host'] ?? '';
 		if (isset($treffer['port']))

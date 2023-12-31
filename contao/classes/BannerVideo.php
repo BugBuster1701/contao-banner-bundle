@@ -170,7 +170,7 @@ class BannerVideo
 			$arrFiles[$objFile->extension] = $objFile;
 		}
 
-		return array_values(\array_filter($arrFiles));
+		return array_values(array_filter($arrFiles));
 	}
 
 	/**

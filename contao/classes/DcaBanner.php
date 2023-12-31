@@ -213,13 +213,13 @@ class DcaBanner extends Backend
 				// old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
 				$objParent = PageModel::findWithDetails($row['banner_jumpTo']);
 				$row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
-				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' , $row['banner_url']);
+				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ', $row['banner_url']);
 			}
 		}
 		$banner_url = StringUtil::ampersand(BannerHelper::decodePunycode($row['banner_url']));
 		$banner_url = preg_replace('/^app_dev\.php\//', '', $banner_url);
 		$banner_url_text = $GLOBALS['TL_LANG']['tl_banner']['banner_url'][0] . ': ';
-		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' , $banner_url);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ', $banner_url);
 
 		if ($banner_url ==='' && $row['banner_jumpTo'] <1)
 		{
@@ -346,7 +346,7 @@ class DcaBanner extends Backend
 				// old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
 				$objParent = PageModel::findWithDetails($row['banner_jumpTo']);
 				$row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
-				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' , $row['banner_url']);
+				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ', $row['banner_url']);
 			}
 		}
 		$banner_url = StringUtil::ampersand(BannerHelper::decodePunycode($row['banner_url']));
@@ -444,7 +444,7 @@ class DcaBanner extends Backend
 				// old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
 				$objParent = PageModel::findWithDetails($row['banner_jumpTo']);
 				$row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
-				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' , $row['banner_url']);
+				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ', $row['banner_url']);
 			}
 		}
 
@@ -521,7 +521,7 @@ class DcaBanner extends Backend
 				// old $row['banner_url'] = \Controller::generateFrontendUrl($objBannerNextPage->fetchAssoc());
 				$objParent = PageModel::findWithDetails($row['banner_jumpTo']);
 				$row['banner_url'] = BannerHelper::frontendUrlGenerator($objBannerNextPage->fetchAssoc(), null, $objParent->language);
-				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ' , $row['banner_url']);
+				BannerLog::writeLog(__METHOD__, __LINE__, 'banner_url: ', $row['banner_url']);
 			}
 		}
 

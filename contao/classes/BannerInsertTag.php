@@ -105,7 +105,7 @@ class BannerInsertTag extends BannerHelper
 		}
 		// Get Debug Settings
 		$this->setDebugSettings($this->banner_categories);
-		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_categories: ' , $this->banner_categories);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'banner_categories: ', $this->banner_categories);
 
 		if (isset($arrTag[2]))
 		{
@@ -132,7 +132,7 @@ class BannerInsertTag extends BannerHelper
 			$this->templatepfad  = $arrTag[7];
 		}
 
-		BannerLog::writeLog(__METHOD__, __LINE__, 'Insert Tag Parameter: ' , $arrTag);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'Insert Tag Parameter: ', $arrTag);
 
 		return $this->generateBanner();
 	}

@@ -17,7 +17,6 @@ use Contao\System;
 
 /**
  * Class BannerLogic
- *
  */
 class BannerLogic
 {
@@ -171,7 +170,7 @@ class BannerLogic
 
 		$this->statusRandomBlocker = true;
 		$this->setSession('RandomBlocker' . $module_id, array($BannerID => time()));
-		BannerLog::writeLog(__METHOD__, __LINE__, 'setRandomBlockerId BannerID: ' , $BannerID);
+		BannerLog::writeLog(__METHOD__, __LINE__, 'setRandomBlockerId BannerID: ', $BannerID);
 	}
 
 	/**
@@ -185,13 +184,13 @@ class BannerLogic
 	public function getRandomBlockerId($module_id)
 	{
 		$this->getSession('RandomBlocker' . $module_id);
-		if (\count($this->_session ?? []))
+		if (\count($this->_session ?? array()))
 		{
 			$key   = key($this->_session);
 			$value = current($this->_session);
 			unset($value);
 			reset($this->_session);
-			BannerLog::writeLog(__METHOD__, __LINE__, 'getRandomBlockerId BannerID:' , $key);
+			BannerLog::writeLog(__METHOD__, __LINE__, 'getRandomBlockerId BannerID:', $key);
 
 			// DEBUG log_message('getRandomBlockerId BannerID:'.$key,'Banner.log');
 			return $key;
@@ -229,7 +228,7 @@ class BannerLogic
 	public function getFirstViewBlockerId($module_id)
 	{
 		$this->getSession('FirstViewBlocker' . $module_id);
-		if (\count($this->_session ?? []))
+		if (\count($this->_session ?? array()))
 		{
 			// each deprecated in PHP 7.2, daher
 			$key    = key($this->_session);

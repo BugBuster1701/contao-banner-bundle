@@ -109,7 +109,7 @@ class BannerSingle extends Frontend
 			$picture['alt']   = StringUtil::specialchars(StringUtil::ampersand($this->arrCategoryValues['banner_default_name']));
 			$picture['title'] = '';
 
-			BannerLog::writeLog(__METHOD__, __LINE__, 'Fake Picture: ' , $picture);
+			BannerLog::writeLog(__METHOD__, __LINE__, 'Fake Picture: ', $picture);
 
 			switch ($arrImageSize[2])
 			{
