@@ -1,0 +1,126 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T01:12:54+01:00" original="explain" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="XPL.banner_help.0.0">
+        
+        <source>Banner Name</source>
+        
+        <target>Bannername</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.0.1">
+        
+        <source>The banner name is shown in the banners overview and in the provided template below the banner image.&lt;br&gt;&lt;br&gt;At text banners is it the banner title and linked with the destination URL.</source>
+        
+        <target>Der Bannername wird in der Bannerübersicht und im mitgelieferten Template unterhalb der Bannergrafik angezeigt.&lt;br&gt;&lt;br&gt;Beim Textbanner ist dies die Überschrift die gleichzeitig mit der Ziel URL verlinkt wird.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.1.0">
+        
+        <source>Banner URL</source>
+        
+        <target>Banner-URL</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.1.1">
+        
+        <source>The URL of the destination with click on the banner image.&lt;br&gt;The banner URL must start with http(s)://, e.g.: https://www.contao.org&lt;br&gt;Using no URL, the banner image is shown without a link.&lt;br&gt;At text banners is the domain shown as a short form and linked with the destination URL.</source>
+        
+        <target>Die URL des Zieles bei Klick auf die Bannergrafik.&lt;br&gt;Die Eingabe muss inklusive http(s):// erfolgen, Beispiel:&lt;br&gt;https://www.contao.org&lt;br&gt;Kein Pflichtfeld. Ohne URL wird die Bannergrafik ohne Verlinkung angezeigt.&lt;br&gt;&lt;br&gt;Beim Textbanner wird die Domain als Kurzform angezeigt und verlinkt.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.2.0">
+        
+        <source>Banner Weighting</source>
+        
+        <target>Bannergewichtung</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.2.1">
+        
+        <source>A banner with an higher weight value, is shown more frequently than a banner with a lower value.</source>
+        
+        <target>Je höher die Gewichtung desto häufiger wird dieser Werbebanner angezeigt.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.3.0">
+        
+        <source>Banner File</source>
+        
+        <target>Bannerdatei</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.3.1">
+        
+        <source>An image file can be selected here as banner from the file system.</source>
+        
+        <target>Aus dem Filesystem kann hier eine Grafik als Banner ausgewählt werden.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.4.0">
+        
+        <source>Banner Comment</source>
+        
+        <target>Bannerkommentar</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.4.1">
+        
+        <source>Comment is used for title tag in the HTML source code, and will be shown, when moving the mouse over the banner image. At text banners is this the text line.</source>
+        
+        <target>Erste Zeile wird als &quot;title&quot; Tag im HTML Quellcode eingebaut und angezeigt, wenn man den Mauszeiger über die Bannergrafik bewegt.&lt;br&gt;&lt;br&gt;Beim Textbanner ist dies die Textzeile.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.5.0">
+        
+        <source>Show from (Date &amp; Time)</source>
+        
+        <target>Anzeigen ab (Datum+Uhrzeit)</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.5.1">
+        
+        <source>By entering a date and time value (with datepicker), the current banner will not be shown on the website before this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 20:15</source>
+        
+        <target>Wenn Sie hier Datum mit Uhrzeit erfassen, wird dieser Werbebanner erst ab diesem Zeitpunkt angezeigt.&lt;br&gt;Die gesetzte Uhrzeit kann überschrieben werden.&lt;br&gt;Beispiel: 24.12.2007 20:15</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.6.0">
+        
+        <source>Show until (Date &amp; Time)</source>
+        
+        <target>Anzeigen bis (Datum+Uhrzeit)</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.6.1">
+        
+        <source>By entering a date and time value (with datepicker) the current banner will not be shown on the website after this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 23:59</source>
+        
+        <target>Wenn Sie hier Datum mit Uhrzeit erfassen (mit dem Datepicker), wird dieser Werbebanner nur bis zu diesem Zeitpunkt angezeigt.&lt;br&gt;Die gesetzte Uhrzeit kann überschrieben werden.&lt;br&gt;Beispiel: 24.12.2007 23:59</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.7.0">
+        
+        <source>Limiting the number of Views</source>
+        
+        <target>Begrenzung der Views</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.7.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of views. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 1000</source>
+        
+        <target>Wenn Sie hier eine Zahl eingeben, wird dieser Werbebanner nach dieser Anzahl von Views nicht mehr angezeigt.&lt;br&gt;Die Option &quot;Begrenzung der Views und Klicks&quot; muss dabei aktiviert bleiben.&lt;br&gt;Beispiel: 1000</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.8.0">
+        
+        <source>Limiting the number of Clicks</source>
+        
+        <target>Begrenzung der Klicks</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.8.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of clicks. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 100</source>
+        
+        <target>Wenn Sie hier eine Zahl eingeben, wird dieser Werbebanner nach dieser Anzahl von Klicks nicht mehr angezeigt.&lt;br&gt;Die Option &quot;Begrenzung der Views und Klicks&quot; muss dabei aktiviert bleiben.&lt;br&gt;Beispiel: 100</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.9.0">
+        
+        <source>Filter Domain</source>
+        
+        <target>Filter Domain</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.9.1">
+        
+        <source>If you enter a domain name, this banner is used only for this domain. If you leave the field empty, this banner is used for all domains.&lt;br&gt;Example: yourdomain.com&lt;br&gt;The banner will be displayed, if matches the domain. But also in partial match starting from the right. So also with access via sub.yourdomain.com . An entry in &quot;Site structure&quot; - &quot;Domain Name&quot; is not required for the filtering.</source>
+        
+        <target>Wenn Sie hier eine Domain eingeben, wird dieser Banner nur für diese Domain genutzt.&lt;br&gt;Ohne Angabe wird dieser Banner für alle Domains genutzt.&lt;br&gt;Beispiel: meinedomain.de&lt;br&gt;Der Banner wird angezeigt, wenn die Domain übereinstimmt, auch bei Teilübereinstimmung von rechts beginnend. Damit auch bei Zugriff über sub.meinedomain.de. Ein Eintrag in &quot;Seitenstruktur&quot; - &quot;Domain Name&quot; ist nicht notwendig für die Filterung.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

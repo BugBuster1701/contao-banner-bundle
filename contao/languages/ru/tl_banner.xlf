@@ -1,0 +1,624 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T19:30:53+01:00" original="tl_banner" source-language="en" target-language="ru">
+    <body>
+      <trans-unit id="tl_banner.1">
+        
+        <source>Highest priority</source>
+        
+        <target>Высокий приоритет</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.2">
+        
+        <source>Normal priority</source>
+        
+        <target>Нормальный приоритет</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.3">
+        
+        <source>Lowest priority</source>
+        
+        <target>Низкий приоритет</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_active">
+        
+        <source>published</source>
+        
+        <target>опубликовано</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_inactive">
+        
+        <source>not published</source>
+        
+        <target>не опубликовано</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_cat_not_found">
+        
+        <source>No category selected in banner modul.</source>
+        
+        <target>Нет выбранной категории в модуле баннеров.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_clicks_until.0">
+        
+        <source>Limiting the number of Clicks</source>
+        
+        <target>Ограничить число нажатий</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_clicks_until.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of clicks.</source>
+        
+        <target>Если число введено, текущий баннер не будет показан после этого количества нажатий.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_comment.0">
+        
+        <source>Banner Comment</source>
+        
+        <target>Комментарий баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_comment.1">
+        
+        <source>Comment is for title tag. For text banner: text line. For video banners: additionally as comment line.</source>
+        
+        <target>Комментарий для тега заголовка. Для текстового баннера: строка текста. Для видеобаннера: дополнительно в качестве строки комментария.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_cssid.0">
+        
+        <source>CSS ID/class</source>
+        
+        <target>CSS ID и класс</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_cssid.1">
+        
+        <source>Here you can set an ID and one or more classes. A prefix &quot;banner_&quot; is automatically added.</source>
+        
+        <target>Вы можете ввести ID одного или нескольких классов.  Префикс &quot;banner_&quot; добавится автоматически.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_domain.0">
+        
+        <source>Filter Domain</source>
+        
+        <target>Фильтр доменов</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_domain.1">
+        
+        <source>If you enter a domain name, this banner is used only for this domain. If you leave the field empty, this banner is used for all domains.</source>
+        
+        <target>Если ввести имя домена, этот баннер будет использован только для данного домена. Если оставить поле пустым, баннер будет использован для всех доменов.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_image.0">
+        
+        <source>Banner Image</source>
+        
+        <target>Изображение баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_image.1">
+        
+        <source>Please select the banner.(GIF,JPG,PNG,WEBP,AVIF)</source>
+        
+        <target>Выберите баннер. (GIF, JPG, PNG, WEBP, AVIF)</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_image_extern.0">
+        
+        <source>Banner Image URL</source>
+        
+        <target>URL изображения баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_image_extern.1">
+        
+        <source>External banner image URL: http://... </source>
+        
+        <target>Внешнее изображение баннера URL: http://...</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_imgSize.0">
+        
+        <source>Banner width and height</source>
+        
+        <target>Ширина и высота изображения</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_imgSize.1">
+        
+        <source>Here you can set the banner image dimensions (in pixel) and the resize mode (only for internal banner image). NOTE: Animated GIFs, with data sizes, the GD-recalculation outcome of this is a still picture.</source>
+        
+        <target>Вы можете установить размеры изображения баннера (в пикселах) и режим изменения размера (только для внутреннего изображения баннера). Примечание: Анимированные GIF при задании размеров будут преобразованы в статические.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_jumpTo.0">
+        
+        <source>Banner target page</source>
+        
+        <target>Целевая страница баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_jumpTo.1">
+        
+        <source>Please select the target page from the page tree. This selection takes priority over the banner target URL.</source>
+        
+        <target>Выберите целевую страницу. Этот выбор имеет приоритет над ссылкой &quot;URL баннера&quot;.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_name.0">
+        
+        <source>Banner Name</source>
+        
+        <target>Название баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_name.1">
+        
+        <source>Please enter the banner name. For text banner: title.</source>
+        
+        <target>Введите название баннера.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_number_of">
+        
+        <source>Number of banners</source>
+        
+        <target>Количество баннеров</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_published.0">
+        
+        <source>Published</source>
+        
+        <target>Опубликовать</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_published.1">
+        
+        <source>Unless you choose this option, this banner is not considered to show.</source>
+        
+        <target>Если не выбрать эту опцию, баннер не будет показан.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_start.0">
+        
+        <source>Show from</source>
+        
+        <target>Показывать с</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_start.1">
+        
+        <source>If you enter a date and time value here the current banner will not be shown on the website before this moment.</source>
+        
+        <target>Если ввести дату и время, то текущий баннер не будет показан на веб-сайте раньше этого момента.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_stop.0">
+        
+        <source>Show until</source>
+        
+        <target>Показывать до</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_stop.1">
+        
+        <source>If you enter a date and time value here the current banner will not be shown on the website after this moment.</source>
+        
+        <target>Если ввести дату и время, то текущий баннер не будет показан на веб-сайте позже этого момента.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_target.0">
+        
+        <source>Internal Link</source>
+        
+        <target>Внутренняя ссылка</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_target.1">
+        
+        <source>If you choose this option, the banner target opens in the same browser window.</source>
+        
+        <target>Если выбрать этот вариант, ссылка баннера откроется в том же окне браузера.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_type.0">
+        
+        <source>Banner Source</source>
+        
+        <target>Источник баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_type.1">
+        
+        <source>Selection whether the banner file of internally or externally will be used or is it a text banner.</source>
+        
+        <target>Выбор внутреннего или внешнего источника баннера, или текста баннера.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_until.0">
+        
+        <source>Limiting the number of Views and Clicks</source>
+        
+        <target>Ограничить число просмотров и нажатий</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_until.1">
+        
+        <source>If you select this option, you can define a maximum number of views and/or maximum number of clicks.</source>
+        
+        <target>Если выбрать эту опцию, вы сможете определить максимальное число просмотров и/или максимальное число нажатий на баннер.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_url.0">
+        
+        <source>Banner target URL</source>
+        
+        <target>URL баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_url.1">
+        
+        <source>Please enter the banner target URL: http://... Alternatively, you can select a target page in the next field. (not when using an external banner image)</source>
+        
+        <target>Введите целевой URL баннера:: http://... Кроме того, вы можете выбрать целевую страницу в следующем поле. (не при использовании внешнего изображения баннера)</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_views_until.0">
+        
+        <source>Limiting the number of Views</source>
+        
+        <target>Ограничить число просмотров</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_views_until.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of views.</source>
+        
+        <target>Если число введено, текущий баннер не будет показан после этого количества просмотров.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_weighting.0">
+        
+        <source>Banner Weighting</source>
+        
+        <target>Вес баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_weighting.1">
+        
+        <source>Please select the priority.</source>
+        
+        <target>Выберите приоритет.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.comment_legend">
+        
+        <source>Comment</source>
+        
+        <target>Комментарий</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.copy.0">
+        
+        <source>Copy Banner</source>
+        
+        <target>Копировать баннер</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.copy.1">
+        
+        <source>Copy banner ID %s</source>
+        
+        <target>Копировать баннер ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.delete.0">
+        
+        <source>Delete Banner</source>
+        
+        <target>Удалить баннер</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.delete.1">
+        
+        <source>Delete banner ID %s</source>
+        
+        <target>Удалить баннер ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.destination_legend">
+        
+        <source>Banner targets</source>
+        
+        <target>Цель баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.edit.0">
+        
+        <source>Edit Banner</source>
+        
+        <target>Редактировать баннер</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.edit.1">
+        
+        <source>Edit banner ID %s</source>
+        
+        <target>Редактировать баннер ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.expert_legend">
+        
+        <source>Expert settings</source>
+        
+        <target>Экспертные настройки</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.filter_legend">
+        
+        <source>Filtering</source>
+        
+        <target>Фильтрация</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.image_legend">
+        
+        <source>Banner image</source>
+        
+        <target>Изображение баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.new.0">
+        
+        <source>New Banner</source>
+        
+        <target>Новый баннер</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.new.1">
+        
+        <source>Add a new banner</source>
+        
+        <target>Добавить новый баннер</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.publish_legend">
+        
+        <source>Publish settings</source>
+        
+        <target>Настройки публикации</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.show.0">
+        
+        <source>Banner Details</source>
+        
+        <target>Детали баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.show.1">
+        
+        <source>Show details of Banner ID %s</source>
+        
+        <target>Показать детали баннера ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.source_extern">
+        
+        <source>external</source>
+        
+        <target>внешний</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.source_fallback">
+        
+        <source>Image-Fallback</source>
+        
+        <target>Резервное изображение</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.source_fallback_no">
+        
+        <source>Image-Fallback not found.</source>
+        
+        <target>Резервное изображение не найдено.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.source_intern">
+        
+        <source>internal</source>
+        
+        <target>внутренний</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.title_legend">
+        
+        <source>Name and weighting</source>
+        
+        <target>Название и вес</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_max_clicks">
+        
+        <source>max. Clicks</source>
+        
+        <target>макс. нажатий</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_max_views">
+        
+        <source>max. Views</source>
+        
+        <target>макс. просмотров</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_no">
+        
+        <source>no</source>
+        
+        <target>нет</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_not_defined">
+        
+        <source>not defined.</source>
+        
+        <target>не определен.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_not_defined_max">
+        
+        <source>unlimited</source>
+        
+        <target>неограниченно</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_not_defined_start">
+        
+        <source>immediately</source>
+        
+        <target>немедленно</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_not_defined_stop">
+        
+        <source>always</source>
+        
+        <target>всегда</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_page_not_found">
+        
+        <source>Page not found</source>
+        
+        <target>Страница не найдена</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_read_error">
+        
+        <source>Banner file not found or read error!</source>
+        
+        <target>Не найден файл баннера или ошибка чтения!</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_start">
+        
+        <source>Show from</source>
+        
+        <target>Показывать с</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_stop">
+        
+        <source>Show until</source>
+        
+        <target>Показывать до</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_yes">
+        
+        <source>yes</source>
+        
+        <target>да</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.toggle.0">
+        
+        <source>Toggle visibility</source>
+        
+        <target>Переключение видимости</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.toggle.1">
+        
+        <source>Toggle the visibility of banner ID %s</source>
+        
+        <target>Переключения видимости баннера ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_type.banner_image">
+        
+        <source>Internal banner image</source>
+        
+        <target>Внутреннее изображение баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_type.banner_image_extern">
+        
+        <source>External banner image</source>
+        
+        <target>Внешнее изображение баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_type.banner_text">
+        
+        <source>Text banner</source>
+        
+        <target>Текст баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_type.default">
+        
+        <source>Please select</source>
+        
+        <target>Выберите</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_overwriteMeta.0">
+        
+        <source>Overwrite with file meta data</source>
+        
+        <target>Перезаписать метаданными файла</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_overwriteMeta.1">
+        
+        <source>Overwrite alt tag (Banner Name) and title tag (Banner Comment) with the meta data from the file manager.</source>
+        
+        <target>Перезаписать тег alt (Имя баннера) и тег заголовка (Комментарий баннера) метаданными из файлового менеджера.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.using_meta_data">
+        
+        <source>Using file meta data</source>
+        
+        <target>Использование метаданных файла</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.video_source_legend">
+        
+        <source>Source</source>
+        
+        <target>Источник</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.player_legend">
+        
+        <source>Player settings</source>
+        
+        <target>Настройки плеера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.poster_legend">
+        
+        <source>Preview image</source>
+        
+        <target>Изображение для предварительного просмотра</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerSRC.0">
+        
+        <source>Video files</source>
+        
+        <target>Видео файлы</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerSRC.1">
+        
+        <source>Here you can add the video file or multiple files if you are using different codecs.</source>
+        
+        <target>Вы можете добавить видеофайл или несколько файлов, если используете разные кодеки.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_posterSRC.0">
+        
+        <source>Preview image</source>
+        
+        <target>Изображение для предварительного просмотра</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_posterSRC.1">
+        
+        <source>Show this image instead of the first frame of the video before playback.</source>
+        
+        <target>Показывать это изображение вместо первого кадра видео перед воспроизведением.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerSize.0">
+        
+        <source>Player size</source>
+        
+        <target>Размер плеера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerSize.1">
+        
+        <source>Width and height of the media player in pixels (e.g. 640x480).</source>
+        
+        <target>Ширина и высота медиаплеера в пикселях (наприм., 640x480).</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerOptions.0">
+        
+        <source>Player options</source>
+        
+        <target>Параметры плеера</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerOptions.1">
+        
+        <source>Here you can select the player options.</source>
+        
+        <target>Здесь можно выбрать параметры плеера.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerStart.0">
+        
+        <source>Start at second</source>
+        
+        <target>Начать с сек</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerStart.1">
+        
+        <source>Start playing the video at the given number of seconds.</source>
+        
+        <target>Начать воспроизведение видео через указанное количество секунд.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerStop.0">
+        
+        <source>Stop at second</source>
+        
+        <target>Остановить с сек</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerStop.1">
+        
+        <source>Stop playing the video at the given number of seconds. Set to 0 to disable.</source>
+        
+        <target>Остановить воспроизведение видео через указанное количество секунд. Установите 0, для отключения.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerAspect.0">
+        
+        <source>Aspect ratio</source>
+        
+        <target>Соотношение сторон</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerAspect.1">
+        
+        <source>Here you can select the aspect ratio of the video to make it responsive.</source>
+        
+        <target>Вы можете выбрать соотношение сторон видео, чтобы сделать его адаптивным.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_type.banner_video">
+        
+        <source>Video banner</source>
+        
+        <target>Видео баннер</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

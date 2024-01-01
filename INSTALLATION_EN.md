@@ -10,14 +10,12 @@ There are two types of installation.
 
 * search for package: `bugbuster/contao-banner-bundle`
 * install the package
-* Click on "Install Tool"
-* Login and update the database
+* update the database
 
 
 ## Installation via command line
 
-Installation in a Composer-based Contao 4.9+ Managed-Edition:
+Installation in a Composer-based Contao 5.2+ Managed-Edition:
 
 * `composer require "bugbuster/contao-banner-bundle"`
-* Call http://yourdomain/contao/install
-* Login and update the database
+* `php bin/console contao:migrate`

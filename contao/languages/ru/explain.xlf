@@ -1,0 +1,126 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T01:12:54+01:00" original="explain" source-language="en" target-language="ru">
+    <body>
+      <trans-unit id="XPL.banner_help.0.0">
+        
+        <source>Banner Name</source>
+        
+        <target>Название баннера</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.0.1">
+        
+        <source>The banner name is shown in the banners overview and in the provided template below the banner image.&lt;br&gt;&lt;br&gt;At text banners is it the banner title and linked with the destination URL.</source>
+        
+        <target>Название баннера показано в обзоре баннеров, а также в шаблоне под изображением баннера.&lt;br&gt;&lt;br&gt;В текстовых баннерах является названием баннера и связано с целевым URL.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.1.0">
+        
+        <source>Banner URL</source>
+        
+        <target>URL баннера</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.1.1">
+        
+        <source>The URL of the destination with click on the banner image.&lt;br&gt;The banner URL must start with http(s)://, e.g.: https://www.contao.org&lt;br&gt;Using no URL, the banner image is shown without a link.&lt;br&gt;At text banners is the domain shown as a short form and linked with the destination URL.</source>
+        
+        <target>URL назначения, по которому перейдет посетитель нажавший на изображение баннера.&lt;br /&gt;URL должен начинаться с http(s)://, напр.:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt; https://www.contao.org &lt;/pre&gt;&lt;br/&gt;Не используя это поле, изображение баннера будет вставлено без ссылки. В текстовых баннерах домен показан в краткой форме и связан с URL назначения.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.2.0">
+        
+        <source>Banner Weighting</source>
+        
+        <target>Вес баннера</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.2.1">
+        
+        <source>A banner with an higher weight value, is shown more frequently than a banner with a lower value.</source>
+        
+        <target>Баннер с более высоким весом, будет показан чаще, чем баннер с более низким.&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.3.0">
+        
+        <source>Banner File</source>
+        
+        <target>Файл баннера</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.3.1">
+        
+        <source>An image file can be selected here as banner from the file system.</source>
+        
+        <target>Графический файл может быть выбран как баннер из списка файлов.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.4.0">
+        
+        <source>Banner Comment</source>
+        
+        <target>Комментарий баннера</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.4.1">
+        
+        <source>Comment is used for title tag in the HTML source code, and will be shown, when moving the mouse over the banner image. At text banners is this the text line.</source>
+        
+        <target>Комментарий используется для тега заголовка в исходном коде и будет показан, при наведении мыши на изображение баннера.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.5.0">
+        
+        <source>Show from (Date &amp; Time)</source>
+        
+        <target>Показывать с (Дата &amp; Время)</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.5.1">
+        
+        <source>By entering a date and time value (with datepicker), the current banner will not be shown on the website before this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 20:15</source>
+        
+        <target>Если ввести дату и время, то текущий баннер не будет показан на веб-сайте раньше этого момента. Время также может быть внесено вручную. &lt;br/&gt;Напр.:&lt;br/&gt;&lt;br/&gt;&lt;pre&gt; 24.12.2007 20:15 &lt;/pre&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.6.0">
+        
+        <source>Show until (Date &amp; Time)</source>
+        
+        <target>Показывать до (Дата &amp; Время)</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.6.1">
+        
+        <source>By entering a date and time value (with datepicker) the current banner will not be shown on the website after this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 23:59</source>
+        
+        <target>Если ввести дату и время, то текущий баннер не будет показан на веб-сайте позже этого момента. Время также может быть внесено вручную.&lt;br/&gt;Напр.:&lt;br/&gt;&lt;br/&gt;&lt;pre&gt; 24.12.2007 23:59 &lt;/pre&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.7.0">
+        
+        <source>Limiting the number of Views</source>
+        
+        <target>Ограничить число просмотров</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.7.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of views. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 1000</source>
+        
+        <target>Если число введено, текущий баннер не будет показан после этого количества просмотров.&lt;br /&gt;Опция &quot;Ограничить число просмотров и нажатий&quot; должна быть активна.&lt;br /&gt;Напр.:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;  1000&lt;/pre&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.8.0">
+        
+        <source>Limiting the number of Clicks</source>
+        
+        <target>Ограничить число нажатий</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.8.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of clicks. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 100</source>
+        
+        <target>Если число введено, текущий баннер не будет показан после этого количества нажатий.&lt;br /&gt;Опция &quot;Ограничить число просмотров и нажатий&quot; должна быть активна.&lt;br /&gt;Напр.:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;   100&lt;/pre&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.9.0">
+        
+        <source>Filter Domain</source>
+        
+        <target>Фильтр доменов</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.9.1">
+        
+        <source>If you enter a domain name, this banner is used only for this domain. If you leave the field empty, this banner is used for all domains.&lt;br&gt;Example: yourdomain.com&lt;br&gt;The banner will be displayed, if matches the domain. But also in partial match starting from the right. So also with access via sub.yourdomain.com . An entry in &quot;Site structure&quot; - &quot;Domain Name&quot; is not required for the filtering.</source>
+        
+        <target>Если ввести имя домена, этот баннер будет использован только для данного домена. Если оставить поле пустым, баннер будет использован для всех доменов. &lt;br/&gt;Напр.: &lt;br /&gt;&lt;br /&gt;&lt;pre&gt; yourdomain.com &lt;/pre&gt;&lt;br /&gt;Баннер будет виден, если соответствует домену. Но и при частичном совпадении, начиная справа. Так же и с доступом через sub.yourdomain.com. Запись в &quot;Структуре сайта&quot; - &quot;Имя домена&quot; не требуется для фильтрации.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

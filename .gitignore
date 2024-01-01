@@ -1,16 +1,6 @@
-# Transifex
-/.tx/
-#for development in vbox
 vendor/
-src/vendor/
-src/composer.json
 composer.lock
 #IDE
-.buildpath
-.project
-.settings/
 .vscode/
 #phpunit
 .phpunit.result.cache
-#php-cs-fixer
-.php-cs-fixer.cache

@@ -1,0 +1,92 @@
+.mod_banner_be {
+	font-size: 0.9em;
+	min-height: 20px;
+    display: flow-root;
+}
+.mod_banner_be .name {
+	float: left;
+	font-weight: bold;
+}
+.mod_banner_be .right {
+	float: right;
+}
+.mod_banner_be .left {
+	float       : left;
+	margin-left : 5px;
+	margin-right: 5px;
+	margin-top  : 5px;
+	white-space : nowrap;
+    min-width   : 120px;
+}
+
+.mod_banner_be .date_head {
+	font-weight: bold;
+    min-width   : 120px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2px;
+}
+
+.mod_banner_be .date_data_right {
+	text-align: right;
+}
+
+.mod_banner_be .url {
+	clear:both;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.mod_banner_be .published_head {
+	font-weight: bold;
+    min-width   : 120px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2px;
+}
+
+.mod_banner_be .meta_head {
+	font-weight: bold;
+    min-width   : 250px;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 2px;
+}
+
+.mod_banner_be .filter {
+	clear:both;
+	margin-left : 5px;
+	margin-right: 5px;
+	margin-top  : 5px;
+	white-space : nowrap;
+    min-width   : 120px;
+}
+.tl_file_list .banner_stat_yes {
+    color: green;
+    font-weight: bold;
+}
+.tl_file_list .banner_stat_no {
+    color: #cc3333; 
+    font-weight: bold;
+}
+.banner_reset {
+    border: 0 none !important;
+    cursor: pointer;
+    height: 16px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    text-indent: 100%;
+    vertical-align: top;
+    white-space: nowrap;
+    width: 16px;
+}
+.banner_filter {
+    border: 0 !important;
+    background-color: unset !important;
+}
+#tl_banner_category div p.tl_tip {
+    overflow: visible;
+	height: auto;
+}
+#ctrl_banner_stat_admins {
+	margin-top: 1px;
+}

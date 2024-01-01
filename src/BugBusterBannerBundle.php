@@ -3,22 +3,25 @@
 declare(strict_types=1);
 
 /*
- * This file is part of a BugBuster Contao Bundle
+ * This file is part of a BugBuster Contao Bundle.
  *
- * @copyright  Glen Langer 2020 <http://contao.ninja>
+ * @copyright  Glen Langer 2024 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @package    Contao Banner Bundle
+ * @link       https://github.com/BugBuster1701/contao-banner-bundle
+ *
  * @license    LGPL-3.0-or-later
- * @see        https://github.com/BugBuster1701/contao-banner-bundle
+ * For the full copyright and license information,
+ * please view the LICENSE file that was distributed with this source code.
  */
 
 namespace BugBuster\BannerBundle;
 
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
 
 /**
  * Configures the Contao Banner bundle.
  */
-class BugBusterBannerBundle extends Bundle
+class BugBusterBannerBundle extends AbstractBundle
 {
 }

@@ -1,0 +1,226 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T01:13:25+01:00" original="tl_banner_category" source-language="en" target-language="en">
+    <body>
+      <trans-unit id="tl_banner_category.banner_default.0">
+        
+        <source>Default banner image</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_default.1">
+        
+        <source>This banner will be shown, when no active banners are found. This selection takes priority over modul definition &quot;Hide when empty&quot;.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_default_image.0">
+        
+        <source>Banner default image</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_default_image.1">
+        
+        <source>Please select the banner.(GIF,JPG,PNG,WEBP,AVIF)</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_default_name.0">
+        
+        <source>Banner Name</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_default_name.1">
+        
+        <source>Name is for title tag too.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_default_target.0">
+        
+        <source>Internal Link</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_default_target.1">
+        
+        <source>If you choose this option, the banner target opens in the same browser window.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_default_url.0">
+        
+        <source>Banner target URL</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_default_url.1">
+        
+        <source>Please enter the banner target URL: http://... </source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_groups.0">
+        
+        <source>Allowed member groups</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_groups.1">
+        
+        <source>Here you can choose which groups will be allowed to see the banners of this category.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_limit.0">
+        
+        <source>Limiting the number of banners.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_limit.1">
+        
+        <source>0: show all banners (default), otherwise maximum number of banners that will be shown.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_numbers.0">
+        
+        <source>Show all banners</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_numbers.1">
+        
+        <source>If you choose this option, all active banners will be shown in frontend. You can limit the number below.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_protected.0">
+        
+        <source>Protect category</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_protected.1">
+        
+        <source>Show banner of this category to certain member groups only.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_protected_catagory">
+        
+        <source>Protected category</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_random.0">
+        
+        <source>Random order</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_random.1">
+        
+        <source>If you choose this option, the banners will be shown in a random order.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.copy.0">
+        
+        <source>Copy category</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.copy.1">
+        
+        <source>Copy category ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.default_legend">
+        
+        <source>Details for default banner</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.delete.0">
+        
+        <source>Delete category</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.delete.1">
+        
+        <source>Delete category ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.deleteConfirm">
+        
+        <source>Deleting a category will also delete all its Banners! Do you really want to delete category ID %s?</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.edit.0">
+        
+        <source>Edit category</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.edit.1">
+        
+        <source>Edit category ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.editheader.0">
+        
+        <source>Edit category settings</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.editheader.1">
+        
+        <source>Edit the settings of category ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.new.0">
+        
+        <source>New category</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.new.1">
+        
+        <source>Create a new category</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.number_legend">
+        
+        <source>Number of banners</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.protected_legend">
+        
+        <source>Access protection</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.show.0">
+        
+        <source>Category details</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.show.1">
+        
+        <source>Show details of category ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.stat.0">
+        
+        <source>Categorie statistics</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.stat.1">
+        
+        <source>Show categorie statistics of category ID %s</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.title.0">
+        
+        <source>Category</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.title.1">
+        
+        <source>Please enter the name of the category.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.title_legend">
+        
+        <source>Category and Banner Template</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.tstamp.0">
+        
+        <source>Revision date</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.tstamp.1">
+        
+        <source>Date and time of latest revision</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.protected_stat_legend">
+        
+        <source>Access protection for the statistic</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_stat_protected.0">
+        
+        <source>Protect the statistic</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_stat_protected.1">
+        
+        <source>Show the banner statistic for this category to certain user groups only.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_stat_groups.0">
+        
+        <source>Allowed user groups</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_stat_groups.1">
+        
+        <source>Here you can choose which groups will be allowed to see the banner statistic of this category.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_stat_admins.0">
+        
+        <source>Administrators</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_stat_admins.1">
+        
+        <source>Administrators have unlimited access to all banner statistics.</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_expert_debug_all.0">
+        
+        <source>Debug mode for all &quot;Banner&quot; classes</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_expert_debug_all.1">
+        
+        <source>With activation, write debug information to the log file (&lt;em&gt;var/logs/prod|dev-Y-M-D.log&lt;/em&gt;)</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.banner_expert_legend">
+        
+        <source>Expert settings</source>
+      </trans-unit>
+      <trans-unit id="tl_banner_category.formatsWebpNotSupported">
+        
+        <source>WEBP is not supported on your server.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

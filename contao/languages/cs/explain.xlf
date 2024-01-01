@@ -1,0 +1,126 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T01:12:54+01:00" original="explain" source-language="en" target-language="cs">
+    <body>
+      <trans-unit id="XPL.banner_help.0.0">
+        
+        <source>Banner Name</source>
+        
+        <target>Jméno banneru</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.0.1">
+        
+        <source>The banner name is shown in the banners overview and in the provided template below the banner image.&lt;br&gt;&lt;br&gt;At text banners is it the banner title and linked with the destination URL.</source>
+        
+        <target>Banner se zobrazuje v přehledu bannerů a v šabloně pod obrázkem banneru.&lt;br /&gt;&lt;br /&gt;U textových bannerů je jejich název zároveň i link cílového URL.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.1.0">
+        
+        <source>Banner URL</source>
+        
+        <target>URL banneru</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.1.1">
+        
+        <source>The URL of the destination with click on the banner image.&lt;br&gt;The banner URL must start with http(s)://, e.g.: https://www.contao.org&lt;br&gt;Using no URL, the banner image is shown without a link.&lt;br&gt;At text banners is the domain shown as a short form and linked with the destination URL.</source>
+        
+        <target>Kliknutím na obrázek banneru se dostanete na cílové URL.&lt;br /&gt;URL banneru musí začínat http(s)://, e.g.:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;n   https://www.contao.org&lt;/pre&gt;&lt;br/&gt; Když není použito žádné URL, zobrazí se obrázek banneru bez linku.&lt;br /&gt;&lt;br /&gt;V textu banneru se zobrazuje krátká forma domény, která je zároveň i link na cílové URL.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.2.0">
+        
+        <source>Banner Weighting</source>
+        
+        <target>Priorita banneru</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.2.1">
+        
+        <source>A banner with an higher weight value, is shown more frequently than a banner with a lower value.</source>
+        
+        <target>Banner s vyšší prioritou je zobrazován častěji než ten banner s nižší prioritou.&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.3.0">
+        
+        <source>Banner File</source>
+        
+        <target>Obrázek banneru</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.3.1">
+        
+        <source>An image file can be selected here as banner from the file system.</source>
+        
+        <target>An image file can be selected here as banner from the file system.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.4.0">
+        
+        <source>Banner Comment</source>
+        
+        <target>Komentář banneru</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.4.1">
+        
+        <source>Comment is used for title tag in the HTML source code, and will be shown, when moving the mouse over the banner image. At text banners is this the text line.</source>
+        
+        <target>U štítku s názvem v HTML zdrojovém kódu je komentář a zobrazí se při pohybu myši přes obrázek banneru.&lt;br /&gt;&lt;br /&gt;U textových bannerů je to textový řádek.</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.5.0">
+        
+        <source>Show from (Date &amp; Time)</source>
+        
+        <target>Zobrazit od (datum a čas)</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.5.1">
+        
+        <source>By entering a date and time value (with datepicker), the current banner will not be shown on the website before this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 20:15</source>
+        
+        <target>Zadáním data a času (s výběrem data), se tento banner zobrazí na stránkách až po tomto termínu. Časový údaj se může ručně změnit.&lt;br/&gt;Příklad:&lt;br/&gt;&lt;br/&gt;&lt;pre&gt;n   24.12.2007 20:15n&lt;/pre&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.6.0">
+        
+        <source>Show until (Date &amp; Time)</source>
+        
+        <target>Zobrazit do (datum a čas)</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.6.1">
+        
+        <source>By entering a date and time value (with datepicker) the current banner will not be shown on the website after this moment. The time value can be changed manually. &lt;br&gt;Example: 24.12.2007 23:59</source>
+        
+        <target>Zadáním data a času (s výběrem data), bude tento banner na stránkách zobrazen pouze do tohoto termínu. Časový údaj se může ručně změnit.&lt;br/&gt;Příklad:&lt;br/&gt;&lt;br/&gt;&lt;pre&gt;n   24.12.2007 23:59n&lt;/pre&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.7.0">
+        
+        <source>Limiting the number of Views</source>
+        
+        <target>Omezení počtu zobrazení</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.7.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of views. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 1000</source>
+        
+        <target>Zadáním počtu zobrazení, můžete definovat maximální počet zobrazení.&lt;br /&gt;Volba &quot;Limit počtu zobrazení a prokliků&quot; musí zůstat aktivní.&lt;br /&gt;Příklad:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;  1000&lt;/pre&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.8.0">
+        
+        <source>Limiting the number of Clicks</source>
+        
+        <target>Omezení počtu prokliků</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.8.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of clicks. The option &quot;Limiting the number of Views and Clicks&quot; must remain activated.&lt;br&gt;Example: 100</source>
+        
+        <target>Zadáním počtu prokliků, můžete definovat maximální počet kliknutí.&lt;br /&gt;Volba &quot;Limit počtu zobrazení a prokliků&quot; musí zůstat aktivní.&lt;br /&gt;Příklad:&lt;br /&gt;&lt;br /&gt;&lt;pre&gt;   100&lt;/pre&gt;&lt;br /&gt;</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.9.0">
+        
+        <source>Filter Domain</source>
+        
+        <target>HTTP_USER_AGENT dílčí identifikátor</target>
+      </trans-unit>
+      <trans-unit id="XPL.banner_help.9.1">
+        
+        <source>If you enter a domain name, this banner is used only for this domain. If you leave the field empty, this banner is used for all domains.&lt;br&gt;Example: yourdomain.com&lt;br&gt;The banner will be displayed, if matches the domain. But also in partial match starting from the right. So also with access via sub.yourdomain.com . An entry in &quot;Site structure&quot; - &quot;Domain Name&quot; is not required for the filtering.</source>
+        
+        <target>With the change of a user agent with a unique string and entry in this field can be prevented, that will count your own requests.&lt;br /&gt;Přesný popis naleznete ve Wiki.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

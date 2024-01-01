@@ -1,0 +1,47 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T01:13:25+01:00" original="tl_module" source-language="en" target-language="hi">
+    <body>
+      <trans-unit id="tl_module.banner_categories.0">
+        
+        <source>Banner categories</source>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_categories.1">
+        
+        <source>Please select the Banner category.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_firstview.0">
+        
+        <source>First banner for new visitor</source>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_firstview.1">
+        
+        <source>For each new visitor, at first is displayed the first banner in the category. The choice is then returned to random mode.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_hideempty.0">
+        
+        <source>Hide when empty</source>
+        <target>छुपाएँ, जब खाली हो</target>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_hideempty.1">
+        
+        <source>Hide the module (Frontend) when no active banners are found.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_template.0">
+        
+        <source>Banner template</source>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_template.1">
+        
+        <source>Please choose the Banner-Template. Banner template files start with &lt;em&gt;mod_banner_list_&lt;/em&gt;.</source>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_useragent.0">
+        
+        <source>No counting for this HTTP_USER_AGENT partial identifier</source>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_useragent.1">
+        
+        <source>Here you can specify a partial identifier, it will be no counting. These HTTP_USER_AGENT partial identifier of the browser must be changed.&lt;br /&gt;See Wiki.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

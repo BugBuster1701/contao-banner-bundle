@@ -1,0 +1,56 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T01:13:25+01:00" original="tl_module" source-language="en" target-language="ru">
+    <body>
+      <trans-unit id="tl_module.banner_categories.0">
+        
+        <source>Banner categories</source>
+        <target>Категории баннеров</target>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_categories.1">
+        
+        <source>Please select the Banner category.</source>
+        <target>Выберите категорию баннеров, которую хотите включить.</target>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_firstview.0">
+        
+        <source>First banner for new visitor</source>
+        <target>Первый баннер для нового посетителя</target>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_firstview.1">
+        
+        <source>For each new visitor, at first is displayed the first banner in the category. The choice is then returned to random mode.</source>
+        <target>Для каждого нового посетителя, сначала показывается первый баннер в категории, а затем, баннеры выводятся в случайном режиме.</target>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_hideempty.0">
+        
+        <source>Hide when empty</source>
+        <target>Скрыть модуль если пусто</target>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_hideempty.1">
+        
+        <source>Hide the module (Frontend) when no active banners are found.</source>
+        <target>Скрывать модуль во внешнем интерфейсе, если активные баннеры не найдены.</target>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_template.0">
+        
+        <source>Banner template</source>
+        <target>Шаблон баннера</target>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_template.1">
+        
+        <source>Please choose the Banner-Template. Banner template files start with &lt;em&gt;mod_banner_list_&lt;/em&gt;.</source>
+        <target>Выберите шаблон баннера. Файлы шаблонов баннера начинаются с &lt;em&gt;mod_banner_list_&lt;/em&gt;.</target>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_useragent.0">
+        
+        <source>No counting for this HTTP_USER_AGENT partial identifier</source>
+        <target>Не учитывать этот HTTP_USER_AGENT идентификатор</target>
+      </trans-unit>
+      <trans-unit id="tl_module.banner_useragent.1">
+        
+        <source>Here you can specify a partial identifier, it will be no counting. These HTTP_USER_AGENT partial identifier of the browser must be changed.&lt;br /&gt;See Wiki.</source>
+        <target>Вы можете указать идентификатор, который не будет посчитан. Этот HTTP_USER_AGENT идентификатор браузера должен быть изменен.&lt;br /&gt;См. Wiki.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

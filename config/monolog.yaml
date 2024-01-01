@@ -1,0 +1,11 @@
+monolog:
+    handlers:
+        banner:
+            type:  rotating_file
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            channels: ['banner']
+            level: debug
+            #formatter: monolog.formatter.banner
+            formatter: monolog.formatter.line
+
+# php bin/console debug:config monolog|grep -v "            "

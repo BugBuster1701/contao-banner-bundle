@@ -1,0 +1,1 @@
+{{cache_banner_module::<?= $this->banner_module_id; ?>::<?= ''.$this->typePrefix; ?>::<?= ''.$this->class; ?>::<?= ''.$this->cssID; ?>::<?= ''.$this->style; ?>::<?= ''.$this->banner_outputFormat; ?>::<?= ''.$this->banner_templatepfad; ?>}}

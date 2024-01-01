@@ -1,0 +1,3 @@
+bugbuster_banner_frontend_clicks:
+    resource: ../src/Controller
+    type: attribute

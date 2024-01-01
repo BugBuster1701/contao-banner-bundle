@@ -1,0 +1,624 @@
+<?xml version="1.0" ?><xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file datatype="php" date="2022-11-25T19:30:53+01:00" original="tl_banner" source-language="en" target-language="de">
+    <body>
+      <trans-unit id="tl_banner.1">
+        
+        <source>Highest priority</source>
+        
+        <target>Höchste Priorität</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.2">
+        
+        <source>Normal priority</source>
+        
+        <target>Normale Priorität</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.3">
+        
+        <source>Lowest priority</source>
+        
+        <target>Niedrigste Priorität</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_active">
+        
+        <source>published</source>
+        
+        <target>veröffentlicht</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_inactive">
+        
+        <source>not published</source>
+        
+        <target>nicht veröffentlicht</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_cat_not_found">
+        
+        <source>No category selected in banner modul.</source>
+        
+        <target>Keine Kategorie im Banner Modul ausgewählt.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_clicks_until.0">
+        
+        <source>Limiting the number of Clicks</source>
+        
+        <target>Begrenzung der Klicks</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_clicks_until.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of clicks.</source>
+        
+        <target>Wenn Sie hier eine Zahl eingeben, wird dieser Banner nach dieser Anzahl von Klicks nicht mehr angezeigt.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_comment.0">
+        
+        <source>Banner Comment</source>
+        
+        <target>Bannerkommentar</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_comment.1">
+        
+        <source>Comment is for title tag. For text banner: text line. For video banners: additionally as comment line.</source>
+        
+        <target>Erste Zeile erscheint als title Tag. Bei Textbanner: Textzeile. Für Videobanner: zusätzlich als Kommentarzeile .</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_cssid.0">
+        
+        <source>CSS ID/class</source>
+        
+        <target>CSS-ID/Klasse</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_cssid.1">
+        
+        <source>Here you can set an ID and one or more classes. A prefix &quot;banner_&quot; is automatically added.</source>
+        
+        <target>Hier können Sie eine ID und beliebig viele Klassen eingeben. Ein Präfix &quot;banner_&quot; wird automatisch hinzugefügt.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_domain.0">
+        
+        <source>Filter Domain</source>
+        
+        <target>Domain Filter</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_domain.1">
+        
+        <source>If you enter a domain name, this banner is used only for this domain. If you leave the field empty, this banner is used for all domains.</source>
+        
+        <target>Wenn Sie hier eine Domain eingeben, wird dieser Banner nur für diese Domain genutzt. Ohne Angabe wird dieser Banner für alle Domains genutzt.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_image.0">
+        
+        <source>Banner Image</source>
+        
+        <target>Bannerdatei</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_image.1">
+        
+        <source>Please select the banner.(GIF,JPG,PNG,WEBP,AVIF)</source>
+        
+        <target>Bitte eine Bannerdatei auswählen. (GIF,JPG,PNG,WEBP,AVIF)</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_image_extern.0">
+        
+        <source>Banner Image URL</source>
+        
+        <target>Bannerbild-URL</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_image_extern.1">
+        
+        <source>External banner image URL: http://... </source>
+        
+        <target>Externe Bannerbild-URL: http://... </target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_imgSize.0">
+        
+        <source>Banner width and height</source>
+        
+        <target>Bannerbreite und Bannerhöhe</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_imgSize.1">
+        
+        <source>Here you can set the banner image dimensions (in pixel) and the resize mode (only for internal banner image). NOTE: Animated GIFs, with data sizes, the GD-recalculation outcome of this is a still picture.</source>
+        
+        <target>Hier können Sie die Abmessungen des Banners (in Pixel) und den Skalierungsmodus (nur für interne Bannergrafik) festlegen. ACHTUNG: Animierte GIFs werden bei Größen-Angaben durch die GD-Neuberechnung leider zum Standbild.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_jumpTo.0">
+        
+        <source>Banner target page</source>
+        
+        <target>Bannerziel-Seite</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_jumpTo.1">
+        
+        <source>Please select the target page from the page tree. This selection takes priority over the banner target URL.</source>
+        
+        <target>Bitte wählen Sie die Zielseite aus. Diese Auswahl hat Vorrang vor der direkten Bannerziel-URL.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_name.0">
+        
+        <source>Banner Name</source>
+        
+        <target>Bannername</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_name.1">
+        
+        <source>Please enter the banner name. For text banner: title.</source>
+        
+        <target>Bannername. Bei Textbanner: Überschrift</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_number_of">
+        
+        <source>Number of banners</source>
+        
+        <target>Anzahl der Banner</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_published.0">
+        
+        <source>Published</source>
+        
+        <target>Veröffentlicht</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_published.1">
+        
+        <source>Unless you choose this option, this banner is not considered to show.</source>
+        
+        <target>Solange Sie diese Option nicht wählen, wird dieser Banner nicht für die Anzeige berücksichtigt.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_start.0">
+        
+        <source>Show from</source>
+        
+        <target>Anzeigen ab</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_start.1">
+        
+        <source>If you enter a date and time value here the current banner will not be shown on the website before this moment.</source>
+        
+        <target>Wenn Sie hier Datum mit Uhrzeit erfassen, wird der Banner erst ab diesem Zeitpunkt angezeigt.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_stop.0">
+        
+        <source>Show until</source>
+        
+        <target>Anzeigen bis</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_stop.1">
+        
+        <source>If you enter a date and time value here the current banner will not be shown on the website after this moment.</source>
+        
+        <target>Wenn Sie hier Datum mit Uhrzeit erfassen, wird der Banner nur bis zu diesem Zeitpunkt angezeigt.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_target.0">
+        
+        <source>Internal Link</source>
+        
+        <target>Interner Link</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_target.1">
+        
+        <source>If you choose this option, the banner target opens in the same browser window.</source>
+        
+        <target>Wenn Sie diese Option wählen, wird das Bannerziel im selben Browserfenster geöffnet.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_type.0">
+        
+        <source>Banner Source</source>
+        
+        <target>Bannerquelle</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_type.1">
+        
+        <source>Selection whether the banner file of internally or externally will be used or is it a text banner.</source>
+        
+        <target>Auswahl ob die Quelle der Bannerdatei intern oder extern ist, oder ob es ein Textbanner werden soll.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_until.0">
+        
+        <source>Limiting the number of Views and Clicks</source>
+        
+        <target>Begrenzung der Views und Klicks</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_until.1">
+        
+        <source>If you select this option, you can define a maximum number of views and/or maximum number of clicks.</source>
+        
+        <target>Wenn Sie diese Option wählen, können Sie eine maximale View Anzahl und/oder maximale Klick Anzahl definieren.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_url.0">
+        
+        <source>Banner target URL</source>
+        
+        <target>Bannerziel-URL</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_url.1">
+        
+        <source>Please enter the banner target URL: http://... Alternatively, you can select a target page in the next field. (not when using an external banner image)</source>
+        
+        <target>Bannerziel-URL: http://... Als Alternative können Sie im nächsten Feld eine Zielseite auswählen. (nicht bei Verwendung einer externer Bannergrafik)</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_views_until.0">
+        
+        <source>Limiting the number of Views</source>
+        
+        <target>Begrenzung der Views</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_views_until.1">
+        
+        <source>By entering a number, the current banner is no longer displayed after this number of views.</source>
+        
+        <target>Wenn Sie hier eine Zahl eingeben, wird dieser Banner nach dieser Anzahl von Views nicht mehr angezeigt.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_weighting.0">
+        
+        <source>Banner Weighting</source>
+        
+        <target>Bannergewichtung</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_weighting.1">
+        
+        <source>Please select the priority.</source>
+        
+        <target>Bitte die Priorität auswählen.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.comment_legend">
+        
+        <source>Comment</source>
+        
+        <target>Kommentar</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.copy.0">
+        
+        <source>Copy Banner</source>
+        
+        <target>Banner kopieren</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.copy.1">
+        
+        <source>Copy banner ID %s</source>
+        
+        <target>Banner ID %s kopieren</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.delete.0">
+        
+        <source>Delete Banner</source>
+        
+        <target>Banner löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.delete.1">
+        
+        <source>Delete banner ID %s</source>
+        
+        <target>Banner ID %s löschen</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.destination_legend">
+        
+        <source>Banner targets</source>
+        
+        <target>Bannerziele</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.edit.0">
+        
+        <source>Edit Banner</source>
+        
+        <target>Banner editieren</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.edit.1">
+        
+        <source>Edit banner ID %s</source>
+        
+        <target>Banner ID %s editieren</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.expert_legend">
+        
+        <source>Expert settings</source>
+        
+        <target>Experten-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.filter_legend">
+        
+        <source>Filtering</source>
+        
+        <target>Filterung</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.image_legend">
+        
+        <source>Banner image</source>
+        
+        <target>Bannerdatei</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.new.0">
+        
+        <source>New Banner</source>
+        
+        <target>Banner neu</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.new.1">
+        
+        <source>Add a new banner</source>
+        
+        <target>Einen neuen Banner anlegen</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.publish_legend">
+        
+        <source>Publish settings</source>
+        
+        <target>Veröffentlichung</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.show.0">
+        
+        <source>Banner Details</source>
+        
+        <target>Banner Details</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.show.1">
+        
+        <source>Show details of Banner ID %s</source>
+        
+        <target>Zeige Details von Banner ID %s</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.source_extern">
+        
+        <source>external</source>
+        
+        <target>extern</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.source_fallback">
+        
+        <source>Image-Fallback</source>
+        
+        <target>Bild-Fallback</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.source_fallback_no">
+        
+        <source>Image-Fallback not found.</source>
+        
+        <target>Bild-Fallback nicht gefunden.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.source_intern">
+        
+        <source>internal</source>
+        
+        <target>intern</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.title_legend">
+        
+        <source>Name and weighting</source>
+        
+        <target>Name und Gewichtung</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_max_clicks">
+        
+        <source>max. Clicks</source>
+        
+        <target>max. Klicks</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_max_views">
+        
+        <source>max. Views</source>
+        
+        <target>max. Ansichten</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_no">
+        
+        <source>no</source>
+        
+        <target>nein</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_not_defined">
+        
+        <source>not defined.</source>
+        
+        <target>nicht definiert.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_not_defined_max">
+        
+        <source>unlimited</source>
+        
+        <target>unbegrenzt</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_not_defined_start">
+        
+        <source>immediately</source>
+        
+        <target>sofort</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_not_defined_stop">
+        
+        <source>always</source>
+        
+        <target>immer</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_page_not_found">
+        
+        <source>Page not found</source>
+        
+        <target>Seite nicht gefunden.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_read_error">
+        
+        <source>Banner file not found or read error!</source>
+        
+        <target>Bannerdatei nicht gefunden oder Lesefehler!</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_start">
+        
+        <source>Show from</source>
+        
+        <target>Anzeigen ab</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_stop">
+        
+        <source>Show until</source>
+        
+        <target>Anzeigen bis</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.tl_be_yes">
+        
+        <source>yes</source>
+        
+        <target>ja</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.toggle.0">
+        
+        <source>Toggle visibility</source>
+        
+        <target>Banner ein- oder ausschalten</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.toggle.1">
+        
+        <source>Toggle the visibility of banner ID %s</source>
+        
+        <target>Banner ID %s ein- oder ausschalten</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_type.banner_image">
+        
+        <source>Internal banner image</source>
+        
+        <target>Interne Bannergrafik</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_type.banner_image_extern">
+        
+        <source>External banner image</source>
+        
+        <target>Externe Bannergrafik</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_type.banner_text">
+        
+        <source>Text banner</source>
+        
+        <target>Textbanner</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_type.default">
+        
+        <source>Please select</source>
+        
+        <target>Bitte auswählen</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_overwriteMeta.0">
+        
+        <source>Overwrite with file meta data</source>
+        
+        <target>Überschreiben mit Metadaten der Datei</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_overwriteMeta.1">
+        
+        <source>Overwrite alt tag (Banner Name) and title tag (Banner Comment) with the meta data from the file manager.</source>
+        
+        <target>Überschreiben des Alt-Tags (Bannername) und des Title-Tags (Bannerkommentar) mit den Metadaten der Datei aus der Dateiverwaltung</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.using_meta_data">
+        
+        <source>Using file meta data</source>
+        
+        <target>Verwendung von Datei-Metadaten</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.video_source_legend">
+        
+        <source>Source</source>
+        
+        <target>Quelle</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.player_legend">
+        
+        <source>Player settings</source>
+        
+        <target>Player-Einstellungen</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.poster_legend">
+        
+        <source>Preview image</source>
+        
+        <target>Vorschaubild</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerSRC.0">
+        
+        <source>Video files</source>
+        
+        <target>Video Dateien</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerSRC.1">
+        
+        <source>Here you can add the video file or multiple files if you are using different codecs.</source>
+        
+        <target>Hier können Sie die Videodatei oder mehrere Dateien hinzufügen, wenn Sie verschiedene Codecs verwenden.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_posterSRC.0">
+        
+        <source>Preview image</source>
+        
+        <target>Vorschaubild</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_posterSRC.1">
+        
+        <source>Show this image instead of the first frame of the video before playback.</source>
+        
+        <target>Zeigen Sie dieses Bild anstelle des ersten Bildes des Videos vor der Wiedergabe an.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerSize.0">
+        
+        <source>Player size</source>
+        
+        <target>Player Größe</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerSize.1">
+        
+        <source>Width and height of the media player in pixels (e.g. 640x480).</source>
+        
+        <target>Breite und Höhe des Media Players in Pixeln (z. B. 640x480).</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerOptions.0">
+        
+        <source>Player options</source>
+        
+        <target>Player Optionen</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerOptions.1">
+        
+        <source>Here you can select the player options.</source>
+        
+        <target>Hier können Sie die Player-Optionen auswählen.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerStart.0">
+        
+        <source>Start at second</source>
+        
+        <target>Start bei Sekunde</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerStart.1">
+        
+        <source>Start playing the video at the given number of seconds.</source>
+        
+        <target>Startet die Wiedergabe des Videos nach der angegebenen Anzahl von Sekunden.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerStop.0">
+        
+        <source>Stop at second</source>
+        
+        <target>Stopp bei Sekunde</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerStop.1">
+        
+        <source>Stop playing the video at the given number of seconds. Set to 0 to disable.</source>
+        
+        <target>Stoppt die Wiedergabe des Videos nach der angegebenen Anzahl von Sekunden. Zum Deaktivieren auf 0 setzen.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerAspect.0">
+        
+        <source>Aspect ratio</source>
+        
+        <target>Seitenverhältnis</target>
+      </trans-unit>
+      <trans-unit id="tl_banner.banner_playerAspect.1">
+        
+        <source>Here you can select the aspect ratio of the video to make it responsive.</source>
+        
+        <target>Hier können Sie das Seitenverhältnis des Videos auswählen, um es dynamisch zu gestalten.</target>
+      </trans-unit>
+      <trans-unit id="tl_banner_type.banner_video">
+        
+        <source>Video banner</source>
+        
+        <target>Video Banner</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

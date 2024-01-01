@@ -1,3 +1,0 @@
-bugbuster_banner_frontend_clicks:
-    resource: "@BugBusterBannerBundle/Controller"
-    type: annotation
