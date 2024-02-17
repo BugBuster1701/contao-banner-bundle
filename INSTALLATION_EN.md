@@ -15,7 +15,7 @@ There are two types of installation.
 
 ## Installation via command line
 
-Installation in a Composer-based Contao 5.2+ Managed-Edition:
+Installation in a Composer-based Contao 4.13 / 5.2+ Managed-Edition:
 
 * `composer require "bugbuster/contao-banner-bundle"`
 * `php bin/console contao:migrate`
