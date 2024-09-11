@@ -2,7 +2,7 @@
 <div class="clear"></div>
 <div class="tl_panel cf">
     <!-- Categorie Row //-->
-	<form	method="post" class="info" id="banner_statistik" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
+	<form method="post" class="info" id="banner_statistik" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
 		<input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
 		<div class="tl_submit_panel tl_subpanel" style="text-align: left;">
 			<input class="tl_img_submit banner_filter"
@@ -31,7 +31,7 @@
 
     <!-- Categorie Reset //-->
 <?php if ($this->bannercatid > 0) : ?>
-    <form	method="post" class="info" id="banner_cat_reset" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
+    <form method="post" class="info" id="banner_cat_reset" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
 		<div class="tl_search tl_subpanel">
 			<strong><?= $this->bannercatzero; ?>:&nbsp;</strong>
 			<input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
@@ -42,6 +42,7 @@
 			        alt="<?= $this->bannercatzerotext; ?>"
 			        title="<?= $this->bannercatzerotext; ?>"
 			        class="tl_submit"
+					data-turbo="false"
 			        onclick="if (!confirm('<?= $this->bannercatzeroconfirm; ?>')) return false; Backend.getScrollOffset();">
 		</div>
 	</form>
@@ -108,7 +109,7 @@
 		        <span class="tl_label"><?= $bannerstat['banner_name']; ?></span>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;">
-		        <form method="post" class="info" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
+		        <form method="post" class="info" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
 		            <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
 		            <input type="hidden" name="act" value="zero">
 		            <input type="hidden" name="zid" value="<?= $bannerstat['banner_id']; ?>">
@@ -117,6 +118,7 @@
 		                    title="<?= $bannerstat['banner_zero']; ?>"
 		                    src="bundles/bugbusterbanner/<?= $this->theme0; ?>/down0.svg"
 		                    name="filter"
+							data-turbo="false"
 		                    onclick="if (!confirm('<?= $bannerstat['banner_confirm']; ?>')) return false; Backend.getScrollOffset();"
 		                >
 		        </form>
@@ -196,7 +198,7 @@
 		        <span class="tl_label"><?= $bannerstat['banner_name']; ?></span>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;">
-		        <form method="post" class="info" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
+		        <form method="post" class="info" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
 		            <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
 		            <input type="hidden" name="act" value="zero">
 		            <input type="hidden" name="zid" value="<?= $bannerstat['banner_id']; ?>">
@@ -205,6 +207,7 @@
 		                    title="<?= $bannerstat['banner_zero']; ?>"
 		                    src="bundles/bugbusterbanner/<?= $this->theme0; ?>/down0.svg"
 		                    name="filter"
+							data-turbo="false"
 		                    onclick="if (!confirm('<?= $bannerstat['banner_confirm']; ?>')) return false; Backend.getScrollOffset();"
 		                >
 		        </form>
@@ -278,7 +281,7 @@
 		        <span class="tl_label"><?= $bannerstat['banner_name']; ?></span>
 		    </td>
 		    <td style="padding-left: 2px; text-align: center;">
-		        <form method="post" class="info" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
+		        <form method="post" class="info" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
 		            <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
 		            <input type="hidden" name="act" value="zero">
 		            <input type="hidden" name="zid" value="<?= $bannerstat['banner_id']; ?>">
@@ -287,6 +290,7 @@
 		                    title="<?= $bannerstat['banner_zero']; ?>"
 		                    src="bundles/bugbusterbanner/<?= $this->theme0; ?>/down0.svg"
 		                    name="filter"
+							data-turbo="false"
 		                    onclick="if (!confirm('<?= $bannerstat['banner_confirm']; ?>')) return false; Backend.getScrollOffset();"
 		                >
 		        </form>
