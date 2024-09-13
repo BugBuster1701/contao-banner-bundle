@@ -471,7 +471,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 						$rootDir = $container->getParameter('kernel.project_dir');
 						$Banner['banner_image'] = $container
 													->get('contao.image.factory')
-													->create($rootDir . '/' . $objFile->path, array($intWidth, $intHeight, 'proportional'))
+													->create($rootDir . '/' . $objFile->path, array($intWidth, $intHeight, ResizeConfiguration::MODE_BOX))
 													->getUrl($rootDir);
 					}
 				}
