@@ -144,8 +144,8 @@ class BannerHelper extends Frontend
 		{
 			$objPage = new \stdClass();
 			$objPage->templateGroup = $this->templatepfad;
-			$objPage->outputFormat = $this->outputFormat;
-			$GLOBALS['objPage'] = $objPage;
+			$objPage->outputFormat = $this->strFormat;
+			$GLOBALS['objPage'] = $objPage; // TODO anders lösen $GLOBALS['objPageBanner']
 		}
 	}
 

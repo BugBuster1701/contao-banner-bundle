@@ -60,8 +60,9 @@ class ModuleBanner extends Module
 
 	protected function compile()
 	{
+		$objPage = System::getContainer()->get('contao.routing.page_finder')->getCurrentPage();
 		$this->Template->banner_module_id    = $this->id;
-		$this->Template->banner_outputFormat = $GLOBALS['objPage']->outputFormat;
-		$this->Template->banner_templatepfad = $GLOBALS['objPage']->templateGroup;
+		$this->Template->banner_outputFormat = 'html5';
+		$this->Template->banner_templatepfad = $objPage->templateGroup;
 	}
 }
