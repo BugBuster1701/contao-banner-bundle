@@ -13,6 +13,8 @@ Contao 4/5 Banner Advertisement Extension
 
 
 ## Notice
+For Contao 5.4 please install version 1.7.x.<br>
+For Contao 5.3 please install version 1.6.x.<br>
 For Contao 4.13 please install version 1.5.x.
 
 
