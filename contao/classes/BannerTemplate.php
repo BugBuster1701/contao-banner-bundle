@@ -70,6 +70,7 @@ class BannerTemplate
 			case 19: // AVIF
 				$arrBanners[] =
 				array(
+					'banner'         => $objBanners->row(),
 					'banner_key'     => 'bid',
 					'banner_wrap_id'    => $banner_cssID,
 					'banner_wrap_class' => $banner_class,
@@ -92,6 +93,7 @@ class BannerTemplate
 			default:
 				$arrBanners[] =
 				array(
+					'banner'         => $objBanners->row(),
 					'banner_key'     => 'bid',
 					'banner_wrap_id'    => $banner_cssID,
 					'banner_wrap_class' => $banner_class,
