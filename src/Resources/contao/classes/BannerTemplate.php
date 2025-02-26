@@ -57,6 +57,7 @@ class BannerTemplate
             case 18: // WEBP
                 $arrBanners[] =
                 [
+                'banner'         => $objBanners->row(),
                 'banner_key'     => 'bid',
                 'banner_wrap_id'    => $banner_cssID,
                 'banner_wrap_class' => $banner_class,
@@ -79,6 +80,7 @@ class BannerTemplate
             default:
                 $arrBanners[] =
                 [
+                'banner'         => $objBanners->row(),
                 'banner_key'     => 'bid',
                 'banner_wrap_id'    => $banner_cssID,
                 'banner_wrap_class' => $banner_class,
