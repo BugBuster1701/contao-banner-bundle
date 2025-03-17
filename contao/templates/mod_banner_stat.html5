@@ -1,54 +1,50 @@
 
-<div class="clear"></div>
-<div class="tl_panel cf">
-    <!-- Categorie Row //-->
-	<form method="post" class="info" id="banner_statistik" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
-		<input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
-		<div class="tl_submit_panel tl_subpanel" style="text-align: left;">
-			<input class="tl_img_submit banner_filter"
-					type="image"
-					value="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>"
-					title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>"
-					src="system/themes/<?= $this->theme; ?>/icons/sync.svg"
-					width="16"
-					height="16"
-					name="filter">
-		</div>
-		<div class="tl_search tl_subpanel">
-			<strong><?= $this->bannerstatcat; ?>:</strong>
-			<select class="tl_select" name="id">
-				<?php foreach ($this->bannercats as $bannercat): ?>
-				    <?php if ($bannercat['id'] == $this->bannercatid) : ?>
-				<option selected="selected" value="<?= $bannercat['id']; ?>"><?= $bannercat['title']; ?></option>
-				    <?php else: ?>
-				<option value="<?= $bannercat['id']; ?>"><?= $bannercat['title']; ?></option>
-				    <?php endif; ?>
-				<?php endforeach; ?>
-			</select>
-		</div>
-	</form>
-	<!-- Categorie Row End //-->
-
+<div class="tl_formbody">
+    <div class="tl_panel">
     <!-- Categorie Reset //-->
 <?php if ($this->bannercatid > 0) : ?>
-    <form method="post" class="info" id="banner_cat_reset" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
-		<div class="tl_search tl_subpanel">
+		<div class="tl_subpanel" style="padding-right: 32px;">
 			<strong><?= $this->bannercatzero; ?>:&nbsp;</strong>
-			<input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
-			<input type="hidden" name="act" value="zero">
-			<input type="hidden" name="id" value="<?= $this->bannercatid; ?>">
-			<input type="hidden" name="catzid" value="<?= $this->bannercatid; ?>">
-			<input type="submit" value="<?= $this->bannercatzerobutton; ?>"
-			        alt="<?= $this->bannercatzerotext; ?>"
-			        title="<?= $this->bannercatzerotext; ?>"
-			        class="tl_submit"
-					data-turbo="false"
-			        onclick="if (!confirm('<?= $this->bannercatzeroconfirm; ?>')) return false; Backend.getScrollOffset();">
+    		<form method="post" class="info" id="banner_cat_reset" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
+				<input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
+				<input type="hidden" name="act" value="zero">
+				<input type="hidden" name="id" value="<?= $this->bannercatid; ?>">
+				<input type="hidden" name="catzid" value="<?= $this->bannercatid; ?>">
+				<input type="submit" value="<?= $this->bannercatzerobutton; ?>"
+				        alt="<?= $this->bannercatzerotext; ?>"
+				        title="<?= $this->bannercatzerotext; ?>"
+				        class="tl_submit"
+						data-turbo="false"
+				        onclick="if (!confirm('<?= $this->bannercatzeroconfirm; ?>')) return false; Backend.getScrollOffset();">
+        	</form>
 		</div>
-	</form>
 <?php endif; ?>
     <!-- Categorie Reset End //-->
-    <div class="clear"></div>
+    <!-- Categorie Row //-->
+		<div class="tl_subpanel">
+			<strong><?= $this->bannerstatcat; ?>:</strong>
+			<form method="post" class="info" style="display: contents;" id="banner_statistik" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
+				<select class="tl_select" name="id">
+					<?php foreach ($this->bannercats as $bannercat): ?>
+					    <?php if ($bannercat['id'] == $this->bannercatid) : ?>
+					<option selected="selected" value="<?= $bannercat['id']; ?>"><?= $bannercat['title']; ?></option>
+					    <?php else: ?>
+					<option value="<?= $bannercat['id']; ?>"><?= $bannercat['title']; ?></option>
+					    <?php endif; ?>
+					<?php endforeach; ?>
+				</select>
+				<input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
+				<input class="tl_submit_panel" style="padding-left: 10px; min-width: 20px;" type="image"
+						value="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>"
+						title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>"
+						src="system/themes/<?= $this->theme; ?>/icons/sync.svg"
+						width="20"
+						height="20"
+						name="filter">
+			</form>
+		</div>
+	<!-- Categorie Row End //-->
+	</div>
 </div>
 <?php if ($this->banner_hook_panels): ?>
 	<?php foreach ($this->banner_hook_panels as $panel): ?>
