@@ -3,7 +3,7 @@
 /*
  * This file is part of a BugBuster Contao Bundle.
  *
- * @copyright  Glen Langer 2024 <http://contao.ninja>
+ * @copyright  Glen Langer 2025 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @package    Contao Banner Bundle
  * @link       https://github.com/BugBuster1701/contao-banner-bundle
@@ -471,7 +471,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 						$rootDir = $container->getParameter('kernel.project_dir');
 						$Banner['banner_image'] = $container
 													->get('contao.image.factory')
-													->create($rootDir . '/' . $objFile->path, array($intWidth, $intHeight, 'proportional'))
+													->create($rootDir . '/' . $objFile->path, array($intWidth, $intHeight, ResizeConfiguration::MODE_BOX))
 													->getUrl($rootDir);
 					}
 				}

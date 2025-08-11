@@ -3,7 +3,7 @@
 /*
  * This file is part of a BugBuster Contao Bundle.
  *
- * @copyright  Glen Langer 2024 <http://contao.ninja>
+ * @copyright  Glen Langer 2025 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @package    Contao Banner Bundle
  * @link       https://github.com/BugBuster1701/contao-banner-bundle
@@ -14,7 +14,7 @@
 use Contao\System;
 use Symfony\Component\HttpFoundation\Request;
 
-define('BANNER_VERSION', '1.6');
+define('BANNER_VERSION', '1.7');
 define('BANNER_BUILD', '4');
 
 /*

@@ -3,7 +3,7 @@
 /*
  * This file is part of a BugBuster Contao Bundle.
  *
- * @copyright  Glen Langer 2024 <http://contao.ninja>
+ * @copyright  Glen Langer 2025 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @package    Contao Banner Bundle
  * @link       https://github.com/BugBuster1701/contao-banner-bundle
@@ -60,8 +60,9 @@ class ModuleBanner extends Module
 
 	protected function compile()
 	{
+		$objPage = System::getContainer()->get('contao.routing.page_finder')->getCurrentPage();
 		$this->Template->banner_module_id    = $this->id;
-		$this->Template->banner_outputFormat = $GLOBALS['objPage']->outputFormat;
-		$this->Template->banner_templatepfad = $GLOBALS['objPage']->templateGroup;
+		$this->Template->banner_outputFormat = 'html5';
+		$this->Template->banner_templatepfad = $objPage->templateGroup;
 	}
 }

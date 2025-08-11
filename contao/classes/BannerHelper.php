@@ -3,7 +3,7 @@
 /*
  * This file is part of a BugBuster Contao Bundle.
  *
- * @copyright  Glen Langer 2024 <http://contao.ninja>
+ * @copyright  Glen Langer 2025 <http://contao.ninja>
  * @author     Glen Langer (BugBuster)
  * @package    Contao Banner Bundle
  * @link       https://github.com/BugBuster1701/contao-banner-bundle
@@ -144,8 +144,8 @@ class BannerHelper extends Frontend
 		{
 			$objPage = new \stdClass();
 			$objPage->templateGroup = $this->templatepfad;
-			$objPage->outputFormat = $this->outputFormat;
-			$GLOBALS['objPage'] = $objPage;
+			$objPage->outputFormat = $this->strFormat;
+			$GLOBALS['objPage'] = $objPage; // TODO anders lösen $GLOBALS['objPageBanner']
 		}
 	}
 
