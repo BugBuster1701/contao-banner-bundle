@@ -64,5 +64,6 @@ class ModuleBanner extends Module
 		$this->Template->banner_module_id    = $this->id;
 		$this->Template->banner_outputFormat = 'html5';
 		$this->Template->banner_templatepfad = $objPage->templateGroup;
+		$this->Template->typePrefix = 'mod_'; // Würgaround, das $this->TypePrefix nicht mehr verfügbar
 	}
 }

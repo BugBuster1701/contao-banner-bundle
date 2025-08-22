@@ -1,5 +1,5 @@
 <!-- indexer::stop -->
-<aside id="<?= $this->bmid; ?>" title="banner_<?= $this->bmid; ?>" class="<?= $this->class; ?> block"<?= $this->cssID; ?><?php if ($this->style): ?> style="<?= $this->style; ?>"<?php endif; ?>>
+<aside id="<?= $this->bmid; ?>" title="<?= $this->asidetitle; ?>" class="<?= $this->class; ?> block"<?= $this->cssID; ?><?php if ($this->style): ?> style="<?= $this->style; ?>"<?php endif; ?>>
 <?php foreach ($this->banners as $banner): ?>
 <?php if ($banner['banner_pic']) : ?>
 	<figure class="banner_wrap<?= $banner['banner_wrap_class']; ?>"<?= $banner['banner_wrap_id']; ?> itemscope itemtype="http://schema.org/ImageObject">

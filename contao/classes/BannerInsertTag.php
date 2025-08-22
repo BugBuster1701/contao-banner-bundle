@@ -44,6 +44,8 @@ class BannerInsertTag extends BannerHelper
 
 	protected $banner_categories = '';
 
+	protected $banner_category_title = '';
+
 	protected $banner_template   = '';
 
 	protected $banner_redirect   = '';
@@ -177,6 +179,20 @@ class BannerInsertTag extends BannerHelper
 		$this->cssID             = $objBannerModule->cssID;
 		$this->headline          = $objBannerModule->headline;
 
+		$objBannerModuleCategory = Database::getInstance()->prepare("SELECT 
+																		`title`
+																	FROM
+																		`tl_banner_category`
+																	WHERE
+																		`id` = ?")
+															->execute($this->banner_categories);
+		if ($objBannerModuleCategory->numRows == 0)
+		{
+			return false;
+		}
+		$this->banner_category_title = $objBannerModuleCategory->title;
+
+
 		return true;
 	}
 
@@ -293,9 +309,11 @@ class BannerInsertTag extends BannerHelper
 			$_cssID = StringUtil::deserialize($this->cssID);
 			$this->Template->cssID = '';
 			$this->Template->class = 'mod_banner';
+			$this->Template->asidetitle = $this->banner_category_title;
 			if ($_cssID[0] != '')
 			{
-				$this->Template->cssID = ' id="' . $_cssID[0] . '"';
+				//$this->Template->cssID = ' id="' . $_cssID[0] . '"';
+				$this->Template->bmid .= '_' . $_cssID[0]; 
 			}
 			if ($_cssID[1] != '')
 			{
@@ -317,16 +335,22 @@ class BannerInsertTag extends BannerHelper
 			}
 		}
 		// Modul als Artikelelement
-		if ('ce_' == $this->typePrefix)
-		{
-			$this->Template->cssID = '';
-			if ($this->article_cssID)
-			{
-				$this->Template->cssID = $this->article_cssID;
-			}
-			$this->Template->class = $this->article_class;
-			$this->Template->style = $this->article_style;
-		}
+		// if ('ce_' == $this->typePrefix)
+		// {
+			//$this->Template->cssID = '';
+			// if (!empty($this->article_cssID))
+			// {
+			// 	$this->Template->cssID = $this->article_cssID;
+			// }
+			// if (!empty($this->article_class))
+			// {
+			// 	$this->Template->class = $this->article_class;
+			// }
+			// if (!empty($this->article_style))
+			// {
+			// 	$this->Template->style = $this->article_style;
+			// }
+		// }
 		// headline
 		$_headline = StringUtil::deserialize($this->headline);
 		if ("" != $_headline['value'])
