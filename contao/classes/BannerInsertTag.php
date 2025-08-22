@@ -312,8 +312,8 @@ class BannerInsertTag extends BannerHelper
 			$this->Template->asidetitle = $this->banner_category_title;
 			if ($_cssID[0] != '')
 			{
-				//$this->Template->cssID = ' id="' . $_cssID[0] . '"';
-				$this->Template->bmid .= '_' . $_cssID[0]; 
+				// überschreibt die autimatisch generierte Variante: "bmid<module_id>"
+				$this->Template->bmid = $_cssID[0];
 			}
 			if ($_cssID[1] != '')
 			{
