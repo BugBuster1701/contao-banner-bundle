@@ -337,19 +337,19 @@ class BannerInsertTag extends BannerHelper
 		// Modul als Artikelelement
 		// if ('ce_' == $this->typePrefix)
 		// {
-			//$this->Template->cssID = '';
-			// if (!empty($this->article_cssID))
-			// {
-			// 	$this->Template->cssID = $this->article_cssID;
-			// }
-			// if (!empty($this->article_class))
-			// {
-			// 	$this->Template->class = $this->article_class;
-			// }
-			// if (!empty($this->article_style))
-			// {
-			// 	$this->Template->style = $this->article_style;
-			// }
+		//$this->Template->cssID = '';
+		if (!empty($this->article_cssID))
+		{
+			$this->Template->bmid = trim(str_replace('id=','',$this->article_cssID),'"');
+		}
+		if (!empty($this->article_class))
+		{
+			$this->Template->class = $this->article_class;
+		}
+		if (!empty($this->article_style))
+		{
+			$this->Template->style .= ' ' . $this->article_style;
+		}
 		// }
 		// headline
 		$_headline = StringUtil::deserialize($this->headline);
