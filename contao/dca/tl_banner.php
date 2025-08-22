@@ -56,7 +56,8 @@ array(
 			'edit' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner']['edit'],
 				'href'                => 'act=edit',
-				'icon'                => 'edit.gif'
+				'icon'                => 'edit.gif',
+				'primary'             => true
 			),
 			'copy' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner']['copy'],
@@ -79,7 +80,8 @@ array(
 			'show' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner']['show'],
 				'href'                => 'act=show',
-				'icon'                => 'show.svg'
+				'icon'                => 'show.svg',
+				'primary'             => true
 			)
 		)
 	),

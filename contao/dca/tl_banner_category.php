@@ -59,13 +59,15 @@ array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['edit'],
 				'href'                => 'table=tl_banner',
 				'icon'                => 'edit.gif',
-				'attributes'          => 'class="contextmenu"'
+				'attributes'          => 'class="contextmenu"',
+				'primary'             => true
 			),
 			'editheader' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['editheader'],
 				'href'                => 'act=edit',
 				'icon'                => 'header.gif',
-				'attributes'          => 'class="edit-header"'
+				'attributes'          => 'class="edit-header"',
+				'primary'             => true
 			),
 			'copy' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['copy'],
@@ -86,7 +88,8 @@ array(
 			'stat' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['stat'],
 				'href'                => 'do=bannerstat',
-				'icon'                => 'bundles/bugbusterbanner/iconBannerStat.gif'
+				'icon'                => 'bundles/bugbusterbanner/iconBannerStat.gif',
+				'primary'             => true
 			)
 		)
 	),
