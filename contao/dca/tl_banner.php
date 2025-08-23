@@ -75,13 +75,13 @@ array(
 				'href'                => 'act=toggle&amp;field=banner_published',
 				'icon'                => 'visible.svg',
 				// 'attributes'          => 'onclick="Backend.getScrollOffset(); return AjaxRequest.toggleVisibility(this, %s);"',
-				'button_callback'     => array('BugBuster\Banner\DcaBanner', 'toggleIcon')
+				'button_callback'     => array('BugBuster\Banner\DcaBanner', 'toggleIcon'),
+				'primary'             => true
 			),
 			'show' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner']['show'],
 				'href'                => 'act=show',
-				'icon'                => 'show.svg',
-				'primary'             => true
+				'icon'                => 'show.svg'
 			)
 		)
 	),
