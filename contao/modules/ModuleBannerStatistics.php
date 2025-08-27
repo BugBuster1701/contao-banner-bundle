@@ -478,7 +478,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 
 				$arrBannersStat['banner_id']     = $Banner['id'];
 				$arrBannersStat['banner_style']     = 'padding-bottom: 4px;';
-				$arrBannersStat['banner_name']     = 'Test ' . StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
+				$arrBannersStat['banner_name']     = StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
 				$arrBannersStat['banner_alt']     = StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
 				$arrBannersStat['banner_title']     = $Banner['banner_url'];
 				$arrBannersStat['banner_url']     = \strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28) . "[...]" . substr($Banner['banner_url'], -24, 24);
