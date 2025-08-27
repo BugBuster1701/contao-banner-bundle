@@ -108,7 +108,7 @@ class BannerImage extends System
 			}
 			catch (\Exception $e)
 			{
-				$arrImageSize = false;
+				$arrImageSize[2] = false;
 			}
 		}
 		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: ', $arrImageSize);
