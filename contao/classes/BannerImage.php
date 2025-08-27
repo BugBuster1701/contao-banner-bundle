@@ -98,18 +98,21 @@ class BannerImage extends System
 	 */
 	protected function getImageSizeInternal($BannerImage)
 	{
-		$arrImageSize = false;
-
-		try
+		$arrImageSize[2] = 0;
+		if ($BannerImage !== '')
 		{
-			$rootDir = System::getContainer()->getParameter('kernel.project_dir');
-			$arrImageSize = getimagesize($rootDir . '/' . $BannerImage);
+			try
+			{
+				$rootDir = System::getContainer()->getParameter('kernel.project_dir');
+				if (file_exists($rootDir . '/' . $BannerImage)) {
+					$arrImageSize = getimagesize($rootDir . '/' . $BannerImage);
+				}				
+			}
+			catch (\Exception $e)
+			{
+				$arrImageSize[2] = 0;
+			}
 		}
-		catch (\Exception $e)
-		{
-			$arrImageSize = false;
-		}
-
 		BannerLog::writeLog(__METHOD__, __LINE__, 'Image Size: ', $arrImageSize);
 
 		return $arrImageSize;

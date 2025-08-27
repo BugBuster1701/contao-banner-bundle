@@ -343,7 +343,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 		$this->BannerImage = new BannerImage();
 
 		// Banner Art und Größe bestimmen
-		$arrImageSize = $this->BannerImage->getBannerImageSize($objFile->path, self::BANNER_TYPE_INTERN);
+		$arrImageSize = $this->BannerImage->getBannerImageSize($objFile->path ?? '', self::BANNER_TYPE_INTERN);
 
 		// 1 = GIF, 2 = JPG, 3 = PNG
 		// 4 = SWF, 13 = SWC (zip-like swf file)
@@ -358,13 +358,17 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 			case 19: // AVIF
 				// Check ob Banner zu groß für Anzeige, @return array $Width,$Height,$oriSize
 				$arrNewBannerImageSize = $this->BannerImage->getCheckBannerImageSize($arrImageSize, 250, 200);
+				$intWidth  = $arrNewBannerImageSize[0];
+				$intHeight = $arrNewBannerImageSize[1];
+				$oriSize   = $arrNewBannerImageSize[2];
 				break;
 			default:
+				$intWidth  = 0;
+				$intHeight = 0;
+				$oriSize   = true;
 				break;
 		}
-		$intWidth  = $arrNewBannerImageSize[0];
-		$intHeight = $arrNewBannerImageSize[1];
-		$oriSize   = $arrNewBannerImageSize[2];
+		
 
 		return $this->generateTemplateData(self::BANNER_TYPE_INTERN, $Banner, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize, $objFile);
 	} // addBannerIntern
@@ -402,13 +406,16 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 			case 19: // AVIF
 				// Check ob Banner zu groß für Anzeige, @return array $Width,$Height,$oriSize
 				$arrNewBannerImageSize = $this->BannerImage->getCheckBannerImageSize($arrImageSize, 250, 200);
+				$intWidth  = $arrNewBannerImageSize[0];
+				$intHeight = $arrNewBannerImageSize[1];
+				$oriSize   = $arrNewBannerImageSize[2];
 				break;
 			default:
+				$intWidth  = 0;
+				$intHeight = 0;
+				$oriSize   = true;
 				break;
 		}
-		$intWidth  = $arrNewBannerImageSize[0];
-		$intHeight = $arrNewBannerImageSize[1];
-		$oriSize   = $arrNewBannerImageSize[2];
 		unset($oriSize);
 
 		return $this->generateTemplateData(self::BANNER_TYPE_EXTERN, $Banner, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks);
@@ -478,7 +485,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 
 				$arrBannersStat['banner_id']     = $Banner['id'];
 				$arrBannersStat['banner_style']     = 'padding-bottom: 4px;';
-				$arrBannersStat['banner_name']     = 'Test ' . StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
+				$arrBannersStat['banner_name']     = StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
 				$arrBannersStat['banner_alt']     = StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
 				$arrBannersStat['banner_title']     = $Banner['banner_url'];
 				$arrBannersStat['banner_url']     = \strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28) . "[...]" . substr($Banner['banner_url'], -24, 24);
@@ -504,20 +511,29 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 				}
 				else
 				{
-					$Banner['banner_image'] = $this->urlEncode($objFile->path);
+					$Banner['banner_image'] = $this->urlEncode($objFile->path ?? '');
 				}
 
 				$arrBannersStat['banner_pic']     = true;
-				$arrBannersStat['banner_flash']     = false;
-				$arrBannersStat['banner_text']     = false;
+				$arrBannersStat['banner_flash']   = false;
+				$arrBannersStat['banner_text']    = false;
 				$arrBannersStat['banner_video']   = false;
-				$arrBannersStat['banner_prio']     = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
-				$arrBannersStat['banner_views']     = ($MaxViewsClicks[0]) ? $Banner['banner_views'] . '<br>' . $GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
-				$arrBannersStat['banner_clicks']     = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] . '<br>' . $GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
-				$arrBannersStat['banner_active']     = $Banner['banner_active'];
-				$arrBannersStat['banner_style']     = 'color:red;font-weight:bold;';
+				$arrBannersStat['banner_id']      = $Banner['id'];
+				$arrBannersStat['banner_name']    = StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
+				$arrBannersStat['banner_prio']    = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
+				$arrBannersStat['banner_views']   = ($MaxViewsClicks[0]) ? $Banner['banner_views'] . '<br>' . $GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
+				$arrBannersStat['banner_clicks']  = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] . '<br>' . $GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
+				$arrBannersStat['banner_active']  = $Banner['banner_active'];
+				$arrBannersStat['banner_pub_class'] = $Banner['banner_published_class'];
+				$arrBannersStat['banner_style']   = 'color:red;font-weight:bold;';
 				$arrBannersStat['banner_alt']     = $GLOBALS['TL_LANG']['tl_banner_stat']['read_error'];
+				$arrBannersStat['banner_title']   = $Banner['banner_url'];
 				$arrBannersStat['banner_url']     = $Banner['banner_image'];
+				$arrBannersStat['banner_zero']    = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text'];
+				$arrBannersStat['banner_confirm'] = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm'];
+				$arrBannersStat['banner_image']   = $Banner['banner_image'];
+				$arrBannersStat['banner_width']   = 0;
+				$arrBannersStat['banner_height']  = 0;
 				break;
 		} // switch
 
