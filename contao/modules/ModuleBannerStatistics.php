@@ -485,7 +485,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 
 				$arrBannersStat['banner_id']     = $Banner['id'];
 				$arrBannersStat['banner_style']     = 'padding-bottom: 4px;';
-				$arrBannersStat['banner_name']     = 'Test ' . StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
+				$arrBannersStat['banner_name']     = StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
 				$arrBannersStat['banner_alt']     = StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
 				$arrBannersStat['banner_title']     = $Banner['banner_url'];
 				$arrBannersStat['banner_url']     = \strlen($Banner['banner_url']) <61 ? $Banner['banner_url'] : substr($Banner['banner_url'], 0, 28) . "[...]" . substr($Banner['banner_url'], -24, 24);
@@ -515,16 +515,25 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 				}
 
 				$arrBannersStat['banner_pic']     = true;
-				$arrBannersStat['banner_flash']     = false;
-				$arrBannersStat['banner_text']     = false;
+				$arrBannersStat['banner_flash']   = false;
+				$arrBannersStat['banner_text']    = false;
 				$arrBannersStat['banner_video']   = false;
-				$arrBannersStat['banner_prio']     = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
-				$arrBannersStat['banner_views']     = ($MaxViewsClicks[0]) ? $Banner['banner_views'] . '<br>' . $GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
-				$arrBannersStat['banner_clicks']     = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] . '<br>' . $GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
-				$arrBannersStat['banner_active']     = $Banner['banner_active'];
-				$arrBannersStat['banner_style']     = 'color:red;font-weight:bold;';
+				$arrBannersStat['banner_id']      = $Banner['id'];
+				$arrBannersStat['banner_name']    = StringUtil::specialchars(StringUtil::ampersand($Banner['banner_name']));
+				$arrBannersStat['banner_prio']    = $GLOBALS['TL_LANG']['tl_banner_stat']['prio'][$Banner['banner_weighting']];
+				$arrBannersStat['banner_views']   = ($MaxViewsClicks[0]) ? $Banner['banner_views'] . '<br>' . $GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_views'];
+				$arrBannersStat['banner_clicks']  = ($MaxViewsClicks[1]) ? $Banner['banner_clicks'] . '<br>' . $GLOBALS['TL_LANG']['tl_banner_stat']['max_yes'] : $Banner['banner_clicks'];
+				$arrBannersStat['banner_active']  = $Banner['banner_active'];
+				$arrBannersStat['banner_pub_class'] = $Banner['banner_published_class'];
+				$arrBannersStat['banner_style']   = 'color:red;font-weight:bold;';
 				$arrBannersStat['banner_alt']     = $GLOBALS['TL_LANG']['tl_banner_stat']['read_error'];
+				$arrBannersStat['banner_title']   = $Banner['banner_url'];
 				$arrBannersStat['banner_url']     = $Banner['banner_image'];
+				$arrBannersStat['banner_zero']    = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_text'];
+				$arrBannersStat['banner_confirm'] = $GLOBALS['TL_LANG']['tl_banner_stat']['zero_confirm'];
+				$arrBannersStat['banner_image']   = $Banner['banner_image'];
+				$arrBannersStat['banner_width']   = 0;
+				$arrBannersStat['banner_height']  = 0;
 				break;
 		} // switch
 
