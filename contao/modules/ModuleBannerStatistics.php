@@ -343,7 +343,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 		$this->BannerImage = new BannerImage();
 
 		// Banner Art und Größe bestimmen
-		$arrImageSize = $this->BannerImage->getBannerImageSize($objFile->path, self::BANNER_TYPE_INTERN);
+		$arrImageSize = $this->BannerImage->getBannerImageSize($objFile->path ?? '', self::BANNER_TYPE_INTERN);
 
 		// 1 = GIF, 2 = JPG, 3 = PNG
 		// 4 = SWF, 13 = SWC (zip-like swf file)
@@ -504,7 +504,7 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 				}
 				else
 				{
-					$Banner['banner_image'] = $this->urlEncode($objFile->path);
+					$Banner['banner_image'] = $this->urlEncode($objFile->path ?? '');
 				}
 
 				$arrBannersStat['banner_pic']     = true;
