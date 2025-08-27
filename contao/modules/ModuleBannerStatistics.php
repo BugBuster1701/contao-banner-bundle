@@ -358,13 +358,17 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 			case 19: // AVIF
 				// Check ob Banner zu groß für Anzeige, @return array $Width,$Height,$oriSize
 				$arrNewBannerImageSize = $this->BannerImage->getCheckBannerImageSize($arrImageSize, 250, 200);
+				$intWidth  = $arrNewBannerImageSize[0];
+				$intHeight = $arrNewBannerImageSize[1];
+				$oriSize   = $arrNewBannerImageSize[2];
 				break;
 			default:
+				$intWidth  = 0;
+				$intHeight = 0;
+				$oriSize   = true;
 				break;
 		}
-		$intWidth  = $arrNewBannerImageSize[0];
-		$intHeight = $arrNewBannerImageSize[1];
-		$oriSize   = $arrNewBannerImageSize[2];
+		
 
 		return $this->generateTemplateData(self::BANNER_TYPE_INTERN, $Banner, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks, $oriSize, $objFile);
 	} // addBannerIntern
@@ -402,13 +406,16 @@ class ModuleBannerStatistics extends BannerStatisticsHelper
 			case 19: // AVIF
 				// Check ob Banner zu groß für Anzeige, @return array $Width,$Height,$oriSize
 				$arrNewBannerImageSize = $this->BannerImage->getCheckBannerImageSize($arrImageSize, 250, 200);
+				$intWidth  = $arrNewBannerImageSize[0];
+				$intHeight = $arrNewBannerImageSize[1];
+				$oriSize   = $arrNewBannerImageSize[2];
 				break;
 			default:
+				$intWidth  = 0;
+				$intHeight = 0;
+				$oriSize   = true;
 				break;
 		}
-		$intWidth  = $arrNewBannerImageSize[0];
-		$intHeight = $arrNewBannerImageSize[1];
-		$oriSize   = $arrNewBannerImageSize[2];
 		unset($oriSize);
 
 		return $this->generateTemplateData(self::BANNER_TYPE_EXTERN, $Banner, $arrImageSize, $intWidth, $intHeight, $MaxViewsClicks);
