@@ -15,7 +15,7 @@ use Contao\System;
 use Symfony\Component\HttpFoundation\Request;
 
 define('BANNER_VERSION', '1.6');
-define('BANNER_BUILD', '4');
+define('BANNER_BUILD', '5');
 
 /*
  * -------------------------------------------------------------------------
