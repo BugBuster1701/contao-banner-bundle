@@ -25,14 +25,12 @@ define('BANNER_BUILD', '2');
 $GLOBALS['BE_MOD']['content']['banner'] =
 array(
 	'tables'     => array('tl_banner_category', 'tl_banner'),
-	'icon'       => 'bundles/bugbusterbanner/iconBanner.gif',
 	'stylesheet' => 'bundles/bugbusterbanner/mod_banner_be.css'
 );
 
 $GLOBALS['BE_MOD']['system']['bannerstat'] =
 array(
 	'callback'   => 'BugBuster\BannerStatistics\ModuleBannerStatistics',
-	'icon'       => 'bundles/bugbusterbanner/iconBannerStat.gif',
 	'stylesheet' => 'bundles/bugbusterbanner/mod_banner_be.css'
 );
 
