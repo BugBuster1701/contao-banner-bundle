@@ -80,36 +80,24 @@ class Version183Update extends AbstractMigration
 
     public function run(): MigrationResult
     {
-        $stmt = $this->connection->prepare("
-            SELECT
-                id,
-                banner_imgSize
-            FROM
-                tl_banner
-            WHERE
-                banner_imgSize LIKE '%proportional%'
-        ");
-        $result = $stmt->executeQuery();
-        $rows = $result->fetchAllAssociative();
+        $rows = $this->connection->fetchAllAssociative('SELECT
+                    id,
+                    banner_imgSize
+                FROM
+                    tl_banner
+                WHERE
+                    banner_imgSize LIKE \'%proportional%\'');
 
         foreach ($rows as $row)
         {
-            $oldSize = StringUtil::deserialize($row['banner_imgSize']);
+            $oldSize = StringUtil::deserialize($row['banner_imgSize'], true);
             // do not change if not proportinal
-            if ('proportional' !== $oldSize[2]) {
+            if ('proportional' !== $oldSize[2] ?? null) {
                 continue;
             }
             $oldSize[2] = ResizeConfiguration::MODE_BOX;
-            $newSize = serialize($oldSize);
-            $updateStmt = $this->connection->prepare("
-                UPDATE
-                    tl_banner
-                SET
-                    banner_imgSize = ?
-                WHERE
-                    id = ?
-            ");
-            $result = $updateStmt->executeStatement([$newSize, $row['id']]);
+
+            $result = $this->connection->update('tl_banner', ['banner_imgSize' => serialize($oldSize)], ['id' => $row['id']]);
         }
      
         return new MigrationResult(
