@@ -19,12 +19,12 @@ namespace BugBuster\BannerBundle\Migration;
 
 use Contao\CoreBundle\Migration\AbstractMigration;
 use Contao\CoreBundle\Migration\MigrationResult;
-use Contao\StringUtil;
 use Contao\Image\ResizeConfiguration;
+use Contao\StringUtil;
 use Doctrine\DBAL\Connection;
 
 /**
- * This migration change the value of a column from proportinal to box
+ * This migration change the value of a column from proportinal to box.
  *
  * This became necessary for https://github.com/BugBuster1701/contao-banner-bundle/issues/102
  */
@@ -70,7 +70,7 @@ class Version183Update extends AbstractMigration
         }
 
         $columns = $schemaManager->listTableColumns('tl_banner');
-        
+
         if (!isset($columns['banner_imgsize'])) {
             return false;
         }
@@ -88,18 +88,17 @@ class Version183Update extends AbstractMigration
                 WHERE
                     banner_imgSize LIKE \'%proportional%\'');
 
-        foreach ($rows as $row)
-        {
+        foreach ($rows as $row) {
             $oldSize = StringUtil::deserialize($row['banner_imgSize'], true);
             // do not change if not proportinal
-            if ('proportional' !== $oldSize[2] ?? null) {
+            if ('proportional' !== ($oldSize[2] ?? null)) {
                 continue;
             }
             $oldSize[2] = ResizeConfiguration::MODE_BOX;
 
             $result = $this->connection->update('tl_banner', ['banner_imgSize' => serialize($oldSize)], ['id' => $row['id']]);
         }
-     
+
         return new MigrationResult(
             true,
             'Change Image Size to box '.$result.' x activated. (Banner Bundle)',
