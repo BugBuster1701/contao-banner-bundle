@@ -74,21 +74,8 @@ class Version183Update extends AbstractMigration
         if (!isset($columns['banner_imgsize'])) {
             return false;
         }
-        $stmt = $this->connection->prepare("
-            SELECT
-                banner_imgSize
-            FROM
-                tl_banner
-            WHERE
-                banner_imgSize LIKE '%proportional%'
-            LIMIT 1
-        ");
-        $result = $stmt->executeQuery();
-        if ($result->rowCount() < 1) {
-            return false;
-        }
 
-        return true;
+        return (bool) $this->connection->fetchOne("SELECT TRUE FROM tl_banner WHERE banner_imgSize LIKE '%proportional%' LIMIT 1");
     }
 
     public function run(): MigrationResult
