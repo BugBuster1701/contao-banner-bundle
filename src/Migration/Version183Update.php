@@ -90,8 +90,10 @@ class Version183Update extends AbstractMigration
                 banner_imgSize LIKE '%proportional%'
         ");
         $result = $stmt->executeQuery();
-        
-        while ($row = $result->fetchAssociative()) {
+        $rows = $result->fetchAllAssociative();
+
+        foreach ($rows as $row)
+        {
             $oldSize = StringUtil::deserialize($row['banner_imgSize']);
             // do not change if not proportinal
             if ('proportional' !== $oldSize[2]) {
@@ -112,7 +114,7 @@ class Version183Update extends AbstractMigration
      
         return new MigrationResult(
             true,
-            'Change Image Size to box '.$result->rowCount().' x activated. (Banner Bundle)',
+            'Change Image Size to box '.$result.' x activated. (Banner Bundle)',
         );
     }
 }
