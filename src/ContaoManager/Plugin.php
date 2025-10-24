@@ -32,6 +32,11 @@ use Symfony\Component\HttpKernel\KernelInterface;
  */
 class Plugin implements BundlePluginInterface, RoutingPluginInterface, ConfigPluginInterface
 {
+    /**
+     * Gets a list of autoload configurations for this bundle.
+     *
+     * @return array<ConfigInterface>
+     */
     public function getBundles(ParserInterface $parser)
     {
         // braucht BundlePluginInterface
@@ -41,6 +46,13 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface, ConfigPlu
         ];
     }
 
+    /**
+     * Returns a collection of routes for this bundle.
+     *
+     * @param LoaderResolverInterface $resolver
+     * @param KernelInterface $kernel
+     * @return RouteCollection|null
+     */
     public function getRouteCollection(LoaderResolverInterface $resolver, KernelInterface $kernel)
     {
         // braucht RoutingPluginInterface
@@ -51,6 +63,8 @@ class Plugin implements BundlePluginInterface, RoutingPluginInterface, ConfigPlu
     }
 
     /**
+     * Load container configuration.
+     * 
      * @throws \Exception
      */
     public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig): void
