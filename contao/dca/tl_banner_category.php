@@ -88,7 +88,7 @@ array(
 			'stat' => array(
 				'label'               => &$GLOBALS['TL_LANG']['tl_banner_category']['stat'],
 				'href'                => 'do=bannerstat',
-				'icon'                => 'bundles/bugbusterbanner/iconBannerStat.gif',
+				'icon'                => 'bundles/bugbusterbanner/chart-column.svg',
 				'primary'             => true
 			)
 		)

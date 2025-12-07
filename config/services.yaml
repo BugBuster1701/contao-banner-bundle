@@ -16,6 +16,12 @@ services:
         tags:
             - { name: contao.migration, priority: 0 }
 
+    BugBuster\BannerBundle\Migration\Version183Update:
+        arguments:
+            - '@database_connection'
+        tags:
+            - { name: contao.migration, priority: 0 }
+
     # bug_buster_banner.logger:
     #     class: "BugBuster\\BannerBundle\\Classes\\BannerLogger"
     BugBuster\BannerBundle\Classes\BannerLogger:
