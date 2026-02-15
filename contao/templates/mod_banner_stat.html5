@@ -1,9 +1,9 @@
 
 <div class="tl_formbody">
-    <div class="tl_panel">
+    <div class="mod_banner_be_panel">
     <!-- Categorie Reset //-->
 <?php if ($this->bannercatid > 0) : ?>
-		<div class="tl_subpanel" style="padding-right: 32px;">
+		<div class="mod_banner_be_subpanel" style="padding-right: 32px;">
 			<strong><?= $this->bannercatzero; ?>:&nbsp;</strong>
     		<form method="post" class="info" id="banner_cat_reset" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
 				<input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
@@ -21,7 +21,7 @@
 <?php endif; ?>
     <!-- Categorie Reset End //-->
     <!-- Categorie Row //-->
-		<div class="tl_subpanel">
+		<div class="mod_banner_be_subpanel">
 			<strong><?= $this->bannerstatcat; ?>:</strong>
 			<form method="post" class="info" style="display: contents;" id="banner_statistik" data-turbo="false" action="<?= $this->route('contao_backend') ?>?do=bannerstat">
 				<select class="tl_select" name="id">
@@ -34,7 +34,7 @@
 					<?php endforeach; ?>
 				</select>
 				<input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken; ?>">
-				<input class="tl_submit_panel" style="padding-left: 10px; min-width: 20px;" type="image"
+				<input class="tl_submit_panel" style="padding-left: 10px; min-width: 20px; border: 0 none;" type="image"
 						value="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>"
 						title="<?= \Contao\StringUtil::specialchars($GLOBALS['TL_LANG']['MSC']['showOnly']); ?>"
 						src="system/themes/<?= $this->theme; ?>/icons/sync.svg"
@@ -359,7 +359,7 @@
 <?php endif; ?>
 		</tbody>
 		</table>
-		<div class="tl_panel" style="margin-top: 10px;"><?= $this->banner_version; ?></div>
+		<div class="mod_banner_be_panel" style="margin-top: 10px;"><?= $this->banner_version; ?></div>
 	</div>
 </div>
 <span style="padding-left: 18px;"><?= $this->banner_footer; ?></span>
