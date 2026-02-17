@@ -106,26 +106,24 @@ class BannerCount extends System
 
 		// Zählung, Insert
 		$arrSet =
-		array(
-			'id' => $BannerID,
-			'tstamp' => time(),
-			'banner_views' => 1
-		);
-		$objInsert = Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
-											->set($arrSet)
-											->execute();
-		if ($objInsert->insertId == 0)
-		{
-			// Zählung, Update
-			Database::getInstance()->prepare("UPDATE
-                            	                `tl_banner_stat`
-                            	                SET
-                            	                `tstamp`=?
-                            	                , `banner_views` = `banner_views`+1
-                            	                WHERE
-                            	                `id`=?")
-									->execute(time(), $BannerID);
-		}
+			array(
+				'id' => $BannerID,
+				'tstamp' => time(),
+				'banner_views' => 0
+			);
+		Database::getInstance()->prepare("INSERT IGNORE INTO tl_banner_stat %s")
+								->set($arrSet)
+								->execute();
+		// Zählung, Update
+		Database::getInstance()->prepare("UPDATE
+											`tl_banner_stat`
+											SET
+											`tstamp`=?
+											, `banner_views` = `banner_views`+1
+											WHERE
+											`id`=?")
+								->execute(time(), $BannerID);
+
 		BannerLog::writeLog(__METHOD__, __LINE__, 'Counting is done for Banner ID: ', $BannerID);
 	}// BannerStatViewUpdate()
 
