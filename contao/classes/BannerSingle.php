@@ -147,7 +147,7 @@ class BannerSingle extends Frontend
 			return $this->Template;
 		}
 		// Kein BannerDefault
-		$NoBannerFound = ($GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner']) ?: 'no banner, no default banner';
+		$NoBannerFound = ($GLOBALS['TL_LANG']['MSC']['tl_banner']['noBanner']) ?? 'no banner, no default banner';
 		$arrBanners[] =
 						array(
 							'banner_key'  => 'bid',
