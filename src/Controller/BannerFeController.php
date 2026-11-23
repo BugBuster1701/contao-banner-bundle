@@ -29,13 +29,13 @@ class BannerFeController extends AbstractController
     public function banclicksAction($strbid = '', $bid = 0): Response
     {
         if ('bid' !== $strbid && 'defbid' !== $strbid) {
-            return new Response('Invalid Banner Action ('.$strbid.')', 501);
+            return new Response('Invalid Banner Action', 501);
         }
         if (('bid' === $strbid && 0 === $bid) || ('bid' === $strbid && 0 > $bid)) {
-            return new Response('Invalid Banner ID ('.$bid.')', 501);
+            return new Response('Invalid Banner ID', 501);
         }
         if (('defbid' === $strbid && 0 === $bid) || ('defbid' === $strbid && 0 > $bid)) {
-            return new Response('Invalid Default Banner ID ('.$bid.')', 501);
+            return new Response('Invalid Default Banner ID', 501);
         }
 
         $this->container->get('contao.framework')->initialize();
